@@ -7,6 +7,89 @@ ArmorType.create!([
   {name: "Completa"},
   {name: "Parcial"}
 ])
+Dice.create!([
+  {name: "D4"},
+  {name: "D6"},
+  {name: "D8"},
+  {name: "D10"},
+  {name: "D12"},
+  {name: "D20"},
+  {name: "D100"}
+])
+EffectType.create!([
+  {name: "Instantâneo"},
+  {name: "Temporario"},
+  {name: "Permanente"}
+])
+ElementType.create!([
+  {name: "Fogo"},
+  {name: "Água"},
+  {name: "Terra"},
+  {name: "Ar"}
+])
+WeaponType.create!([
+  {name: "Corte"},
+  {name: "Perfuração"},
+  {name: "Deformação"}
+])
+Role.create!([
+  {name: "admin", admin: true}
+])
+Skill.create!([
+  {name: "Visão na Penumbra", description: "Visão na Penumbra em até 15 metros", effect_id: nil, skill_type_id: 1, user_id: 1}
+])
+SkillType.create!([
+  {name: "Natural"},
+  {name: "Adquirido"}
+])
+SpellType.create!([
+  {name: "Arcana"},
+  {name: "Divina"}
+])
+Origin.create!([
+  {name: "Comum", variation: "Comum", bonus: 0},
+  {name: "Élfico", variation: "Élfica", bonus: 1},
+  {name: "Anão", variation: "Anã", bonus: 1}
+])
+PerkType.create!([
+  {name: "Natural"},
+  {name: "Adquirida"}
+])
+User.create!([
+  {name: "Administrador", login: "admin", pass: "8584edef792faa72e383e37127660cf0", inc_date: "2017-01-19 14:13:51", last_login: nil, email: "themohawkeagle@gmail.com", role_id: 1}
+])
+ItemType.create!([
+  {name: "Consumivel"},
+  {name: "Chave"},
+  {name: "Importante"}
+])
+LanguageType.create!([
+  {name: "Comum", description: nil},
+  {name: "Anão", description: nil},
+  {name: "Élfico", description: nil},
+  {name: "Silvestre", description: nil},
+  {name: "Goblinoide", description: nil},
+  {name: "Orc", description: nil},
+  {name: "Gigante", description: nil},
+  {name: "Dracônico", description: nil},
+  {name: "Antigo", description: nil}
+])
+Perk.create!([
+  {name: "Couraça", description: "Ataques de perfuração recebidos causam apenas metade do dano", perk_type_id: 1, user_id: 1},
+  {name: "Corpo Ósseo", description: "Ataques de corte e perfuração recebidos causam apenas metade do dano", perk_type_id: 1, user_id: 1}
+])
+CharacterRace.create!([
+  {name: "Anões", min_height: 1, max_height: 2, min_weight: 50, max_weight: 70, maturity: 70, max_age: 350, movement_base: 9, armor_class_mod: 0, str_mod: 0, dex_mod: 0, cons_mod: 2, int_mod: 0, wis_mod: 0, char_mod: -2, alignment_id: 1, dice_id: nil, user_id: 1},
+  {name: "Elfos", min_height: 2, max_height: 2, min_weight: 40, max_weight: 50, maturity: 150, max_age: 700, movement_base: 9, armor_class_mod: 0, str_mod: 0, dex_mod: 2, cons_mod: -2, int_mod: 0, wis_mod: 0, char_mod: 0, alignment_id: 2, dice_id: 3, user_id: 1},
+  {name: "Humanos", min_height: 2, max_height: 2, min_weight: 55, max_weight: 90, maturity: 15, max_age: 70, movement_base: 9, armor_class_mod: 0, str_mod: 0, dex_mod: 0, cons_mod: 0, int_mod: 0, wis_mod: 0, char_mod: 0, alignment_id: 2, dice_id: nil, user_id: 1},
+  {name: "Halflings", min_height: 1, max_height: 1, min_weight: 20, max_weight: 35, maturity: 30, max_age: 70, movement_base: 9, armor_class_mod: 2, str_mod: 0, dex_mod: 2, cons_mod: 0, int_mod: 0, wis_mod: 0, char_mod: 0, alignment_id: 3, dice_id: nil, user_id: 1}
+])
+CharacterClassType.create!([
+  {name: "Arcano", magic: true, protection: 15, key_attr: "INT", can_bane_undead: false, has_thief_talents: false},
+  {name: "Combatente", magic: false, protection: 15, key_attr: "STR", can_bane_undead: false, has_thief_talents: false},
+  {name: "Espiritualista", magic: true, protection: 15, key_attr: "WIS", can_bane_undead: true, has_thief_talents: false},
+  {name: "Furtivo", magic: false, protection: 15, key_attr: "DEX", can_bane_undead: false, has_thief_talents: true}
+])
 CharacterClass.create!([
   {name: "Clérigo", description: "Um homem devotado ao culto sagrado", dice_id: 3, perk_id: nil, character_class_type_id: 3, user_id: 1},
   {name: "Homem de Armas", description: "Um combatente experiênte", dice_id: 4, perk_id: nil, character_class_type_id: 2, user_id: 1},
@@ -143,18 +226,6 @@ CharacterClassRequirement.create!([
   {str_mod: 0, dex_mod: 12, cons_mod: 0, int_mod: 0, wis_mod: 0, char_mod: 0, character_classes_id: 3},
   {str_mod: 0, dex_mod: 0, cons_mod: 0, int_mod: 12, wis_mod: 0, char_mod: 0, character_classes_id: 4}
 ])
-CharacterClassType.create!([
-  {name: "Arcano", magic: true, protection: 15, key_attr: "INT", can_bane_undead: false, has_thief_talents: false},
-  {name: "Combatente", magic: false, protection: 15, key_attr: "STR", can_bane_undead: false, has_thief_talents: false},
-  {name: "Espiritualista", magic: true, protection: 15, key_attr: "WIS", can_bane_undead: true, has_thief_talents: false},
-  {name: "Furtivo", magic: false, protection: 15, key_attr: "DEX", can_bane_undead: false, has_thief_talents: true}
-])
-CharacterRace.create!([
-  {name: "Anões", min_height: 1, max_height: 2, min_weight: 50, max_weight: 70, maturity: 70, max_age: 350, movement_base: 9, armor_class_mod: 0, str_mod: 0, dex_mod: 0, cons_mod: 2, int_mod: 0, wis_mod: 0, char_mod: -2, alignment_id: 1, dice_id: nil, user_id: 1},
-  {name: "Elfos", min_height: 2, max_height: 2, min_weight: 40, max_weight: 50, maturity: 150, max_age: 700, movement_base: 9, armor_class_mod: 0, str_mod: 0, dex_mod: 2, cons_mod: -2, int_mod: 0, wis_mod: 0, char_mod: 0, alignment_id: 2, dice_id: 3, user_id: 1},
-  {name: "Humanos", min_height: 2, max_height: 2, min_weight: 55, max_weight: 90, maturity: 15, max_age: 70, movement_base: 9, armor_class_mod: 0, str_mod: 0, dex_mod: 0, cons_mod: 0, int_mod: 0, wis_mod: 0, char_mod: 0, alignment_id: 2, dice_id: nil, user_id: 1},
-  {name: "Halflings", min_height: 1, max_height: 1, min_weight: 20, max_weight: 35, maturity: 30, max_age: 70, movement_base: 9, armor_class_mod: 2, str_mod: 0, dex_mod: 2, cons_mod: 0, int_mod: 0, wis_mod: 0, char_mod: 0, alignment_id: 3, dice_id: nil, user_id: 1}
-])
 CharacterRaceLanguage.create!([
   {character_race_id: 1, language_type_id: 1},
   {character_race_id: 1, language_type_id: 2},
@@ -260,26 +331,6 @@ DexterityMod.create!([
   {value: 28, attack_mod: 9, surprise_mod: 9, armor_class_mod: 9, protection_mod: 9, find_traps_mod: 35, silent_movement_mod: 45, lockpick_mod: 45, stealth_mod: 40, pickpocket_mod: 40},
   {value: 29, attack_mod: 9, surprise_mod: 9, armor_class_mod: 9, protection_mod: 9, find_traps_mod: 35, silent_movement_mod: 45, lockpick_mod: 45, stealth_mod: 40, pickpocket_mod: 40}
 ])
-Dice.create!([
-  {name: "D4"},
-  {name: "D6"},
-  {name: "D8"},
-  {name: "D10"},
-  {name: "D12"},
-  {name: "D20"},
-  {name: "D100"}
-])
-EffectType.create!([
-  {name: "Instantâneo"},
-  {name: "Temporario"},
-  {name: "Permanente"}
-])
-ElementType.create!([
-  {name: "Fogo"},
-  {name: "Água"},
-  {name: "Terra"},
-  {name: "Ar"}
-])
 IntelligenceMod.create!([
   {value: 1, languages_mod: 0, learn_magic_mod: 0, magic_circle_1_mod: 0, magic_circle_2_mod: 0, magic_circle_3_mod: 0, magic_circle_4_mod: 0, magic_circle_5_mod: 0, magic_circle_6_mod: 0, magic_circle_7_mod: 0, magic_circle_8_mod: 0, magic_circle_9_mod: 0},
   {value: 2, languages_mod: 0, learn_magic_mod: 0, magic_circle_1_mod: 0, magic_circle_2_mod: 0, magic_circle_3_mod: 0, magic_circle_4_mod: 0, magic_circle_5_mod: 0, magic_circle_6_mod: 0, magic_circle_7_mod: 0, magic_circle_8_mod: 0, magic_circle_9_mod: 0},
@@ -310,49 +361,6 @@ IntelligenceMod.create!([
   {value: 27, languages_mod: 7, learn_magic_mod: 85, magic_circle_1_mod: 3, magic_circle_2_mod: 2, magic_circle_3_mod: 1, magic_circle_4_mod: 0, magic_circle_5_mod: 0, magic_circle_6_mod: 0, magic_circle_7_mod: 0, magic_circle_8_mod: 0, magic_circle_9_mod: 0},
   {value: 28, languages_mod: 8, learn_magic_mod: 95, magic_circle_1_mod: 3, magic_circle_2_mod: 3, magic_circle_3_mod: 1, magic_circle_4_mod: 0, magic_circle_5_mod: 0, magic_circle_6_mod: 0, magic_circle_7_mod: 0, magic_circle_8_mod: 0, magic_circle_9_mod: 0},
   {value: 29, languages_mod: 8, learn_magic_mod: 95, magic_circle_1_mod: 3, magic_circle_2_mod: 3, magic_circle_3_mod: 1, magic_circle_4_mod: 0, magic_circle_5_mod: 0, magic_circle_6_mod: 0, magic_circle_7_mod: 0, magic_circle_8_mod: 0, magic_circle_9_mod: 0}
-])
-ItemType.create!([
-  {name: "Consumivel"},
-  {name: "Chave"},
-  {name: "Importante"}
-])
-LanguageType.create!([
-  {name: "Comum", description: nil},
-  {name: "Anão", description: nil},
-  {name: "Élfico", description: nil},
-  {name: "Silvestre", description: nil},
-  {name: "Goblinoide", description: nil},
-  {name: "Orc", description: nil},
-  {name: "Gigante", description: nil},
-  {name: "Dracônico", description: nil},
-  {name: "Antigo", description: nil}
-])
-Origin.create!([
-  {name: "Comum", variation: "Comum", bonus: 0},
-  {name: "Élfico", variation: "Élfica", bonus: 1},
-  {name: "Anão", variation: "Anã", bonus: 1}
-])
-Perk.create!([
-  {name: "Couraça", description: "Ataques de perfuração recebidos causam apenas metade do dano", perk_type_id: 1, user_id: 1},
-  {name: "Corpo Ósseo", description: "Ataques de corte e perfuração recebidos causam apenas metade do dano", perk_type_id: 1, user_id: 1}
-])
-PerkType.create!([
-  {name: "Natural"},
-  {name: "Adquirida"}
-])
-Role.create!([
-  {name: "admin", admin: true}
-])
-Skill.create!([
-  {name: "Visão na Penumbra", description: "Visão na Penumbra em até 15 metros", effect_id: nil, skill_type_id: 1, user_id: 1}
-])
-SkillType.create!([
-  {name: "Natural"},
-  {name: "Adquirido"}
-])
-SpellType.create!([
-  {name: "Arcana"},
-  {name: "Divina"}
 ])
 StrengthMod.create!([
   {value: 1, attack_mod: -5, damage_mod: -5},
@@ -428,14 +436,6 @@ UndeadBane.create!([
   {level: 18, skelleton_mod: "D", zombie_mod: "D", ghoul_mod: "D", inhuman_mod: "D", aparition_mod: "A", mummy_mod: "A", specter_mod: "3", vampire_mod: "7"},
   {level: 19, skelleton_mod: "D", zombie_mod: "D", ghoul_mod: "D", inhuman_mod: "D", aparition_mod: "D", mummy_mod: "A", specter_mod: "2", vampire_mod: "5"},
   {level: 20, skelleton_mod: "D", zombie_mod: "D", ghoul_mod: "D", inhuman_mod: "D", aparition_mod: "D", mummy_mod: "A", specter_mod: "A", vampire_mod: "3"}
-])
-User.create!([
-  {name: "Administrador", login: "admin", pass: "8584edef792faa72e383e37127660cf0", inc_date: "2017-01-19 14:13:51", last_login: nil, email: "themohawkeagle@gmail.com", role_id: 1}
-])
-WeaponType.create!([
-  {name: "Corte"},
-  {name: "Perfuração"},
-  {name: "Deformação"}
 ])
 WisdomMod.create!([
   {value: 1, protection_mod: -5, magic_cicle_1_mod: 0, magic_cicle_2_mod: 0, magic_cicle_3_mod: 0},
