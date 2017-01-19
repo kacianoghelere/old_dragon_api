@@ -37,3 +37,9 @@ gem 'seed_dump'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
+
+group :production do
+  gem 'pg'
+  gem 'rails_12factor'
+  gem 'puma'
+end
