@@ -1,0 +1,39 @@
+require 'test_helper'
+
+class OriginsControllerTest < ActionController::TestCase
+  setup do
+    @origin = origins(:one)
+  end
+
+  test "should get index" do
+    get :index
+    assert_response :success
+    assert_not_nil assigns(:origins)
+  end
+
+  test "should create origin" do
+    assert_difference('Origin.count') do
+      post :create, origin: { bonus: @origin.bonus, name: @origin.name, variation: @origin.variation }
+    end
+
+    assert_response 201
+  end
+
+  test "should show origin" do
+    get :show, id: @origin
+    assert_response :success
+  end
+
+  test "should update origin" do
+    put :update, id: @origin, origin: { bonus: @origin.bonus, name: @origin.name, variation: @origin.variation }
+    assert_response 204
+  end
+
+  test "should destroy origin" do
+    assert_difference('Origin.count', -1) do
+      delete :destroy, id: @origin
+    end
+
+    assert_response 204
+  end
+end
