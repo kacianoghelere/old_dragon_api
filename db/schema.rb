@@ -256,8 +256,7 @@ ActiveRecord::Schema.define(version: 20170119161614) do
   add_index "character_race_skills", ["character_race_id"], name: "fk_race_has_skill_race1_idx", using: :btree
   add_index "character_race_skills", ["skill_id"], name: "fk_race_has_skill_skill1_idx", using: :btree
 
-  create_table "character_race_thief_talents", id: false, force: :cascade do |t|
-    t.integer  "id",                  limit: 8,                 null: false
+  create_table "character_race_thief_talents", id: :bigint, force: :cascade do |t|
     t.integer  "lockpick_mod",        limit: 4,                 null: false
     t.integer  "find_traps_mod",      limit: 4,                 null: false
     t.integer  "climb_mod",           limit: 4,                 null: false
