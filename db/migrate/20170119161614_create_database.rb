@@ -88,7 +88,7 @@ class CreateDatabase < ActiveRecord::Migration
       t.datetime "updated_at"
     end
 
-    add_index "character_class_evolutions", ["character_class_id"], name: "fk_occupation_level_occupation1_idx", using: :btree
+    add_index "character_class_evolutions", ["character_class_id"], name: "fk_character_class_evolutions_character_class_idx", using: :btree
 
     create_table "character_class_item_types", id: false, force: :cascade do |t|
       t.integer  "character_class_id", limit: 8, null: false
@@ -116,7 +116,7 @@ class CreateDatabase < ActiveRecord::Migration
       t.datetime "updated_at"
     end
 
-    add_index "character_class_magic_circles", ["character_class_id"], name: "fk_occupation_level_occupation1_idx", using: :btree
+    add_index "character_class_magic_circles", ["character_class_id"], name: "fk_character_class_magic_circles_character_class_idx", using: :btree
 
     create_table "character_class_requirements", id: :bigint, force: :cascade do |t|
       t.integer  "str_mod",              limit: 4, default: 0, null: false
