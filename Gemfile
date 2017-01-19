@@ -21,6 +21,8 @@ gem 'annotate'
 
 gem 'seed_dump'
 
+gem 'pg', '~> 0.19.0'
+
 # Uses the gem 'schema_to_scaffold' to generate de models
 
 # To use ActiveModel has_secure_password
@@ -39,7 +41,6 @@ gem 'seed_dump'
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
 group :production do
-  gem 'pg'
   gem 'rails_12factor'
   gem 'puma'
 end
