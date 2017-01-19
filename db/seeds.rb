@@ -35,9 +35,6 @@ WeaponType.create!([
 Role.create!([
   {name: "admin", admin: true}
 ])
-Skill.create!([
-  {name: "Visão na Penumbra", description: "Visão na Penumbra em até 15 metros", effect_id: nil, skill_type_id: 1, user_id: 1}
-])
 SkillType.create!([
   {name: "Natural"},
   {name: "Adquirido"}
@@ -55,9 +52,6 @@ PerkType.create!([
   {name: "Natural"},
   {name: "Adquirida"}
 ])
-User.create!([
-  {name: "Administrador", login: "admin", pass: "8584edef792faa72e383e37127660cf0", inc_date: "2017-01-19 14:13:51", last_login: nil, email: "themohawkeagle@gmail.com", role_id: 1}
-])
 ItemType.create!([
   {name: "Consumivel"},
   {name: "Chave"},
@@ -73,6 +67,12 @@ LanguageType.create!([
   {name: "Gigante", description: nil},
   {name: "Dracônico", description: nil},
   {name: "Antigo", description: nil}
+])
+Skill.create!([
+  {name: "Visão na Penumbra", description: "Visão na Penumbra em até 15 metros", effect_id: nil, skill_type_id: 1, user_id: 1}
+])
+User.create!([
+  {name: "Administrador", login: "admin", pass: "8584edef792faa72e383e37127660cf0", inc_date: "2017-01-19 14:13:51", last_login: nil, email: "themohawkeagle@gmail.com", role_id: 1}
 ])
 Perk.create!([
   {name: "Couraça", description: "Ataques de perfuração recebidos causam apenas metade do dano", perk_type_id: 1, user_id: 1},
