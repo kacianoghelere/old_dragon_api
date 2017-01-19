@@ -1,18 +1,18 @@
 class CreateDatabase < ActiveRecord::Migration
   def change
-    create_table "alignments", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    create_table "alignments", id: :bigint, force: :cascade do |t|
       t.string   "name",       limit: 15, null: false
       t.datetime "created_at"
       t.datetime "updated_at"
     end
 
-    create_table "armor_types", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    create_table "armor_types", id: :bigint, force: :cascade do |t|
       t.string   "name",       limit: 45, null: false
       t.datetime "created_at"
       t.datetime "updated_at"
     end
 
-    create_table "armors", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    create_table "armors", id: :bigint, force: :cascade do |t|
       t.string   "name",               limit: 45,                             null: false
       t.string   "description",        limit: 500
       t.integer  "armor_class",        limit: 4,                  default: 0, null: false
@@ -31,7 +31,7 @@ class CreateDatabase < ActiveRecord::Migration
     add_index "armors", ["origin_id"], name: "fk_armor_origin1_idx", using: :btree
     add_index "armors", ["user_id"], name: "fk_armor_user1_idx", using: :btree
 
-    create_table "campain_journals", id: :integer, limit: 8, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    create_table "campain_journals", id: :integer, limit: 8, force: :cascade do |t|
       t.string   "description", limit: 45
       t.boolean  "idactive",               default: true, null: false
       t.datetime "log_date",                              null: false
@@ -42,7 +42,7 @@ class CreateDatabase < ActiveRecord::Migration
 
     add_index "campain_journals", ["campain_id"], name: "fk_campain_info_campain1_idx", using: :btree
 
-    create_table "campain_members", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    create_table "campain_members", id: false, force: :cascade do |t|
       t.integer  "campain_id",         limit: 8,                null: false
       t.integer  "character_sheet_id", limit: 8,                null: false
       t.boolean  "idactive",                     default: true, null: false
@@ -53,7 +53,7 @@ class CreateDatabase < ActiveRecord::Migration
     add_index "campain_members", ["campain_id"], name: "fk_campain_has_character_sheet_campain1_idx", using: :btree
     add_index "campain_members", ["character_sheet_id"], name: "fk_campain_has_character_sheet_character_sheet1_idx", using: :btree
 
-    create_table "campains", id: :integer, limit: 8, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    create_table "campains", id: :integer, limit: 8, force: :cascade do |t|
       t.string   "title",           limit: 45,    null: false
       t.text     "description",     limit: 65535
       t.datetime "start_date",                    null: false
@@ -65,7 +65,7 @@ class CreateDatabase < ActiveRecord::Migration
 
     add_index "campains", ["user_id"], name: "fk_campain_system_user1_idx", using: :btree
 
-    create_table "character_class_armor_types", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    create_table "character_class_armor_types", id: false, force: :cascade do |t|
       t.integer  "character_class_id", limit: 8, null: false
       t.integer  "armor_type_id",      limit: 8, null: false
       t.datetime "created_at"
@@ -75,7 +75,7 @@ class CreateDatabase < ActiveRecord::Migration
     add_index "character_class_armor_types", ["armor_type_id"], name: "fk_class_base_has_armor_type_armor_type1_idx", using: :btree
     add_index "character_class_armor_types", ["character_class_id"], name: "fk_class_base_has_armor_type_class_base1_idx", using: :btree
 
-    create_table "character_class_evolutions", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    create_table "character_class_evolutions", id: :bigint, force: :cascade do |t|
       t.integer  "level",              limit: 4, default: 1, null: false
       t.integer  "exp",                limit: 8,             null: false
       t.integer  "life_amount",        limit: 4,             null: false
@@ -90,7 +90,7 @@ class CreateDatabase < ActiveRecord::Migration
 
     add_index "character_class_evolutions", ["character_class_id"], name: "fk_occupation_level_occupation1_idx", using: :btree
 
-    create_table "character_class_item_types", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    create_table "character_class_item_types", id: false, force: :cascade do |t|
       t.integer  "character_class_id", limit: 8, null: false
       t.integer  "item_type_id",       limit: 8, null: false
       t.datetime "created_at"
@@ -100,7 +100,7 @@ class CreateDatabase < ActiveRecord::Migration
     add_index "character_class_item_types", ["character_class_id"], name: "fk_class_base_has_item_type_class_base1_idx", using: :btree
     add_index "character_class_item_types", ["item_type_id"], name: "fk_class_base_has_item_type_item_type1_idx", using: :btree
 
-    create_table "character_class_magic_circles", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    create_table "character_class_magic_circles", id: :bigint, force: :cascade do |t|
       t.integer  "level",              limit: 4, default: 1, null: false
       t.integer  "magic_circle_1",     limit: 4, default: 0, null: false
       t.integer  "magic_circle_2",     limit: 4, default: 0, null: false
@@ -118,7 +118,7 @@ class CreateDatabase < ActiveRecord::Migration
 
     add_index "character_class_magic_circles", ["character_class_id"], name: "fk_occupation_level_occupation1_idx", using: :btree
 
-    create_table "character_class_requirements", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    create_table "character_class_requirements", id: :bigint, force: :cascade do |t|
       t.integer  "str_mod",              limit: 4, default: 0, null: false
       t.integer  "dex_mod",              limit: 4, default: 0, null: false
       t.integer  "cons_mod",             limit: 4, default: 0, null: false
@@ -132,7 +132,7 @@ class CreateDatabase < ActiveRecord::Migration
 
     add_index "character_class_requirements", ["character_classes_id"], name: "fk_character_class_requirements_character_classes1_idx", using: :btree
 
-    create_table "character_class_spell_types", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    create_table "character_class_spell_types", id: false, force: :cascade do |t|
       t.integer  "character_class_id", limit: 8, null: false
       t.integer  "spell_type_id",      limit: 8, null: false
       t.datetime "created_at"
@@ -142,7 +142,7 @@ class CreateDatabase < ActiveRecord::Migration
     add_index "character_class_spell_types", ["character_class_id"], name: "fk_class_base_has_spell_category_class_base1_idx", using: :btree
     add_index "character_class_spell_types", ["spell_type_id"], name: "fk_class_base_has_spell_category_spell_category1_idx", using: :btree
 
-    create_table "character_class_types", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    create_table "character_class_types", id: :bigint, force: :cascade do |t|
       t.string   "name",              limit: 45,                 null: false
       t.boolean  "magic",                        default: false, null: false
       t.integer  "protection",        limit: 4,                  null: false
@@ -153,7 +153,7 @@ class CreateDatabase < ActiveRecord::Migration
       t.datetime "updated_at"
     end
 
-    create_table "character_class_weapon_types", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    create_table "character_class_weapon_types", id: false, force: :cascade do |t|
       t.integer  "character_class_id", limit: 8, null: false
       t.integer  "weapon_type_id",     limit: 8, null: false
       t.datetime "created_at"
@@ -163,7 +163,7 @@ class CreateDatabase < ActiveRecord::Migration
     add_index "character_class_weapon_types", ["character_class_id"], name: "fk_class_base_has_weapon_type_class_base1_idx", using: :btree
     add_index "character_class_weapon_types", ["weapon_type_id"], name: "fk_class_base_has_weapon_type_weapon_type1_idx", using: :btree
 
-    create_table "character_classes", id: :integer, limit: 8, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    create_table "character_classes", id: :integer, limit: 8, force: :cascade do |t|
       t.string   "name",                    limit: 45,  null: false
       t.string   "description",             limit: 500
       t.integer  "dice_id",                 limit: 8,   null: false
@@ -179,7 +179,7 @@ class CreateDatabase < ActiveRecord::Migration
     add_index "character_classes", ["perk_id"], name: "fk_class_base_perk1_idx", using: :btree
     add_index "character_classes", ["user_id"], name: "fk_class_base_user1_idx", using: :btree
 
-    create_table "character_expertises", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    create_table "character_expertises", id: false, force: :cascade do |t|
       t.integer  "character_sheet_id", limit: 8, null: false
       t.integer  "expertise_id",       limit: 8, null: false
       t.datetime "created_at"
@@ -189,7 +189,7 @@ class CreateDatabase < ActiveRecord::Migration
     add_index "character_expertises", ["character_sheet_id"], name: "fk_character_sheet_has_expertise_character_sheet1_idx", using: :btree
     add_index "character_expertises", ["expertise_id"], name: "fk_character_sheet_has_expertise_expertise1_idx", using: :btree
 
-    create_table "character_journals", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    create_table "character_journals", id: :bigint, force: :cascade do |t|
       t.integer  "current_level",      limit: 4
       t.integer  "current_exp",        limit: 4
       t.boolean  "idactive",                     default: true, null: false
@@ -203,7 +203,7 @@ class CreateDatabase < ActiveRecord::Migration
     add_index "character_journals", ["alignment_id"], name: "fk_character_info_alignment1_idx", using: :btree
     add_index "character_journals", ["character_sheet_id"], name: "fk_character_info_character_sheet1_idx", using: :btree
 
-    create_table "character_race_armors", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    create_table "character_race_armors", id: false, force: :cascade do |t|
       t.integer  "armor_type_id",     limit: 8, null: false
       t.integer  "character_race_id", limit: 8, null: false
       t.datetime "created_at"
@@ -213,7 +213,7 @@ class CreateDatabase < ActiveRecord::Migration
     add_index "character_race_armors", ["armor_type_id"], name: "fk_race_has_armor_type_armor_type1_idx", using: :btree
     add_index "character_race_armors", ["character_race_id"], name: "fk_race_has_armor_type_race1_idx", using: :btree
 
-    create_table "character_race_languages", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    create_table "character_race_languages", id: false, force: :cascade do |t|
       t.integer  "character_race_id", limit: 8, null: false
       t.integer  "language_type_id",  limit: 8, null: false
       t.datetime "created_at"
@@ -223,7 +223,7 @@ class CreateDatabase < ActiveRecord::Migration
     add_index "character_race_languages", ["character_race_id"], name: "fk_race_has_language_type_race1_idx", using: :btree
     add_index "character_race_languages", ["language_type_id"], name: "fk_race_has_language_type_language_type1_idx", using: :btree
 
-    create_table "character_race_perks", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    create_table "character_race_perks", id: false, force: :cascade do |t|
       t.integer  "character_race_id", limit: 8, null: false
       t.integer  "perk_id",           limit: 8, null: false
       t.datetime "created_at"
@@ -233,7 +233,7 @@ class CreateDatabase < ActiveRecord::Migration
     add_index "character_race_perks", ["character_race_id"], name: "fk_race_has_perk_race1_idx", using: :btree
     add_index "character_race_perks", ["perk_id"], name: "fk_race_has_perk_perk1_idx", using: :btree
 
-    create_table "character_race_skills", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    create_table "character_race_skills", id: false, force: :cascade do |t|
       t.integer  "character_race_id", limit: 8, null: false
       t.integer  "skill_id",          limit: 8, null: false
       t.datetime "created_at"
@@ -243,7 +243,7 @@ class CreateDatabase < ActiveRecord::Migration
     add_index "character_race_skills", ["character_race_id"], name: "fk_race_has_skill_race1_idx", using: :btree
     add_index "character_race_skills", ["skill_id"], name: "fk_race_has_skill_skill1_idx", using: :btree
 
-    create_table "character_race_thief_talents", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    create_table "character_race_thief_talents", id: false, force: :cascade do |t|
       t.integer  "id",                  limit: 8,                 null: false
       t.integer  "lockpick_mod",        limit: 4,                 null: false
       t.integer  "find_traps_mod",      limit: 4,                 null: false
@@ -260,7 +260,7 @@ class CreateDatabase < ActiveRecord::Migration
 
     add_index "character_race_thief_talents", ["character_race_id"], name: "fk_character_race_thief_talents_character_race1_idx", using: :btree
 
-    create_table "character_race_weapons", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    create_table "character_race_weapons", id: false, force: :cascade do |t|
       t.integer  "character_race_id", limit: 8, null: false
       t.integer  "weapon_type_id",    limit: 8, null: false
       t.datetime "created_at"
@@ -270,7 +270,7 @@ class CreateDatabase < ActiveRecord::Migration
     add_index "character_race_weapons", ["character_race_id"], name: "fk_race_has_weapon_type_race1_idx", using: :btree
     add_index "character_race_weapons", ["weapon_type_id"], name: "fk_race_has_weapon_type_weapon_type1_idx", using: :btree
 
-    create_table "character_races", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    create_table "character_races", id: :bigint, force: :cascade do |t|
       t.string   "name",            limit: 45,                            null: false
       t.decimal  "min_height",                 precision: 10, default: 0
       t.decimal  "max_height",                 precision: 10, default: 0
@@ -297,7 +297,7 @@ class CreateDatabase < ActiveRecord::Migration
     add_index "character_races", ["dice_id"], name: "fk_race_dice1_idx", using: :btree
     add_index "character_races", ["user_id"], name: "fk_race_user1_idx", using: :btree
 
-    create_table "character_sheet_attributes", primary_key: "character_sheet_id", id: :integer, limit: 8, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    create_table "character_sheet_attributes", primary_key: "character_sheet_id", id: :integer, limit: 8, force: :cascade do |t|
       t.integer  "strength",     limit: 4, default: 0, null: false
       t.integer  "dexterity",    limit: 4, default: 0, null: false
       t.integer  "constitution", limit: 4, default: 0, null: false
@@ -308,7 +308,7 @@ class CreateDatabase < ActiveRecord::Migration
       t.datetime "updated_at"
     end
 
-    create_table "character_sheets", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    create_table "character_sheets", id: :bigint, force: :cascade do |t|
       t.string   "name",               limit: 45
       t.decimal  "weight",                           precision: 10
       t.decimal  "height",                           precision: 10
@@ -325,7 +325,7 @@ class CreateDatabase < ActiveRecord::Migration
     add_index "character_sheets", ["character_race_id"], name: "fk_character_sheet_race1_idx", using: :btree
     add_index "character_sheets", ["user_id"], name: "fk_character_sheet_system_user1_idx", using: :btree
 
-    create_table "charisma_mods", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    create_table "charisma_mods", id: :bigint, force: :cascade do |t|
       t.integer  "value",         limit: 4,                null: false
       t.integer  "followers_mod", limit: 4,  default: 0,   null: false
       t.integer  "reaction_mod",  limit: 4,  default: 0,   null: false
@@ -334,7 +334,7 @@ class CreateDatabase < ActiveRecord::Migration
       t.datetime "updated_at"
     end
 
-    create_table "constitution_mods", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    create_table "constitution_mods", id: :bigint, force: :cascade do |t|
       t.integer  "value",            limit: 4,             null: false
       t.integer  "hitpoints_mod",    limit: 4, default: 0, null: false
       t.integer  "protection_mod",   limit: 4, default: 0, null: false
@@ -343,7 +343,7 @@ class CreateDatabase < ActiveRecord::Migration
       t.datetime "updated_at"
     end
 
-    create_table "dexterity_mods", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    create_table "dexterity_mods", id: :bigint, force: :cascade do |t|
       t.integer  "value",               limit: 4,             null: false
       t.integer  "attack_mod",          limit: 4, default: 0, null: false
       t.integer  "surprise_mod",        limit: 4, default: 0, null: false
@@ -358,19 +358,19 @@ class CreateDatabase < ActiveRecord::Migration
       t.datetime "updated_at"
     end
 
-    create_table "dices", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    create_table "dices", id: :bigint, force: :cascade do |t|
       t.string   "name",       limit: 4, null: false
       t.datetime "created_at"
       t.datetime "updated_at"
     end
 
-    create_table "effect_types", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    create_table "effect_types", id: :bigint, force: :cascade do |t|
       t.string   "name",       limit: 45, null: false
       t.datetime "created_at"
       t.datetime "updated_at"
     end
 
-    create_table "effects", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    create_table "effects", id: :bigint, force: :cascade do |t|
       t.string   "name",           limit: 45
       t.string   "description",    limit: 500
       t.integer  "effect_type_id", limit: 8,   null: false
@@ -382,7 +382,7 @@ class CreateDatabase < ActiveRecord::Migration
     add_index "effects", ["effect_type_id"], name: "fk_effect_effect_type1_idx", using: :btree
     add_index "effects", ["user_id"], name: "fk_effect_user1_idx", using: :btree
 
-    create_table "element_types", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    create_table "element_types", id: :bigint, force: :cascade do |t|
       t.string   "name",       limit: 45, null: false
       t.datetime "created_at"
       t.datetime "updated_at"
@@ -399,7 +399,7 @@ class CreateDatabase < ActiveRecord::Migration
 
     add_index "expertises", ["user_id"], name: "fk_expertise_user1_idx", using: :btree
 
-    create_table "intelligence_mods", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    create_table "intelligence_mods", id: :bigint, force: :cascade do |t|
       t.integer  "value",              limit: 4,             null: false
       t.integer  "languages_mod",      limit: 4, default: 0, null: false
       t.integer  "learn_magic_mod",    limit: 4, default: 0, null: false
@@ -416,13 +416,13 @@ class CreateDatabase < ActiveRecord::Migration
       t.datetime "updated_at"
     end
 
-    create_table "item_types", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    create_table "item_types", id: :bigint, force: :cascade do |t|
       t.string   "name",       limit: 45, null: false
       t.datetime "created_at"
       t.datetime "updated_at"
     end
 
-    create_table "items", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    create_table "items", id: :bigint, force: :cascade do |t|
       t.string   "name",         limit: 45,                 null: false
       t.string   "description",  limit: 500
       t.decimal  "weight",                   precision: 10
@@ -436,20 +436,20 @@ class CreateDatabase < ActiveRecord::Migration
     add_index "items", ["item_type_id"], name: "fk_item_item_type1_idx", using: :btree
     add_index "items", ["user_id"], name: "fk_item_user1_idx", using: :btree
 
-    create_table "language_types", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    create_table "language_types", id: :bigint, force: :cascade do |t|
       t.string   "name",        limit: 45,    null: false
       t.text     "description", limit: 65535
       t.datetime "created_at"
       t.datetime "updated_at"
     end
 
-    create_table "material_types", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    create_table "material_types", id: :bigint, force: :cascade do |t|
       t.string   "name",       limit: 45
       t.datetime "created_at"
       t.datetime "updated_at"
     end
 
-    create_table "origins", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    create_table "origins", id: :bigint, force: :cascade do |t|
       t.string   "name",       limit: 45,             null: false
       t.string   "variation",  limit: 45,             null: false
       t.integer  "bonus",      limit: 4,  default: 0, null: false
@@ -457,7 +457,7 @@ class CreateDatabase < ActiveRecord::Migration
       t.datetime "updated_at"
     end
 
-    create_table "perk_types", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    create_table "perk_types", id: :bigint, force: :cascade do |t|
       t.string   "name",       limit: 45, null: false
       t.datetime "created_at"
       t.datetime "updated_at"
@@ -475,7 +475,7 @@ class CreateDatabase < ActiveRecord::Migration
     add_index "perks", ["perk_type_id"], name: "fk_perk_perk_type1_idx", using: :btree
     add_index "perks", ["user_id"], name: "fk_perk_user1_idx", using: :btree
 
-    create_table "role_accesses", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    create_table "role_accesses", id: :bigint, force: :cascade do |t|
       t.integer  "id_menu_item", limit: 8, null: false
       t.integer  "role_id",      limit: 8, null: false
       t.datetime "created_at"
@@ -484,20 +484,20 @@ class CreateDatabase < ActiveRecord::Migration
 
     add_index "role_accesses", ["role_id"], name: "fk_menu_item_has_role_role1_idx", using: :btree
 
-    create_table "roles", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    create_table "roles", id: :bigint, force: :cascade do |t|
       t.string   "name",       limit: 45,                 null: false
       t.boolean  "admin",                 default: false, null: false
       t.datetime "created_at"
       t.datetime "updated_at"
     end
 
-    create_table "skill_types", id: :integer, limit: 8, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    create_table "skill_types", id: :integer, limit: 8, force: :cascade do |t|
       t.string   "name",       limit: 45, null: false
       t.datetime "created_at"
       t.datetime "updated_at"
     end
 
-    create_table "skills", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    create_table "skills", id: :bigint, force: :cascade do |t|
       t.string   "name",          limit: 45
       t.string   "description",   limit: 500
       t.integer  "effect_id",     limit: 8
@@ -511,7 +511,7 @@ class CreateDatabase < ActiveRecord::Migration
     add_index "skills", ["skill_type_id"], name: "fk_skill_skill_type1_idx", using: :btree
     add_index "skills", ["user_id"], name: "fk_skill_user1_idx", using: :btree
 
-    create_table "spell_circles", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    create_table "spell_circles", id: :bigint, force: :cascade do |t|
       t.integer  "circle",        limit: 4, default: 0, null: false
       t.integer  "spell_type_id", limit: 8,             null: false
       t.datetime "created_at"
@@ -520,13 +520,13 @@ class CreateDatabase < ActiveRecord::Migration
 
     add_index "spell_circles", ["spell_type_id"], name: "fk_spell_circle_spell_class1_idx", using: :btree
 
-    create_table "spell_types", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    create_table "spell_types", id: :bigint, force: :cascade do |t|
       t.string   "name",       limit: 45, null: false
       t.datetime "created_at"
       t.datetime "updated_at"
     end
 
-    create_table "spells", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    create_table "spells", id: :bigint, force: :cascade do |t|
       t.string   "name",            limit: 45,  null: false
       t.string   "range",           limit: 45,  null: false
       t.string   "duration",        limit: 45,  null: false
@@ -544,7 +544,7 @@ class CreateDatabase < ActiveRecord::Migration
     add_index "spells", ["spell_circle_id"], name: "fk_spell_spell_circle1_idx", using: :btree
     add_index "spells", ["user_id"], name: "fk_spell_user1_idx", using: :btree
 
-    create_table "strength_mods", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    create_table "strength_mods", id: :bigint, force: :cascade do |t|
       t.integer  "value",      limit: 4,             null: false
       t.integer  "attack_mod", limit: 4, default: 0, null: false
       t.integer  "damage_mod", limit: 4, default: 0, null: false
@@ -552,7 +552,7 @@ class CreateDatabase < ActiveRecord::Migration
       t.datetime "updated_at"
     end
 
-    create_table "thief_talents", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    create_table "thief_talents", id: :bigint, force: :cascade do |t|
       t.integer  "level",           limit: 4,                 null: false
       t.integer  "lockpick",        limit: 4,                 null: false
       t.integer  "find_traps",      limit: 4,                 null: false
@@ -566,7 +566,7 @@ class CreateDatabase < ActiveRecord::Migration
       t.datetime "updated_at"
     end
 
-    create_table "undead_banes", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    create_table "undead_banes", id: :bigint, force: :cascade do |t|
       t.integer  "level",         limit: 4, default: 1,   null: false
       t.string   "skelleton_mod", limit: 2, default: "N", null: false
       t.string   "zombie_mod",    limit: 2, default: "N", null: false
@@ -580,7 +580,7 @@ class CreateDatabase < ActiveRecord::Migration
       t.datetime "updated_at"
     end
 
-    create_table "users", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    create_table "users", id: :bigint, force: :cascade do |t|
       t.string   "name",       limit: 45, null: false
       t.string   "login",      limit: 45, null: false
       t.string   "pass",       limit: 64, null: false
@@ -594,13 +594,13 @@ class CreateDatabase < ActiveRecord::Migration
 
     add_index "users", ["role_id"], name: "fk_system_user_profile1_idx", using: :btree
 
-    create_table "weapon_types", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    create_table "weapon_types", id: :bigint, force: :cascade do |t|
       t.string   "name",       limit: 45, null: false
       t.datetime "created_at"
       t.datetime "updated_at"
     end
 
-    create_table "weapons", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    create_table "weapons", id: :bigint, force: :cascade do |t|
       t.string   "name",             limit: 45,                                 null: false
       t.string   "description",      limit: 500
       t.integer  "initiative",       limit: 4,                  default: 0,     null: false
@@ -626,7 +626,7 @@ class CreateDatabase < ActiveRecord::Migration
     add_index "weapons", ["user_id"], name: "fk_weapon_user1_idx", using: :btree
     add_index "weapons", ["weapon_type_id"], name: "fk_weapon_weapon_type1_idx", using: :btree
 
-    create_table "wisdom_mods", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    create_table "wisdom_mods", id: :bigint, force: :cascade do |t|
       t.integer  "value",             limit: 4,             null: false
       t.integer  "protection_mod",    limit: 4, default: 0, null: false
       t.integer  "magic_cicle_1_mod", limit: 4, default: 0, null: false
