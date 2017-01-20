@@ -32,9 +32,6 @@ WeaponType.create!([
   {name: "Perfuração"},
   {name: "Deformação"}
 ])
-Role.create!([
-  {name: "admin", admin: true}
-])
 SkillType.create!([
   {name: "Natural"},
   {name: "Adquirido"}
@@ -68,8 +65,20 @@ LanguageType.create!([
   {name: "Dracônico", description: nil},
   {name: "Antigo", description: nil}
 ])
+Role.create!([
+  {name: "admin", admin: true}
+])
 User.create!([
-  {name: "Administrador", login: "admin", pass: "8584edef792faa72e383e37127660cf0", inc_date: "2017-01-19 14:13:51", last_login: nil, email: "themohawkeagle@gmail.com", role_id: 1}
+  {
+    name: "Administrador",
+    login: "admin",
+    password: "123456",
+    password_confirmation: "123456",
+    inc_date: "2017-01-19 14:13:51",
+    last_login: nil,
+    email: "themohawkeagle@gmail.com",
+    role_id: 1
+  }
 ])
 Skill.create!([
   {name: "Visão na Penumbra", description: "Visão na Penumbra em até 15 metros", effect_id: nil, skill_type_id: 1, user_id: 1}

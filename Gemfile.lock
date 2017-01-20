@@ -49,7 +49,9 @@ GEM
       activerecord (>= 2.3.0)
       rake (>= 0.8.7)
     arel (6.0.4)
+    bcrypt (3.1.11)
     builder (3.2.3)
+    byebug (9.0.6)
     case_transform (0.2)
       activesupport
     concurrent-ruby (1.0.4)
@@ -63,6 +65,7 @@ GEM
       jsonapi-renderer (= 0.1.1.beta1)
     jsonapi-parser (0.1.1.beta3)
     jsonapi-renderer (0.1.1.beta1)
+    jwt (1.5.6)
     kaminari (1.0.1)
       activesupport (>= 4.1.0)
       kaminari-actionview (= 1.0.1)
@@ -150,6 +153,9 @@ DEPENDENCIES
   active_model_serializers
   activerecord-mysql-awesome
   annotate
+  bcrypt (~> 3.1.7)
+  byebug
+  jwt
   kaminari
   mysql2
   pg (~> 0.19.0)

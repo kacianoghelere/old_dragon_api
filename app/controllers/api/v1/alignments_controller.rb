@@ -1,4 +1,5 @@
 class API::V1::AlignmentsController < ApplicationController
+  before_filter :authenticate_request!
   before_action :set_alignment, only: [:show, :update, :destroy]
 
   # GET /alignments
