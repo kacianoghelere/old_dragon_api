@@ -6,7 +6,7 @@ one:
   constitution: 1
   intelligence: 1
   wisdom: 1
-  charisma: 1
+  character_sheet_id: 
 
 two:
   strength: 1
@@ -14,4 +14,4 @@ two:
   constitution: 1
   intelligence: 1
   wisdom: 1
-  charisma: 1
+  character_sheet_id: 

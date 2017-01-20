@@ -1,22 +1,22 @@
 class API::V1::CharacterRaceLanguagesController < ApplicationController
   before_action :set_character_race_language, only: [:show, :update, :destroy]
 
-  # GET /api/v1/character_race_languages
-  # GET /api/v1/character_race_languages.json
+  # GET /character_race_languages
+  # GET /character_race_languages.json
   def index
     @character_race_languages = CharacterRaceLanguage.all
 
     render json: @character_race_languages
   end
 
-  # GET /api/v1/character_race_languages/1
-  # GET /api/v1/character_race_languages/1.json
+  # GET /character_race_languages/1
+  # GET /character_race_languages/1.json
   def show
     render json: @character_race_language
   end
 
-  # POST /api/v1/character_race_languages
-  # POST /api/v1/character_race_languages.json
+  # POST /character_race_languages
+  # POST /character_race_languages.json
   def create
     @character_race_language = CharacterRaceLanguage.new(character_race_language_params)
 
@@ -27,8 +27,8 @@ class API::V1::CharacterRaceLanguagesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /api/v1/character_race_languages/1
-  # PATCH/PUT /api/v1/character_race_languages/1.json
+  # PATCH/PUT /character_race_languages/1
+  # PATCH/PUT /character_race_languages/1.json
   def update
     @character_race_language = CharacterRaceLanguage.find(params[:id])
 
@@ -39,8 +39,8 @@ class API::V1::CharacterRaceLanguagesController < ApplicationController
     end
   end
 
-  # DELETE /api/v1/character_race_languages/1
-  # DELETE /api/v1/character_race_languages/1.json
+  # DELETE /character_race_languages/1
+  # DELETE /character_race_languages/1.json
   def destroy
     @character_race_language.destroy
 

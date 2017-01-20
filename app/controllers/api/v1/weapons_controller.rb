@@ -1,22 +1,22 @@
 class API::V1::WeaponsController < ApplicationController
   before_action :set_weapon, only: [:show, :update, :destroy]
 
-  # GET /api/v1/weapons
-  # GET /api/v1/weapons.json
+  # GET /weapons
+  # GET /weapons.json
   def index
     @weapons = Weapon.all
 
     render json: @weapons
   end
 
-  # GET /api/v1/weapons/1
-  # GET /api/v1/weapons/1.json
+  # GET /weapons/1
+  # GET /weapons/1.json
   def show
     render json: @weapon
   end
 
-  # POST /api/v1/weapons
-  # POST /api/v1/weapons.json
+  # POST /weapons
+  # POST /weapons.json
   def create
     @weapon = Weapon.new(weapon_params)
 
@@ -27,8 +27,8 @@ class API::V1::WeaponsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /api/v1/weapons/1
-  # PATCH/PUT /api/v1/weapons/1.json
+  # PATCH/PUT /weapons/1
+  # PATCH/PUT /weapons/1.json
   def update
     @weapon = Weapon.find(params[:id])
 
@@ -39,8 +39,8 @@ class API::V1::WeaponsController < ApplicationController
     end
   end
 
-  # DELETE /api/v1/weapons/1
-  # DELETE /api/v1/weapons/1.json
+  # DELETE /weapons/1
+  # DELETE /weapons/1.json
   def destroy
     @weapon.destroy
 

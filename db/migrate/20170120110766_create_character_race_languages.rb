@@ -1,6 +1,6 @@
 class CreateCharacterRaceLanguages < ActiveRecord::Migration
   def change
-    create_table :character_race_languages, id: false do |t|
+    create_table :character_race_languages, id: :bigint do |t|
       t.integer  :character_race_id, limit: 8, null: false
       t.integer  :language_type_id,  limit: 8, null: false
       t.timestamps null: false

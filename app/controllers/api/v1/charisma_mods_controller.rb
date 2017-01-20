@@ -1,22 +1,22 @@
 class API::V1::CharismaModsController < ApplicationController
   before_action :set_charisma_mod, only: [:show, :update, :destroy]
 
-  # GET /api/v1/charisma_mods
-  # GET /api/v1/charisma_mods.json
+  # GET /charisma_mods
+  # GET /charisma_mods.json
   def index
     @charisma_mods = CharismaMod.all
 
     render json: @charisma_mods
   end
 
-  # GET /api/v1/charisma_mods/1
-  # GET /api/v1/charisma_mods/1.json
+  # GET /charisma_mods/1
+  # GET /charisma_mods/1.json
   def show
     render json: @charisma_mod
   end
 
-  # POST /api/v1/charisma_mods
-  # POST /api/v1/charisma_mods.json
+  # POST /charisma_mods
+  # POST /charisma_mods.json
   def create
     @charisma_mod = CharismaMod.new(charisma_mod_params)
 
@@ -27,8 +27,8 @@ class API::V1::CharismaModsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /api/v1/charisma_mods/1
-  # PATCH/PUT /api/v1/charisma_mods/1.json
+  # PATCH/PUT /charisma_mods/1
+  # PATCH/PUT /charisma_mods/1.json
   def update
     @charisma_mod = CharismaMod.find(params[:id])
 
@@ -39,8 +39,8 @@ class API::V1::CharismaModsController < ApplicationController
     end
   end
 
-  # DELETE /api/v1/charisma_mods/1
-  # DELETE /api/v1/charisma_mods/1.json
+  # DELETE /charisma_mods/1
+  # DELETE /charisma_mods/1.json
   def destroy
     @charisma_mod.destroy
 

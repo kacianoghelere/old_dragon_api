@@ -13,7 +13,7 @@ class CharacterSheetAttributesControllerTest < ActionController::TestCase
 
   test "should create character_sheet_attribute" do
     assert_difference('CharacterSheetAttribute.count') do
-      post :create, character_sheet_attribute: { charisma: @character_sheet_attribute.charisma, constitution: @character_sheet_attribute.constitution, dexterity: @character_sheet_attribute.dexterity, intelligence: @character_sheet_attribute.intelligence, strength: @character_sheet_attribute.strength, wisdom: @character_sheet_attribute.wisdom }
+      post :create, character_sheet_attribute: { character_sheet_id: @character_sheet_attribute.character_sheet_id, constitution: @character_sheet_attribute.constitution, dexterity: @character_sheet_attribute.dexterity, intelligence: @character_sheet_attribute.intelligence, strength: @character_sheet_attribute.strength, wisdom: @character_sheet_attribute.wisdom }
     end
 
     assert_response 201
@@ -25,7 +25,7 @@ class CharacterSheetAttributesControllerTest < ActionController::TestCase
   end
 
   test "should update character_sheet_attribute" do
-    put :update, id: @character_sheet_attribute, character_sheet_attribute: { charisma: @character_sheet_attribute.charisma, constitution: @character_sheet_attribute.constitution, dexterity: @character_sheet_attribute.dexterity, intelligence: @character_sheet_attribute.intelligence, strength: @character_sheet_attribute.strength, wisdom: @character_sheet_attribute.wisdom }
+    put :update, id: @character_sheet_attribute, character_sheet_attribute: { character_sheet_id: @character_sheet_attribute.character_sheet_id, constitution: @character_sheet_attribute.constitution, dexterity: @character_sheet_attribute.dexterity, intelligence: @character_sheet_attribute.intelligence, strength: @character_sheet_attribute.strength, wisdom: @character_sheet_attribute.wisdom }
     assert_response 204
   end
 

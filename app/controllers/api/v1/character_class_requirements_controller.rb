@@ -1,22 +1,22 @@
 class API::V1::CharacterClassRequirementsController < ApplicationController
   before_action :set_character_class_requirement, only: [:show, :update, :destroy]
 
-  # GET /api/v1/character_class_requirements
-  # GET /api/v1/character_class_requirements.json
+  # GET /character_class_requirements
+  # GET /character_class_requirements.json
   def index
     @character_class_requirements = CharacterClassRequirement.all
 
     render json: @character_class_requirements
   end
 
-  # GET /api/v1/character_class_requirements/1
-  # GET /api/v1/character_class_requirements/1.json
+  # GET /character_class_requirements/1
+  # GET /character_class_requirements/1.json
   def show
     render json: @character_class_requirement
   end
 
-  # POST /api/v1/character_class_requirements
-  # POST /api/v1/character_class_requirements.json
+  # POST /character_class_requirements
+  # POST /character_class_requirements.json
   def create
     @character_class_requirement = CharacterClassRequirement.new(character_class_requirement_params)
 
@@ -27,8 +27,8 @@ class API::V1::CharacterClassRequirementsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /api/v1/character_class_requirements/1
-  # PATCH/PUT /api/v1/character_class_requirements/1.json
+  # PATCH/PUT /character_class_requirements/1
+  # PATCH/PUT /character_class_requirements/1.json
   def update
     @character_class_requirement = CharacterClassRequirement.find(params[:id])
 
@@ -39,8 +39,8 @@ class API::V1::CharacterClassRequirementsController < ApplicationController
     end
   end
 
-  # DELETE /api/v1/character_class_requirements/1
-  # DELETE /api/v1/character_class_requirements/1.json
+  # DELETE /character_class_requirements/1
+  # DELETE /character_class_requirements/1.json
   def destroy
     @character_class_requirement.destroy
 

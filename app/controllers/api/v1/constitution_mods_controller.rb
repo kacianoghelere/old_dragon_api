@@ -1,22 +1,22 @@
 class API::V1::ConstitutionModsController < ApplicationController
   before_action :set_constitution_mod, only: [:show, :update, :destroy]
 
-  # GET /api/v1/constitution_mods
-  # GET /api/v1/constitution_mods.json
+  # GET /constitution_mods
+  # GET /constitution_mods.json
   def index
     @constitution_mods = ConstitutionMod.all
 
     render json: @constitution_mods
   end
 
-  # GET /api/v1/constitution_mods/1
-  # GET /api/v1/constitution_mods/1.json
+  # GET /constitution_mods/1
+  # GET /constitution_mods/1.json
   def show
     render json: @constitution_mod
   end
 
-  # POST /api/v1/constitution_mods
-  # POST /api/v1/constitution_mods.json
+  # POST /constitution_mods
+  # POST /constitution_mods.json
   def create
     @constitution_mod = ConstitutionMod.new(constitution_mod_params)
 
@@ -27,8 +27,8 @@ class API::V1::ConstitutionModsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /api/v1/constitution_mods/1
-  # PATCH/PUT /api/v1/constitution_mods/1.json
+  # PATCH/PUT /constitution_mods/1
+  # PATCH/PUT /constitution_mods/1.json
   def update
     @constitution_mod = ConstitutionMod.find(params[:id])
 
@@ -39,8 +39,8 @@ class API::V1::ConstitutionModsController < ApplicationController
     end
   end
 
-  # DELETE /api/v1/constitution_mods/1
-  # DELETE /api/v1/constitution_mods/1.json
+  # DELETE /constitution_mods/1
+  # DELETE /constitution_mods/1.json
   def destroy
     @constitution_mod.destroy
 

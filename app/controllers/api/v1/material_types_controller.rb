@@ -1,22 +1,22 @@
 class API::V1::MaterialTypesController < ApplicationController
   before_action :set_material_type, only: [:show, :update, :destroy]
 
-  # GET /api/v1/material_types
-  # GET /api/v1/material_types.json
+  # GET /material_types
+  # GET /material_types.json
   def index
     @material_types = MaterialType.all
 
     render json: @material_types
   end
 
-  # GET /api/v1/material_types/1
-  # GET /api/v1/material_types/1.json
+  # GET /material_types/1
+  # GET /material_types/1.json
   def show
     render json: @material_type
   end
 
-  # POST /api/v1/material_types
-  # POST /api/v1/material_types.json
+  # POST /material_types
+  # POST /material_types.json
   def create
     @material_type = MaterialType.new(material_type_params)
 
@@ -27,8 +27,8 @@ class API::V1::MaterialTypesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /api/v1/material_types/1
-  # PATCH/PUT /api/v1/material_types/1.json
+  # PATCH/PUT /material_types/1
+  # PATCH/PUT /material_types/1.json
   def update
     @material_type = MaterialType.find(params[:id])
 
@@ -39,8 +39,8 @@ class API::V1::MaterialTypesController < ApplicationController
     end
   end
 
-  # DELETE /api/v1/material_types/1
-  # DELETE /api/v1/material_types/1.json
+  # DELETE /material_types/1
+  # DELETE /material_types/1.json
   def destroy
     @material_type.destroy
 

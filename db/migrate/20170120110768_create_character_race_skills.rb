@@ -1,6 +1,6 @@
 class CreateCharacterRaceSkills < ActiveRecord::Migration
   def change
-    create_table :character_race_skills, id: false do |t|
+    create_table :character_race_skills, id: :bigint do |t|
       t.integer  :character_race_id, limit: 8, null: false
       t.integer  :skill_id,          limit: 8, null: false
       t.timestamps null: false

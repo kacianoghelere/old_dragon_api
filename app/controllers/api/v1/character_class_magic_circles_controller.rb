@@ -1,22 +1,22 @@
 class API::V1::CharacterClassMagicCirclesController < ApplicationController
   before_action :set_character_class_magic_circle, only: [:show, :update, :destroy]
 
-  # GET /api/v1/character_class_magic_circles
-  # GET /api/v1/character_class_magic_circles.json
+  # GET /character_class_magic_circles
+  # GET /character_class_magic_circles.json
   def index
     @character_class_magic_circles = CharacterClassMagicCircle.all
 
     render json: @character_class_magic_circles
   end
 
-  # GET /api/v1/character_class_magic_circles/1
-  # GET /api/v1/character_class_magic_circles/1.json
+  # GET /character_class_magic_circles/1
+  # GET /character_class_magic_circles/1.json
   def show
     render json: @character_class_magic_circle
   end
 
-  # POST /api/v1/character_class_magic_circles
-  # POST /api/v1/character_class_magic_circles.json
+  # POST /character_class_magic_circles
+  # POST /character_class_magic_circles.json
   def create
     @character_class_magic_circle = CharacterClassMagicCircle.new(character_class_magic_circle_params)
 
@@ -27,8 +27,8 @@ class API::V1::CharacterClassMagicCirclesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /api/v1/character_class_magic_circles/1
-  # PATCH/PUT /api/v1/character_class_magic_circles/1.json
+  # PATCH/PUT /character_class_magic_circles/1
+  # PATCH/PUT /character_class_magic_circles/1.json
   def update
     @character_class_magic_circle = CharacterClassMagicCircle.find(params[:id])
 
@@ -39,8 +39,8 @@ class API::V1::CharacterClassMagicCirclesController < ApplicationController
     end
   end
 
-  # DELETE /api/v1/character_class_magic_circles/1
-  # DELETE /api/v1/character_class_magic_circles/1.json
+  # DELETE /character_class_magic_circles/1
+  # DELETE /character_class_magic_circles/1.json
   def destroy
     @character_class_magic_circle.destroy
 

@@ -1,22 +1,22 @@
 class API::V1::CampainMembersController < ApplicationController
   before_action :set_campain_member, only: [:show, :update, :destroy]
 
-  # GET /api/v1/campain_members
-  # GET /api/v1/campain_members.json
+  # GET /campain_members
+  # GET /campain_members.json
   def index
     @campain_members = CampainMember.all
 
     render json: @campain_members
   end
 
-  # GET /api/v1/campain_members/1
-  # GET /api/v1/campain_members/1.json
+  # GET /campain_members/1
+  # GET /campain_members/1.json
   def show
     render json: @campain_member
   end
 
-  # POST /api/v1/campain_members
-  # POST /api/v1/campain_members.json
+  # POST /campain_members
+  # POST /campain_members.json
   def create
     @campain_member = CampainMember.new(campain_member_params)
 
@@ -27,8 +27,8 @@ class API::V1::CampainMembersController < ApplicationController
     end
   end
 
-  # PATCH/PUT /api/v1/campain_members/1
-  # PATCH/PUT /api/v1/campain_members/1.json
+  # PATCH/PUT /campain_members/1
+  # PATCH/PUT /campain_members/1.json
   def update
     @campain_member = CampainMember.find(params[:id])
 
@@ -39,8 +39,8 @@ class API::V1::CampainMembersController < ApplicationController
     end
   end
 
-  # DELETE /api/v1/campain_members/1
-  # DELETE /api/v1/campain_members/1.json
+  # DELETE /campain_members/1
+  # DELETE /campain_members/1.json
   def destroy
     @campain_member.destroy
 

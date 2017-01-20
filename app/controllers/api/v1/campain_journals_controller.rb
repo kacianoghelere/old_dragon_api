@@ -1,22 +1,22 @@
 class API::V1::CampainJournalsController < ApplicationController
   before_action :set_campain_journal, only: [:show, :update, :destroy]
 
-  # GET /api/v1/campain_journals
-  # GET /api/v1/campain_journals.json
+  # GET /campain_journals
+  # GET /campain_journals.json
   def index
     @campain_journals = CampainJournal.all
 
     render json: @campain_journals
   end
 
-  # GET /api/v1/campain_journals/1
-  # GET /api/v1/campain_journals/1.json
+  # GET /campain_journals/1
+  # GET /campain_journals/1.json
   def show
     render json: @campain_journal
   end
 
-  # POST /api/v1/campain_journals
-  # POST /api/v1/campain_journals.json
+  # POST /campain_journals
+  # POST /campain_journals.json
   def create
     @campain_journal = CampainJournal.new(campain_journal_params)
 
@@ -27,8 +27,8 @@ class API::V1::CampainJournalsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /api/v1/campain_journals/1
-  # PATCH/PUT /api/v1/campain_journals/1.json
+  # PATCH/PUT /campain_journals/1
+  # PATCH/PUT /campain_journals/1.json
   def update
     @campain_journal = CampainJournal.find(params[:id])
 
@@ -39,8 +39,8 @@ class API::V1::CampainJournalsController < ApplicationController
     end
   end
 
-  # DELETE /api/v1/campain_journals/1
-  # DELETE /api/v1/campain_journals/1.json
+  # DELETE /campain_journals/1
+  # DELETE /campain_journals/1.json
   def destroy
     @campain_journal.destroy
 

@@ -1,22 +1,22 @@
 class API::V1::EffectsController < ApplicationController
   before_action :set_effect, only: [:show, :update, :destroy]
 
-  # GET /api/v1/effects
-  # GET /api/v1/effects.json
+  # GET /effects
+  # GET /effects.json
   def index
     @effects = Effect.all
 
     render json: @effects
   end
 
-  # GET /api/v1/effects/1
-  # GET /api/v1/effects/1.json
+  # GET /effects/1
+  # GET /effects/1.json
   def show
     render json: @effect
   end
 
-  # POST /api/v1/effects
-  # POST /api/v1/effects.json
+  # POST /effects
+  # POST /effects.json
   def create
     @effect = Effect.new(effect_params)
 
@@ -27,8 +27,8 @@ class API::V1::EffectsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /api/v1/effects/1
-  # PATCH/PUT /api/v1/effects/1.json
+  # PATCH/PUT /effects/1
+  # PATCH/PUT /effects/1.json
   def update
     @effect = Effect.find(params[:id])
 
@@ -39,8 +39,8 @@ class API::V1::EffectsController < ApplicationController
     end
   end
 
-  # DELETE /api/v1/effects/1
-  # DELETE /api/v1/effects/1.json
+  # DELETE /effects/1
+  # DELETE /effects/1.json
   def destroy
     @effect.destroy
 

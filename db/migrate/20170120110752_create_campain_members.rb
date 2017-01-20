@@ -1,6 +1,6 @@
 class CreateCampainMembers < ActiveRecord::Migration
   def change
-    create_table :campain_members, id: false do |t|
+    create_table :campain_members, id: :bigint do |t|
       t.integer  :campain_id,         limit: 8,                null: false
       t.integer  :character_sheet_id, limit: 8,                null: false
       t.boolean  :idactive,                     default: true, null: false

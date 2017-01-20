@@ -1,22 +1,22 @@
 class API::V1::ArmorTypesController < ApplicationController
   before_action :set_armor_type, only: [:show, :update, :destroy]
 
-  # GET /api/v1/armor_types
-  # GET /api/v1/armor_types.json
+  # GET /armor_types
+  # GET /armor_types.json
   def index
     @armor_types = ArmorType.all
 
     render json: @armor_types
   end
 
-  # GET /api/v1/armor_types/1
-  # GET /api/v1/armor_types/1.json
+  # GET /armor_types/1
+  # GET /armor_types/1.json
   def show
     render json: @armor_type
   end
 
-  # POST /api/v1/armor_types
-  # POST /api/v1/armor_types.json
+  # POST /armor_types
+  # POST /armor_types.json
   def create
     @armor_type = ArmorType.new(armor_type_params)
 
@@ -27,8 +27,8 @@ class API::V1::ArmorTypesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /api/v1/armor_types/1
-  # PATCH/PUT /api/v1/armor_types/1.json
+  # PATCH/PUT /armor_types/1
+  # PATCH/PUT /armor_types/1.json
   def update
     @armor_type = ArmorType.find(params[:id])
 
@@ -39,8 +39,8 @@ class API::V1::ArmorTypesController < ApplicationController
     end
   end
 
-  # DELETE /api/v1/armor_types/1
-  # DELETE /api/v1/armor_types/1.json
+  # DELETE /armor_types/1
+  # DELETE /armor_types/1.json
   def destroy
     @armor_type.destroy
 

@@ -1,22 +1,22 @@
 class API::V1::DicesController < ApplicationController
   before_action :set_dice, only: [:show, :update, :destroy]
 
-  # GET /api/v1/dices
-  # GET /api/v1/dices.json
+  # GET /dices
+  # GET /dices.json
   def index
     @dices = Dice.all
 
     render json: @dices
   end
 
-  # GET /api/v1/dices/1
-  # GET /api/v1/dices/1.json
+  # GET /dices/1
+  # GET /dices/1.json
   def show
     render json: @dice
   end
 
-  # POST /api/v1/dices
-  # POST /api/v1/dices.json
+  # POST /dices
+  # POST /dices.json
   def create
     @dice = Dice.new(dice_params)
 
@@ -27,8 +27,8 @@ class API::V1::DicesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /api/v1/dices/1
-  # PATCH/PUT /api/v1/dices/1.json
+  # PATCH/PUT /dices/1
+  # PATCH/PUT /dices/1.json
   def update
     @dice = Dice.find(params[:id])
 
@@ -39,8 +39,8 @@ class API::V1::DicesController < ApplicationController
     end
   end
 
-  # DELETE /api/v1/dices/1
-  # DELETE /api/v1/dices/1.json
+  # DELETE /dices/1
+  # DELETE /dices/1.json
   def destroy
     @dice.destroy
 

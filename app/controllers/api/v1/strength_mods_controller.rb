@@ -1,22 +1,22 @@
 class API::V1::StrengthModsController < ApplicationController
   before_action :set_strength_mod, only: [:show, :update, :destroy]
 
-  # GET /api/v1/strength_mods
-  # GET /api/v1/strength_mods.json
+  # GET /strength_mods
+  # GET /strength_mods.json
   def index
     @strength_mods = StrengthMod.all
 
     render json: @strength_mods
   end
 
-  # GET /api/v1/strength_mods/1
-  # GET /api/v1/strength_mods/1.json
+  # GET /strength_mods/1
+  # GET /strength_mods/1.json
   def show
     render json: @strength_mod
   end
 
-  # POST /api/v1/strength_mods
-  # POST /api/v1/strength_mods.json
+  # POST /strength_mods
+  # POST /strength_mods.json
   def create
     @strength_mod = StrengthMod.new(strength_mod_params)
 
@@ -27,8 +27,8 @@ class API::V1::StrengthModsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /api/v1/strength_mods/1
-  # PATCH/PUT /api/v1/strength_mods/1.json
+  # PATCH/PUT /strength_mods/1
+  # PATCH/PUT /strength_mods/1.json
   def update
     @strength_mod = StrengthMod.find(params[:id])
 
@@ -39,8 +39,8 @@ class API::V1::StrengthModsController < ApplicationController
     end
   end
 
-  # DELETE /api/v1/strength_mods/1
-  # DELETE /api/v1/strength_mods/1.json
+  # DELETE /strength_mods/1
+  # DELETE /strength_mods/1.json
   def destroy
     @strength_mod.destroy
 

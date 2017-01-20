@@ -1,22 +1,22 @@
 class API::V1::WisdomModsController < ApplicationController
   before_action :set_wisdom_mod, only: [:show, :update, :destroy]
 
-  # GET /api/v1/wisdom_mods
-  # GET /api/v1/wisdom_mods.json
+  # GET /wisdom_mods
+  # GET /wisdom_mods.json
   def index
     @wisdom_mods = WisdomMod.all
 
     render json: @wisdom_mods
   end
 
-  # GET /api/v1/wisdom_mods/1
-  # GET /api/v1/wisdom_mods/1.json
+  # GET /wisdom_mods/1
+  # GET /wisdom_mods/1.json
   def show
     render json: @wisdom_mod
   end
 
-  # POST /api/v1/wisdom_mods
-  # POST /api/v1/wisdom_mods.json
+  # POST /wisdom_mods
+  # POST /wisdom_mods.json
   def create
     @wisdom_mod = WisdomMod.new(wisdom_mod_params)
 
@@ -27,8 +27,8 @@ class API::V1::WisdomModsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /api/v1/wisdom_mods/1
-  # PATCH/PUT /api/v1/wisdom_mods/1.json
+  # PATCH/PUT /wisdom_mods/1
+  # PATCH/PUT /wisdom_mods/1.json
   def update
     @wisdom_mod = WisdomMod.find(params[:id])
 
@@ -39,8 +39,8 @@ class API::V1::WisdomModsController < ApplicationController
     end
   end
 
-  # DELETE /api/v1/wisdom_mods/1
-  # DELETE /api/v1/wisdom_mods/1.json
+  # DELETE /wisdom_mods/1
+  # DELETE /wisdom_mods/1.json
   def destroy
     @wisdom_mod.destroy
 

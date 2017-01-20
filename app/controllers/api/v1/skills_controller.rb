@@ -1,22 +1,22 @@
 class API::V1::SkillsController < ApplicationController
   before_action :set_skill, only: [:show, :update, :destroy]
 
-  # GET /api/v1/skills
-  # GET /api/v1/skills.json
+  # GET /skills
+  # GET /skills.json
   def index
     @skills = Skill.all
 
     render json: @skills
   end
 
-  # GET /api/v1/skills/1
-  # GET /api/v1/skills/1.json
+  # GET /skills/1
+  # GET /skills/1.json
   def show
     render json: @skill
   end
 
-  # POST /api/v1/skills
-  # POST /api/v1/skills.json
+  # POST /skills
+  # POST /skills.json
   def create
     @skill = Skill.new(skill_params)
 
@@ -27,8 +27,8 @@ class API::V1::SkillsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /api/v1/skills/1
-  # PATCH/PUT /api/v1/skills/1.json
+  # PATCH/PUT /skills/1
+  # PATCH/PUT /skills/1.json
   def update
     @skill = Skill.find(params[:id])
 
@@ -39,8 +39,8 @@ class API::V1::SkillsController < ApplicationController
     end
   end
 
-  # DELETE /api/v1/skills/1
-  # DELETE /api/v1/skills/1.json
+  # DELETE /skills/1
+  # DELETE /skills/1.json
   def destroy
     @skill.destroy
 

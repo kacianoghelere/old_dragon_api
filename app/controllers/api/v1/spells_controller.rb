@@ -1,22 +1,22 @@
 class API::V1::SpellsController < ApplicationController
   before_action :set_spell, only: [:show, :update, :destroy]
 
-  # GET /api/v1/spells
-  # GET /api/v1/spells.json
+  # GET /spells
+  # GET /spells.json
   def index
     @spells = Spell.all
 
     render json: @spells
   end
 
-  # GET /api/v1/spells/1
-  # GET /api/v1/spells/1.json
+  # GET /spells/1
+  # GET /spells/1.json
   def show
     render json: @spell
   end
 
-  # POST /api/v1/spells
-  # POST /api/v1/spells.json
+  # POST /spells
+  # POST /spells.json
   def create
     @spell = Spell.new(spell_params)
 
@@ -27,8 +27,8 @@ class API::V1::SpellsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /api/v1/spells/1
-  # PATCH/PUT /api/v1/spells/1.json
+  # PATCH/PUT /spells/1
+  # PATCH/PUT /spells/1.json
   def update
     @spell = Spell.find(params[:id])
 
@@ -39,8 +39,8 @@ class API::V1::SpellsController < ApplicationController
     end
   end
 
-  # DELETE /api/v1/spells/1
-  # DELETE /api/v1/spells/1.json
+  # DELETE /spells/1
+  # DELETE /spells/1.json
   def destroy
     @spell.destroy
 

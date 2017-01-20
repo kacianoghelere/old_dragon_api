@@ -28,10 +28,6 @@ rails generate scaffold CharacterClassWeaponType character_class:references weap
 
 rails generate scaffold CharacterClass name:string description:string dice:references perk:references character_class_type:references user:references --no-migration
 
-rails generate scaffold CharacterExpertise character_sheet:references expertise:references --no-migration
-
-rails generate scaffold CharacterJournal current_level:integer current_exp:integer idactive:boolean inc_date:datetime character_sheet:references alignment:references --no-migration
-
 rails generate scaffold CharacterRaceArmor armor_type:references character_race:references --no-migration
 
 rails generate scaffold CharacterRaceLanguage character_race:references language_type:references --no-migration
@@ -40,13 +36,17 @@ rails generate scaffold CharacterRacePerk character_race:references perk:referen
 
 rails generate scaffold CharacterRaceSkill character_race:references skill:references --no-migration
 
-rails generate scaffold CharacterRaceThiefTalent id:integer lockpick_mod:integer find_traps_mod:integer climb_mod:integer silent_movement_mod:integer stealth_mod:integer pickpocket_mod:integer hear_noises_mod:string backstab_mod:string character_race:references --no-migration
+rails generate scaffold CharacterRaceThiefTalent lockpick_mod:integer find_traps_mod:integer climb_mod:integer silent_movement_mod:integer stealth_mod:integer pickpocket_mod:integer hear_noises_mod:string backstab_mod:string character_race:references --no-migration
 
 rails generate scaffold CharacterRaceWeapon character_race:references weapon_type:references --no-migration
 
 rails generate scaffold CharacterRace name:string min_height:decimal max_height:decimal min_weight:decimal max_weight:decimal maturity:integer max_age:integer movement_base:integer armor_class_mod:integer str_mod:integer dex_mod:integer cons_mod:integer int_mod:integer wis_mod:integer char_mod:integer alignment:references dice:references user:references --no-migration
 
-rails generate scaffold CharacterSheetAttribute strength:integer dexterity:integer constitution:integer intelligence:integer wisdom:integer charisma:integer --no-migration
+rails generate scaffold CharacterSheetAttribute strength:integer dexterity:integer constitution:integer intelligence:integer wisdom:integer character_sheet:references --no-migration
+
+rails generate scaffold CharacterSheetExpertise character_sheet:references expertise:references --no-migration
+
+rails generate scaffold CharacterSheetJournal current_level:integer current_exp:integer idactive:boolean inc_date:datetime character_sheet:references alignment:references --no-migration
 
 rails generate scaffold CharacterSheet name:string weight:decimal height:decimal age:integer description:text character_class:references character_race:references user:references --no-migration
 
@@ -81,8 +81,6 @@ rails generate scaffold Origin name:string variation:string bonus:integer --no-m
 rails generate scaffold PerkType name:string --no-migration
 
 rails generate scaffold Perk name:string description:string perk_type:references user:references --no-migration
-
-rails generate scaffold RoleAccess id_menu_item:integer role:references --no-migration
 
 rails generate scaffold Role name:string admin:boolean --no-migration
 

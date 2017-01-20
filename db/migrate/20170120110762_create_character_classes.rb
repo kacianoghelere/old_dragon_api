@@ -1,6 +1,6 @@
 class CreateCharacterClasses < ActiveRecord::Migration
   def change
-    create_table :character_classes, id: :integer, limit: 8 do |t|
+    create_table :character_classes, id: :bigint do |t|
       t.string   :name,                    limit: 45,  null: false
       t.string   :description,             limit: 500
       t.integer  :dice_id,                 limit: 8,   null: false

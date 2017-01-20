@@ -1,22 +1,22 @@
 class API::V1::CharacterSheetAttributesController < ApplicationController
   before_action :set_character_sheet_attribute, only: [:show, :update, :destroy]
 
-  # GET /api/v1/character_sheet_attributes
-  # GET /api/v1/character_sheet_attributes.json
+  # GET /character_sheet_attributes
+  # GET /character_sheet_attributes.json
   def index
     @character_sheet_attributes = CharacterSheetAttribute.all
 
     render json: @character_sheet_attributes
   end
 
-  # GET /api/v1/character_sheet_attributes/1
-  # GET /api/v1/character_sheet_attributes/1.json
+  # GET /character_sheet_attributes/1
+  # GET /character_sheet_attributes/1.json
   def show
     render json: @character_sheet_attribute
   end
 
-  # POST /api/v1/character_sheet_attributes
-  # POST /api/v1/character_sheet_attributes.json
+  # POST /character_sheet_attributes
+  # POST /character_sheet_attributes.json
   def create
     @character_sheet_attribute = CharacterSheetAttribute.new(character_sheet_attribute_params)
 
@@ -27,8 +27,8 @@ class API::V1::CharacterSheetAttributesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /api/v1/character_sheet_attributes/1
-  # PATCH/PUT /api/v1/character_sheet_attributes/1.json
+  # PATCH/PUT /character_sheet_attributes/1
+  # PATCH/PUT /character_sheet_attributes/1.json
   def update
     @character_sheet_attribute = CharacterSheetAttribute.find(params[:id])
 
@@ -39,8 +39,8 @@ class API::V1::CharacterSheetAttributesController < ApplicationController
     end
   end
 
-  # DELETE /api/v1/character_sheet_attributes/1
-  # DELETE /api/v1/character_sheet_attributes/1.json
+  # DELETE /character_sheet_attributes/1
+  # DELETE /character_sheet_attributes/1.json
   def destroy
     @character_sheet_attribute.destroy
 
@@ -54,6 +54,6 @@ class API::V1::CharacterSheetAttributesController < ApplicationController
     end
 
     def character_sheet_attribute_params
-      params.require(:character_sheet_attribute).permit(:strength, :dexterity, :constitution, :intelligence, :wisdom, :charisma)
+      params.require(:character_sheet_attribute).permit(:strength, :dexterity, :constitution, :intelligence, :wisdom, :character_sheet_id)
     end
 end

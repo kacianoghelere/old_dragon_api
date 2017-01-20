@@ -1,6 +1,6 @@
 class CreateCharacterRaceWeapons < ActiveRecord::Migration
   def change
-    create_table :character_race_weapons, id: false do |t|
+    create_table :character_race_weapons, id: :bigint do |t|
       t.integer  :character_race_id, limit: 8, null: false
       t.integer  :weapon_type_id,    limit: 8, null: false
       t.timestamps null: false

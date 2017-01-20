@@ -1,22 +1,22 @@
 class API::V1::CharacterRaceWeaponsController < ApplicationController
   before_action :set_character_race_weapon, only: [:show, :update, :destroy]
 
-  # GET /api/v1/character_race_weapons
-  # GET /api/v1/character_race_weapons.json
+  # GET /character_race_weapons
+  # GET /character_race_weapons.json
   def index
     @character_race_weapons = CharacterRaceWeapon.all
 
     render json: @character_race_weapons
   end
 
-  # GET /api/v1/character_race_weapons/1
-  # GET /api/v1/character_race_weapons/1.json
+  # GET /character_race_weapons/1
+  # GET /character_race_weapons/1.json
   def show
     render json: @character_race_weapon
   end
 
-  # POST /api/v1/character_race_weapons
-  # POST /api/v1/character_race_weapons.json
+  # POST /character_race_weapons
+  # POST /character_race_weapons.json
   def create
     @character_race_weapon = CharacterRaceWeapon.new(character_race_weapon_params)
 
@@ -27,8 +27,8 @@ class API::V1::CharacterRaceWeaponsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /api/v1/character_race_weapons/1
-  # PATCH/PUT /api/v1/character_race_weapons/1.json
+  # PATCH/PUT /character_race_weapons/1
+  # PATCH/PUT /character_race_weapons/1.json
   def update
     @character_race_weapon = CharacterRaceWeapon.find(params[:id])
 
@@ -39,8 +39,8 @@ class API::V1::CharacterRaceWeaponsController < ApplicationController
     end
   end
 
-  # DELETE /api/v1/character_race_weapons/1
-  # DELETE /api/v1/character_race_weapons/1.json
+  # DELETE /character_race_weapons/1
+  # DELETE /character_race_weapons/1.json
   def destroy
     @character_race_weapon.destroy
 

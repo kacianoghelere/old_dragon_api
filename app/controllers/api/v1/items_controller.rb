@@ -1,22 +1,22 @@
 class API::V1::ItemsController < ApplicationController
   before_action :set_item, only: [:show, :update, :destroy]
 
-  # GET /api/v1/items
-  # GET /api/v1/items.json
+  # GET /items
+  # GET /items.json
   def index
     @items = Item.all
 
     render json: @items
   end
 
-  # GET /api/v1/items/1
-  # GET /api/v1/items/1.json
+  # GET /items/1
+  # GET /items/1.json
   def show
     render json: @item
   end
 
-  # POST /api/v1/items
-  # POST /api/v1/items.json
+  # POST /items
+  # POST /items.json
   def create
     @item = Item.new(item_params)
 
@@ -27,8 +27,8 @@ class API::V1::ItemsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /api/v1/items/1
-  # PATCH/PUT /api/v1/items/1.json
+  # PATCH/PUT /items/1
+  # PATCH/PUT /items/1.json
   def update
     @item = Item.find(params[:id])
 
@@ -39,8 +39,8 @@ class API::V1::ItemsController < ApplicationController
     end
   end
 
-  # DELETE /api/v1/items/1
-  # DELETE /api/v1/items/1.json
+  # DELETE /items/1
+  # DELETE /items/1.json
   def destroy
     @item.destroy
 

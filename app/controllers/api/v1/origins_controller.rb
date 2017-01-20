@@ -1,22 +1,22 @@
 class API::V1::OriginsController < ApplicationController
   before_action :set_origin, only: [:show, :update, :destroy]
 
-  # GET /api/v1/origins
-  # GET /api/v1/origins.json
+  # GET /origins
+  # GET /origins.json
   def index
     @origins = Origin.all
 
     render json: @origins
   end
 
-  # GET /api/v1/origins/1
-  # GET /api/v1/origins/1.json
+  # GET /origins/1
+  # GET /origins/1.json
   def show
     render json: @origin
   end
 
-  # POST /api/v1/origins
-  # POST /api/v1/origins.json
+  # POST /origins
+  # POST /origins.json
   def create
     @origin = Origin.new(origin_params)
 
@@ -27,8 +27,8 @@ class API::V1::OriginsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /api/v1/origins/1
-  # PATCH/PUT /api/v1/origins/1.json
+  # PATCH/PUT /origins/1
+  # PATCH/PUT /origins/1.json
   def update
     @origin = Origin.find(params[:id])
 
@@ -39,8 +39,8 @@ class API::V1::OriginsController < ApplicationController
     end
   end
 
-  # DELETE /api/v1/origins/1
-  # DELETE /api/v1/origins/1.json
+  # DELETE /origins/1
+  # DELETE /origins/1.json
   def destroy
     @origin.destroy
 

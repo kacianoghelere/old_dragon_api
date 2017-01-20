@@ -1,22 +1,22 @@
 class API::V1::SpellCirclesController < ApplicationController
   before_action :set_spell_circle, only: [:show, :update, :destroy]
 
-  # GET /api/v1/spell_circles
-  # GET /api/v1/spell_circles.json
+  # GET /spell_circles
+  # GET /spell_circles.json
   def index
     @spell_circles = SpellCircle.all
 
     render json: @spell_circles
   end
 
-  # GET /api/v1/spell_circles/1
-  # GET /api/v1/spell_circles/1.json
+  # GET /spell_circles/1
+  # GET /spell_circles/1.json
   def show
     render json: @spell_circle
   end
 
-  # POST /api/v1/spell_circles
-  # POST /api/v1/spell_circles.json
+  # POST /spell_circles
+  # POST /spell_circles.json
   def create
     @spell_circle = SpellCircle.new(spell_circle_params)
 
@@ -27,8 +27,8 @@ class API::V1::SpellCirclesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /api/v1/spell_circles/1
-  # PATCH/PUT /api/v1/spell_circles/1.json
+  # PATCH/PUT /spell_circles/1
+  # PATCH/PUT /spell_circles/1.json
   def update
     @spell_circle = SpellCircle.find(params[:id])
 
@@ -39,8 +39,8 @@ class API::V1::SpellCirclesController < ApplicationController
     end
   end
 
-  # DELETE /api/v1/spell_circles/1
-  # DELETE /api/v1/spell_circles/1.json
+  # DELETE /spell_circles/1
+  # DELETE /spell_circles/1.json
   def destroy
     @spell_circle.destroy
 

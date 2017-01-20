@@ -1,22 +1,22 @@
 class API::V1::SkillTypesController < ApplicationController
   before_action :set_skill_type, only: [:show, :update, :destroy]
 
-  # GET /api/v1/skill_types
-  # GET /api/v1/skill_types.json
+  # GET /skill_types
+  # GET /skill_types.json
   def index
     @skill_types = SkillType.all
 
     render json: @skill_types
   end
 
-  # GET /api/v1/skill_types/1
-  # GET /api/v1/skill_types/1.json
+  # GET /skill_types/1
+  # GET /skill_types/1.json
   def show
     render json: @skill_type
   end
 
-  # POST /api/v1/skill_types
-  # POST /api/v1/skill_types.json
+  # POST /skill_types
+  # POST /skill_types.json
   def create
     @skill_type = SkillType.new(skill_type_params)
 
@@ -27,8 +27,8 @@ class API::V1::SkillTypesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /api/v1/skill_types/1
-  # PATCH/PUT /api/v1/skill_types/1.json
+  # PATCH/PUT /skill_types/1
+  # PATCH/PUT /skill_types/1.json
   def update
     @skill_type = SkillType.find(params[:id])
 
@@ -39,8 +39,8 @@ class API::V1::SkillTypesController < ApplicationController
     end
   end
 
-  # DELETE /api/v1/skill_types/1
-  # DELETE /api/v1/skill_types/1.json
+  # DELETE /skill_types/1
+  # DELETE /skill_types/1.json
   def destroy
     @skill_type.destroy
 

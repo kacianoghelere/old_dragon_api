@@ -1,22 +1,22 @@
 class API::V1::CharacterRacesController < ApplicationController
   before_action :set_character_race, only: [:show, :update, :destroy]
 
-  # GET /api/v1/character_races
-  # GET /api/v1/character_races.json
+  # GET /character_races
+  # GET /character_races.json
   def index
     @character_races = CharacterRace.all
 
     render json: @character_races
   end
 
-  # GET /api/v1/character_races/1
-  # GET /api/v1/character_races/1.json
+  # GET /character_races/1
+  # GET /character_races/1.json
   def show
     render json: @character_race
   end
 
-  # POST /api/v1/character_races
-  # POST /api/v1/character_races.json
+  # POST /character_races
+  # POST /character_races.json
   def create
     @character_race = CharacterRace.new(character_race_params)
 
@@ -27,8 +27,8 @@ class API::V1::CharacterRacesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /api/v1/character_races/1
-  # PATCH/PUT /api/v1/character_races/1.json
+  # PATCH/PUT /character_races/1
+  # PATCH/PUT /character_races/1.json
   def update
     @character_race = CharacterRace.find(params[:id])
 
@@ -39,8 +39,8 @@ class API::V1::CharacterRacesController < ApplicationController
     end
   end
 
-  # DELETE /api/v1/character_races/1
-  # DELETE /api/v1/character_races/1.json
+  # DELETE /character_races/1
+  # DELETE /character_races/1.json
   def destroy
     @character_race.destroy
 

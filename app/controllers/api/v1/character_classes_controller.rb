@@ -1,22 +1,22 @@
 class API::V1::CharacterClassesController < ApplicationController
   before_action :set_character_class, only: [:show, :update, :destroy]
 
-  # GET /api/v1/character_classes
-  # GET /api/v1/character_classes.json
+  # GET /character_classes
+  # GET /character_classes.json
   def index
     @character_classes = CharacterClass.all
 
     render json: @character_classes
   end
 
-  # GET /api/v1/character_classes/1
-  # GET /api/v1/character_classes/1.json
+  # GET /character_classes/1
+  # GET /character_classes/1.json
   def show
     render json: @character_class
   end
 
-  # POST /api/v1/character_classes
-  # POST /api/v1/character_classes.json
+  # POST /character_classes
+  # POST /character_classes.json
   def create
     @character_class = CharacterClass.new(character_class_params)
 
@@ -27,8 +27,8 @@ class API::V1::CharacterClassesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /api/v1/character_classes/1
-  # PATCH/PUT /api/v1/character_classes/1.json
+  # PATCH/PUT /character_classes/1
+  # PATCH/PUT /character_classes/1.json
   def update
     @character_class = CharacterClass.find(params[:id])
 
@@ -39,8 +39,8 @@ class API::V1::CharacterClassesController < ApplicationController
     end
   end
 
-  # DELETE /api/v1/character_classes/1
-  # DELETE /api/v1/character_classes/1.json
+  # DELETE /character_classes/1
+  # DELETE /character_classes/1.json
   def destroy
     @character_class.destroy
 

@@ -1,22 +1,22 @@
 class API::V1::ItemTypesController < ApplicationController
   before_action :set_item_type, only: [:show, :update, :destroy]
 
-  # GET /api/v1/item_types
-  # GET /api/v1/item_types.json
+  # GET /item_types
+  # GET /item_types.json
   def index
     @item_types = ItemType.all
 
     render json: @item_types
   end
 
-  # GET /api/v1/item_types/1
-  # GET /api/v1/item_types/1.json
+  # GET /item_types/1
+  # GET /item_types/1.json
   def show
     render json: @item_type
   end
 
-  # POST /api/v1/item_types
-  # POST /api/v1/item_types.json
+  # POST /item_types
+  # POST /item_types.json
   def create
     @item_type = ItemType.new(item_type_params)
 
@@ -27,8 +27,8 @@ class API::V1::ItemTypesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /api/v1/item_types/1
-  # PATCH/PUT /api/v1/item_types/1.json
+  # PATCH/PUT /item_types/1
+  # PATCH/PUT /item_types/1.json
   def update
     @item_type = ItemType.find(params[:id])
 
@@ -39,8 +39,8 @@ class API::V1::ItemTypesController < ApplicationController
     end
   end
 
-  # DELETE /api/v1/item_types/1
-  # DELETE /api/v1/item_types/1.json
+  # DELETE /item_types/1
+  # DELETE /item_types/1.json
   def destroy
     @item_type.destroy
 

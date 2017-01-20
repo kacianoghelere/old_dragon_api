@@ -1,7 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  id: 1
   lockpick_mod: 1
   find_traps_mod: 1
   climb_mod: 1
@@ -13,7 +12,6 @@ one:
   character_race_id: 
 
 two:
-  id: 1
   lockpick_mod: 1
   find_traps_mod: 1
   climb_mod: 1

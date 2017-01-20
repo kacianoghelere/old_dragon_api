@@ -1,22 +1,22 @@
 class API::V1::CharacterSheetsController < ApplicationController
   before_action :set_character_sheet, only: [:show, :update, :destroy]
 
-  # GET /api/v1/character_sheets
-  # GET /api/v1/character_sheets.json
+  # GET /character_sheets
+  # GET /character_sheets.json
   def index
     @character_sheets = CharacterSheet.all
 
     render json: @character_sheets
   end
 
-  # GET /api/v1/character_sheets/1
-  # GET /api/v1/character_sheets/1.json
+  # GET /character_sheets/1
+  # GET /character_sheets/1.json
   def show
     render json: @character_sheet
   end
 
-  # POST /api/v1/character_sheets
-  # POST /api/v1/character_sheets.json
+  # POST /character_sheets
+  # POST /character_sheets.json
   def create
     @character_sheet = CharacterSheet.new(character_sheet_params)
 
@@ -27,8 +27,8 @@ class API::V1::CharacterSheetsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /api/v1/character_sheets/1
-  # PATCH/PUT /api/v1/character_sheets/1.json
+  # PATCH/PUT /character_sheets/1
+  # PATCH/PUT /character_sheets/1.json
   def update
     @character_sheet = CharacterSheet.find(params[:id])
 
@@ -39,8 +39,8 @@ class API::V1::CharacterSheetsController < ApplicationController
     end
   end
 
-  # DELETE /api/v1/character_sheets/1
-  # DELETE /api/v1/character_sheets/1.json
+  # DELETE /character_sheets/1
+  # DELETE /character_sheets/1.json
   def destroy
     @character_sheet.destroy
 

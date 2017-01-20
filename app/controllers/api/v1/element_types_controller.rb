@@ -1,22 +1,22 @@
 class API::V1::ElementTypesController < ApplicationController
   before_action :set_element_type, only: [:show, :update, :destroy]
 
-  # GET /api/v1/element_types
-  # GET /api/v1/element_types.json
+  # GET /element_types
+  # GET /element_types.json
   def index
     @element_types = ElementType.all
 
     render json: @element_types
   end
 
-  # GET /api/v1/element_types/1
-  # GET /api/v1/element_types/1.json
+  # GET /element_types/1
+  # GET /element_types/1.json
   def show
     render json: @element_type
   end
 
-  # POST /api/v1/element_types
-  # POST /api/v1/element_types.json
+  # POST /element_types
+  # POST /element_types.json
   def create
     @element_type = ElementType.new(element_type_params)
 
@@ -27,8 +27,8 @@ class API::V1::ElementTypesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /api/v1/element_types/1
-  # PATCH/PUT /api/v1/element_types/1.json
+  # PATCH/PUT /element_types/1
+  # PATCH/PUT /element_types/1.json
   def update
     @element_type = ElementType.find(params[:id])
 
@@ -39,8 +39,8 @@ class API::V1::ElementTypesController < ApplicationController
     end
   end
 
-  # DELETE /api/v1/element_types/1
-  # DELETE /api/v1/element_types/1.json
+  # DELETE /element_types/1
+  # DELETE /element_types/1.json
   def destroy
     @element_type.destroy
 

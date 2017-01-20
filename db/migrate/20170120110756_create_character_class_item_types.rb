@@ -1,6 +1,6 @@
 class CreateCharacterClassItemTypes < ActiveRecord::Migration
   def change
-    create_table :character_class_item_types, id: false do |t|
+    create_table :character_class_item_types, id: :bigint do |t|
       t.integer  :character_class_id, limit: 8, null: false
       t.integer  :item_type_id,       limit: 8, null: false
       t.timestamps null: false

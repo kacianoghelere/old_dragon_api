@@ -1,22 +1,22 @@
 class API::V1::ThiefTalentsController < ApplicationController
   before_action :set_thief_talent, only: [:show, :update, :destroy]
 
-  # GET /api/v1/thief_talents
-  # GET /api/v1/thief_talents.json
+  # GET /thief_talents
+  # GET /thief_talents.json
   def index
     @thief_talents = ThiefTalent.all
 
     render json: @thief_talents
   end
 
-  # GET /api/v1/thief_talents/1
-  # GET /api/v1/thief_talents/1.json
+  # GET /thief_talents/1
+  # GET /thief_talents/1.json
   def show
     render json: @thief_talent
   end
 
-  # POST /api/v1/thief_talents
-  # POST /api/v1/thief_talents.json
+  # POST /thief_talents
+  # POST /thief_talents.json
   def create
     @thief_talent = ThiefTalent.new(thief_talent_params)
 
@@ -27,8 +27,8 @@ class API::V1::ThiefTalentsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /api/v1/thief_talents/1
-  # PATCH/PUT /api/v1/thief_talents/1.json
+  # PATCH/PUT /thief_talents/1
+  # PATCH/PUT /thief_talents/1.json
   def update
     @thief_talent = ThiefTalent.find(params[:id])
 
@@ -39,8 +39,8 @@ class API::V1::ThiefTalentsController < ApplicationController
     end
   end
 
-  # DELETE /api/v1/thief_talents/1
-  # DELETE /api/v1/thief_talents/1.json
+  # DELETE /thief_talents/1
+  # DELETE /thief_talents/1.json
   def destroy
     @thief_talent.destroy
 

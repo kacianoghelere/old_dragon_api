@@ -1,22 +1,22 @@
 class API::V1::AlignmentsController < ApplicationController
   before_action :set_alignment, only: [:show, :update, :destroy]
 
-  # GET /api/v1/alignments
-  # GET /api/v1/alignments.json
+  # GET /alignments
+  # GET /alignments.json
   def index
     @alignments = Alignment.all
 
     render json: @alignments
   end
 
-  # GET /api/v1/alignments/1
-  # GET /api/v1/alignments/1.json
+  # GET /alignments/1
+  # GET /alignments/1.json
   def show
     render json: @alignment
   end
 
-  # POST /api/v1/alignments
-  # POST /api/v1/alignments.json
+  # POST /alignments
+  # POST /alignments.json
   def create
     @alignment = Alignment.new(alignment_params)
 
@@ -27,8 +27,8 @@ class API::V1::AlignmentsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /api/v1/alignments/1
-  # PATCH/PUT /api/v1/alignments/1.json
+  # PATCH/PUT /alignments/1
+  # PATCH/PUT /alignments/1.json
   def update
     @alignment = Alignment.find(params[:id])
 
@@ -39,8 +39,8 @@ class API::V1::AlignmentsController < ApplicationController
     end
   end
 
-  # DELETE /api/v1/alignments/1
-  # DELETE /api/v1/alignments/1.json
+  # DELETE /alignments/1
+  # DELETE /alignments/1.json
   def destroy
     @alignment.destroy
 

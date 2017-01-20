@@ -1,22 +1,22 @@
 class API::V1::RolesController < ApplicationController
   before_action :set_role, only: [:show, :update, :destroy]
 
-  # GET /api/v1/roles
-  # GET /api/v1/roles.json
+  # GET /roles
+  # GET /roles.json
   def index
     @roles = Role.all
 
     render json: @roles
   end
 
-  # GET /api/v1/roles/1
-  # GET /api/v1/roles/1.json
+  # GET /roles/1
+  # GET /roles/1.json
   def show
     render json: @role
   end
 
-  # POST /api/v1/roles
-  # POST /api/v1/roles.json
+  # POST /roles
+  # POST /roles.json
   def create
     @role = Role.new(role_params)
 
@@ -27,8 +27,8 @@ class API::V1::RolesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /api/v1/roles/1
-  # PATCH/PUT /api/v1/roles/1.json
+  # PATCH/PUT /roles/1
+  # PATCH/PUT /roles/1.json
   def update
     @role = Role.find(params[:id])
 
@@ -39,8 +39,8 @@ class API::V1::RolesController < ApplicationController
     end
   end
 
-  # DELETE /api/v1/roles/1
-  # DELETE /api/v1/roles/1.json
+  # DELETE /roles/1
+  # DELETE /roles/1.json
   def destroy
     @role.destroy
 

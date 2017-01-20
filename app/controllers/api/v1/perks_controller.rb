@@ -1,22 +1,22 @@
 class API::V1::PerksController < ApplicationController
   before_action :set_perk, only: [:show, :update, :destroy]
 
-  # GET /api/v1/perks
-  # GET /api/v1/perks.json
+  # GET /perks
+  # GET /perks.json
   def index
     @perks = Perk.all
 
     render json: @perks
   end
 
-  # GET /api/v1/perks/1
-  # GET /api/v1/perks/1.json
+  # GET /perks/1
+  # GET /perks/1.json
   def show
     render json: @perk
   end
 
-  # POST /api/v1/perks
-  # POST /api/v1/perks.json
+  # POST /perks
+  # POST /perks.json
   def create
     @perk = Perk.new(perk_params)
 
@@ -27,8 +27,8 @@ class API::V1::PerksController < ApplicationController
     end
   end
 
-  # PATCH/PUT /api/v1/perks/1
-  # PATCH/PUT /api/v1/perks/1.json
+  # PATCH/PUT /perks/1
+  # PATCH/PUT /perks/1.json
   def update
     @perk = Perk.find(params[:id])
 
@@ -39,8 +39,8 @@ class API::V1::PerksController < ApplicationController
     end
   end
 
-  # DELETE /api/v1/perks/1
-  # DELETE /api/v1/perks/1.json
+  # DELETE /perks/1
+  # DELETE /perks/1.json
   def destroy
     @perk.destroy
 

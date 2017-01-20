@@ -1,22 +1,22 @@
 class API::V1::WeaponTypesController < ApplicationController
   before_action :set_weapon_type, only: [:show, :update, :destroy]
 
-  # GET /api/v1/weapon_types
-  # GET /api/v1/weapon_types.json
+  # GET /weapon_types
+  # GET /weapon_types.json
   def index
     @weapon_types = WeaponType.all
 
     render json: @weapon_types
   end
 
-  # GET /api/v1/weapon_types/1
-  # GET /api/v1/weapon_types/1.json
+  # GET /weapon_types/1
+  # GET /weapon_types/1.json
   def show
     render json: @weapon_type
   end
 
-  # POST /api/v1/weapon_types
-  # POST /api/v1/weapon_types.json
+  # POST /weapon_types
+  # POST /weapon_types.json
   def create
     @weapon_type = WeaponType.new(weapon_type_params)
 
@@ -27,8 +27,8 @@ class API::V1::WeaponTypesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /api/v1/weapon_types/1
-  # PATCH/PUT /api/v1/weapon_types/1.json
+  # PATCH/PUT /weapon_types/1
+  # PATCH/PUT /weapon_types/1.json
   def update
     @weapon_type = WeaponType.find(params[:id])
 
@@ -39,8 +39,8 @@ class API::V1::WeaponTypesController < ApplicationController
     end
   end
 
-  # DELETE /api/v1/weapon_types/1
-  # DELETE /api/v1/weapon_types/1.json
+  # DELETE /weapon_types/1
+  # DELETE /weapon_types/1.json
   def destroy
     @weapon_type.destroy
 

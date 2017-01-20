@@ -13,7 +13,7 @@ class CharacterRaceThiefTalentsControllerTest < ActionController::TestCase
 
   test "should create character_race_thief_talent" do
     assert_difference('CharacterRaceThiefTalent.count') do
-      post :create, character_race_thief_talent: { backstab_mod: @character_race_thief_talent.backstab_mod, character_race_id: @character_race_thief_talent.character_race_id, climb_mod: @character_race_thief_talent.climb_mod, find_traps_mod: @character_race_thief_talent.find_traps_mod, hear_noises_mod: @character_race_thief_talent.hear_noises_mod, id: @character_race_thief_talent.id, lockpick_mod: @character_race_thief_talent.lockpick_mod, pickpocket_mod: @character_race_thief_talent.pickpocket_mod, silent_movement_mod: @character_race_thief_talent.silent_movement_mod, stealth_mod: @character_race_thief_talent.stealth_mod }
+      post :create, character_race_thief_talent: { backstab_mod: @character_race_thief_talent.backstab_mod, character_race_id: @character_race_thief_talent.character_race_id, climb_mod: @character_race_thief_talent.climb_mod, find_traps_mod: @character_race_thief_talent.find_traps_mod, hear_noises_mod: @character_race_thief_talent.hear_noises_mod, lockpick_mod: @character_race_thief_talent.lockpick_mod, pickpocket_mod: @character_race_thief_talent.pickpocket_mod, silent_movement_mod: @character_race_thief_talent.silent_movement_mod, stealth_mod: @character_race_thief_talent.stealth_mod }
     end
 
     assert_response 201
@@ -25,7 +25,7 @@ class CharacterRaceThiefTalentsControllerTest < ActionController::TestCase
   end
 
   test "should update character_race_thief_talent" do
-    put :update, id: @character_race_thief_talent, character_race_thief_talent: { backstab_mod: @character_race_thief_talent.backstab_mod, character_race_id: @character_race_thief_talent.character_race_id, climb_mod: @character_race_thief_talent.climb_mod, find_traps_mod: @character_race_thief_talent.find_traps_mod, hear_noises_mod: @character_race_thief_talent.hear_noises_mod, id: @character_race_thief_talent.id, lockpick_mod: @character_race_thief_talent.lockpick_mod, pickpocket_mod: @character_race_thief_talent.pickpocket_mod, silent_movement_mod: @character_race_thief_talent.silent_movement_mod, stealth_mod: @character_race_thief_talent.stealth_mod }
+    put :update, id: @character_race_thief_talent, character_race_thief_talent: { backstab_mod: @character_race_thief_talent.backstab_mod, character_race_id: @character_race_thief_talent.character_race_id, climb_mod: @character_race_thief_talent.climb_mod, find_traps_mod: @character_race_thief_talent.find_traps_mod, hear_noises_mod: @character_race_thief_talent.hear_noises_mod, lockpick_mod: @character_race_thief_talent.lockpick_mod, pickpocket_mod: @character_race_thief_talent.pickpocket_mod, silent_movement_mod: @character_race_thief_talent.silent_movement_mod, stealth_mod: @character_race_thief_talent.stealth_mod }
     assert_response 204
   end
 

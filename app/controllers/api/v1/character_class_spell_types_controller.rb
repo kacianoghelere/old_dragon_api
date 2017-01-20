@@ -1,22 +1,22 @@
 class API::V1::CharacterClassSpellTypesController < ApplicationController
   before_action :set_character_class_spell_type, only: [:show, :update, :destroy]
 
-  # GET /api/v1/character_class_spell_types
-  # GET /api/v1/character_class_spell_types.json
+  # GET /character_class_spell_types
+  # GET /character_class_spell_types.json
   def index
     @character_class_spell_types = CharacterClassSpellType.all
 
     render json: @character_class_spell_types
   end
 
-  # GET /api/v1/character_class_spell_types/1
-  # GET /api/v1/character_class_spell_types/1.json
+  # GET /character_class_spell_types/1
+  # GET /character_class_spell_types/1.json
   def show
     render json: @character_class_spell_type
   end
 
-  # POST /api/v1/character_class_spell_types
-  # POST /api/v1/character_class_spell_types.json
+  # POST /character_class_spell_types
+  # POST /character_class_spell_types.json
   def create
     @character_class_spell_type = CharacterClassSpellType.new(character_class_spell_type_params)
 
@@ -27,8 +27,8 @@ class API::V1::CharacterClassSpellTypesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /api/v1/character_class_spell_types/1
-  # PATCH/PUT /api/v1/character_class_spell_types/1.json
+  # PATCH/PUT /character_class_spell_types/1
+  # PATCH/PUT /character_class_spell_types/1.json
   def update
     @character_class_spell_type = CharacterClassSpellType.find(params[:id])
 
@@ -39,8 +39,8 @@ class API::V1::CharacterClassSpellTypesController < ApplicationController
     end
   end
 
-  # DELETE /api/v1/character_class_spell_types/1
-  # DELETE /api/v1/character_class_spell_types/1.json
+  # DELETE /character_class_spell_types/1
+  # DELETE /character_class_spell_types/1.json
   def destroy
     @character_class_spell_type.destroy
 

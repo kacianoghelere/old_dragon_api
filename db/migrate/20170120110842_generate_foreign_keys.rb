@@ -52,7 +52,6 @@ class GenerateForeignKeys < ActiveRecord::Migration
     add_foreign_key :items, :users
     add_foreign_key :perks, :perk_types
     add_foreign_key :perks, :users
-    add_foreign_key :role_accesses, :roles
     add_foreign_key :skills, :effects
     add_foreign_key :skills, :skill_types
     add_foreign_key :skills, :users

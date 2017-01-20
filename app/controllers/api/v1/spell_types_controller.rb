@@ -1,22 +1,22 @@
 class API::V1::SpellTypesController < ApplicationController
   before_action :set_spell_type, only: [:show, :update, :destroy]
 
-  # GET /api/v1/spell_types
-  # GET /api/v1/spell_types.json
+  # GET /spell_types
+  # GET /spell_types.json
   def index
     @spell_types = SpellType.all
 
     render json: @spell_types
   end
 
-  # GET /api/v1/spell_types/1
-  # GET /api/v1/spell_types/1.json
+  # GET /spell_types/1
+  # GET /spell_types/1.json
   def show
     render json: @spell_type
   end
 
-  # POST /api/v1/spell_types
-  # POST /api/v1/spell_types.json
+  # POST /spell_types
+  # POST /spell_types.json
   def create
     @spell_type = SpellType.new(spell_type_params)
 
@@ -27,8 +27,8 @@ class API::V1::SpellTypesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /api/v1/spell_types/1
-  # PATCH/PUT /api/v1/spell_types/1.json
+  # PATCH/PUT /spell_types/1
+  # PATCH/PUT /spell_types/1.json
   def update
     @spell_type = SpellType.find(params[:id])
 
@@ -39,8 +39,8 @@ class API::V1::SpellTypesController < ApplicationController
     end
   end
 
-  # DELETE /api/v1/spell_types/1
-  # DELETE /api/v1/spell_types/1.json
+  # DELETE /spell_types/1
+  # DELETE /spell_types/1.json
   def destroy
     @spell_type.destroy
 

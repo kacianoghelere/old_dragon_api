@@ -1,6 +1,6 @@
 class CreateCampainJournals < ActiveRecord::Migration
   def change
-    create_table :campain_journals, id: :integer, limit: 8 do |t|
+    create_table :campain_journals, id: :bigint do |t|
       t.string   :description, limit: 45
       t.boolean  :idactive,               default: true, null: false
       t.datetime :log_date,                              null: false

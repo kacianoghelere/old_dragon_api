@@ -1,22 +1,22 @@
 class API::V1::CharacterClassEvolutionsController < ApplicationController
   before_action :set_character_class_evolution, only: [:show, :update, :destroy]
 
-  # GET /api/v1/character_class_evolutions
-  # GET /api/v1/character_class_evolutions.json
+  # GET /character_class_evolutions
+  # GET /character_class_evolutions.json
   def index
     @character_class_evolutions = CharacterClassEvolution.all
 
     render json: @character_class_evolutions
   end
 
-  # GET /api/v1/character_class_evolutions/1
-  # GET /api/v1/character_class_evolutions/1.json
+  # GET /character_class_evolutions/1
+  # GET /character_class_evolutions/1.json
   def show
     render json: @character_class_evolution
   end
 
-  # POST /api/v1/character_class_evolutions
-  # POST /api/v1/character_class_evolutions.json
+  # POST /character_class_evolutions
+  # POST /character_class_evolutions.json
   def create
     @character_class_evolution = CharacterClassEvolution.new(character_class_evolution_params)
 
@@ -27,8 +27,8 @@ class API::V1::CharacterClassEvolutionsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /api/v1/character_class_evolutions/1
-  # PATCH/PUT /api/v1/character_class_evolutions/1.json
+  # PATCH/PUT /character_class_evolutions/1
+  # PATCH/PUT /character_class_evolutions/1.json
   def update
     @character_class_evolution = CharacterClassEvolution.find(params[:id])
 
@@ -39,8 +39,8 @@ class API::V1::CharacterClassEvolutionsController < ApplicationController
     end
   end
 
-  # DELETE /api/v1/character_class_evolutions/1
-  # DELETE /api/v1/character_class_evolutions/1.json
+  # DELETE /character_class_evolutions/1
+  # DELETE /character_class_evolutions/1.json
   def destroy
     @character_class_evolution.destroy
 

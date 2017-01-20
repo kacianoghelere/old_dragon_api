@@ -1,22 +1,22 @@
 class API::V1::PerkTypesController < ApplicationController
   before_action :set_perk_type, only: [:show, :update, :destroy]
 
-  # GET /api/v1/perk_types
-  # GET /api/v1/perk_types.json
+  # GET /perk_types
+  # GET /perk_types.json
   def index
     @perk_types = PerkType.all
 
     render json: @perk_types
   end
 
-  # GET /api/v1/perk_types/1
-  # GET /api/v1/perk_types/1.json
+  # GET /perk_types/1
+  # GET /perk_types/1.json
   def show
     render json: @perk_type
   end
 
-  # POST /api/v1/perk_types
-  # POST /api/v1/perk_types.json
+  # POST /perk_types
+  # POST /perk_types.json
   def create
     @perk_type = PerkType.new(perk_type_params)
 
@@ -27,8 +27,8 @@ class API::V1::PerkTypesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /api/v1/perk_types/1
-  # PATCH/PUT /api/v1/perk_types/1.json
+  # PATCH/PUT /perk_types/1
+  # PATCH/PUT /perk_types/1.json
   def update
     @perk_type = PerkType.find(params[:id])
 
@@ -39,8 +39,8 @@ class API::V1::PerkTypesController < ApplicationController
     end
   end
 
-  # DELETE /api/v1/perk_types/1
-  # DELETE /api/v1/perk_types/1.json
+  # DELETE /perk_types/1
+  # DELETE /perk_types/1.json
   def destroy
     @perk_type.destroy
 

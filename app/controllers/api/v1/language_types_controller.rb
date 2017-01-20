@@ -1,22 +1,22 @@
 class API::V1::LanguageTypesController < ApplicationController
   before_action :set_language_type, only: [:show, :update, :destroy]
 
-  # GET /api/v1/language_types
-  # GET /api/v1/language_types.json
+  # GET /language_types
+  # GET /language_types.json
   def index
     @language_types = LanguageType.all
 
     render json: @language_types
   end
 
-  # GET /api/v1/language_types/1
-  # GET /api/v1/language_types/1.json
+  # GET /language_types/1
+  # GET /language_types/1.json
   def show
     render json: @language_type
   end
 
-  # POST /api/v1/language_types
-  # POST /api/v1/language_types.json
+  # POST /language_types
+  # POST /language_types.json
   def create
     @language_type = LanguageType.new(language_type_params)
 
@@ -27,8 +27,8 @@ class API::V1::LanguageTypesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /api/v1/language_types/1
-  # PATCH/PUT /api/v1/language_types/1.json
+  # PATCH/PUT /language_types/1
+  # PATCH/PUT /language_types/1.json
   def update
     @language_type = LanguageType.find(params[:id])
 
@@ -39,8 +39,8 @@ class API::V1::LanguageTypesController < ApplicationController
     end
   end
 
-  # DELETE /api/v1/language_types/1
-  # DELETE /api/v1/language_types/1.json
+  # DELETE /language_types/1
+  # DELETE /language_types/1.json
   def destroy
     @language_type.destroy
 

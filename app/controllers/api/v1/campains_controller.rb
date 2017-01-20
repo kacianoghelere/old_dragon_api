@@ -1,22 +1,22 @@
 class API::V1::CampainsController < ApplicationController
   before_action :set_campain, only: [:show, :update, :destroy]
 
-  # GET /api/v1/campains
-  # GET /api/v1/campains.json
+  # GET /campains
+  # GET /campains.json
   def index
     @campains = Campain.all
 
     render json: @campains
   end
 
-  # GET /api/v1/campains/1
-  # GET /api/v1/campains/1.json
+  # GET /campains/1
+  # GET /campains/1.json
   def show
     render json: @campain
   end
 
-  # POST /api/v1/campains
-  # POST /api/v1/campains.json
+  # POST /campains
+  # POST /campains.json
   def create
     @campain = Campain.new(campain_params)
 
@@ -27,8 +27,8 @@ class API::V1::CampainsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /api/v1/campains/1
-  # PATCH/PUT /api/v1/campains/1.json
+  # PATCH/PUT /campains/1
+  # PATCH/PUT /campains/1.json
   def update
     @campain = Campain.find(params[:id])
 
@@ -39,8 +39,8 @@ class API::V1::CampainsController < ApplicationController
     end
   end
 
-  # DELETE /api/v1/campains/1
-  # DELETE /api/v1/campains/1.json
+  # DELETE /campains/1
+  # DELETE /campains/1.json
   def destroy
     @campain.destroy
 

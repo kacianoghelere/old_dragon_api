@@ -1,22 +1,22 @@
 class API::V1::EffectTypesController < ApplicationController
   before_action :set_effect_type, only: [:show, :update, :destroy]
 
-  # GET /api/v1/effect_types
-  # GET /api/v1/effect_types.json
+  # GET /effect_types
+  # GET /effect_types.json
   def index
     @effect_types = EffectType.all
 
     render json: @effect_types
   end
 
-  # GET /api/v1/effect_types/1
-  # GET /api/v1/effect_types/1.json
+  # GET /effect_types/1
+  # GET /effect_types/1.json
   def show
     render json: @effect_type
   end
 
-  # POST /api/v1/effect_types
-  # POST /api/v1/effect_types.json
+  # POST /effect_types
+  # POST /effect_types.json
   def create
     @effect_type = EffectType.new(effect_type_params)
 
@@ -27,8 +27,8 @@ class API::V1::EffectTypesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /api/v1/effect_types/1
-  # PATCH/PUT /api/v1/effect_types/1.json
+  # PATCH/PUT /effect_types/1
+  # PATCH/PUT /effect_types/1.json
   def update
     @effect_type = EffectType.find(params[:id])
 
@@ -39,8 +39,8 @@ class API::V1::EffectTypesController < ApplicationController
     end
   end
 
-  # DELETE /api/v1/effect_types/1
-  # DELETE /api/v1/effect_types/1.json
+  # DELETE /effect_types/1
+  # DELETE /effect_types/1.json
   def destroy
     @effect_type.destroy
 

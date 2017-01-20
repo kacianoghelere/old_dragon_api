@@ -1,22 +1,22 @@
 class API::V1::UndeadBanesController < ApplicationController
   before_action :set_undead_bane, only: [:show, :update, :destroy]
 
-  # GET /api/v1/undead_banes
-  # GET /api/v1/undead_banes.json
+  # GET /undead_banes
+  # GET /undead_banes.json
   def index
     @undead_banes = UndeadBane.all
 
     render json: @undead_banes
   end
 
-  # GET /api/v1/undead_banes/1
-  # GET /api/v1/undead_banes/1.json
+  # GET /undead_banes/1
+  # GET /undead_banes/1.json
   def show
     render json: @undead_bane
   end
 
-  # POST /api/v1/undead_banes
-  # POST /api/v1/undead_banes.json
+  # POST /undead_banes
+  # POST /undead_banes.json
   def create
     @undead_bane = UndeadBane.new(undead_bane_params)
 
@@ -27,8 +27,8 @@ class API::V1::UndeadBanesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /api/v1/undead_banes/1
-  # PATCH/PUT /api/v1/undead_banes/1.json
+  # PATCH/PUT /undead_banes/1
+  # PATCH/PUT /undead_banes/1.json
   def update
     @undead_bane = UndeadBane.find(params[:id])
 
@@ -39,8 +39,8 @@ class API::V1::UndeadBanesController < ApplicationController
     end
   end
 
-  # DELETE /api/v1/undead_banes/1
-  # DELETE /api/v1/undead_banes/1.json
+  # DELETE /undead_banes/1
+  # DELETE /undead_banes/1.json
   def destroy
     @undead_bane.destroy
 

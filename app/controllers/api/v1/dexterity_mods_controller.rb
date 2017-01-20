@@ -1,22 +1,22 @@
 class API::V1::DexterityModsController < ApplicationController
   before_action :set_dexterity_mod, only: [:show, :update, :destroy]
 
-  # GET /api/v1/dexterity_mods
-  # GET /api/v1/dexterity_mods.json
+  # GET /dexterity_mods
+  # GET /dexterity_mods.json
   def index
     @dexterity_mods = DexterityMod.all
 
     render json: @dexterity_mods
   end
 
-  # GET /api/v1/dexterity_mods/1
-  # GET /api/v1/dexterity_mods/1.json
+  # GET /dexterity_mods/1
+  # GET /dexterity_mods/1.json
   def show
     render json: @dexterity_mod
   end
 
-  # POST /api/v1/dexterity_mods
-  # POST /api/v1/dexterity_mods.json
+  # POST /dexterity_mods
+  # POST /dexterity_mods.json
   def create
     @dexterity_mod = DexterityMod.new(dexterity_mod_params)
 
@@ -27,8 +27,8 @@ class API::V1::DexterityModsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /api/v1/dexterity_mods/1
-  # PATCH/PUT /api/v1/dexterity_mods/1.json
+  # PATCH/PUT /dexterity_mods/1
+  # PATCH/PUT /dexterity_mods/1.json
   def update
     @dexterity_mod = DexterityMod.find(params[:id])
 
@@ -39,8 +39,8 @@ class API::V1::DexterityModsController < ApplicationController
     end
   end
 
-  # DELETE /api/v1/dexterity_mods/1
-  # DELETE /api/v1/dexterity_mods/1.json
+  # DELETE /dexterity_mods/1
+  # DELETE /dexterity_mods/1.json
   def destroy
     @dexterity_mod.destroy
 
