@@ -8,8 +8,8 @@ class CreateThiefTalents < ActiveRecord::Migration
       t.integer  :silent_movement, limit: 4,                 null: false
       t.integer  :stealth,         limit: 4,                 null: false
       t.integer  :pickpocket,      limit: 4,                 null: false
-      t.string   :hear_noises,     limit: 3, default: :1-1, null: false
-      t.string   :backstab,        limit: 2, default: :x2,  null: false
+      t.string   :hear_noises,     limit: 3, default: "1-1", null: false
+      t.string   :backstab,        limit: 2, default: "x2",  null: false
       t.timestamps null: false
     end
   end
