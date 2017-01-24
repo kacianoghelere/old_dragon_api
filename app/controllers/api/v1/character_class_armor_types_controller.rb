@@ -1,4 +1,5 @@
 class API::V1::CharacterClassArmorTypesController < ApplicationController
+  before_filter :authenticate_request!
   before_action :set_character_class_armor_type, only: [:show, :update, :destroy]
 
   # GET /character_class_armor_types

@@ -1,4 +1,5 @@
 class API::V1::RolesController < ApplicationController
+  before_filter :authenticate_request!
   before_action :set_role, only: [:show, :update, :destroy]
 
   # GET /roles

@@ -1,4 +1,5 @@
 class API::V1::CharacterClassRequirementsController < ApplicationController
+  before_filter :authenticate_request!
   before_action :set_character_class_requirement, only: [:show, :update, :destroy]
 
   # GET /character_class_requirements

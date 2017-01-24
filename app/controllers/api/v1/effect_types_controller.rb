@@ -1,4 +1,5 @@
 class API::V1::EffectTypesController < ApplicationController
+  before_filter :authenticate_request!
   before_action :set_effect_type, only: [:show, :update, :destroy]
 
   # GET /effect_types

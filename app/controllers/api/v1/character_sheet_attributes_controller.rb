@@ -1,4 +1,5 @@
 class API::V1::CharacterSheetAttributesController < ApplicationController
+  before_filter :authenticate_request!
   before_action :set_character_sheet_attribute, only: [:show, :update, :destroy]
 
   # GET /character_sheet_attributes

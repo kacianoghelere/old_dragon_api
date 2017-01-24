@@ -1,4 +1,5 @@
 class API::V1::CampainMembersController < ApplicationController
+  before_filter :authenticate_request!
   before_action :set_campain_member, only: [:show, :update, :destroy]
 
   # GET /campain_members

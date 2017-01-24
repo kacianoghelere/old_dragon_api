@@ -1,4 +1,5 @@
 class API::V1::WeaponsController < ApplicationController
+  before_filter :authenticate_request!
   before_action :set_weapon, only: [:show, :update, :destroy]
 
   # GET /weapons

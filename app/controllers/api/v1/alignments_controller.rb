@@ -1,12 +1,12 @@
 class API::V1::AlignmentsController < ApplicationController
   before_filter :authenticate_request!
+  before_filter :check_admin,   only: [:create, :update, :destroy]
   before_action :set_alignment, only: [:show, :update, :destroy]
 
   # GET /alignments
   # GET /alignments.json
   def index
     @alignments = Alignment.all
-
     render json: @alignments
   end
 

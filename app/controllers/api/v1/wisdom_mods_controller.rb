@@ -1,4 +1,5 @@
 class API::V1::WisdomModsController < ApplicationController
+  before_filter :authenticate_request!
   before_action :set_wisdom_mod, only: [:show, :update, :destroy]
 
   # GET /wisdom_mods

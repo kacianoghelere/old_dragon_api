@@ -1,4 +1,5 @@
 class API::V1::ItemTypesController < ApplicationController
+  before_filter :authenticate_request!
   before_action :set_item_type, only: [:show, :update, :destroy]
 
   # GET /item_types

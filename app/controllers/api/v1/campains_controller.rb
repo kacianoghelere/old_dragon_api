@@ -1,4 +1,5 @@
 class API::V1::CampainsController < ApplicationController
+  before_filter :authenticate_request!
   before_action :set_campain, only: [:show, :update, :destroy]
 
   # GET /campains

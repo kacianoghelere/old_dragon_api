@@ -1,4 +1,5 @@
 class API::V1::CharacterClassTypesController < ApplicationController
+  before_filter :authenticate_request!
   before_action :set_character_class_type, only: [:show, :update, :destroy]
 
   # GET /character_class_types

@@ -1,4 +1,5 @@
 class API::V1::UsersController < ApplicationController
+  before_filter :authenticate_request!
   before_action :set_user, only: [:show, :update, :destroy]
 
   # GET /users

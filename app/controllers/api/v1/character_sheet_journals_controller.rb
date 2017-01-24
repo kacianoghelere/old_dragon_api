@@ -1,4 +1,5 @@
 class API::V1::CharacterSheetJournalsController < ApplicationController
+  before_filter :authenticate_request!
   before_action :set_character_sheet_journal, only: [:show, :update, :destroy]
 
   # GET /character_sheet_journals

@@ -1,4 +1,5 @@
 class API::V1::CharacterRaceArmorsController < ApplicationController
+  before_filter :authenticate_request!
   before_action :set_character_race_armor, only: [:show, :update, :destroy]
 
   # GET /character_race_armors

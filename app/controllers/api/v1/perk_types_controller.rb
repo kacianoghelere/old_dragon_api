@@ -1,4 +1,5 @@
 class API::V1::PerkTypesController < ApplicationController
+  before_filter :authenticate_request!
   before_action :set_perk_type, only: [:show, :update, :destroy]
 
   # GET /perk_types

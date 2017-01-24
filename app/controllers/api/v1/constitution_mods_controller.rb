@@ -1,4 +1,5 @@
 class API::V1::ConstitutionModsController < ApplicationController
+  before_filter :authenticate_request!
   before_action :set_constitution_mod, only: [:show, :update, :destroy]
 
   # GET /constitution_mods

@@ -1,4 +1,5 @@
 class API::V1::CharacterRaceSkillsController < ApplicationController
+  before_filter :authenticate_request!
   before_action :set_character_race_skill, only: [:show, :update, :destroy]
 
   # GET /character_race_skills

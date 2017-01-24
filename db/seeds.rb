@@ -66,7 +66,8 @@ LanguageType.create!([
   {name: "Antigo", description: nil}
 ])
 Role.create!([
-  {name: "admin", admin: true}
+  {name: "Admin", admin: true},
+  {name: "Common", admin: false}
 ])
 User.create!([
   {
@@ -78,20 +79,116 @@ User.create!([
     last_login: nil,
     email: "themohawkeagle@gmail.com",
     role_id: 1
+  },
+  {
+    name: "Tester",
+    login: "tester",
+    password: "tester",
+    password_confirmation: "tester",
+    inc_date: "2017-01-21 14:13:51",
+    last_login: nil,
+    email: "test@test.com",
+    role_id: 2
   }
 ])
 Skill.create!([
   {name: "Visão na Penumbra", description: "Visão na Penumbra em até 15 metros", effect_id: nil, skill_type_id: 1, user_id: 1}
 ])
 Perk.create!([
-  {name: "Couraça", description: "Ataques de perfuração recebidos causam apenas metade do dano", perk_type_id: 1, user_id: 1},
-  {name: "Corpo Ósseo", description: "Ataques de corte e perfuração recebidos causam apenas metade do dano", perk_type_id: 1, user_id: 1}
+  {
+    name: "Couraça",
+    description: "Ataques de perfuração recebidos causam apenas metade do dano",
+    perk_type_id: 1,
+    user_id: 1
+  },
+  {
+    name: "Corpo Ósseo",
+    description: "Ataques de corte e perfuração recebidos causam apenas metade do dano",
+    perk_type_id: 1,
+    user_id: 1
+  }
 ])
 CharacterRace.create!([
-  {name: "Anões", min_height: 1, max_height: 2, min_weight: 50, max_weight: 70, maturity: 70, max_age: 350, movement_base: 9, armor_class_mod: 0, str_mod: 0, dex_mod: 0, cons_mod: 2, int_mod: 0, wis_mod: 0, char_mod: -2, alignment_id: 1, dice_id: nil, user_id: 1},
-  {name: "Elfos", min_height: 2, max_height: 2, min_weight: 40, max_weight: 50, maturity: 150, max_age: 700, movement_base: 9, armor_class_mod: 0, str_mod: 0, dex_mod: 2, cons_mod: -2, int_mod: 0, wis_mod: 0, char_mod: 0, alignment_id: 2, dice_id: 3, user_id: 1},
-  {name: "Humanos", min_height: 2, max_height: 2, min_weight: 55, max_weight: 90, maturity: 15, max_age: 70, movement_base: 9, armor_class_mod: 0, str_mod: 0, dex_mod: 0, cons_mod: 0, int_mod: 0, wis_mod: 0, char_mod: 0, alignment_id: 2, dice_id: nil, user_id: 1},
-  {name: "Halflings", min_height: 1, max_height: 1, min_weight: 20, max_weight: 35, maturity: 30, max_age: 70, movement_base: 9, armor_class_mod: 2, str_mod: 0, dex_mod: 2, cons_mod: 0, int_mod: 0, wis_mod: 0, char_mod: 0, alignment_id: 3, dice_id: nil, user_id: 1}
+  {
+    name: "Anões",
+    min_height: 1,
+    max_height: 2,
+    min_weight: 50,
+    max_weight: 70,
+    maturity: 70,
+    max_age: 350,
+    movement_base: 9,
+    armor_class_mod: 0,
+    str_mod: 0,
+    dex_mod: 0,
+    cons_mod: 2,
+    int_mod: 0,
+    wis_mod: 0,
+    char_mod: -2,
+    alignment_id: 1,
+    dice_id: nil,
+    user_id: 1
+  },
+  {
+    name: "Elfos",
+    min_height: 2,
+    max_height: 2,
+    min_weight: 40,
+    max_weight: 50,
+    maturity: 150,
+    max_age: 700,
+    movement_base: 9,
+    armor_class_mod: 0,
+    str_mod: 0,
+    dex_mod: 2,
+    cons_mod: -2,
+    int_mod: 0,
+    wis_mod: 0,
+    char_mod: 0,
+    alignment_id: 2,
+    dice_id: 3,
+    user_id: 1
+  },
+  {
+    name: "Humanos",
+    min_height: 2,
+    max_height: 2,
+    min_weight: 55,
+    max_weight: 90,
+    maturity: 15,
+    max_age: 70,
+    movement_base: 9,
+    armor_class_mod: 0,
+    str_mod: 0,
+    dex_mod: 0,
+    cons_mod: 0,
+    int_mod: 0,
+    wis_mod: 0,
+    char_mod: 0,
+    alignment_id: 2,
+    dice_id: nil,
+    user_id: 1
+  },
+  {
+    name: "Halflings",
+    min_height: 1,
+    max_height: 1,
+    min_weight: 20,
+    max_weight: 35,
+    maturity: 30,
+    max_age: 70,
+    movement_base: 9,
+    armor_class_mod: 2,
+    str_mod: 0,
+    dex_mod: 2,
+    cons_mod: 0,
+    int_mod: 0,
+    wis_mod: 0,
+    char_mod: 0,
+    alignment_id: 3,
+    dice_id: nil,
+    user_id: 1
+  }
 ])
 CharacterClassType.create!([
   {name: "Arcano", magic: true, protection: 15, key_attr: "INT", can_bane_undead: false, has_thief_talents: false},

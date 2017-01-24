@@ -1,4 +1,5 @@
 class API::V1::ArmorsController < ApplicationController
+  before_filter :authenticate_request!
   before_action :set_armor, only: [:show, :update, :destroy]
 
   # GET /armors

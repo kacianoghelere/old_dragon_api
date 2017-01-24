@@ -1,4 +1,5 @@
 class API::V1::SpellTypesController < ApplicationController
+  before_filter :authenticate_request!
   before_action :set_spell_type, only: [:show, :update, :destroy]
 
   # GET /spell_types
