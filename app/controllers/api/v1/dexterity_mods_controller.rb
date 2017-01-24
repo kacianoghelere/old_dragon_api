@@ -1,5 +1,6 @@
 class API::V1::DexterityModsController < ApplicationController
   before_filter :authenticate_request!
+  before_filter :check_admin, only: [:create, :update, :destroy]
   before_action :set_dexterity_mod, only: [:show, :update, :destroy]
 
   # GET /dexterity_mods

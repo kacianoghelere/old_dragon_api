@@ -1,5 +1,6 @@
 class API::V1::UsersController < ApplicationController
   before_filter :authenticate_request!
+  before_filter :check_admin, only: [:create, :update, :destroy]
   before_action :set_user, only: [:show, :update, :destroy]
 
   # GET /users
@@ -55,6 +56,6 @@ class API::V1::UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:name, :login, :pass, :inc_date, :last_login, :email, :role_id)
+      params.require(:user).permit(:name, :login, :password, :inc_date, :last_login, :email, :role_id)
     end
 end

@@ -1,5 +1,6 @@
 class API::V1::SkillTypesController < ApplicationController
   before_filter :authenticate_request!
+  before_filter :check_admin, only: [:create, :update, :destroy]
   before_action :set_skill_type, only: [:show, :update, :destroy]
 
   # GET /skill_types

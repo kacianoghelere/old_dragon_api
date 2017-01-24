@@ -1,5 +1,6 @@
 class API::V1::MaterialTypesController < ApplicationController
   before_filter :authenticate_request!
+  before_filter :check_admin, only: [:create, :update, :destroy]
   before_action :set_material_type, only: [:show, :update, :destroy]
 
   # GET /material_types
