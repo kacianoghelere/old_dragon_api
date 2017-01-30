@@ -4,7 +4,6 @@ class CreateUsers < ActiveRecord::Migration
       t.string   :name,            limit: 45, null: false
       t.string   :login,           limit: 45, null: false
       t.string   :password_digest
-      t.datetime :inc_date,                   null: false
       t.datetime :last_login
       t.string   :email,           limit: 64
       t.integer  :role_id,         limit: 8,  null: false

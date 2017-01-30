@@ -75,7 +75,6 @@ User.create!([
     login: "admin",
     password: "123456",
     password_confirmation: "123456",
-    inc_date: "2017-01-19 14:13:51",
     last_login: nil,
     email: "themohawkeagle@gmail.com",
     role_id: 1
@@ -85,7 +84,6 @@ User.create!([
     login: "tester",
     password: "tester",
     password_confirmation: "tester",
-    inc_date: "2017-01-21 14:13:51",
     last_login: nil,
     email: "test@test.com",
     role_id: 2

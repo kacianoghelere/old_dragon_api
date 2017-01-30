@@ -1,6 +1,6 @@
 class API::V1::UsersController < ApplicationController
-  before_filter :authenticate_request!
-  before_filter :check_admin, only: [:create, :update, :destroy]
+  before_filter :authenticate_request!, except: [:create]
+  before_filter :check_admin, only: [:update, :destroy]
   before_action :set_user, only: [:show, :update, :destroy]
 
   # GET /users
@@ -23,7 +23,7 @@ class API::V1::UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      render json: @user, status: :created, location: @user
+      render json: @user, status: :created
     else
       render json: @user.errors, status: :unprocessable_entity
     end
