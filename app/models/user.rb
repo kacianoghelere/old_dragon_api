@@ -8,7 +8,6 @@ class User < ActiveRecord::Base
     return self.role.admin
   end
 
-
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
                                                   BCrypt::Engine.cost
@@ -17,6 +16,10 @@ class User < ActiveRecord::Base
 
   def User.find_for_authentication(**options)
     self.find_by(options)
+  end
+
+  def register_login
+    self.update(last_login: DateTime.now)
   end
 
   private 

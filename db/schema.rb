@@ -631,13 +631,17 @@ ActiveRecord::Schema.define(version: 20170120110842) do
   add_index "weapons", ["weapon_type_id"], name: "index_weapons_on_weapon_type_id", using: :btree
 
   create_table "wisdom_mods", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
-    t.integer  "value",             limit: 4,             null: false
-    t.integer  "protection_mod",    limit: 4, default: 0, null: false
-    t.integer  "magic_cicle_1_mod", limit: 4, default: 0, null: false
-    t.integer  "magic_cicle_2_mod", limit: 4, default: 0, null: false
-    t.integer  "magic_cicle_3_mod", limit: 4, default: 0, null: false
-    t.datetime "created_at",                              null: false
-    t.datetime "updated_at",                              null: false
+    t.integer  "value",              limit: 4,             null: false
+    t.integer  "protection_mod",     limit: 4, default: 0, null: false
+    t.integer  "magic_circle_1_mod", limit: 4, default: 0, null: false
+    t.integer  "magic_circle_2_mod", limit: 4, default: 0, null: false
+    t.integer  "magic_circle_3_mod", limit: 4, default: 0, null: false
+    t.integer  "magic_circle_4_mod", limit: 4, default: 0, null: false
+    t.integer  "magic_circle_5_mod", limit: 4, default: 0, null: false
+    t.integer  "magic_circle_6_mod", limit: 4, default: 0, null: false
+    t.integer  "magic_circle_7_mod", limit: 4, default: 0, null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
   end
 
   add_foreign_key "armors", "alignments"
