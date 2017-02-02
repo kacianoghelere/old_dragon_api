@@ -14,7 +14,9 @@ class GenerateForeignKeys < ActiveRecord::Migration
     add_foreign_key :character_class_item_types, :character_classes
     add_foreign_key :character_class_item_types, :item_types
     add_foreign_key :character_class_magic_circles, :character_classes
-    add_foreign_key :character_class_requirements, :character_classes, column: :character_classes_id
+    add_foreign_key :character_class_requirements, :character_classes
+    add_foreign_key :character_class_specializations, :alignments
+    add_foreign_key :character_class_specializations, :character_classes
     add_foreign_key :character_class_spell_types, :character_classes
     add_foreign_key :character_class_spell_types, :spell_types
     add_foreign_key :character_class_weapon_types, :character_classes

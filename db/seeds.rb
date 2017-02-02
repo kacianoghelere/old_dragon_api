@@ -325,10 +325,23 @@ CharacterClassMagicCircle.create!([
   {level: 20, magic_circle_1: 6, magic_circle_2: 6, magic_circle_3: 5, magic_circle_4: 4, magic_circle_5: 4, magic_circle_6: 3, magic_circle_7: 3, magic_circle_8: 3, magic_circle_9: 2, character_class_id: 4}
 ])
 CharacterClassRequirement.create!([
-  {str_mod: 12, dex_mod: 0, cons_mod: 12, int_mod: 0, wis_mod: 0, char_mod: 0, character_classes_id: 2},
-  {str_mod: 0, dex_mod: 0, cons_mod: 0, int_mod: 0, wis_mod: 12, char_mod: 0, character_classes_id: 1},
-  {str_mod: 0, dex_mod: 12, cons_mod: 0, int_mod: 0, wis_mod: 0, char_mod: 0, character_classes_id: 3},
-  {str_mod: 0, dex_mod: 0, cons_mod: 0, int_mod: 12, wis_mod: 0, char_mod: 0, character_classes_id: 4}
+  {str_mod: 12, dex_mod: 0, cons_mod: 12, int_mod: 0, wis_mod: 0, char_mod: 0, character_class_id: 2},
+  {str_mod: 0, dex_mod: 0, cons_mod: 0, int_mod: 0, wis_mod: 12, char_mod: 0, character_class_id: 1},
+  {str_mod: 0, dex_mod: 12, cons_mod: 0, int_mod: 0, wis_mod: 0, char_mod: 0, character_class_id: 3},
+  {str_mod: 0, dex_mod: 0, cons_mod: 0, int_mod: 12, wis_mod: 0, char_mod: 0, character_class_id: 4}
+])
+CharacterClassSpecialization.create!([
+  {name: 'Druida', description: '', min_level: 5, alignment_id: 2, character_class_id: 1},
+  {name: 'Cultista', description: '', min_level: 5, alignment_id: 3, character_class_id: 1},
+  {name: 'Paladino', description: '', min_level: 5, alignment_id: 1, character_class_id: 2},
+  {name: 'Guerreiro', description: '', min_level: 5, alignment_id: 2, character_class_id: 2},
+  {name: 'Bárbaro', description: '', min_level: 5, alignment_id: 3, character_class_id: 2},
+  {name: 'Ilusionista', description: '', min_level: 5, alignment_id: 2, character_class_id: 3},
+  {name: 'Necromante', description: '', min_level: 5, alignment_id: 3, character_class_id: 3},
+  {name: 'Ranger', description: 'a partir do 5o nível, o ladrão toma o rumo dos ermos e se dedica a patrulhar uma determinada área, protegendo-a de um certo tipo de criatura, sendo que, a partir desse nível, o ladrão poderá se deslocar sem deixar qualquer tipo de rastro e receberá +1 para todas as jogadas envolvendo surpresa. A partir do 8o nível, o ranger receberá um bônus de +1 nos ataques e no dano contra o tipo de criatura escolhido. A partir desse ponto, o ranger não progredirá mais em arrombar fechaduras e pungar. Escalar muros poderá ser utilizado para árvores, penhascos, etc. Ouvir barulhos servirá para rastrear uma criatura. A partir do 16o nível, o bônus contra o tipo de criatura determinado no 5o nível passa para +2, o ranger não será mais surpreendido e sempre surpreenderá um inimigo, desde que não se trate de outro ranger.', min_level: 5, alignment_id: 1, character_class_id: 4},
+  {name: 'Explorador', description: 'a partir do 5o nível, o ladrão abandona a vida de crimes, se dedicando à exploração de ruínas e templos perdidos. A partir desse nível o explorador possui 80% de chance de conseguir decifrar qualquer tipo de escrita. Em caso de falha, uma nova tentativa só poderá ser realizada após o explorador ter subido um nível. A partir do 8o nível, o explorador para de progredir em pungar, mas recebe um bônus de 10% para jogadas que envolvam reconhecer e desarmar armadilhas. A partir do 16o nível, o explorador pode lançar magias arcanas a partir de pergaminhos com 90% de chance de sucesso. Uma falha nessa jogada significa que ocorrerá um evento aleatório e de graves consequências para o explorador e para seu grupo.', min_level: 5, alignment_id: , character_class_id: 4},
+  {name: 'Bardo', description: 'A partir do 5o nível, o ladrão passa a desenvolver a música e a oratória como forma de contar os feitos de seu grupo e como forma de motivar seus aliados, dando a eles um bônus de +1 para suas jogadas de proteção. A partir do 8o nível, o bardo não progredirá mais em ataque pelas costas. A partir deste nível o bardo aumenta em 10% a chance de que uma criatura que normalmente seria hostil para com ele aja de forma amistosa. A partir do 16o nível, o bônus de moral conferido pela canção do bardo passa para +3 para os ataques e jogadas de proteção de seus aliados.', min_level: 5, alignment_id: 3, character_class_id: 4},
+  {name: 'Assassino', description: 'A partir do 5o nível, o ladrão passa a desenvolver técnicas mais eficientes para matar seus oponentes, recebendo um bônus de +2 no dano sempre que sua jogada de ataque resultar em um acerto crítico. A partir do 8o nível, o assassino não progredirá mais em pungar e em reconhecer e desarmar armadilhas. A progressão antes utilizada para pungar passará a ser utilizada para que o assassino manipule veneno e o aplique com segurança em suas armas ou em objetos. A partir do 16o nível, sempre que sua jogada de ataque resultar em acerto crítico, o alvo deverá realizar uma jogada de proteção modificada pela sua Constituição ou morrer automaticamente.', min_level: 5, alignment_id: 3, character_classes_id: 4}
 ])
 CharacterRaceLanguage.create!([
   {character_race_id: 1, language_type_id: 1},

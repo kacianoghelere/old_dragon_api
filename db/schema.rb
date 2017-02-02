@@ -132,18 +132,31 @@ ActiveRecord::Schema.define(version: 20170120110842) do
   add_index "character_class_magic_circles", ["character_class_id"], name: "index_character_class_magic_circles_on_character_class_id", using: :btree
 
   create_table "character_class_requirements", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
-    t.integer  "str_mod",              limit: 4, default: 0, null: false
-    t.integer  "dex_mod",              limit: 4, default: 0, null: false
-    t.integer  "cons_mod",             limit: 4, default: 0, null: false
-    t.integer  "int_mod",              limit: 4, default: 0, null: false
-    t.integer  "wis_mod",              limit: 4, default: 0, null: false
-    t.integer  "char_mod",             limit: 4, default: 0, null: false
-    t.integer  "character_classes_id", limit: 8,             null: false
-    t.datetime "created_at",                                 null: false
-    t.datetime "updated_at",                                 null: false
+    t.integer  "str_mod",            limit: 4, default: 0, null: false
+    t.integer  "dex_mod",            limit: 4, default: 0, null: false
+    t.integer  "cons_mod",           limit: 4, default: 0, null: false
+    t.integer  "int_mod",            limit: 4, default: 0, null: false
+    t.integer  "wis_mod",            limit: 4, default: 0, null: false
+    t.integer  "char_mod",           limit: 4, default: 0, null: false
+    t.integer  "character_class_id", limit: 8,             null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
   end
 
-  add_index "character_class_requirements", ["character_classes_id"], name: "index_character_class_requirements_on_character_classes_id", using: :btree
+  add_index "character_class_requirements", ["character_class_id"], name: "index_character_class_requirements_on_character_class_id", using: :btree
+
+  create_table "character_class_specializations", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+    t.string   "name",               limit: 45
+    t.string   "description",        limit: 500
+    t.integer  "min_level",          limit: 4
+    t.integer  "alignment_id",       limit: 8,   null: false
+    t.integer  "character_class_id", limit: 8,   null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
+
+  add_index "character_class_specializations", ["alignment_id"], name: "index_character_class_specializations_on_alignment_id", using: :btree
+  add_index "character_class_specializations", ["character_class_id"], name: "index_character_class_specializations_on_character_class_id", using: :btree
 
   create_table "character_class_spell_types", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.integer  "character_class_id", limit: 8, null: false
@@ -658,7 +671,9 @@ ActiveRecord::Schema.define(version: 20170120110842) do
   add_foreign_key "character_class_item_types", "character_classes"
   add_foreign_key "character_class_item_types", "item_types"
   add_foreign_key "character_class_magic_circles", "character_classes"
-  add_foreign_key "character_class_requirements", "character_classes", column: "character_classes_id"
+  add_foreign_key "character_class_requirements", "character_classes"
+  add_foreign_key "character_class_specializations", "alignments"
+  add_foreign_key "character_class_specializations", "character_classes"
   add_foreign_key "character_class_spell_types", "character_classes"
   add_foreign_key "character_class_spell_types", "spell_types"
   add_foreign_key "character_class_weapon_types", "character_classes"
