@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyString
+  min_level: 1
+  alignment_id: 
+  character_class_id: 
+
+two:
+  name: MyString
+  description: MyString
+  min_level: 1
+  alignment_id: 
+  character_class_id: 

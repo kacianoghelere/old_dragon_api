@@ -330,19 +330,395 @@ CharacterClassRequirement.create!([
   {str_mod: 0, dex_mod: 12, cons_mod: 0, int_mod: 0, wis_mod: 0, char_mod: 0, character_class_id: 3},
   {str_mod: 0, dex_mod: 0, cons_mod: 0, int_mod: 12, wis_mod: 0, char_mod: 0, character_class_id: 4}
 ])
-CharacterClassSpecialization.create!([
-  {name: 'Druida', description: '', min_level: 5, alignment_id: 2, character_class_id: 1},
-  {name: 'Cultista', description: '', min_level: 5, alignment_id: 3, character_class_id: 1},
-  {name: 'Paladino', description: '', min_level: 5, alignment_id: 1, character_class_id: 2},
-  {name: 'Guerreiro', description: '', min_level: 5, alignment_id: 2, character_class_id: 2},
-  {name: 'Bárbaro', description: '', min_level: 5, alignment_id: 3, character_class_id: 2},
-  {name: 'Ilusionista', description: '', min_level: 5, alignment_id: 2, character_class_id: 3},
-  {name: 'Necromante', description: '', min_level: 5, alignment_id: 3, character_class_id: 3},
-  {name: 'Ranger', description: 'a partir do 5o nível, o ladrão toma o rumo dos ermos e se dedica a patrulhar uma determinada área, protegendo-a de um certo tipo de criatura, sendo que, a partir desse nível, o ladrão poderá se deslocar sem deixar qualquer tipo de rastro e receberá +1 para todas as jogadas envolvendo surpresa. A partir do 8o nível, o ranger receberá um bônus de +1 nos ataques e no dano contra o tipo de criatura escolhido. A partir desse ponto, o ranger não progredirá mais em arrombar fechaduras e pungar. Escalar muros poderá ser utilizado para árvores, penhascos, etc. Ouvir barulhos servirá para rastrear uma criatura. A partir do 16o nível, o bônus contra o tipo de criatura determinado no 5o nível passa para +2, o ranger não será mais surpreendido e sempre surpreenderá um inimigo, desde que não se trate de outro ranger.', min_level: 5, alignment_id: 1, character_class_id: 4},
-  {name: 'Explorador', description: 'a partir do 5o nível, o ladrão abandona a vida de crimes, se dedicando à exploração de ruínas e templos perdidos. A partir desse nível o explorador possui 80% de chance de conseguir decifrar qualquer tipo de escrita. Em caso de falha, uma nova tentativa só poderá ser realizada após o explorador ter subido um nível. A partir do 8o nível, o explorador para de progredir em pungar, mas recebe um bônus de 10% para jogadas que envolvam reconhecer e desarmar armadilhas. A partir do 16o nível, o explorador pode lançar magias arcanas a partir de pergaminhos com 90% de chance de sucesso. Uma falha nessa jogada significa que ocorrerá um evento aleatório e de graves consequências para o explorador e para seu grupo.', min_level: 5, alignment_id: , character_class_id: 4},
-  {name: 'Bardo', description: 'A partir do 5o nível, o ladrão passa a desenvolver a música e a oratória como forma de contar os feitos de seu grupo e como forma de motivar seus aliados, dando a eles um bônus de +1 para suas jogadas de proteção. A partir do 8o nível, o bardo não progredirá mais em ataque pelas costas. A partir deste nível o bardo aumenta em 10% a chance de que uma criatura que normalmente seria hostil para com ele aja de forma amistosa. A partir do 16o nível, o bônus de moral conferido pela canção do bardo passa para +3 para os ataques e jogadas de proteção de seus aliados.', min_level: 5, alignment_id: 3, character_class_id: 4},
-  {name: 'Assassino', description: 'A partir do 5o nível, o ladrão passa a desenvolver técnicas mais eficientes para matar seus oponentes, recebendo um bônus de +2 no dano sempre que sua jogada de ataque resultar em um acerto crítico. A partir do 8o nível, o assassino não progredirá mais em pungar e em reconhecer e desarmar armadilhas. A progressão antes utilizada para pungar passará a ser utilizada para que o assassino manipule veneno e o aplique com segurança em suas armas ou em objetos. A partir do 16o nível, sempre que sua jogada de ataque resultar em acerto crítico, o alvo deverá realizar uma jogada de proteção modificada pela sua Constituição ou morrer automaticamente.', min_level: 5, alignment_id: 3, character_classes_id: 4}
+
+CharacterClassSpecialization.create!(  {
+  name: 'Druida',
+  alignment_id: 2,
+  character_class_id: 1,
+  user_id: 1
+})
+CharacterClassSpecializationStage.create!([
+  {
+    description: 'A partir do 5o nível, o clérigo não se dedica mais a um deus 
+em específico, dedicando sua adoração à natureza silvestre como um 
+todo e, a partir desse ponto, passa a se deslocar sem deixar rastros, 
+além de ser capaz de se comunicar com animais silvestres. ',
+    min_level: 5,
+    character_class_specialization_id: 1
+  },
+  {
+    description: 'No 8o nível, o druida troca o seu poder de afastar mortos-vivos pelo 
+poder de controlar animais silvestres, que funciona da mesma forma. 
+Um animal com 1 DVs corresponde a um esqueleto, um animal com 2 DVs 
+equivale a um zumbi e assim sucessivamente, até o máximo de um animal 
+com 8 DVs, que corresponde a um vampiro. A indicação A na tabela T3-2 
+indica que o animal é automaticamente controlado, e a indicação D não 
+gera efeito adicional. ',
+    min_level: 8,
+    character_class_specialization_id: 1
+  },
+  {
+    description: 'No 16o nível o druida pode assumir a forma de um animal silvestre até 
+3 vezes por dia. Nessa metamorfose, o druida recuperará 3d8 PVs, e 
+durante a metamorfose, a roupa e um item à escolha do druida serão 
+absorvidos, reaparecendo quando este retornar à forma original. Um 
+clérigo que se torna um druida não constrói uma fortaleza, mas sim 
+cria um círculo druídico para adoração da natureza, junto com os 
+seguidores que conquista.',
+    min_level: 16,
+    character_class_specialization_id: 1
+  }
 ])
+
+CharacterClassSpecialization.create!({
+  name: 'Cultista',
+  alignment_id: 3,
+  character_class_id: 1,
+  user_id: 1
+})
+CharacterClassSpecializationStage.create!([
+  {
+    description: 'A partir do 5o nível, o clérigo não se dedica mais a um 
+deus, mas sim a criaturas absolutamente caóticas, provenientes de 
+outros planos de existência, recebendo através de sonhos os desejos 
+de seus senhores caóticos. A partir desse ponto, o clérigo não 
+precisa mais meditar para receber magias, sendo que as recebe durante 
+os sonhos. ',
+    min_level: 5,
+    character_class_specialization_id: 2
+  },
+  {
+    description: 'A partir do 8o nível, o cultista pode optar, ao invés de afastar 
+automaticamente um morto-vivo, por controlá-lo por até 24 horas. 
+Findo esse período, o morto-vivo não estará mais sob o controle do 
+cultista. ',
+    min_level: 8,
+    character_class_specialization_id: 2
+  },
+  {
+    description: 'A partir do 16o nível, o cultista pode afastar criaturas ordeiras da 
+mesma forma que um clérigo afasta mortos-vivos, sendo que um 
+esqueleto equivale a uma criatura de 1 DV, um zumbi equivale a uma 
+criatura de 2 DVs e assim sucessivamente, até o máximo de uma 
+criatura com 8 DVs, que equivale a um vampiro. A indicação A na 
+tabela T3-2 indica que a criatura é automaticamente afastada, e a 
+indicação D indica que a criatura é automaticamente destruída. Um 
+cultista pode empregar o uso de armas cortantes para rituais.',
+    min_level: 16,
+    character_class_specialization_id: 2
+  }
+])
+
+CharacterClassSpecialization.create!({
+  name: 'Paladino',
+  alignment_id: 1,
+  character_class_id: 2,
+  user_id: 1
+})
+CharacterClassSpecializationStage.create!([
+  {
+    description: 'No 5o nível, o homem de armas passa a se dedicar fielmente a 
+uma causa e a erradicar o caos, sendo que todos aqueles que se opõe 
+a essa causa são seus adversários, e todos aqueles que abraçam essa 
+causa são seus aliados. Um paladino é capaz de detectar o caos a 1 
+quilômetro de distância, desde que se concentre para tal. Existem 
+diversas causas pelas quais um paladino pode vir lutar a favor, tais 
+como a liberdade, a vida, a tirania, a opressão, dentre tantas outras 
+possibilidades à escolha do jogador. ',
+    min_level: 5,
+    character_class_specialization_id: 3
+  },
+  {
+    description: 'No 8o nível, o paladino causa +1d6 de dano nos ataques contra 
+criaturas caóticas. ',
+    min_level: 8,
+    character_class_specialization_id: 3
+  },
+  {
+    description: 'No 16o nível o dano extra aumenta para +2d6 e o paladino passa a 
+emanar uma aura de proteção contra o caos de 3 metros de raio. Se um 
+paladino usar um item mágico caótico (mesmo sem saber do alinhamento 
+do item), perderá automaticamente 2 níveis e não poderá usar seus 
+poderes enquanto estiver portando esse item. Se um paladino, por 
+algum motivo, deixar de ser ordeiro, perderá 3 níveis e perderá todos 
+seus poderes, até que retorne ao alinhamento apropriado.',
+    min_level: 16,
+    character_class_specialization_id: 3
+  }
+])
+
+
+CharacterClassSpecialization.create!([
+  {
+    name: 'Guerreiro',
+    alignment_id: 2,
+    character_class_id: 2,
+    user_id: 1
+  },
+])
+CharacterClassSpecializationStage.create!([
+  {
+    description: 'no 5o nível, o homem de armas escolhe uma arma na qual se 
+especializará, recebendo um bônus de +1 nos ataques e no dano usando 
+a arma escolhida. ',
+    min_level: 5,
+    character_class_specialization_id: 4
+  },
+  {
+    description: 'A partir o 8o nível, o guerreiro receberá um bônus de +2 nos ataques 
+e no dano usando essa arma, recebendo também uma penalidade de -2 nos 
+ataques utilizando qualquer outra arma que não a que escolheu',
+    min_level: 8,
+    character_class_specialization_id: 4
+  },
+  {
+    description: 'A partir o 16o nível, o guerreiro receberá um bônus de +4 nos ataques 
+e no dano usando essa arma, recebendo também uma penalidade de -4 nos 
+ataques utilizando qualquer outra arma que não a que escolheu',
+    min_level: 16,
+    character_class_specialization_id: 4
+  }
+])
+
+
+CharacterClassSpecialization.create!({
+  name: 'Bárbaro',
+  alignment_id: 3,
+  character_class_id: 2,
+  user_id: 1
+})
+CharacterClassSpecializationStage.create!([
+  {
+    description: 'No 5o nível, o homem de armas rejeita as regras e os 
+costumes da sociedade, adotando uma vida livre e desapegada de leis e 
+da ordem. A partir desse nível, o homem de armas não poderá mais usar 
+escudos nem armaduras superiores às de couro, porém sua selvageria o 
+tornará mais resistente, concedendo um bônus de +2 para as jogadas de 
+proteção que envolvam o atributo Constituição. ',
+    min_level: 5,
+    character_class_specialization_id: 5
+  },
+  {
+    description: 'A partir do 8o nível, devido à sua determinação selvagem, o bárbaro  
+não mais cairá ao chegar a 0 PVs, permanecendo em pé e lutando, até  
+chegar a -10 PV, ocasião em que morrerá automaticamente. ',
+    min_level: 8,
+    character_class_specialization_id: 5
+  },
+  {
+    description: 'A partir do 16o nível o bárbaro absorverá 1/3 de todo o dano que 
+receber. Um bárbaro de 11o nível não ergue uma fortaleza, mas sim 
+estabelece uma tribo de bárbaros proscritos, junto com os seguidores 
+que conseguir.',
+    min_level: 16,
+    character_class_specialization_id: 5
+  }
+])
+
+
+CharacterClassSpecialization.create!({
+  name: 'Ilusionista',
+  alignment_id: 2,
+  character_class_id: 3,
+  user_id: 1
+})
+CharacterClassSpecializationStage.create!([
+  {
+    description: 'No 5o nível, o mago passa a se dedicar ao estudo e à criação 
+de ilusões, podendo uma vez ao dia criar uma ilusão menor e limitada 
+ao seu corpo. Criaturas inteligentes têm 60% de chance de não 
+acreditar na ilusão criada, enquanto criaturas não inteligentes têm 
+apenas 40% de chance. ',
+    min_level: 5,
+    character_class_specialization_id: 6
+  },
+  {
+    description: 'A partir do 8o nível, o ilusionista pode criar uma ilusão que envolva 
+uma área de tamanho equivalente ao seu nível em m3, três vezes ao 
+dia. Criaturas inteligentes têm 50% de chance de não acreditar na 
+ilusão criada, enquanto criaturas não inteligentes têm apenas 30% de 
+chance. ',
+    min_level: 8,
+    character_class_specialization_id: 6
+  },
+  {
+    description: 'A partir do 16o nível o ilusionista pode criar ilusões praticamente 
+ilimitadas, cinco vezes ao dia. Criaturas inteligentes têm 40% de 
+chance de não acreditar na ilusão criada, enquanto criaturas não 
+inteligentes têm apenas 20% de chance.',
+    min_level: 16,
+    character_class_specialization_id: 6
+  }
+])
+
+CharacterClassSpecialization.create!({
+  name: 'Necromante',
+  alignment_id: 3,
+  character_class_id: 3,
+  user_id: 1
+})
+CharacterClassSpecializationStage.create!([
+  {
+    description: 'No 5o nível, o mago passa a se dedicar ao estudo das artes 
+sombrias, que envolvem a criação e o controle de mortos-vivos, 
+podendo reanimar um esqueleto por dia, que obedecerá às suas ordens e 
+o efeito durará por uma semana. ',
+    min_level: 5,
+    character_class_specialization_id: 7
+  },
+  {
+    description: 'A partir do 8o nível, o necromante poderá reanimar três esqueletos 
+por dia, que obedecerão às suas ordens e durarão até que sejam 
+destruídos. ',
+    min_level: 8,
+    character_class_specialization_id: 7
+  },
+  {
+    description: 'A partir do 16o nível, o necromante poderá se tornar um lich, se 
+tornando imune a efeitos de sono, medo, frio, veneno e outros que 
+necessitem de alvos vivos, bem como se torna imune a acertos 
+críticos. O lich transfere sua alma para uma filactéria, uma gema 
+mágica criada no ritual em que o necromante se tornou um morto-vivo. 
+Caso venha a ser destruído, o lich retornará em 1d4 dias, desde que a 
+filactéria esteja intacta.',
+    min_level: 16,
+    character_class_specialization_id: 7
+  }
+])
+
+
+CharacterClassSpecialization.create!({
+  name: 'Ranger',
+  alignment_id: 1,
+  character_class_id: 4,
+  user_id: 1
+})
+CharacterClassSpecializationStage.create!([
+  {
+    description: 'a partir do 5o nível, o ladrão toma o rumo dos ermos e se 
+dedica a patrulhar uma determinada área, protegendo-a de um certo 
+tipo de criatura, sendo que, a partir desse nível, o ladrão poderá 
+se deslocar sem deixar qualquer tipo de rastro e receberá +1 para 
+todas as jogadas envolvendo surpresa. ',
+    min_level: 5,
+    character_class_specialization_id: 8
+  },
+  {
+    description: 'A partir do 8o nível, o ranger receberá um bônus de +1 nos ataques 
+e no dano contra o tipo de criatura escolhido. A partir desse ponto, 
+o ranger não progredirá mais em arrombar fechaduras e pungar. 
+Escalar muros poderá ser utilizado para árvores, penhascos, etc. 
+Ouvir barulhos servirá para rastrear uma criatura. ',
+    min_level: 8,
+    character_class_specialization_id: 8
+  },
+  {
+    description: 'A partir do 16o nível, o bônus contra o tipo de criatura determinado 
+no 5o nível passa para +2, o ranger não será mais surpreendido e 
+sempre surpreenderá um inimigo, desde que não se trate de outro 
+ranger.',
+    min_level: 16,
+    character_class_specialization_id: 8
+  }
+])
+
+
+CharacterClassSpecialization.create!({
+  name: 'Explorador',
+  alignment_id: 1,
+  character_class_id: 4,
+  user_id: 1
+})
+CharacterClassSpecializationStage.create!([
+  {
+    description: 'a partir do 5o nível, o ladrão abandona a vida de crimes, se 
+dedicando à exploração de ruínas e templos perdidos. A partir desse 
+nível o explorador possui 80% de chance de conseguir decifrar 
+qualquer tipo de escrita. Em caso de falha, uma nova tentativa só 
+poderá ser realizada após o explorador ter subido um nível. ',
+    min_level: 5,
+    character_class_specialization_id: 9
+  },
+  {
+    description: 'A partir do 8o nível, o explorador para de progredir em pungar, mas 
+recebe um bônus de 10% para jogadas que envolvam reconhecer e 
+desarmar armadilhas.',
+    min_level: 8,
+    character_class_specialization_id: 9
+  },
+  {
+    description: 'A partir do 16o nível, o explorador pode lançar 
+magias arcanas a partir de pergaminhos com 90% de chance de sucesso. 
+Uma falha nessa jogada significa que ocorrerá um evento aleatório e 
+de graves consequências para o explorador e para seu grupo.',
+    min_level: 16,
+    character_class_specialization_id: 9
+  }
+])
+
+
+CharacterClassSpecialization.create!({
+  name: 'Bardo',
+  alignment_id: 3,
+  character_class_id: 4,
+  user_id: 1
+})
+CharacterClassSpecializationStage.create!([
+  {
+    description: 'A partir do 5o nível, o ladrão passa a desenvolver a música 
+e a oratória como forma de contar os feitos de seu grupo e como forma 
+de motivar seus aliados, dando a eles um bônus de +1 para suas 
+jogadas de proteção. ',
+    min_level: 5,
+    character_class_specialization_id: 10
+  },
+  {
+    description: 'A partir do 8o nível, o bardo não progredirá mais em ataque pelas 
+costas. A partir deste nível o bardo aumenta em 10% a chance de que uma 
+criatura que normalmente seria hostil para com ele aja de forma amistosa. ',
+    min_level: 8,
+    character_class_specialization_id: 10
+  },
+  {
+    description: 'A partir do 16o nível, o bônus de moral conferido pela canção do bardo 
+passa para +3 para os ataques e jogadas de proteção de seus aliados.',
+    min_level: 16,
+    character_class_specialization_id: 10
+  }
+])
+
+
+CharacterClassSpecialization.create!({
+  name: 'Assassino',
+  alignment_id: 3,
+  character_class_id: 4,
+  user_id: 1
+})
+CharacterClassSpecializationStage.create!([
+  {
+    description: 'A partir do 5o nível, o ladrão passa a desenvolver técnicas 
+mais eficientes para matar seus oponentes, recebendo um bônus de +2 
+no dano sempre que sua jogada de ataque resultar em um acerto crítico. ',
+    min_level: 5,
+    character_class_specialization_id: 11
+  },
+  {
+    description: 'A partir do 8o nível, o assassino não progredirá mais em pungar e em 
+reconhecer e desarmar armadilhas. A progressão antes utilizada para 
+pungar passará a ser utilizada para que o assassino manipule veneno e 
+o aplique com segurança em suas armas ou em objetos. ',
+    min_level: 8,
+    character_class_specialization_id: 11
+  },
+  {
+    description: 'A partir do 16o nível, sempre que sua jogada de ataque resultar em 
+acerto crítico, o alvo deverá realizar uma jogada de proteção 
+modificada pela sua Constituição ou morrer automaticamente.',
+    min_level: 16,
+    character_class_specialization_id: 11
+  }
+])
+
 CharacterRaceLanguage.create!([
   {character_race_id: 1, language_type_id: 1},
   {character_race_id: 1, language_type_id: 2},
@@ -353,7 +729,17 @@ CharacterRaceSkill.create!([
   {character_race_id: 2, skill_id: 1}
 ])
 CharacterRaceThiefTalent.create!([
-  {lockpick_mod: 0, find_traps_mod: 0, climb_mod: 0, silent_movement_mod: 0, stealth_mod: 10, pickpocket_mod: 0, hear_noises_mod: "0", backstab_mod: "0", character_race_id: 4}
+  {
+    lockpick_mod: 0,
+    find_traps_mod: 0,
+    climb_mod: 0,
+    silent_movement_mod: 0,
+    stealth_mod: 10,
+    pickpocket_mod: 0,
+    hear_noises_mod: "0",
+    backstab_mod: "0",
+    character_race_id: 4
+  }
 ])
 CharismaMod.create!([
   {value: 1, followers_mod: 0, reaction_mod: -25, undead_mod: "'0'"},

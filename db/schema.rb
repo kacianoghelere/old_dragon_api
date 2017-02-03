@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170120110842) do
+ActiveRecord::Schema.define(version: 20170203120350) do
 
   create_table "alignments", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "name",       limit: 15, null: false
@@ -145,18 +145,29 @@ ActiveRecord::Schema.define(version: 20170120110842) do
 
   add_index "character_class_requirements", ["character_class_id"], name: "index_character_class_requirements_on_character_class_id", using: :btree
 
+  create_table "character_class_specialization_stages", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+    t.text     "description",                       limit: 4294967295
+    t.integer  "min_level",                         limit: 4,          null: false
+    t.integer  "character_class_specialization_id", limit: 8,          null: false
+    t.datetime "created_at",                                           null: false
+    t.datetime "updated_at",                                           null: false
+  end
+
+  add_index "character_class_specialization_stages", ["character_class_specialization_id", "min_level"], name: "specialization_stage_level_unique", unique: true, using: :btree
+  add_index "character_class_specialization_stages", ["character_class_specialization_id"], name: "specialization_stage_index", using: :btree
+
   create_table "character_class_specializations", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "name",               limit: 45
-    t.string   "description",        limit: 500
-    t.integer  "min_level",          limit: 4
-    t.integer  "alignment_id",       limit: 8,   null: false
-    t.integer  "character_class_id", limit: 8,   null: false
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.integer  "alignment_id",       limit: 8,  null: false
+    t.integer  "character_class_id", limit: 8,  null: false
+    t.integer  "user_id",            limit: 8,  null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
   end
 
   add_index "character_class_specializations", ["alignment_id"], name: "index_character_class_specializations_on_alignment_id", using: :btree
   add_index "character_class_specializations", ["character_class_id"], name: "index_character_class_specializations_on_character_class_id", using: :btree
+  add_index "character_class_specializations", ["user_id"], name: "index_character_class_specializations_on_user_id", using: :btree
 
   create_table "character_class_spell_types", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.integer  "character_class_id", limit: 8, null: false
@@ -672,8 +683,10 @@ ActiveRecord::Schema.define(version: 20170120110842) do
   add_foreign_key "character_class_item_types", "item_types"
   add_foreign_key "character_class_magic_circles", "character_classes"
   add_foreign_key "character_class_requirements", "character_classes"
+  add_foreign_key "character_class_specialization_stages", "character_class_specializations"
   add_foreign_key "character_class_specializations", "alignments"
   add_foreign_key "character_class_specializations", "character_classes"
+  add_foreign_key "character_class_specializations", "users"
   add_foreign_key "character_class_spell_types", "character_classes"
   add_foreign_key "character_class_spell_types", "spell_types"
   add_foreign_key "character_class_weapon_types", "character_classes"

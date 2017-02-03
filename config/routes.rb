@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :character_class_specialization_stages, except: [:new, :edit]
   post 'authentication' => 'authentication#authenticate'
 
   namespace :api do
@@ -16,6 +17,7 @@ Rails.application.routes.draw do
       resources :character_class_item_types, except: [:new, :edit]
       resources :character_class_magic_circles, except: [:new, :edit]
       resources :character_class_requirements, except: [:new, :edit]
+      resources :character_class_specializations, except: [:new, :edit]
       resources :character_class_spell_types, except: [:new, :edit]
       resources :character_class_types, except: [:new, :edit]
       resources :character_class_weapon_types, except: [:new, :edit]

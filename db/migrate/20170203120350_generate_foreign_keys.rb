@@ -17,6 +17,8 @@ class GenerateForeignKeys < ActiveRecord::Migration
     add_foreign_key :character_class_requirements, :character_classes
     add_foreign_key :character_class_specializations, :alignments
     add_foreign_key :character_class_specializations, :character_classes
+    add_foreign_key :character_class_specializations, :users
+    add_foreign_key :character_class_specialization_stages, :character_class_specializations
     add_foreign_key :character_class_spell_types, :character_classes
     add_foreign_key :character_class_spell_types, :spell_types
     add_foreign_key :character_class_weapon_types, :character_classes

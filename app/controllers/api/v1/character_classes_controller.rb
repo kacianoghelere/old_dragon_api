@@ -1,6 +1,6 @@
 class API::V1::CharacterClassesController < ApplicationController
   before_filter :authenticate_request!
-  before_filter :check_admin, only: [:destroy]
+  before_filter :check_admin, only: [:create, :update, :destroy]
   before_action :set_character_class, only: [:show, :update, :destroy]
 
   # GET /character_classes
