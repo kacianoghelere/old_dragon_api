@@ -201,14 +201,14 @@ ActiveRecord::Schema.define(version: 20170203120350) do
   add_index "character_class_weapon_types", ["weapon_type_id"], name: "index_character_class_weapon_types_on_weapon_type_id", using: :btree
 
   create_table "character_classes", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
-    t.string   "name",                    limit: 45,  null: false
-    t.string   "description",             limit: 500
-    t.integer  "dice_id",                 limit: 8,   null: false
+    t.string   "name",                    limit: 45,         null: false
+    t.text     "description",             limit: 4294967295
+    t.integer  "dice_id",                 limit: 8,          null: false
     t.integer  "perk_id",                 limit: 8
-    t.integer  "character_class_type_id", limit: 8,   null: false
-    t.integer  "user_id",                 limit: 8,   null: false
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.integer  "character_class_type_id", limit: 8,          null: false
+    t.integer  "user_id",                 limit: 8,          null: false
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
   end
 
   add_index "character_classes", ["character_class_type_id"], name: "index_character_classes_on_character_class_type_id", using: :btree
@@ -292,6 +292,7 @@ ActiveRecord::Schema.define(version: 20170203120350) do
     t.integer  "max_age",         limit: 4
     t.integer  "movement_base",   limit: 4,                 default: 1, null: false
     t.integer  "armor_class_mod", limit: 4,                 default: 0, null: false
+    t.boolean  "can_choose_mod",                                        null: false
     t.integer  "str_mod",         limit: 4,                 default: 0, null: false
     t.integer  "dex_mod",         limit: 4,                 default: 0, null: false
     t.integer  "cons_mod",        limit: 4,                 default: 0, null: false
