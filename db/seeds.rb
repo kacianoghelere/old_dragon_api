@@ -3,10 +3,12 @@ Alignment.create!([
   {name: "Neutro"},
   {name: "Caótico"}
 ])
+
 ArmorType.create!([
   {name: "Completa"},
   {name: "Parcial"}
 ])
+
 Dice.create!([
   {name: "D4"},
   {name: "D6"},
@@ -16,44 +18,53 @@ Dice.create!([
   {name: "D20"},
   {name: "D100"}
 ])
+
 EffectType.create!([
   {name: "Instantâneo"},
   {name: "Temporario"},
   {name: "Permanente"}
 ])
+
 ElementType.create!([
   {name: "Fogo"},
   {name: "Água"},
   {name: "Terra"},
   {name: "Ar"}
 ])
+
 WeaponType.create!([
   {name: "Corte"},
   {name: "Perfuração"},
   {name: "Deformação"}
 ])
+
 SkillType.create!([
   {name: "Natural"},
   {name: "Adquirido"}
 ])
+
 SpellType.create!([
   {name: "Arcana"},
   {name: "Divina"}
 ])
+
 Origin.create!([
   {name: "Comum", variation: "Comum", bonus: 0},
   {name: "Élfico", variation: "Élfica", bonus: 1},
   {name: "Anão", variation: "Anã", bonus: 1}
 ])
+
 PerkType.create!([
   {name: "Natural"},
   {name: "Adquirida"}
 ])
+
 ItemType.create!([
   {name: "Consumivel"},
   {name: "Chave"},
   {name: "Importante"}
 ])
+
 LanguageType.create!([
   {name: "Comum", description: nil},
   {name: "Anão", description: nil},
@@ -65,10 +76,12 @@ LanguageType.create!([
   {name: "Dracônico", description: nil},
   {name: "Antigo", description: nil}
 ])
+
 Role.create!([
   {name: "Admin", admin: true},
   {name: "Common", admin: false}
 ])
+
 User.create!([
   {
     name: "Administrador",
@@ -89,9 +102,11 @@ User.create!([
     role_id: 2
   }
 ])
+
 Skill.create!([
   {name: "Visão na Penumbra", description: "Visão na Penumbra em até 15 metros", effect_id: nil, skill_type_id: 1, user_id: 1}
 ])
+
 Perk.create!([
   {
     name: "Couraça",
@@ -106,6 +121,7 @@ Perk.create!([
     user_id: 1
   }
 ])
+
 CharacterRace.create!([
   {
     name: "Anões",
@@ -192,6 +208,7 @@ CharacterRace.create!([
     user_id: 1
   }
 ])
+
 CharacterClassType.create!([
   {
     name: "Arcano",
@@ -224,8 +241,9 @@ CharacterClassType.create!([
     key_attr: "DEX",
     can_bane_undead: false,
     has_thief_talents: true
-}
+  }
 ])
+
 CharacterClass.create!([
   {
     name: "Clérigo",
@@ -233,7 +251,37 @@ CharacterClass.create!([
     dice_id: 3,
     perk_id: nil,
     character_class_type_id: 3,
-    user_id: 1
+    user_id: 1,
+    character_class_evolutions_attributes: [
+      {level: 1, exp: 0, life_amount: 1, plus_life: false, attack_base: 0, attack_base2: 0, protection_mod: 15},
+      {level: 2, exp: 1500, life_amount: 2, plus_life: false, attack_base: 1, attack_base2: 0, protection_mod: 15},
+      {level: 3, exp: 3000, life_amount: 3, plus_life: false, attack_base: 2, attack_base2: 0, protection_mod: 15},
+      {level: 4, exp: 6000, life_amount: 4, plus_life: false, attack_base: 2, attack_base2: 0, protection_mod: 14},
+      {level: 5, exp: 12000, life_amount: 5, plus_life: false, attack_base: 3, attack_base2: 0, protection_mod: 14},
+      {level: 6, exp: 24000, life_amount: 6, plus_life: false, attack_base: 3, attack_base2: 0, protection_mod: 14},
+      {level: 7, exp: 48000, life_amount: 7, plus_life: false, attack_base: 3, attack_base2: 0, protection_mod: 13},
+      {level: 8, exp: 100000, life_amount: 8, plus_life: false, attack_base: 4, attack_base2: 0, protection_mod: 13},
+      {level: 9, exp: 200000, life_amount: 9, plus_life: false, attack_base: 4, attack_base2: 0, protection_mod: 13},
+      {level: 10, exp: 300000, life_amount: 1, plus_life: true, attack_base: 4, attack_base2: 0, protection_mod: 12},
+      {level: 11, exp: 400000, life_amount: 1, plus_life: true, attack_base: 5, attack_base2: 0, protection_mod: 12},
+      {level: 12, exp: 500000, life_amount: 2, plus_life: true, attack_base: 5, attack_base2: 0, protection_mod: 12},
+      {level: 13, exp: 600000, life_amount: 2, plus_life: true, attack_base: 5, attack_base2: 0, protection_mod: 11},
+      {level: 14, exp: 700000, life_amount: 3, plus_life: true, attack_base: 6, attack_base2: 0, protection_mod: 11},
+      {level: 15, exp: 800000, life_amount: 3, plus_life: true, attack_base: 6, attack_base2: 0, protection_mod: 11},
+      {level: 16, exp: 900000, life_amount: 4, plus_life: true, attack_base: 6, attack_base2: 0, protection_mod: 10},
+      {level: 17, exp: 1000000, life_amount: 4, plus_life: true, attack_base: 7, attack_base2: 0, protection_mod: 10},
+      {level: 18, exp: 1100000, life_amount: 5, plus_life: true, attack_base: 7, attack_base2: 0, protection_mod: 10},
+      {level: 19, exp: 1200000, life_amount: 5, plus_life: true, attack_base: 7, attack_base2: 0, protection_mod: 9},
+      {level: 20, exp: 1300000, life_amount: 6, plus_life: true, attack_base: 8, attack_base2: 0, protection_mod: 9}
+    ],
+    character_class_requirement_attributes: {
+      str_mod: 0,
+      dex_mod: 0,
+      cons_mod: 0,
+      int_mod: 0,
+      wis_mod: 12,
+      char_mod: 0
+    }
   },
   {
     name: "Homem de Armas",
@@ -241,7 +289,37 @@ CharacterClass.create!([
     dice_id: 4,
     perk_id: nil,
     character_class_type_id: 2,
-    user_id: 1
+    user_id: 1,
+    character_class_evolutions_attributes: [
+      {level: 1, exp: 0, life_amount: 1, plus_life: false, attack_base: 1, attack_base2: 0, protection_mod: 16},
+      {level: 2, exp: 2000, life_amount: 2, plus_life: false, attack_base: 2, attack_base2: 0, protection_mod: 16},
+      {level: 3, exp: 4000, life_amount: 3, plus_life: false, attack_base: 3, attack_base2: 0, protection_mod: 16},
+      {level: 4, exp: 8000, life_amount: 4, plus_life: false, attack_base: 4, attack_base2: 0, protection_mod: 15},
+      {level: 5, exp: 16000, life_amount: 5, plus_life: false, attack_base: 5, attack_base2: 0, protection_mod: 15},
+      {level: 6, exp: 32000, life_amount: 6, plus_life: false, attack_base: 6, attack_base2: 0, protection_mod: 15},
+      {level: 7, exp: 64000, life_amount: 7, plus_life: false, attack_base: 7, attack_base2: 1, protection_mod: 14},
+      {level: 8, exp: 128000, life_amount: 8, plus_life: false, attack_base: 8, attack_base2: 2, protection_mod: 14},
+      {level: 9, exp: 256000, life_amount: 9, plus_life: false, attack_base: 9, attack_base2: 3, protection_mod: 14},
+      {level: 10, exp: 304000, life_amount: 2, plus_life: true, attack_base: 10, attack_base2: 4, protection_mod: 13},
+      {level: 11, exp: 408000, life_amount: 2, plus_life: true, attack_base: 10, attack_base2: 4, protection_mod: 13},
+      {level: 12, exp: 516000, life_amount: 4, plus_life: true, attack_base: 11, attack_base2: 5, protection_mod: 13},
+      {level: 13, exp: 632000, life_amount: 4, plus_life: true, attack_base: 11, attack_base2: 5, protection_mod: 12},
+      {level: 14, exp: 704000, life_amount: 5, plus_life: true, attack_base: 12, attack_base2: 6, protection_mod: 12},
+      {level: 15, exp: 808000, life_amount: 5, plus_life: true, attack_base: 12, attack_base2: 6, protection_mod: 12},
+      {level: 16, exp: 916000, life_amount: 6, plus_life: true, attack_base: 13, attack_base2: 7, protection_mod: 11},
+      {level: 17, exp: 1032000, life_amount: 6, plus_life: true, attack_base: 13, attack_base2: 7, protection_mod: 11},
+      {level: 18, exp: 1064000, life_amount: 7, plus_life: true, attack_base: 14, attack_base2: 8, protection_mod: 11},
+      {level: 19, exp: 1128000, life_amount: 7, plus_life: true, attack_base: 14, attack_base2: 8, protection_mod: 10},
+      {level: 20, exp: 1256000, life_amount: 8, plus_life: true, attack_base: 15, attack_base2: 9, protection_mod: 10}
+    ],
+    character_class_requirement_attributes: {
+      str_mod: 12,
+      dex_mod: 0,
+      cons_mod: 12,
+      int_mod: 0,
+      wis_mod: 0,
+      char_mod: 0
+    }
   },
   {
     name: "Ladino",
@@ -249,7 +327,37 @@ CharacterClass.create!([
     dice_id: 2,
     perk_id: nil,
     character_class_type_id: 4,
-    user_id: 1
+    user_id: 1,
+    character_class_evolutions_attributes: [
+      {level: 1, exp: 0, life_amount: 1, plus_life: false, attack_base: 1, attack_base2: 0, protection_mod: 15},
+      {level: 2, exp: 1250, life_amount: 2, plus_life: false, attack_base: 1, attack_base2: 0, protection_mod: 15},
+      {level: 3, exp: 2500, life_amount: 3, plus_life: false, attack_base: 2, attack_base2: 0, protection_mod: 15},
+      {level: 4, exp: 5000, life_amount: 4, plus_life: false, attack_base: 2, attack_base2: 0, protection_mod: 14},
+      {level: 5, exp: 10000, life_amount: 5, plus_life: false, attack_base: 2, attack_base2: 0, protection_mod: 14},
+      {level: 6, exp: 20000, life_amount: 6, plus_life: false, attack_base: 3, attack_base2: 0, protection_mod: 14},
+      {level: 7, exp: 40000, life_amount: 7, plus_life: false, attack_base: 3, attack_base2: 0, protection_mod: 13},
+      {level: 8, exp: 80000, life_amount: 8, plus_life: false, attack_base: 3, attack_base2: 0, protection_mod: 13},
+      {level: 9, exp: 160000, life_amount: 9, plus_life: false, attack_base: 4, attack_base2: 0, protection_mod: 13},
+      {level: 10, exp: 240000, life_amount: 1, plus_life: true, attack_base: 4, attack_base2: 0, protection_mod: 12},
+      {level: 11, exp: 400000, life_amount: 1, plus_life: true, attack_base: 4, attack_base2: 0, protection_mod: 12},
+      {level: 12, exp: 520000, life_amount: 2, plus_life: true, attack_base: 5, attack_base2: 0, protection_mod: 12},
+      {level: 13, exp: 640000, life_amount: 2, plus_life: true, attack_base: 5, attack_base2: 0, protection_mod: 11},
+      {level: 14, exp: 760000, life_amount: 2, plus_life: true, attack_base: 5, attack_base2: 0, protection_mod: 11},
+      {level: 15, exp: 880000, life_amount: 3, plus_life: true, attack_base: 6, attack_base2: 0, protection_mod: 11},
+      {level: 16, exp: 1000000, life_amount: 3, plus_life: true, attack_base: 6, attack_base2: 0, protection_mod: 10},
+      {level: 17, exp: 1120000, life_amount: 3, plus_life: true, attack_base: 6, attack_base2: 0, protection_mod: 10},
+      {level: 18, exp: 1240000, life_amount: 4, plus_life: true, attack_base: 7, attack_base2: 0, protection_mod: 10},
+      {level: 19, exp: 1360000, life_amount: 4, plus_life: true, attack_base: 7, attack_base2: 0, protection_mod: 9},
+      {level: 20, exp: 1480000, life_amount: 4, plus_life: true, attack_base: 7, attack_base2: 0, protection_mod: 9}
+    ],
+    character_class_requirement_attributes: {
+      str_mod: 0,
+      dex_mod: 14,
+      cons_mod: 0,
+      int_mod: 0,
+      wis_mod: 0,
+      char_mod: 0
+    }
   },
   {
     name: "Mago",
@@ -257,91 +365,40 @@ CharacterClass.create!([
     dice_id: 1,
     perk_id: nil,
     character_class_type_id: 1,
-    user_id: 1
+    user_id: 1,
+    character_class_evolutions_attributes: [
+      {level: 1, exp: 0, life_amount: 1, plus_life: false, attack_base: 0, attack_base2: 0, protection_mod: 14},
+      {level: 2, exp: 2500, life_amount: 2, plus_life: false, attack_base: 0, attack_base2: 0, protection_mod: 14},
+      {level: 3, exp: 5000, life_amount: 3, plus_life: false, attack_base: 1, attack_base2: 0, protection_mod: 14},
+      {level: 4, exp: 10000, life_amount: 4, plus_life: false, attack_base: 1, attack_base2: 0, protection_mod: 13},
+      {level: 5, exp: 20000, life_amount: 5, plus_life: false, attack_base: 2, attack_base2: 0, protection_mod: 13},
+      {level: 6, exp: 40000, life_amount: 6, plus_life: false, attack_base: 2, attack_base2: 0, protection_mod: 13},
+      {level: 7, exp: 80000, life_amount: 7, plus_life: false, attack_base: 3, attack_base2: 0, protection_mod: 12},
+      {level: 8, exp: 160000, life_amount: 8, plus_life: false, attack_base: 3, attack_base2: 0, protection_mod: 12},
+      {level: 9, exp: 310000, life_amount: 9, plus_life: false, attack_base: 3, attack_base2: 0, protection_mod: 12},
+      {level: 10, exp: 460000, life_amount: 1, plus_life: true, attack_base: 4, attack_base2: 0, protection_mod: 11},
+      {level: 11, exp: 510000, life_amount: 1, plus_life: true, attack_base: 4, attack_base2: 0, protection_mod: 11},
+      {level: 12, exp: 660000, life_amount: 1, plus_life: true, attack_base: 4, attack_base2: 0, protection_mod: 11},
+      {level: 13, exp: 710000, life_amount: 1, plus_life: true, attack_base: 5, attack_base2: 0, protection_mod: 10},
+      {level: 14, exp: 860000, life_amount: 1, plus_life: true, attack_base: 5, attack_base2: 0, protection_mod: 10},
+      {level: 15, exp: 910000, life_amount: 2, plus_life: true, attack_base: 5, attack_base2: 0, protection_mod: 10},
+      {level: 16, exp: 1060000, life_amount: 2, plus_life: true, attack_base: 6, attack_base2: 0, protection_mod: 9},
+      {level: 17, exp: 1110000, life_amount: 2, plus_life: true, attack_base: 6, attack_base2: 0, protection_mod: 9},
+      {level: 18, exp: 1160000, life_amount: 2, plus_life: true, attack_base: 6, attack_base2: 0, protection_mod: 9},
+      {level: 19, exp: 1210000, life_amount: 2, plus_life: true, attack_base: 7, attack_base2: 0, protection_mod: 8},
+      {level: 20, exp: 1260000, life_amount: 3, plus_life: true, attack_base: 7, attack_base2: 0, protection_mod: 8}
+    ],
+    character_class_requirement_attributes: {
+      str_mod: 0,
+      dex_mod: 0,
+      cons_mod: 0,
+      int_mod: 14,
+      wis_mod: 0,
+      char_mod: 0
+    }
   }
 ])
-CharacterClassEvolution.create!([
-  {level: 1, exp: 0, life_amount: 1, plus_life: false, attack_base: 0, attack_base2: 0, protection_mod: 15, character_class_id: 1},
-  {level: 2, exp: 1500, life_amount: 2, plus_life: false, attack_base: 1, attack_base2: 0, protection_mod: 15, character_class_id: 1},
-  {level: 3, exp: 3000, life_amount: 3, plus_life: false, attack_base: 2, attack_base2: 0, protection_mod: 15, character_class_id: 1},
-  {level: 4, exp: 6000, life_amount: 4, plus_life: false, attack_base: 2, attack_base2: 0, protection_mod: 14, character_class_id: 1},
-  {level: 5, exp: 12000, life_amount: 5, plus_life: false, attack_base: 3, attack_base2: 0, protection_mod: 14, character_class_id: 1},
-  {level: 6, exp: 24000, life_amount: 6, plus_life: false, attack_base: 3, attack_base2: 0, protection_mod: 14, character_class_id: 1},
-  {level: 7, exp: 48000, life_amount: 7, plus_life: false, attack_base: 3, attack_base2: 0, protection_mod: 13, character_class_id: 1},
-  {level: 8, exp: 100000, life_amount: 8, plus_life: false, attack_base: 4, attack_base2: 0, protection_mod: 13, character_class_id: 1},
-  {level: 9, exp: 200000, life_amount: 9, plus_life: false, attack_base: 4, attack_base2: 0, protection_mod: 13, character_class_id: 1},
-  {level: 10, exp: 300000, life_amount: 1, plus_life: true, attack_base: 4, attack_base2: 0, protection_mod: 12, character_class_id: 1},
-  {level: 11, exp: 400000, life_amount: 1, plus_life: true, attack_base: 5, attack_base2: 0, protection_mod: 12, character_class_id: 1},
-  {level: 12, exp: 500000, life_amount: 2, plus_life: true, attack_base: 5, attack_base2: 0, protection_mod: 12, character_class_id: 1},
-  {level: 13, exp: 600000, life_amount: 2, plus_life: true, attack_base: 5, attack_base2: 0, protection_mod: 11, character_class_id: 1},
-  {level: 14, exp: 700000, life_amount: 3, plus_life: true, attack_base: 6, attack_base2: 0, protection_mod: 11, character_class_id: 1},
-  {level: 15, exp: 800000, life_amount: 3, plus_life: true, attack_base: 6, attack_base2: 0, protection_mod: 11, character_class_id: 1},
-  {level: 16, exp: 900000, life_amount: 4, plus_life: true, attack_base: 6, attack_base2: 0, protection_mod: 10, character_class_id: 1},
-  {level: 17, exp: 1000000, life_amount: 4, plus_life: true, attack_base: 7, attack_base2: 0, protection_mod: 10, character_class_id: 1},
-  {level: 18, exp: 1100000, life_amount: 5, plus_life: true, attack_base: 7, attack_base2: 0, protection_mod: 10, character_class_id: 1},
-  {level: 19, exp: 1200000, life_amount: 5, plus_life: true, attack_base: 7, attack_base2: 0, protection_mod: 9, character_class_id: 1},
-  {level: 20, exp: 1300000, life_amount: 6, plus_life: true, attack_base: 8, attack_base2: 0, protection_mod: 9, character_class_id: 1},
-  {level: 1, exp: 0, life_amount: 1, plus_life: false, attack_base: 1, attack_base2: 0, protection_mod: 16, character_class_id: 2},
-  {level: 2, exp: 2000, life_amount: 2, plus_life: false, attack_base: 2, attack_base2: 0, protection_mod: 16, character_class_id: 2},
-  {level: 3, exp: 4000, life_amount: 3, plus_life: false, attack_base: 3, attack_base2: 0, protection_mod: 16, character_class_id: 2},
-  {level: 4, exp: 8000, life_amount: 4, plus_life: false, attack_base: 4, attack_base2: 0, protection_mod: 15, character_class_id: 2},
-  {level: 5, exp: 16000, life_amount: 5, plus_life: false, attack_base: 5, attack_base2: 0, protection_mod: 15, character_class_id: 2},
-  {level: 6, exp: 32000, life_amount: 6, plus_life: false, attack_base: 6, attack_base2: 0, protection_mod: 15, character_class_id: 2},
-  {level: 7, exp: 64000, life_amount: 7, plus_life: false, attack_base: 7, attack_base2: 1, protection_mod: 14, character_class_id: 2},
-  {level: 8, exp: 128000, life_amount: 8, plus_life: false, attack_base: 8, attack_base2: 2, protection_mod: 14, character_class_id: 2},
-  {level: 9, exp: 256000, life_amount: 9, plus_life: false, attack_base: 9, attack_base2: 3, protection_mod: 14, character_class_id: 2},
-  {level: 10, exp: 304000, life_amount: 2, plus_life: true, attack_base: 10, attack_base2: 4, protection_mod: 13, character_class_id: 2},
-  {level: 11, exp: 408000, life_amount: 2, plus_life: true, attack_base: 10, attack_base2: 4, protection_mod: 13, character_class_id: 2},
-  {level: 12, exp: 516000, life_amount: 4, plus_life: true, attack_base: 11, attack_base2: 5, protection_mod: 13, character_class_id: 2},
-  {level: 13, exp: 632000, life_amount: 4, plus_life: true, attack_base: 11, attack_base2: 5, protection_mod: 12, character_class_id: 2},
-  {level: 14, exp: 704000, life_amount: 5, plus_life: true, attack_base: 12, attack_base2: 6, protection_mod: 12, character_class_id: 2},
-  {level: 15, exp: 808000, life_amount: 5, plus_life: true, attack_base: 12, attack_base2: 6, protection_mod: 12, character_class_id: 2},
-  {level: 16, exp: 916000, life_amount: 6, plus_life: true, attack_base: 13, attack_base2: 7, protection_mod: 11, character_class_id: 2},
-  {level: 17, exp: 1032000, life_amount: 6, plus_life: true, attack_base: 13, attack_base2: 7, protection_mod: 11, character_class_id: 2},
-  {level: 18, exp: 1064000, life_amount: 7, plus_life: true, attack_base: 14, attack_base2: 8, protection_mod: 11, character_class_id: 2},
-  {level: 19, exp: 1128000, life_amount: 7, plus_life: true, attack_base: 14, attack_base2: 8, protection_mod: 10, character_class_id: 2},
-  {level: 20, exp: 1256000, life_amount: 8, plus_life: true, attack_base: 15, attack_base2: 9, protection_mod: 10, character_class_id: 2},
-  {level: 1, exp: 0, life_amount: 1, plus_life: false, attack_base: 1, attack_base2: 0, protection_mod: 15, character_class_id: 3},
-  {level: 2, exp: 1250, life_amount: 2, plus_life: false, attack_base: 1, attack_base2: 0, protection_mod: 15, character_class_id: 3},
-  {level: 3, exp: 2500, life_amount: 3, plus_life: false, attack_base: 2, attack_base2: 0, protection_mod: 15, character_class_id: 3},
-  {level: 4, exp: 5000, life_amount: 4, plus_life: false, attack_base: 2, attack_base2: 0, protection_mod: 14, character_class_id: 3},
-  {level: 5, exp: 10000, life_amount: 5, plus_life: false, attack_base: 2, attack_base2: 0, protection_mod: 14, character_class_id: 3},
-  {level: 6, exp: 20000, life_amount: 6, plus_life: false, attack_base: 3, attack_base2: 0, protection_mod: 14, character_class_id: 3},
-  {level: 7, exp: 40000, life_amount: 7, plus_life: false, attack_base: 3, attack_base2: 0, protection_mod: 13, character_class_id: 3},
-  {level: 8, exp: 80000, life_amount: 8, plus_life: false, attack_base: 3, attack_base2: 0, protection_mod: 13, character_class_id: 3},
-  {level: 9, exp: 160000, life_amount: 9, plus_life: false, attack_base: 4, attack_base2: 0, protection_mod: 13, character_class_id: 3},
-  {level: 10, exp: 240000, life_amount: 1, plus_life: true, attack_base: 4, attack_base2: 0, protection_mod: 12, character_class_id: 3},
-  {level: 11, exp: 400000, life_amount: 1, plus_life: true, attack_base: 4, attack_base2: 0, protection_mod: 12, character_class_id: 3},
-  {level: 12, exp: 520000, life_amount: 2, plus_life: true, attack_base: 5, attack_base2: 0, protection_mod: 12, character_class_id: 3},
-  {level: 13, exp: 640000, life_amount: 2, plus_life: true, attack_base: 5, attack_base2: 0, protection_mod: 11, character_class_id: 3},
-  {level: 14, exp: 760000, life_amount: 2, plus_life: true, attack_base: 5, attack_base2: 0, protection_mod: 11, character_class_id: 3},
-  {level: 15, exp: 880000, life_amount: 3, plus_life: true, attack_base: 6, attack_base2: 0, protection_mod: 11, character_class_id: 3},
-  {level: 16, exp: 1000000, life_amount: 3, plus_life: true, attack_base: 6, attack_base2: 0, protection_mod: 10, character_class_id: 3},
-  {level: 17, exp: 1120000, life_amount: 3, plus_life: true, attack_base: 6, attack_base2: 0, protection_mod: 10, character_class_id: 3},
-  {level: 18, exp: 1240000, life_amount: 4, plus_life: true, attack_base: 7, attack_base2: 0, protection_mod: 10, character_class_id: 3},
-  {level: 19, exp: 1360000, life_amount: 4, plus_life: true, attack_base: 7, attack_base2: 0, protection_mod: 9, character_class_id: 3},
-  {level: 20, exp: 1480000, life_amount: 4, plus_life: true, attack_base: 7, attack_base2: 0, protection_mod: 9, character_class_id: 3},
-  {level: 1, exp: 0, life_amount: 1, plus_life: false, attack_base: 0, attack_base2: 0, protection_mod: 14, character_class_id: 4},
-  {level: 2, exp: 2500, life_amount: 2, plus_life: false, attack_base: 0, attack_base2: 0, protection_mod: 14, character_class_id: 4},
-  {level: 3, exp: 5000, life_amount: 3, plus_life: false, attack_base: 1, attack_base2: 0, protection_mod: 14, character_class_id: 4},
-  {level: 4, exp: 10000, life_amount: 4, plus_life: false, attack_base: 1, attack_base2: 0, protection_mod: 13, character_class_id: 4},
-  {level: 5, exp: 20000, life_amount: 5, plus_life: false, attack_base: 2, attack_base2: 0, protection_mod: 13, character_class_id: 4},
-  {level: 6, exp: 40000, life_amount: 6, plus_life: false, attack_base: 2, attack_base2: 0, protection_mod: 13, character_class_id: 4},
-  {level: 7, exp: 80000, life_amount: 7, plus_life: false, attack_base: 3, attack_base2: 0, protection_mod: 12, character_class_id: 4},
-  {level: 8, exp: 160000, life_amount: 8, plus_life: false, attack_base: 3, attack_base2: 0, protection_mod: 12, character_class_id: 4},
-  {level: 9, exp: 310000, life_amount: 9, plus_life: false, attack_base: 3, attack_base2: 0, protection_mod: 12, character_class_id: 4},
-  {level: 10, exp: 460000, life_amount: 1, plus_life: true, attack_base: 4, attack_base2: 0, protection_mod: 11, character_class_id: 4},
-  {level: 11, exp: 510000, life_amount: 1, plus_life: true, attack_base: 4, attack_base2: 0, protection_mod: 11, character_class_id: 4},
-  {level: 12, exp: 660000, life_amount: 1, plus_life: true, attack_base: 4, attack_base2: 0, protection_mod: 11, character_class_id: 4},
-  {level: 13, exp: 710000, life_amount: 1, plus_life: true, attack_base: 5, attack_base2: 0, protection_mod: 10, character_class_id: 4},
-  {level: 14, exp: 860000, life_amount: 1, plus_life: true, attack_base: 5, attack_base2: 0, protection_mod: 10, character_class_id: 4},
-  {level: 15, exp: 910000, life_amount: 2, plus_life: true, attack_base: 5, attack_base2: 0, protection_mod: 10, character_class_id: 4},
-  {level: 16, exp: 1060000, life_amount: 2, plus_life: true, attack_base: 6, attack_base2: 0, protection_mod: 9, character_class_id: 4},
-  {level: 17, exp: 1110000, life_amount: 2, plus_life: true, attack_base: 6, attack_base2: 0, protection_mod: 9, character_class_id: 4},
-  {level: 18, exp: 1160000, life_amount: 2, plus_life: true, attack_base: 6, attack_base2: 0, protection_mod: 9, character_class_id: 4},
-  {level: 19, exp: 1210000, life_amount: 2, plus_life: true, attack_base: 7, attack_base2: 0, protection_mod: 8, character_class_id: 4},
-  {level: 20, exp: 1260000, life_amount: 3, plus_life: true, attack_base: 7, attack_base2: 0, protection_mod: 8, character_class_id: 4}
-])
+
 CharacterClassMagicCircle.create!([
   {level: 1, magic_circle_1: 1, magic_circle_2: 0, magic_circle_3: 0, magic_circle_4: 0, magic_circle_5: 0, magic_circle_6: 0, magic_circle_7: 0, magic_circle_8: 0, magic_circle_9: 0, character_class_id: 1},
   {level: 2, magic_circle_1: 2, magic_circle_2: 0, magic_circle_3: 0, magic_circle_4: 0, magic_circle_5: 0, magic_circle_6: 0, magic_circle_7: 0, magic_circle_8: 0, magic_circle_9: 0, character_class_id: 1},
@@ -363,6 +420,7 @@ CharacterClassMagicCircle.create!([
   {level: 18, magic_circle_1: 8, magic_circle_2: 7, magic_circle_3: 6, magic_circle_4: 5, magic_circle_5: 5, magic_circle_6: 4, magic_circle_7: 3, magic_circle_8: 0, magic_circle_9: 0, character_class_id: 1},
   {level: 19, magic_circle_1: 9, magic_circle_2: 8, magic_circle_3: 7, magic_circle_4: 6, magic_circle_5: 5, magic_circle_6: 4, magic_circle_7: 3, magic_circle_8: 0, magic_circle_9: 0, character_class_id: 1},
   {level: 20, magic_circle_1: 9, magic_circle_2: 8, magic_circle_3: 7, magic_circle_4: 6, magic_circle_5: 5, magic_circle_6: 5, magic_circle_7: 3, magic_circle_8: 0, magic_circle_9: 0, character_class_id: 1},
+
   {level: 1, magic_circle_1: 1, magic_circle_2: 0, magic_circle_3: 0, magic_circle_4: 0, magic_circle_5: 0, magic_circle_6: 0, magic_circle_7: 0, magic_circle_8: 0, magic_circle_9: 0, character_class_id: 4},
   {level: 2, magic_circle_1: 2, magic_circle_2: 0, magic_circle_3: 0, magic_circle_4: 0, magic_circle_5: 0, magic_circle_6: 0, magic_circle_7: 0, magic_circle_8: 0, magic_circle_9: 0, character_class_id: 4},
   {level: 3, magic_circle_1: 2, magic_circle_2: 1, magic_circle_3: 0, magic_circle_4: 0, magic_circle_5: 0, magic_circle_6: 0, magic_circle_7: 0, magic_circle_8: 0, magic_circle_9: 0, character_class_id: 4},
@@ -384,283 +442,227 @@ CharacterClassMagicCircle.create!([
   {level: 19, magic_circle_1: 5, magic_circle_2: 5, magic_circle_3: 5, magic_circle_4: 4, magic_circle_5: 4, magic_circle_6: 3, magic_circle_7: 3, magic_circle_8: 2, magic_circle_9: 2, character_class_id: 4},
   {level: 20, magic_circle_1: 6, magic_circle_2: 6, magic_circle_3: 5, magic_circle_4: 4, magic_circle_5: 4, magic_circle_6: 3, magic_circle_7: 3, magic_circle_8: 3, magic_circle_9: 2, character_class_id: 4}
 ])
-CharacterClassRequirement.create!([
-  {str_mod: 12, dex_mod: 0, cons_mod: 12, int_mod: 0, wis_mod: 0, char_mod: 0, character_class_id: 2},
-  {str_mod: 0, dex_mod: 0, cons_mod: 0, int_mod: 0, wis_mod: 14, char_mod: 0, character_class_id: 1},
-  {str_mod: 0, dex_mod: 14, cons_mod: 0, int_mod: 0, wis_mod: 0, char_mod: 0, character_class_id: 3},
-  {str_mod: 0, dex_mod: 0, cons_mod: 0, int_mod: 14, wis_mod: 0, char_mod: 0, character_class_id: 4}
-])
-
-CharacterClassSpecialization.create!(  {
-  name: 'Druida',
-  alignment_id: 2,
-  character_class_id: 1,
-  user_id: 1
-})
-CharacterClassSpecializationStage.create!([
-  {
-    description: 'A partir do 5o nível, o clérigo não se dedica mais a um deus em específico, dedicando sua adoração à natureza silvestre como um todo e, a partir desse ponto, passa a se deslocar sem deixar rastros, além de ser capaz de se comunicar com animais silvestres. ',
-    min_level: 5,
-    character_class_specialization_id: 1
-  },
-  {
-    description: 'No 8o nível, o druida troca o seu poder de afastar mortos-vivos pelo poder de controlar animais silvestres, que funciona da mesma forma. Um animal com 1 DVs corresponde a um esqueleto, um animal com 2 DVs equivale a um zumbi e assim sucessivamente, até o máximo de um animal com 8 DVs, que corresponde a um vampiro. A indicação A na tabela T3-2 indica que o animal é automaticamente controlado, e a indicação D não gera efeito adicional. ',
-    min_level: 8,
-    character_class_specialization_id: 1
-  },
-  {
-    description: 'No 16o nível o druida pode assumir a forma de um animal silvestre até 3 vezes por dia. Nessa metamorfose, o druida recuperará 3d8 PVs, e durante a metamorfose, a roupa e um item à escolha do druida serão absorvidos, reaparecendo quando este retornar à forma original. Um clérigo que se torna um druida não constrói uma fortaleza, mas sim cria um círculo druídico para adoração da natureza, junto com os seguidores que conquista.',
-    min_level: 16,
-    character_class_specialization_id: 1
-  }
-])
-
-CharacterClassSpecialization.create!({
-  name: 'Cultista',
-  alignment_id: 3,
-  character_class_id: 1,
-  user_id: 1
-})
-CharacterClassSpecializationStage.create!([
-  {
-    description: 'A partir do 5o nível, o clérigo não se dedica mais a um deus, mas sim a criaturas absolutamente caóticas, provenientes de outros planos de existência, recebendo através de sonhos os desejos de seus senhores caóticos. A partir desse ponto, o clérigo não precisa mais meditar para receber magias, sendo que as recebe durante os sonhos. ',
-    min_level: 5,
-    character_class_specialization_id: 2
-  },
-  {
-    description: 'A partir do 8o nível, o cultista pode optar, ao invés de afastar automaticamente um morto-vivo, por controlá-lo por até 24 horas. Findo esse período, o morto-vivo não estará mais sob o controle do cultista. ',
-    min_level: 8,
-    character_class_specialization_id: 2
-  },
-  {
-    description: 'A partir do 16o nível, o cultista pode afastar criaturas ordeiras da mesma forma que um clérigo afasta mortos-vivos, sendo que um esqueleto equivale a uma criatura de 1 DV, um zumbi equivale a uma criatura de 2 DVs e assim sucessivamente, até o máximo de uma criatura com 8 DVs, que equivale a um vampiro. A indicação A na tabela T3-2 indica que a criatura é automaticamente afastada, e a indicação D indica que a criatura é automaticamente destruída. Um cultista pode empregar o uso de armas cortantes para rituais.',
-    min_level: 16,
-    character_class_specialization_id: 2
-  }
-])
-
-CharacterClassSpecialization.create!({
-  name: 'Paladino',
-  alignment_id: 1,
-  character_class_id: 2,
-  user_id: 1
-})
-CharacterClassSpecializationStage.create!([
-  {
-    description: 'No 5o nível, o homem de armas passa a se dedicar fielmente a uma causa e a erradicar o caos, sendo que todos aqueles que se opõe a essa causa são seus adversários, e todos aqueles que abraçam essa causa são seus aliados. Um paladino é capaz de detectar o caos a 1 quilômetro de distância, desde que se concentre para tal. Existem diversas causas pelas quais um paladino pode vir lutar a favor, tais como a liberdade, a vida, a tirania, a opressão, dentre tantas outras possibilidades à escolha do jogador. ',
-    min_level: 5,
-    character_class_specialization_id: 3
-  },
-  {
-    description: 'No 8o nível, o paladino causa +1d6 de dano nos ataques contra criaturas caóticas. ',
-    min_level: 8,
-    character_class_specialization_id: 3
-  },
-  {
-    description: 'No 16o nível o dano extra aumenta para +2d6 e o paladino passa a emanar uma aura de proteção contra o caos de 3 metros de raio. Se um paladino usar um item mágico caótico (mesmo sem saber do alinhamento do item), perderá automaticamente 2 níveis e não poderá usar seus poderes enquanto estiver portando esse item. Se um paladino, por algum motivo, deixar de ser ordeiro, perderá 3 níveis e perderá todos seus poderes, até que retorne ao alinhamento apropriado.',
-    min_level: 16,
-    character_class_specialization_id: 3
-  }
-])
-
 
 CharacterClassSpecialization.create!([
+  {
+    name: 'Druida',
+    alignment_id: 2,
+    character_class_id: 1,
+    user_id: 1,
+    character_class_specialization_stages_attributes: [
+      {
+        description: 'A partir do 5o nível, o clérigo não se dedica mais a um deus em específico, dedicando sua adoração à natureza silvestre como um todo e, a partir desse ponto, passa a se deslocar sem deixar rastros, além de ser capaz de se comunicar com animais silvestres. ',
+        min_level: 5
+      },
+      {
+        description: 'No 8o nível, o druida troca o seu poder de afastar mortos-vivos pelo poder de controlar animais silvestres, que funciona da mesma forma. Um animal com 1 DVs corresponde a um esqueleto, um animal com 2 DVs equivale a um zumbi e assim sucessivamente, até o máximo de um animal com 8 DVs, que corresponde a um vampiro. A indicação A na tabela T3-2 indica que o animal é automaticamente controlado, e a indicação D não gera efeito adicional. ',
+        min_level: 8
+      },
+      {
+        description: 'No 16o nível o druida pode assumir a forma de um animal silvestre até 3 vezes por dia. Nessa metamorfose, o druida recuperará 3d8 PVs, e durante a metamorfose, a roupa e um item à escolha do druida serão absorvidos, reaparecendo quando este retornar à forma original. Um clérigo que se torna um druida não constrói uma fortaleza, mas sim cria um círculo druídico para adoração da natureza, junto com os seguidores que conquista.',
+        min_level: 16
+      }
+    ]
+  },
+  {
+    name: 'Cultista',
+    alignment_id: 3,
+    character_class_id: 1,
+    user_id: 1,
+    character_class_specialization_stages_attributes: [
+      {
+        description: 'A partir do 5o nível, o clérigo não se dedica mais a um deus, mas sim a criaturas absolutamente caóticas, provenientes de outros planos de existência, recebendo através de sonhos os desejos de seus senhores caóticos. A partir desse ponto, o clérigo não precisa mais meditar para receber magias, sendo que as recebe durante os sonhos. ',
+        min_level: 5
+      },
+      {
+        description: 'A partir do 8o nível, o cultista pode optar, ao invés de afastar automaticamente um morto-vivo, por controlá-lo por até 24 horas. Findo esse período, o morto-vivo não estará mais sob o controle do cultista. ',
+        min_level: 8
+      },
+      {
+        description: 'A partir do 16o nível, o cultista pode afastar criaturas ordeiras da mesma forma que um clérigo afasta mortos-vivos, sendo que um esqueleto equivale a uma criatura de 1 DV, um zumbi equivale a uma criatura de 2 DVs e assim sucessivamente, até o máximo de uma criatura com 8 DVs, que equivale a um vampiro. A indicação A na tabela T3-2 indica que a criatura é automaticamente afastada, e a indicação D indica que a criatura é automaticamente destruída. Um cultista pode empregar o uso de armas cortantes para rituais.',
+        min_level: 16
+      }
+    ]
+  },
+  {
+    name: 'Paladino',
+    alignment_id: 1,
+    character_class_id: 2,
+    user_id: 1,
+    character_class_specialization_stages_attributes: [
+      {
+        description: 'No 5o nível, o homem de armas passa a se dedicar fielmente a uma causa e a erradicar o caos, sendo que todos aqueles que se opõe a essa causa são seus adversários, e todos aqueles que abraçam essa causa são seus aliados. Um paladino é capaz de detectar o caos a 1 quilômetro de distância, desde que se concentre para tal. Existem diversas causas pelas quais um paladino pode vir lutar a favor, tais como a liberdade, a vida, a tirania, a opressão, dentre tantas outras possibilidades à escolha do jogador. ',
+        min_level: 5
+      },
+      {
+        description: 'No 8o nível, o paladino causa +1d6 de dano nos ataques contra criaturas caóticas. ',
+        min_level: 8
+      },
+      {
+        description: 'No 16o nível o dano extra aumenta para +2d6 e o paladino passa a emanar uma aura de proteção contra o caos de 3 metros de raio. Se um paladino usar um item mágico caótico (mesmo sem saber do alinhamento do item), perderá automaticamente 2 níveis e não poderá usar seus poderes enquanto estiver portando esse item. Se um paladino, por algum motivo, deixar de ser ordeiro, perderá 3 níveis e perderá todos seus poderes, até que retorne ao alinhamento apropriado.',
+        min_level: 16
+      }
+    ]
+  },
   {
     name: 'Guerreiro',
     alignment_id: 2,
     character_class_id: 2,
-    user_id: 1
-  },
-])
-CharacterClassSpecializationStage.create!([
-  {
-    description: 'no 5o nível, o homem de armas escolhe uma arma na qual se especializará, recebendo um bônus de +1 nos ataques e no dano usando a arma escolhida. ',
-    min_level: 5,
-    character_class_specialization_id: 4
-  },
-  {
-    description: 'A partir o 8o nível, o guerreiro receberá um bônus de +2 nos ataques e no dano usando essa arma, recebendo também uma penalidade de -2 nos ataques utilizando qualquer outra arma que não a que escolheu',
-    min_level: 8,
-    character_class_specialization_id: 4
-  },
-  {
-    description: 'A partir o 16o nível, o guerreiro receberá um bônus de +4 nos ataques e no dano usando essa arma, recebendo também uma penalidade de -4 nos ataques utilizando qualquer outra arma que não a que escolheu',
-    min_level: 16,
-    character_class_specialization_id: 4
-  }
-])
-
-
-CharacterClassSpecialization.create!({
-  name: 'Bárbaro',
-  alignment_id: 3,
-  character_class_id: 2,
-  user_id: 1
-})
-CharacterClassSpecializationStage.create!([
-  {
-    description: 'No 5o nível, o homem de armas rejeita as regras e os costumes da sociedade, adotando uma vida livre e desapegada de leis e da ordem. A partir desse nível, o homem de armas não poderá mais usar escudos nem armaduras superiores às de couro, porém sua selvageria o tornará mais resistente, concedendo um bônus de +2 para as jogadas de proteção que envolvam o atributo Constituição. ',
-    min_level: 5,
-    character_class_specialization_id: 5
+    user_id: 1,
+    character_class_specialization_stages_attributes: [
+      {
+        description: 'no 5o nível, o homem de armas escolhe uma arma na qual se especializará, recebendo um bônus de +1 nos ataques e no dano usando a arma escolhida. ',
+        min_level: 5
+      },
+      {
+        description: 'A partir o 8o nível, o guerreiro receberá um bônus de +2 nos ataques e no dano usando essa arma, recebendo também uma penalidade de -2 nos ataques utilizando qualquer outra arma que não a que escolheu',
+        min_level: 8
+      },
+      {
+        description: 'A partir o 16o nível, o guerreiro receberá um bônus de +4 nos ataques e no dano usando essa arma, recebendo também uma penalidade de -4 nos ataques utilizando qualquer outra arma que não a que escolheu',
+        min_level: 16
+      }
+    ]
   },
   {
-    description: 'A partir do 8o nível, devido à sua determinação selvagem, o bárbaro  não mais cairá ao chegar a 0 PVs, permanecendo em pé e lutando, até  chegar a -10 PV, ocasião em que morrerá automaticamente. ',
-    min_level: 8,
-    character_class_specialization_id: 5
+    name: 'Bárbaro',
+    alignment_id: 3,
+    character_class_id: 2,
+    user_id: 1,
+    character_class_specialization_stages_attributes: [
+      {
+        description: 'No 5o nível, o homem de armas rejeita as regras e os costumes da sociedade, adotando uma vida livre e desapegada de leis e da ordem. A partir desse nível, o homem de armas não poderá mais usar escudos nem armaduras superiores às de couro, porém sua selvageria o tornará mais resistente, concedendo um bônus de +2 para as jogadas de proteção que envolvam o atributo Constituição. ',
+        min_level: 5
+      },
+      {
+        description: 'A partir do 8o nível, devido à sua determinação selvagem, o bárbaro  não mais cairá ao chegar a 0 PVs, permanecendo em pé e lutando, até  chegar a -10 PV, ocasião em que morrerá automaticamente. ',
+        min_level: 8
+      },
+      {
+        description: 'A partir do 16o nível o bárbaro absorverá 1/3 de todo o dano que receber. Um bárbaro de 11o nível não ergue uma fortaleza, mas sim estabelece uma tribo de bárbaros proscritos, junto com os seguidores que conseguir.',
+        min_level: 16
+      }
+    ]
   },
   {
-    description: 'A partir do 16o nível o bárbaro absorverá 1/3 de todo o dano que receber. Um bárbaro de 11o nível não ergue uma fortaleza, mas sim estabelece uma tribo de bárbaros proscritos, junto com os seguidores que conseguir.',
-    min_level: 16,
-    character_class_specialization_id: 5
-  }
-])
-
-
-CharacterClassSpecialization.create!({
-  name: 'Ilusionista',
-  alignment_id: 2,
-  character_class_id: 3,
-  user_id: 1
-})
-CharacterClassSpecializationStage.create!([
-  {
-    description: 'No 5o nível, o mago passa a se dedicar ao estudo e à criação de ilusões, podendo uma vez ao dia criar uma ilusão menor e limitada ao seu corpo. Criaturas inteligentes têm 60% de chance de não acreditar na ilusão criada, enquanto criaturas não inteligentes têm apenas 40% de chance. ',
-    min_level: 5,
-    character_class_specialization_id: 6
+    name: 'Ilusionista',
+    alignment_id: 2,
+    character_class_id: 3,
+    user_id: 1,
+    character_class_specialization_stages_attributes: [
+      {
+        description: 'No 5o nível, o mago passa a se dedicar ao estudo e à criação de ilusões, podendo uma vez ao dia criar uma ilusão menor e limitada ao seu corpo. Criaturas inteligentes têm 60% de chance de não acreditar na ilusão criada, enquanto criaturas não inteligentes têm apenas 40% de chance. ',
+        min_level: 5
+      },
+      {
+        description: 'A partir do 8o nível, o ilusionista pode criar uma ilusão que envolva uma área de tamanho equivalente ao seu nível em m3, três vezes ao dia. Criaturas inteligentes têm 50% de chance de não acreditar na ilusão criada, enquanto criaturas não inteligentes têm apenas 30% de chance. ',
+        min_level: 8
+      },
+      {
+        description: 'A partir do 16o nível o ilusionista pode criar ilusões praticamente ilimitadas, cinco vezes ao dia. Criaturas inteligentes têm 40% de chance de não acreditar na ilusão criada, enquanto criaturas não inteligentes têm apenas 20% de chance.',
+        min_level: 16
+      }
+    ]
   },
   {
-    description: 'A partir do 8o nível, o ilusionista pode criar uma ilusão que envolva uma área de tamanho equivalente ao seu nível em m3, três vezes ao dia. Criaturas inteligentes têm 50% de chance de não acreditar na ilusão criada, enquanto criaturas não inteligentes têm apenas 30% de chance. ',
-    min_level: 8,
-    character_class_specialization_id: 6
+    name: 'Necromante',
+    alignment_id: 3,
+    character_class_id: 3,
+    user_id: 1,
+    character_class_specialization_stages_attributes: [
+      {
+        description: 'No 5o nível, o mago passa a se dedicar ao estudo das artes sombrias, que envolvem a criação e o controle de mortos-vivos, podendo reanimar um esqueleto por dia, que obedecerá às suas ordens e o efeito durará por uma semana. ',
+        min_level: 5
+      },
+      {
+        description: 'A partir do 8o nível, o necromante poderá reanimar três esqueletos por dia, que obedecerão às suas ordens e durarão até que sejam destruídos. ',
+        min_level: 8
+      },
+      {
+        description: 'A partir do 16o nível, o necromante poderá se tornar um lich, se tornando imune a efeitos de sono, medo, frio, veneno e outros que necessitem de alvos vivos, bem como se torna imune a acertos críticos. O lich transfere sua alma para uma filactéria, uma gema mágica criada no ritual em que o necromante se tornou um morto-vivo. Caso venha a ser destruído, o lich retornará em 1d4 dias, desde que a filactéria esteja intacta.',
+        min_level: 16
+      }
+    ]
   },
   {
-    description: 'A partir do 16o nível o ilusionista pode criar ilusões praticamente ilimitadas, cinco vezes ao dia. Criaturas inteligentes têm 40% de chance de não acreditar na ilusão criada, enquanto criaturas não inteligentes têm apenas 20% de chance.',
-    min_level: 16,
-    character_class_specialization_id: 6
-  }
-])
-
-CharacterClassSpecialization.create!({
-  name: 'Necromante',
-  alignment_id: 3,
-  character_class_id: 3,
-  user_id: 1
-})
-CharacterClassSpecializationStage.create!([
-  {
-    description: 'No 5o nível, o mago passa a se dedicar ao estudo das artes sombrias, que envolvem a criação e o controle de mortos-vivos, podendo reanimar um esqueleto por dia, que obedecerá às suas ordens e o efeito durará por uma semana. ',
-    min_level: 5,
-    character_class_specialization_id: 7
+    name: 'Ranger',
+    alignment_id: 1,
+    character_class_id: 4,
+    user_id: 1,
+    character_class_specialization_stages_attributes: [
+      {
+        description: 'a partir do 5o nível, o ladrão toma o rumo dos ermos e se dedica a patrulhar uma determinada área, protegendo-a de um certo tipo de criatura, sendo que, a partir desse nível, o ladrão poderá se deslocar sem deixar qualquer tipo de rastro e receberá +1 para todas as jogadas envolvendo surpresa. ',
+        min_level: 5
+      },
+      {
+        description: 'A partir do 8o nível, o ranger receberá um bônus de +1 nos ataques e no dano contra o tipo de criatura escolhido. A partir desse ponto, o ranger não progredirá mais em arrombar fechaduras e pungar. Escalar muros poderá ser utilizado para árvores, penhascos, etc. Ouvir barulhos servirá para rastrear uma criatura. ',
+        min_level: 8
+      },
+      {
+        description: 'A partir do 16o nível, o bônus contra o tipo de criatura determinado no 5o nível passa para +2, o ranger não será mais surpreendido e sempre surpreenderá um inimigo, desde que não se trate de outro ranger.',
+        min_level: 16
+      }
+    ]
   },
   {
-    description: 'A partir do 8o nível, o necromante poderá reanimar três esqueletos por dia, que obedecerão às suas ordens e durarão até que sejam destruídos. ',
-    min_level: 8,
-    character_class_specialization_id: 7
+    name: 'Explorador',
+    alignment_id: 1,
+    character_class_id: 4,
+    user_id: 1,
+    character_class_specialization_stages_attributes: [
+      {
+        description: 'a partir do 5o nível, o ladrão abandona a vida de crimes, se dedicando à exploração de ruínas e templos perdidos. A partir desse nível o explorador possui 80% de chance de conseguir decifrar qualquer tipo de escrita. Em caso de falha, uma nova tentativa só poderá ser realizada após o explorador ter subido um nível. ',
+        min_level: 5
+      },
+      {
+        description: 'A partir do 8o nível, o explorador para de progredir em pungar, mas recebe um bônus de 10% para jogadas que envolvam reconhecer e desarmar armadilhas.',
+        min_level: 8
+      },
+      {
+        description: 'A partir do 16o nível, o explorador pode lançar magias arcanas a partir de pergaminhos com 90% de chance de sucesso. Uma falha nessa jogada significa que ocorrerá um evento aleatório e de graves consequências para o explorador e para seu grupo.',
+        min_level: 16
+      }
+    ]
   },
   {
-    description: 'A partir do 16o nível, o necromante poderá se tornar um lich, se tornando imune a efeitos de sono, medo, frio, veneno e outros que necessitem de alvos vivos, bem como se torna imune a acertos críticos. O lich transfere sua alma para uma filactéria, uma gema mágica criada no ritual em que o necromante se tornou um morto-vivo. Caso venha a ser destruído, o lich retornará em 1d4 dias, desde que a filactéria esteja intacta.',
-    min_level: 16,
-    character_class_specialization_id: 7
-  }
-])
-
-
-CharacterClassSpecialization.create!({
-  name: 'Ranger',
-  alignment_id: 1,
-  character_class_id: 4,
-  user_id: 1
-})
-CharacterClassSpecializationStage.create!([
-  {
-    description: 'a partir do 5o nível, o ladrão toma o rumo dos ermos e se dedica a patrulhar uma determinada área, protegendo-a de um certo tipo de criatura, sendo que, a partir desse nível, o ladrão poderá se deslocar sem deixar qualquer tipo de rastro e receberá +1 para todas as jogadas envolvendo surpresa. ',
-    min_level: 5,
-    character_class_specialization_id: 8
+    name: 'Bardo',
+    alignment_id: 3,
+    character_class_id: 4,
+    user_id: 1,
+    character_class_specialization_stages_attributes: [
+      {
+        description: 'A partir do 5o nível, o ladrão passa a desenvolver a música  e a oratória como forma de contar os feitos de seu grupo e como forma de motivar seus aliados, dando a eles um bônus de +1 para suas jogadas de proteção. ',
+        min_level: 5
+      },
+      {
+        description: 'A partir do 8o nível, o bardo não progredirá mais em ataque pelas costas. A partir deste nível o bardo aumenta em 10% a chance de que uma  criatura que normalmente seria hostil para com ele aja de forma amistosa. ',
+        min_level: 8
+      },
+      {
+        description: 'A partir do 16o nível, o bônus de moral conferido pela canção do bardo  passa para +3 para os ataques e jogadas de proteção de seus aliados.',
+        min_level: 16
+      }
+    ]
   },
   {
-    description: 'A partir do 8o nível, o ranger receberá um bônus de +1 nos ataques e no dano contra o tipo de criatura escolhido. A partir desse ponto, o ranger não progredirá mais em arrombar fechaduras e pungar. Escalar muros poderá ser utilizado para árvores, penhascos, etc. Ouvir barulhos servirá para rastrear uma criatura. ',
-    min_level: 8,
-    character_class_specialization_id: 8
-  },
-  {
-    description: 'A partir do 16o nível, o bônus contra o tipo de criatura determinado no 5o nível passa para +2, o ranger não será mais surpreendido e sempre surpreenderá um inimigo, desde que não se trate de outro ranger.',
-    min_level: 16,
-    character_class_specialization_id: 8
-  }
-])
-
-
-CharacterClassSpecialization.create!({
-  name: 'Explorador',
-  alignment_id: 1,
-  character_class_id: 4,
-  user_id: 1
-})
-CharacterClassSpecializationStage.create!([
-  {
-    description: 'a partir do 5o nível, o ladrão abandona a vida de crimes, se dedicando à exploração de ruínas e templos perdidos. A partir desse nível o explorador possui 80% de chance de conseguir decifrar qualquer tipo de escrita. Em caso de falha, uma nova tentativa só poderá ser realizada após o explorador ter subido um nível. ',
-    min_level: 5,
-    character_class_specialization_id: 9
-  },
-  {
-    description: 'A partir do 8o nível, o explorador para de progredir em pungar, mas recebe um bônus de 10% para jogadas que envolvam reconhecer e desarmar armadilhas.',
-    min_level: 8,
-    character_class_specialization_id: 9
-  },
-  {
-    description: 'A partir do 16o nível, o explorador pode lançar magias arcanas a partir de pergaminhos com 90% de chance de sucesso. Uma falha nessa jogada significa que ocorrerá um evento aleatório e de graves consequências para o explorador e para seu grupo.',
-    min_level: 16,
-    character_class_specialization_id: 9
-  }
-])
-
-
-CharacterClassSpecialization.create!({
-  name: 'Bardo',
-  alignment_id: 3,
-  character_class_id: 4,
-  user_id: 1
-})
-CharacterClassSpecializationStage.create!([
-  {
-    description: 'A partir do 5o nível, o ladrão passa a desenvolver a música  e a oratória como forma de contar os feitos de seu grupo e como forma de motivar seus aliados, dando a eles um bônus de +1 para suas jogadas de proteção. ',
-    min_level: 5,
-    character_class_specialization_id: 10
-  },
-  {
-    description: 'A partir do 8o nível, o bardo não progredirá mais em ataque pelas costas. A partir deste nível o bardo aumenta em 10% a chance de que uma  criatura que normalmente seria hostil para com ele aja de forma amistosa. ',
-    min_level: 8,
-    character_class_specialization_id: 10
-  },
-  {
-    description: 'A partir do 16o nível, o bônus de moral conferido pela canção do bardo  passa para +3 para os ataques e jogadas de proteção de seus aliados.',
-    min_level: 16,
-    character_class_specialization_id: 10
-  }
-])
-
-
-CharacterClassSpecialization.create!({
-  name: 'Assassino',
-  alignment_id: 3,
-  character_class_id: 4,
-  user_id: 1
-})
-CharacterClassSpecializationStage.create!([
-  {
-    description: 'A partir do 5o nível, o ladrão passa a desenvolver técnicas mais eficientes para matar seus oponentes, recebendo um bônus de +2  no dano sempre que sua jogada de ataque resultar em um acerto crítico. ',
-    min_level: 5,
-    character_class_specialization_id: 11
-  },
-  {
-    description: 'A partir do 8o nível, o assassino não progredirá mais em pungar e em  reconhecer e desarmar armadilhas. A progressão antes utilizada para pungar passará a ser utilizada para que o assassino manipule veneno e o aplique com segurança em suas armas ou em objetos. ',
-    min_level: 8,
-    character_class_specialization_id: 11
-  },
-  {
-    description: 'A partir do 16o nível, sempre que sua jogada de ataque resultar em acerto crítico, o alvo deverá realizar uma jogada de proteção  modificada pela sua Constituição ou morrer automaticamente.',
-    min_level: 16,
-    character_class_specialization_id: 11
+    name: 'Assassino',
+    alignment_id: 3,
+    character_class_id: 4,
+    user_id: 1,
+    character_class_specialization_stages_attributes: [
+      {
+        description: 'A partir do 5o nível, o ladrão passa a desenvolver técnicas mais eficientes para matar seus oponentes, recebendo um bônus de +2  no dano sempre que sua jogada de ataque resultar em um acerto crítico. ',
+        min_level: 5
+      },
+      {
+        description: 'A partir do 8o nível, o assassino não progredirá mais em pungar e em  reconhecer e desarmar armadilhas. A progressão antes utilizada para pungar passará a ser utilizada para que o assassino manipule veneno e o aplique com segurança em suas armas ou em objetos. ',
+        min_level: 8
+      },
+      {
+        description: 'A partir do 16o nível, sempre que sua jogada de ataque resultar em acerto crítico, o alvo deverá realizar uma jogada de proteção  modificada pela sua Constituição ou morrer automaticamente.',
+        min_level: 16
+      }
+    ]
   }
 ])
 
@@ -670,9 +672,11 @@ CharacterRaceLanguage.create!([
   {character_race_id: 2, language_type_id: 1},
   {character_race_id: 2, language_type_id: 3}
 ])
+
 CharacterRaceSkill.create!([
   {character_race_id: 2, skill_id: 1}
 ])
+
 CharacterRaceThiefTalent.create!([
   {
     lockpick_mod: 0,
@@ -686,6 +690,7 @@ CharacterRaceThiefTalent.create!([
     character_race_id: 4
   }
 ])
+
 CharismaMod.create!([
   {value: 1, followers_mod: 0, reaction_mod: -25, undead_mod: "'0'"},
   {value: 2, followers_mod: 0, reaction_mod: -20, undead_mod: "'0'"},
@@ -717,6 +722,7 @@ CharismaMod.create!([
   {value: 28, followers_mod: 10, reaction_mod: 45, undead_mod: "'1d20'"},
   {value: 29, followers_mod: 10, reaction_mod: 45, undead_mod: "'1d20'"}
 ])
+
 ConstitutionMod.create!([
   {value: 1, hitpoints_mod: -5, protection_mod: -5, resurrection_mod: 0},
   {value: 2, hitpoints_mod: -4, protection_mod: -4, resurrection_mod: 0},
@@ -748,6 +754,7 @@ ConstitutionMod.create!([
   {value: 28, hitpoints_mod: 9, protection_mod: 9, resurrection_mod: 100},
   {value: 29, hitpoints_mod: 9, protection_mod: 9, resurrection_mod: 100}
 ])
+
 DexterityMod.create!([
   {value: 1, attack_mod: -5, surprise_mod: -5, armor_class_mod: -5, protection_mod: -5, find_traps_mod: -25, silent_movement_mod: -25, lockpick_mod: -25, stealth_mod: -25, pickpocket_mod: -25},
   {value: 2, attack_mod: -4, surprise_mod: -4, armor_class_mod: -4, protection_mod: -4, find_traps_mod: -20, silent_movement_mod: -20, lockpick_mod: -20, stealth_mod: -20, pickpocket_mod: -20},
@@ -779,6 +786,7 @@ DexterityMod.create!([
   {value: 28, attack_mod: 9, surprise_mod: 9, armor_class_mod: 9, protection_mod: 9, find_traps_mod: 35, silent_movement_mod: 45, lockpick_mod: 45, stealth_mod: 40, pickpocket_mod: 40},
   {value: 29, attack_mod: 9, surprise_mod: 9, armor_class_mod: 9, protection_mod: 9, find_traps_mod: 35, silent_movement_mod: 45, lockpick_mod: 45, stealth_mod: 40, pickpocket_mod: 40}
 ])
+
 IntelligenceMod.create!([
   {value: 1, languages_mod: 0, learn_magic_mod: 0, magic_circle_1_mod: 0, magic_circle_2_mod: 0, magic_circle_3_mod: 0, magic_circle_4_mod: 0, magic_circle_5_mod: 0, magic_circle_6_mod: 0, magic_circle_7_mod: 0, magic_circle_8_mod: 0, magic_circle_9_mod: 0},
   {value: 2, languages_mod: 0, learn_magic_mod: 0, magic_circle_1_mod: 0, magic_circle_2_mod: 0, magic_circle_3_mod: 0, magic_circle_4_mod: 0, magic_circle_5_mod: 0, magic_circle_6_mod: 0, magic_circle_7_mod: 0, magic_circle_8_mod: 0, magic_circle_9_mod: 0},
@@ -810,6 +818,7 @@ IntelligenceMod.create!([
   {value: 28, languages_mod: 8, learn_magic_mod: 95, magic_circle_1_mod: 3, magic_circle_2_mod: 3, magic_circle_3_mod: 1, magic_circle_4_mod: 0, magic_circle_5_mod: 0, magic_circle_6_mod: 0, magic_circle_7_mod: 0, magic_circle_8_mod: 0, magic_circle_9_mod: 0},
   {value: 29, languages_mod: 8, learn_magic_mod: 95, magic_circle_1_mod: 3, magic_circle_2_mod: 3, magic_circle_3_mod: 1, magic_circle_4_mod: 0, magic_circle_5_mod: 0, magic_circle_6_mod: 0, magic_circle_7_mod: 0, magic_circle_8_mod: 0, magic_circle_9_mod: 0}
 ])
+
 StrengthMod.create!([
   {value: 1, attack_mod: -5, damage_mod: -5},
   {value: 2, attack_mod: -4, damage_mod: -4},
@@ -841,6 +850,7 @@ StrengthMod.create!([
   {value: 28, attack_mod: 9, damage_mod: 9},
   {value: 29, attack_mod: 9, damage_mod: 9}
 ])
+
 ThiefTalent.create!([
   {level: 1, lockpick: 15, find_traps: 20, climb: 80, silent_movement: 20, stealth: 10, pickpocket: 20, hear_noises: "1-2", backstab: "x2"},
   {level: 2, lockpick: 20, find_traps: 25, climb: 81, silent_movement: 25, stealth: 15, pickpocket: 25, hear_noises: "1-2", backstab: "x2"},
@@ -863,6 +873,7 @@ ThiefTalent.create!([
   {level: 19, lockpick: 78, find_traps: 80, climb: 98, silent_movement: 86, stealth: 76, pickpocket: 86, hear_noises: "1-5", backstab: "x5"},
   {level: 20, lockpick: 80, find_traps: 82, climb: 99, silent_movement: 88, stealth: 78, pickpocket: 88, hear_noises: "1-5", backstab: "x5"}
 ])
+
 UndeadBane.create!([
   {level: 1, skelleton_mod: "13", zombie_mod: "17", ghoul_mod: "19", inhuman_mod: "N", aparition_mod: "N", mummy_mod: "N", specter_mod: "N", vampire_mod: "N"},
   {level: 2, skelleton_mod: "11", zombie_mod: "15", ghoul_mod: "18", inhuman_mod: "20", aparition_mod: "N", mummy_mod: "N", specter_mod: "N", vampire_mod: "N"},
@@ -885,6 +896,7 @@ UndeadBane.create!([
   {level: 19, skelleton_mod: "D", zombie_mod: "D", ghoul_mod: "D", inhuman_mod: "D", aparition_mod: "D", mummy_mod: "A", specter_mod: "2", vampire_mod: "5"},
   {level: 20, skelleton_mod: "D", zombie_mod: "D", ghoul_mod: "D", inhuman_mod: "D", aparition_mod: "D", mummy_mod: "A", specter_mod: "A", vampire_mod: "3"}
 ])
+
 WisdomMod.create!([
   {value: 1, protection_mod: -5, magic_circle_1_mod: 0, magic_circle_2_mod: 0, magic_circle_3_mod: 0},
   {value: 2, protection_mod: -4, magic_circle_1_mod: 0, magic_circle_2_mod: 0, magic_circle_3_mod: 0},

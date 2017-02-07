@@ -8,4 +8,6 @@ class CharacterClass < ActiveRecord::Base
   has_many :character_class_evolutions
   has_many :character_class_specializations
   has_one :character_class_requirement
+  accepts_nested_attributes_for :character_class_evolutions
+  accepts_nested_attributes_for :character_class_requirement
 end
