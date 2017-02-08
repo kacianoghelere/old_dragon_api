@@ -21,6 +21,7 @@ class GenerateForeignKeys < ActiveRecord::Migration
     add_foreign_key :character_class_specialization_stages, :character_class_specializations
     add_foreign_key :character_class_spell_types, :character_classes
     add_foreign_key :character_class_spell_types, :spell_types
+    add_foreign_key :character_class_thief_talents, :character_classes
     add_foreign_key :character_class_weapon_types, :character_classes
     add_foreign_key :character_class_weapon_types, :weapon_types
     add_foreign_key :character_classes, :character_class_types

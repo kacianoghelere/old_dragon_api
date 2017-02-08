@@ -179,6 +179,23 @@ ActiveRecord::Schema.define(version: 20170203120350) do
   add_index "character_class_spell_types", ["character_class_id"], name: "index_character_class_spell_types_on_character_class_id", using: :btree
   add_index "character_class_spell_types", ["spell_type_id"], name: "index_character_class_spell_types_on_spell_type_id", using: :btree
 
+  create_table "character_class_thief_talents", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+    t.integer  "level",               limit: 4, default: 1,     null: false
+    t.integer  "lockpick_mod",        limit: 4,                 null: false
+    t.integer  "find_traps_mod",      limit: 4,                 null: false
+    t.integer  "climb_mod",           limit: 4,                 null: false
+    t.integer  "silent_movement_mod", limit: 4,                 null: false
+    t.integer  "stealth_mod",         limit: 4,                 null: false
+    t.integer  "pickpocket_mod",      limit: 4,                 null: false
+    t.string   "hear_noises_mod",     limit: 3, default: "1-1", null: false
+    t.string   "backstab_mod",        limit: 2, default: "x2",  null: false
+    t.integer  "character_class_id",  limit: 8,                 null: false
+    t.datetime "created_at",                                    null: false
+    t.datetime "updated_at",                                    null: false
+  end
+
+  add_index "character_class_thief_talents", ["character_class_id"], name: "index_character_class_thief_talents_on_character_class_id", using: :btree
+
   create_table "character_class_types", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "name",              limit: 45,                 null: false
     t.boolean  "magic",                        default: false, null: false
@@ -690,6 +707,7 @@ ActiveRecord::Schema.define(version: 20170203120350) do
   add_foreign_key "character_class_specializations", "users"
   add_foreign_key "character_class_spell_types", "character_classes"
   add_foreign_key "character_class_spell_types", "spell_types"
+  add_foreign_key "character_class_thief_talents", "character_classes"
   add_foreign_key "character_class_weapon_types", "character_classes"
   add_foreign_key "character_class_weapon_types", "weapon_types"
   add_foreign_key "character_classes", "character_class_types"

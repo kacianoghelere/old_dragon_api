@@ -274,6 +274,28 @@ CharacterClass.create!([
       {level: 19, exp: 1200000, life_amount: 5, plus_life: true, attack_base: 7, attack_base2: 0, protection_mod: 9},
       {level: 20, exp: 1300000, life_amount: 6, plus_life: true, attack_base: 8, attack_base2: 0, protection_mod: 9}
     ],
+    character_class_magic_circles_attributes: [
+      {level: 1, magic_circle_1: 1, magic_circle_2: 0, magic_circle_3: 0, magic_circle_4: 0, magic_circle_5: 0, magic_circle_6: 0, magic_circle_7: 0, magic_circle_8: 0, magic_circle_9: 0},
+      {level: 2, magic_circle_1: 2, magic_circle_2: 0, magic_circle_3: 0, magic_circle_4: 0, magic_circle_5: 0, magic_circle_6: 0, magic_circle_7: 0, magic_circle_8: 0, magic_circle_9: 0},
+      {level: 3, magic_circle_1: 2, magic_circle_2: 1, magic_circle_3: 0, magic_circle_4: 0, magic_circle_5: 0, magic_circle_6: 0, magic_circle_7: 0, magic_circle_8: 0, magic_circle_9: 0},
+      {level: 4, magic_circle_1: 3, magic_circle_2: 2, magic_circle_3: 0, magic_circle_4: 0, magic_circle_5: 0, magic_circle_6: 0, magic_circle_7: 0, magic_circle_8: 0, magic_circle_9: 0},
+      {level: 5, magic_circle_1: 3, magic_circle_2: 2, magic_circle_3: 1, magic_circle_4: 0, magic_circle_5: 0, magic_circle_6: 0, magic_circle_7: 0, magic_circle_8: 0, magic_circle_9: 0},
+      {level: 6, magic_circle_1: 3, magic_circle_2: 3, magic_circle_3: 2, magic_circle_4: 0, magic_circle_5: 0, magic_circle_6: 0, magic_circle_7: 0, magic_circle_8: 0, magic_circle_9: 0},
+      {level: 7, magic_circle_1: 4, magic_circle_2: 3, magic_circle_3: 2, magic_circle_4: 1, magic_circle_5: 0, magic_circle_6: 0, magic_circle_7: 0, magic_circle_8: 0, magic_circle_9: 0},
+      {level: 8, magic_circle_1: 4, magic_circle_2: 3, magic_circle_3: 3, magic_circle_4: 2, magic_circle_5: 0, magic_circle_6: 0, magic_circle_7: 0, magic_circle_8: 0, magic_circle_9: 0},
+      {level: 9, magic_circle_1: 4, magic_circle_2: 4, magic_circle_3: 3, magic_circle_4: 2, magic_circle_5: 1, magic_circle_6: 0, magic_circle_7: 0, magic_circle_8: 0, magic_circle_9: 0},
+      {level: 10, magic_circle_1: 5, magic_circle_2: 4, magic_circle_3: 3, magic_circle_4: 3, magic_circle_5: 2, magic_circle_6: 0, magic_circle_7: 0, magic_circle_8: 0, magic_circle_9: 0},
+      {level: 11, magic_circle_1: 5, magic_circle_2: 4, magic_circle_3: 4, magic_circle_4: 3, magic_circle_5: 2, magic_circle_6: 1, magic_circle_7: 0, magic_circle_8: 0, magic_circle_9: 0},
+      {level: 12, magic_circle_1: 5, magic_circle_2: 5, magic_circle_3: 4, magic_circle_4: 3, magic_circle_5: 3, magic_circle_6: 2, magic_circle_7: 0, magic_circle_8: 0, magic_circle_9: 0},
+      {level: 13, magic_circle_1: 6, magic_circle_2: 5, magic_circle_3: 4, magic_circle_4: 4, magic_circle_5: 3, magic_circle_6: 2, magic_circle_7: 0, magic_circle_8: 0, magic_circle_9: 0},
+      {level: 14, magic_circle_1: 6, magic_circle_2: 5, magic_circle_3: 5, magic_circle_4: 4, magic_circle_5: 3, magic_circle_6: 3, magic_circle_7: 0, magic_circle_8: 0, magic_circle_9: 0},
+      {level: 15, magic_circle_1: 7, magic_circle_2: 6, magic_circle_3: 5, magic_circle_4: 4, magic_circle_5: 4, magic_circle_6: 3, magic_circle_7: 1, magic_circle_8: 0, magic_circle_9: 0},
+      {level: 16, magic_circle_1: 7, magic_circle_2: 6, magic_circle_3: 5, magic_circle_4: 5, magic_circle_5: 4, magic_circle_6: 3, magic_circle_7: 2, magic_circle_8: 0, magic_circle_9: 0},
+      {level: 17, magic_circle_1: 8, magic_circle_2: 7, magic_circle_3: 6, magic_circle_4: 5, magic_circle_5: 4, magic_circle_6: 4, magic_circle_7: 2, magic_circle_8: 0, magic_circle_9: 0},
+      {level: 18, magic_circle_1: 8, magic_circle_2: 7, magic_circle_3: 6, magic_circle_4: 5, magic_circle_5: 5, magic_circle_6: 4, magic_circle_7: 3, magic_circle_8: 0, magic_circle_9: 0},
+      {level: 19, magic_circle_1: 9, magic_circle_2: 8, magic_circle_3: 7, magic_circle_4: 6, magic_circle_5: 5, magic_circle_6: 4, magic_circle_7: 3, magic_circle_8: 0, magic_circle_9: 0},
+      {level: 20, magic_circle_1: 9, magic_circle_2: 8, magic_circle_3: 7, magic_circle_4: 6, magic_circle_5: 5, magic_circle_6: 5, magic_circle_7: 3, magic_circle_8: 0, magic_circle_9: 0}
+    ],    
     character_class_requirement_attributes: {
       str_mod: 0,
       dex_mod: 0,
@@ -350,6 +372,28 @@ CharacterClass.create!([
       {level: 19, exp: 1360000, life_amount: 4, plus_life: true, attack_base: 7, attack_base2: 0, protection_mod: 9},
       {level: 20, exp: 1480000, life_amount: 4, plus_life: true, attack_base: 7, attack_base2: 0, protection_mod: 9}
     ],
+    character_class_thief_talents_attributes: [
+      {level: 1, lockpick_mod: 15, find_traps_mod: 20, climb_mod: 80, silent_movement_mod: 10, stealth_mod: 10, pickpocket_mod: 20, hear_noises_mod: "1-2", backstab_mod: "x2"},
+      {level: 2, lockpick_mod: 20, find_traps_mod: 25, climb_mod: 81, silent_movement_mod: 15, stealth_mod: 15, pickpocket_mod: 25, hear_noises_mod: "1-2", backstab_mod: "x2"},
+      {level: 3, lockpick_mod: 25, find_traps_mod: 30, climb_mod: 82, silent_movement_mod: 20, stealth_mod: 20, pickpocket_mod: 30, hear_noises_mod: "1-2", backstab_mod: "x2"},
+      {level: 4, lockpick_mod: 30, find_traps_mod: 35, climb_mod: 83, silent_movement_mod: 25, stealth_mod: 25, pickpocket_mod: 35, hear_noises_mod: "1-2", backstab_mod: "x2"},
+      {level: 5, lockpick_mod: 35, find_traps_mod: 40, climb_mod: 84, silent_movement_mod: 30, stealth_mod: 30, pickpocket_mod: 40, hear_noises_mod: "1-3", backstab_mod: "x2"},
+      {level: 6, lockpick_mod: 40, find_traps_mod: 45, climb_mod: 85, silent_movement_mod: 35, stealth_mod: 35, pickpocket_mod: 45, hear_noises_mod: "1-3", backstab_mod: "x3"},
+      {level: 7, lockpick_mod: 45, find_traps_mod: 50, climb_mod: 86, silent_movement_mod: 40, stealth_mod: 40, pickpocket_mod: 50, hear_noises_mod: "1-3", backstab_mod: "x3"},
+      {level: 8, lockpick_mod: 50, find_traps_mod: 55, climb_mod: 87, silent_movement_mod: 45, stealth_mod: 45, pickpocket_mod: 55, hear_noises_mod: "1-3", backstab_mod: "x3"},
+      {level: 9, lockpick_mod: 55, find_traps_mod: 60, climb_mod: 88, silent_movement_mod: 50, stealth_mod: 50, pickpocket_mod: 60, hear_noises_mod: "1-3", backstab_mod: "x3"},
+      {level: 10, lockpick_mod: 60, find_traps_mod: 62, climb_mod: 89, silent_movement_mod: 55, stealth_mod: 55, pickpocket_mod: 65, hear_noises_mod: "1-4", backstab_mod: "x3"},
+      {level: 11, lockpick_mod: 62, find_traps_mod: 64, climb_mod: 90, silent_movement_mod: 60, stealth_mod: 60, pickpocket_mod: 70, hear_noises_mod: "1-4", backstab_mod: "x3"},
+      {level: 12, lockpick_mod: 64, find_traps_mod: 66, climb_mod: 91, silent_movement_mod: 62, stealth_mod: 62, pickpocket_mod: 72, hear_noises_mod: "1-4", backstab_mod: "x4"},
+      {level: 13, lockpick_mod: 66, find_traps_mod: 68, climb_mod: 92, silent_movement_mod: 64, stealth_mod: 64, pickpocket_mod: 74, hear_noises_mod: "1-4", backstab_mod: "x4"},
+      {level: 14, lockpick_mod: 68, find_traps_mod: 70, climb_mod: 93, silent_movement_mod: 66, stealth_mod: 66, pickpocket_mod: 76, hear_noises_mod: "1-4", backstab_mod: "x4"},
+      {level: 15, lockpick_mod: 70, find_traps_mod: 72, climb_mod: 94, silent_movement_mod: 68, stealth_mod: 68, pickpocket_mod: 78, hear_noises_mod: "1-4", backstab_mod: "x4"},
+      {level: 16, lockpick_mod: 72, find_traps_mod: 74, climb_mod: 95, silent_movement_mod: 70, stealth_mod: 70, pickpocket_mod: 80, hear_noises_mod: "1-5", backstab_mod: "x4"},
+      {level: 17, lockpick_mod: 74, find_traps_mod: 76, climb_mod: 96, silent_movement_mod: 72, stealth_mod: 72, pickpocket_mod: 82, hear_noises_mod: "1-5", backstab_mod: "x4"},
+      {level: 18, lockpick_mod: 76, find_traps_mod: 78, climb_mod: 97, silent_movement_mod: 74, stealth_mod: 74, pickpocket_mod: 84, hear_noises_mod: "1-5", backstab_mod: "x5"},
+      {level: 19, lockpick_mod: 78, find_traps_mod: 80, climb_mod: 98, silent_movement_mod: 76, stealth_mod: 76, pickpocket_mod: 86, hear_noises_mod: "1-5", backstab_mod: "x5"},
+      {level: 20, lockpick_mod: 80, find_traps_mod: 82, climb_mod: 99, silent_movement_mod: 78, stealth_mod: 78, pickpocket_mod: 88, hear_noises_mod: "1-5", backstab_mod: "x5"}
+    ],
     character_class_requirement_attributes: {
       str_mod: 0,
       dex_mod: 14,
@@ -388,6 +432,28 @@ CharacterClass.create!([
       {level: 19, exp: 1210000, life_amount: 2, plus_life: true, attack_base: 7, attack_base2: 0, protection_mod: 8},
       {level: 20, exp: 1260000, life_amount: 3, plus_life: true, attack_base: 7, attack_base2: 0, protection_mod: 8}
     ],
+    character_class_magic_circles_attributes: [
+      {level: 1, magic_circle_1: 1, magic_circle_2: 0, magic_circle_3: 0, magic_circle_4: 0, magic_circle_5: 0, magic_circle_6: 0, magic_circle_7: 0, magic_circle_8: 0, magic_circle_9: 0},
+      {level: 2, magic_circle_1: 2, magic_circle_2: 0, magic_circle_3: 0, magic_circle_4: 0, magic_circle_5: 0, magic_circle_6: 0, magic_circle_7: 0, magic_circle_8: 0, magic_circle_9: 0},
+      {level: 3, magic_circle_1: 2, magic_circle_2: 1, magic_circle_3: 0, magic_circle_4: 0, magic_circle_5: 0, magic_circle_6: 0, magic_circle_7: 0, magic_circle_8: 0, magic_circle_9: 0},
+      {level: 4, magic_circle_1: 2, magic_circle_2: 2, magic_circle_3: 0, magic_circle_4: 0, magic_circle_5: 0, magic_circle_6: 0, magic_circle_7: 0, magic_circle_8: 0, magic_circle_9: 0},
+      {level: 5, magic_circle_1: 2, magic_circle_2: 2, magic_circle_3: 1, magic_circle_4: 0, magic_circle_5: 0, magic_circle_6: 0, magic_circle_7: 0, magic_circle_8: 0, magic_circle_9: 0},
+      {level: 6, magic_circle_1: 3, magic_circle_2: 2, magic_circle_3: 2, magic_circle_4: 0, magic_circle_5: 0, magic_circle_6: 0, magic_circle_7: 0, magic_circle_8: 0, magic_circle_9: 0},
+      {level: 7, magic_circle_1: 3, magic_circle_2: 2, magic_circle_3: 2, magic_circle_4: 1, magic_circle_5: 0, magic_circle_6: 0, magic_circle_7: 0, magic_circle_8: 0, magic_circle_9: 0},
+      {level: 8, magic_circle_1: 3, magic_circle_2: 3, magic_circle_3: 2, magic_circle_4: 2, magic_circle_5: 0, magic_circle_6: 0, magic_circle_7: 0, magic_circle_8: 0, magic_circle_9: 0},
+      {level: 9, magic_circle_1: 3, magic_circle_2: 3, magic_circle_3: 2, magic_circle_4: 2, magic_circle_5: 1, magic_circle_6: 0, magic_circle_7: 0, magic_circle_8: 0, magic_circle_9: 0},
+      {level: 10, magic_circle_1: 3, magic_circle_2: 3, magic_circle_3: 3, magic_circle_4: 2, magic_circle_5: 2, magic_circle_6: 0, magic_circle_7: 0, magic_circle_8: 0, magic_circle_9: 0},
+      {level: 11, magic_circle_1: 4, magic_circle_2: 3, magic_circle_3: 3, magic_circle_4: 2, magic_circle_5: 2, magic_circle_6: 1, magic_circle_7: 0, magic_circle_8: 0, magic_circle_9: 0},
+      {level: 12, magic_circle_1: 4, magic_circle_2: 3, magic_circle_3: 3, magic_circle_4: 3, magic_circle_5: 2, magic_circle_6: 2, magic_circle_7: 0, magic_circle_8: 0, magic_circle_9: 0},
+      {level: 13, magic_circle_1: 4, magic_circle_2: 4, magic_circle_3: 3, magic_circle_4: 3, magic_circle_5: 2, magic_circle_6: 2, magic_circle_7: 1, magic_circle_8: 0, magic_circle_9: 0},
+      {level: 14, magic_circle_1: 4, magic_circle_2: 4, magic_circle_3: 3, magic_circle_4: 3, magic_circle_5: 3, magic_circle_6: 2, magic_circle_7: 2, magic_circle_8: 0, magic_circle_9: 0},
+      {level: 15, magic_circle_1: 5, magic_circle_2: 4, magic_circle_3: 4, magic_circle_4: 3, magic_circle_5: 3, magic_circle_6: 2, magic_circle_7: 2, magic_circle_8: 1, magic_circle_9: 0},
+      {level: 16, magic_circle_1: 5, magic_circle_2: 4, magic_circle_3: 4, magic_circle_4: 3, magic_circle_5: 3, magic_circle_6: 3, magic_circle_7: 2, magic_circle_8: 2, magic_circle_9: 0},
+      {level: 17, magic_circle_1: 5, magic_circle_2: 5, magic_circle_3: 4, magic_circle_4: 4, magic_circle_5: 3, magic_circle_6: 3, magic_circle_7: 2, magic_circle_8: 2, magic_circle_9: 1},
+      {level: 18, magic_circle_1: 5, magic_circle_2: 5, magic_circle_3: 4, magic_circle_4: 4, magic_circle_5: 3, magic_circle_6: 3, magic_circle_7: 3, magic_circle_8: 2, magic_circle_9: 2},
+      {level: 19, magic_circle_1: 5, magic_circle_2: 5, magic_circle_3: 5, magic_circle_4: 4, magic_circle_5: 4, magic_circle_6: 3, magic_circle_7: 3, magic_circle_8: 2, magic_circle_9: 2},
+      {level: 20, magic_circle_1: 6, magic_circle_2: 6, magic_circle_3: 5, magic_circle_4: 4, magic_circle_5: 4, magic_circle_6: 3, magic_circle_7: 3, magic_circle_8: 3, magic_circle_9: 2}
+    ],
     character_class_requirement_attributes: {
       str_mod: 0,
       dex_mod: 0,
@@ -397,50 +463,6 @@ CharacterClass.create!([
       char_mod: 0
     }
   }
-])
-
-CharacterClassMagicCircle.create!([
-  {level: 1, magic_circle_1: 1, magic_circle_2: 0, magic_circle_3: 0, magic_circle_4: 0, magic_circle_5: 0, magic_circle_6: 0, magic_circle_7: 0, magic_circle_8: 0, magic_circle_9: 0, character_class_id: 1},
-  {level: 2, magic_circle_1: 2, magic_circle_2: 0, magic_circle_3: 0, magic_circle_4: 0, magic_circle_5: 0, magic_circle_6: 0, magic_circle_7: 0, magic_circle_8: 0, magic_circle_9: 0, character_class_id: 1},
-  {level: 3, magic_circle_1: 2, magic_circle_2: 1, magic_circle_3: 0, magic_circle_4: 0, magic_circle_5: 0, magic_circle_6: 0, magic_circle_7: 0, magic_circle_8: 0, magic_circle_9: 0, character_class_id: 1},
-  {level: 4, magic_circle_1: 3, magic_circle_2: 2, magic_circle_3: 0, magic_circle_4: 0, magic_circle_5: 0, magic_circle_6: 0, magic_circle_7: 0, magic_circle_8: 0, magic_circle_9: 0, character_class_id: 1},
-  {level: 5, magic_circle_1: 3, magic_circle_2: 2, magic_circle_3: 1, magic_circle_4: 0, magic_circle_5: 0, magic_circle_6: 0, magic_circle_7: 0, magic_circle_8: 0, magic_circle_9: 0, character_class_id: 1},
-  {level: 6, magic_circle_1: 3, magic_circle_2: 3, magic_circle_3: 2, magic_circle_4: 0, magic_circle_5: 0, magic_circle_6: 0, magic_circle_7: 0, magic_circle_8: 0, magic_circle_9: 0, character_class_id: 1},
-  {level: 7, magic_circle_1: 4, magic_circle_2: 3, magic_circle_3: 2, magic_circle_4: 1, magic_circle_5: 0, magic_circle_6: 0, magic_circle_7: 0, magic_circle_8: 0, magic_circle_9: 0, character_class_id: 1},
-  {level: 8, magic_circle_1: 4, magic_circle_2: 3, magic_circle_3: 3, magic_circle_4: 2, magic_circle_5: 0, magic_circle_6: 0, magic_circle_7: 0, magic_circle_8: 0, magic_circle_9: 0, character_class_id: 1},
-  {level: 9, magic_circle_1: 4, magic_circle_2: 4, magic_circle_3: 3, magic_circle_4: 2, magic_circle_5: 1, magic_circle_6: 0, magic_circle_7: 0, magic_circle_8: 0, magic_circle_9: 0, character_class_id: 1},
-  {level: 10, magic_circle_1: 5, magic_circle_2: 4, magic_circle_3: 3, magic_circle_4: 3, magic_circle_5: 2, magic_circle_6: 0, magic_circle_7: 0, magic_circle_8: 0, magic_circle_9: 0, character_class_id: 1},
-  {level: 11, magic_circle_1: 5, magic_circle_2: 4, magic_circle_3: 4, magic_circle_4: 3, magic_circle_5: 2, magic_circle_6: 1, magic_circle_7: 0, magic_circle_8: 0, magic_circle_9: 0, character_class_id: 1},
-  {level: 12, magic_circle_1: 5, magic_circle_2: 5, magic_circle_3: 4, magic_circle_4: 3, magic_circle_5: 3, magic_circle_6: 2, magic_circle_7: 0, magic_circle_8: 0, magic_circle_9: 0, character_class_id: 1},
-  {level: 13, magic_circle_1: 6, magic_circle_2: 5, magic_circle_3: 4, magic_circle_4: 4, magic_circle_5: 3, magic_circle_6: 2, magic_circle_7: 0, magic_circle_8: 0, magic_circle_9: 0, character_class_id: 1},
-  {level: 14, magic_circle_1: 6, magic_circle_2: 5, magic_circle_3: 5, magic_circle_4: 4, magic_circle_5: 3, magic_circle_6: 3, magic_circle_7: 0, magic_circle_8: 0, magic_circle_9: 0, character_class_id: 1},
-  {level: 15, magic_circle_1: 7, magic_circle_2: 6, magic_circle_3: 5, magic_circle_4: 4, magic_circle_5: 4, magic_circle_6: 3, magic_circle_7: 1, magic_circle_8: 0, magic_circle_9: 0, character_class_id: 1},
-  {level: 16, magic_circle_1: 7, magic_circle_2: 6, magic_circle_3: 5, magic_circle_4: 5, magic_circle_5: 4, magic_circle_6: 3, magic_circle_7: 2, magic_circle_8: 0, magic_circle_9: 0, character_class_id: 1},
-  {level: 17, magic_circle_1: 8, magic_circle_2: 7, magic_circle_3: 6, magic_circle_4: 5, magic_circle_5: 4, magic_circle_6: 4, magic_circle_7: 2, magic_circle_8: 0, magic_circle_9: 0, character_class_id: 1},
-  {level: 18, magic_circle_1: 8, magic_circle_2: 7, magic_circle_3: 6, magic_circle_4: 5, magic_circle_5: 5, magic_circle_6: 4, magic_circle_7: 3, magic_circle_8: 0, magic_circle_9: 0, character_class_id: 1},
-  {level: 19, magic_circle_1: 9, magic_circle_2: 8, magic_circle_3: 7, magic_circle_4: 6, magic_circle_5: 5, magic_circle_6: 4, magic_circle_7: 3, magic_circle_8: 0, magic_circle_9: 0, character_class_id: 1},
-  {level: 20, magic_circle_1: 9, magic_circle_2: 8, magic_circle_3: 7, magic_circle_4: 6, magic_circle_5: 5, magic_circle_6: 5, magic_circle_7: 3, magic_circle_8: 0, magic_circle_9: 0, character_class_id: 1},
-
-  {level: 1, magic_circle_1: 1, magic_circle_2: 0, magic_circle_3: 0, magic_circle_4: 0, magic_circle_5: 0, magic_circle_6: 0, magic_circle_7: 0, magic_circle_8: 0, magic_circle_9: 0, character_class_id: 4},
-  {level: 2, magic_circle_1: 2, magic_circle_2: 0, magic_circle_3: 0, magic_circle_4: 0, magic_circle_5: 0, magic_circle_6: 0, magic_circle_7: 0, magic_circle_8: 0, magic_circle_9: 0, character_class_id: 4},
-  {level: 3, magic_circle_1: 2, magic_circle_2: 1, magic_circle_3: 0, magic_circle_4: 0, magic_circle_5: 0, magic_circle_6: 0, magic_circle_7: 0, magic_circle_8: 0, magic_circle_9: 0, character_class_id: 4},
-  {level: 4, magic_circle_1: 2, magic_circle_2: 2, magic_circle_3: 0, magic_circle_4: 0, magic_circle_5: 0, magic_circle_6: 0, magic_circle_7: 0, magic_circle_8: 0, magic_circle_9: 0, character_class_id: 4},
-  {level: 5, magic_circle_1: 2, magic_circle_2: 2, magic_circle_3: 1, magic_circle_4: 0, magic_circle_5: 0, magic_circle_6: 0, magic_circle_7: 0, magic_circle_8: 0, magic_circle_9: 0, character_class_id: 4},
-  {level: 6, magic_circle_1: 3, magic_circle_2: 2, magic_circle_3: 2, magic_circle_4: 0, magic_circle_5: 0, magic_circle_6: 0, magic_circle_7: 0, magic_circle_8: 0, magic_circle_9: 0, character_class_id: 4},
-  {level: 7, magic_circle_1: 3, magic_circle_2: 2, magic_circle_3: 2, magic_circle_4: 1, magic_circle_5: 0, magic_circle_6: 0, magic_circle_7: 0, magic_circle_8: 0, magic_circle_9: 0, character_class_id: 4},
-  {level: 8, magic_circle_1: 3, magic_circle_2: 3, magic_circle_3: 2, magic_circle_4: 2, magic_circle_5: 0, magic_circle_6: 0, magic_circle_7: 0, magic_circle_8: 0, magic_circle_9: 0, character_class_id: 4},
-  {level: 9, magic_circle_1: 3, magic_circle_2: 3, magic_circle_3: 2, magic_circle_4: 2, magic_circle_5: 1, magic_circle_6: 0, magic_circle_7: 0, magic_circle_8: 0, magic_circle_9: 0, character_class_id: 4},
-  {level: 10, magic_circle_1: 3, magic_circle_2: 3, magic_circle_3: 3, magic_circle_4: 2, magic_circle_5: 2, magic_circle_6: 0, magic_circle_7: 0, magic_circle_8: 0, magic_circle_9: 0, character_class_id: 4},
-  {level: 11, magic_circle_1: 4, magic_circle_2: 3, magic_circle_3: 3, magic_circle_4: 2, magic_circle_5: 2, magic_circle_6: 1, magic_circle_7: 0, magic_circle_8: 0, magic_circle_9: 0, character_class_id: 4},
-  {level: 12, magic_circle_1: 4, magic_circle_2: 3, magic_circle_3: 3, magic_circle_4: 3, magic_circle_5: 2, magic_circle_6: 2, magic_circle_7: 0, magic_circle_8: 0, magic_circle_9: 0, character_class_id: 4},
-  {level: 13, magic_circle_1: 4, magic_circle_2: 4, magic_circle_3: 3, magic_circle_4: 3, magic_circle_5: 2, magic_circle_6: 2, magic_circle_7: 1, magic_circle_8: 0, magic_circle_9: 0, character_class_id: 4},
-  {level: 14, magic_circle_1: 4, magic_circle_2: 4, magic_circle_3: 3, magic_circle_4: 3, magic_circle_5: 3, magic_circle_6: 2, magic_circle_7: 2, magic_circle_8: 0, magic_circle_9: 0, character_class_id: 4},
-  {level: 15, magic_circle_1: 5, magic_circle_2: 4, magic_circle_3: 4, magic_circle_4: 3, magic_circle_5: 3, magic_circle_6: 2, magic_circle_7: 2, magic_circle_8: 1, magic_circle_9: 0, character_class_id: 4},
-  {level: 16, magic_circle_1: 5, magic_circle_2: 4, magic_circle_3: 4, magic_circle_4: 3, magic_circle_5: 3, magic_circle_6: 3, magic_circle_7: 2, magic_circle_8: 2, magic_circle_9: 0, character_class_id: 4},
-  {level: 17, magic_circle_1: 5, magic_circle_2: 5, magic_circle_3: 4, magic_circle_4: 4, magic_circle_5: 3, magic_circle_6: 3, magic_circle_7: 2, magic_circle_8: 2, magic_circle_9: 1, character_class_id: 4},
-  {level: 18, magic_circle_1: 5, magic_circle_2: 5, magic_circle_3: 4, magic_circle_4: 4, magic_circle_5: 3, magic_circle_6: 3, magic_circle_7: 3, magic_circle_8: 2, magic_circle_9: 2, character_class_id: 4},
-  {level: 19, magic_circle_1: 5, magic_circle_2: 5, magic_circle_3: 5, magic_circle_4: 4, magic_circle_5: 4, magic_circle_6: 3, magic_circle_7: 3, magic_circle_8: 2, magic_circle_9: 2, character_class_id: 4},
-  {level: 20, magic_circle_1: 6, magic_circle_2: 6, magic_circle_3: 5, magic_circle_4: 4, magic_circle_5: 4, magic_circle_6: 3, magic_circle_7: 3, magic_circle_8: 3, magic_circle_9: 2, character_class_id: 4}
 ])
 
 CharacterClassSpecialization.create!([
@@ -547,7 +569,7 @@ CharacterClassSpecialization.create!([
   {
     name: 'Ilusionista',
     alignment_id: 2,
-    character_class_id: 3,
+    character_class_id: 4,
     user_id: 1,
     character_class_specialization_stages_attributes: [
       {
@@ -567,7 +589,7 @@ CharacterClassSpecialization.create!([
   {
     name: 'Necromante',
     alignment_id: 3,
-    character_class_id: 3,
+    character_class_id: 4,
     user_id: 1,
     character_class_specialization_stages_attributes: [
       {
@@ -587,7 +609,7 @@ CharacterClassSpecialization.create!([
   {
     name: 'Ranger',
     alignment_id: 1,
-    character_class_id: 4,
+    character_class_id: 3,
     user_id: 1,
     character_class_specialization_stages_attributes: [
       {
@@ -607,7 +629,7 @@ CharacterClassSpecialization.create!([
   {
     name: 'Explorador',
     alignment_id: 1,
-    character_class_id: 4,
+    character_class_id: 3,
     user_id: 1,
     character_class_specialization_stages_attributes: [
       {
@@ -626,8 +648,8 @@ CharacterClassSpecialization.create!([
   },
   {
     name: 'Bardo',
-    alignment_id: 3,
-    character_class_id: 4,
+    alignment_id: 2,
+    character_class_id: 3,
     user_id: 1,
     character_class_specialization_stages_attributes: [
       {
@@ -647,7 +669,7 @@ CharacterClassSpecialization.create!([
   {
     name: 'Assassino',
     alignment_id: 3,
-    character_class_id: 4,
+    character_class_id: 3,
     user_id: 1,
     character_class_specialization_stages_attributes: [
       {

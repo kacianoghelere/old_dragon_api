@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :character_class_thief_talents, except: [:new, :edit]
   resources :character_class_specialization_stages, except: [:new, :edit]
   post 'authentication' => 'authentication#authenticate'
 
