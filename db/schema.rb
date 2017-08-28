@@ -312,7 +312,6 @@ ActiveRecord::Schema.define(version: 20170120110842) do
     t.integer  "current_level",      limit: 4
     t.integer  "current_exp",        limit: 4
     t.boolean  "idactive",                     default: true, null: false
-    t.datetime "inc_date",                                    null: false
     t.integer  "character_sheet_id", limit: 8,                null: false
     t.integer  "alignment_id",       limit: 8,                null: false
     t.datetime "created_at",                                  null: false
@@ -589,7 +588,6 @@ ActiveRecord::Schema.define(version: 20170120110842) do
     t.string   "name",            limit: 45,  null: false
     t.string   "login",           limit: 45,  null: false
     t.string   "password_digest", limit: 255
-    t.datetime "inc_date",                    null: false
     t.datetime "last_login"
     t.string   "email",           limit: 64
     t.integer  "role_id",         limit: 8,   null: false

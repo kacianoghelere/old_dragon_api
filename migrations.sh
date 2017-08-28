@@ -3,6 +3,7 @@ rails g migration create_armor_types
 rails g migration create_armors
 rails g migration create_campain_journals
 rails g migration create_campain_members
+rails g migration create_campain_notes
 rails g migration create_campains
 rails g migration create_character_class_armor_types
 rails g migration create_character_class_evolutions

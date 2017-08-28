@@ -66,7 +66,8 @@ LanguageType.create!([
   {name: "Antigo", description: nil}
 ])
 Role.create!([
-  {name: "admin", admin: true}
+  {name: "Administrador", admin: true},
+  {name: "Comum", admin: false}
 ])
 User.create!([
   {
@@ -74,7 +75,6 @@ User.create!([
     login: "admin",
     password: "123456",
     password_confirmation: "123456",
-    inc_date: "2017-01-19 14:13:51",
     last_login: nil,
     email: "themohawkeagle@gmail.com",
     role_id: 1

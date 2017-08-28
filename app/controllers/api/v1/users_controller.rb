@@ -19,9 +19,10 @@ class API::V1::UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
+    @user.role = Role.find_by(admin: false)
 
     if @user.save
-      render json: @user, status: :created, location: @user
+      render json: @user, status: :created
     else
       render json: @user.errors, status: :unprocessable_entity
     end
@@ -54,6 +55,7 @@ class API::V1::UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:name, :login, :pass, :inc_date, :last_login, :email, :role_id)
+      params.require(:user).permit(:name, :login, :password, 
+        :password_confirmation, :last_login, :email, :role_id)
     end
 end

@@ -8,6 +8,8 @@ rails generate scaffold CampainJournal description:string idactive:boolean log_d
 
 rails generate scaffold CampainMember campain:references character_sheet:references idactive:boolean --no-migration
 
+rails generate scaffold CampainNote campain:references description:text dm_stuff:boolean idactive:boolean --no-migration
+
 rails generate scaffold Campain title:string description:text start_date:datetime conclusion_date:datetime user:references --no-migration
 
 rails generate scaffold CharacterClassArmorType character_class:references armor_type:references --no-migration

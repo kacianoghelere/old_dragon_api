@@ -4,7 +4,6 @@ class CreateCharacterSheetJournals < ActiveRecord::Migration
       t.integer  :current_level,      limit: 4
       t.integer  :current_exp,        limit: 4
       t.boolean  :idactive,                     default: true, null: false
-      t.datetime :inc_date,                                    null: false
       t.integer  :character_sheet_id, limit: 8,                null: false
       t.integer  :alignment_id,       limit: 8,                null: false
       t.timestamps null: false

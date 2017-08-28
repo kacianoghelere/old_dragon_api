@@ -54,6 +54,6 @@ class API::V1::CharacterSheetJournalsController < ApplicationController
     end
 
     def character_sheet_journal_params
-      params.require(:character_sheet_journal).permit(:current_level, :current_exp, :idactive, :inc_date, :character_sheet_id, :alignment_id)
+      params.require(:character_sheet_journal).permit(:current_level, :current_exp, :idactive, :character_sheet_id, :alignment_id)
     end
 end
