@@ -4,11 +4,11 @@ rails generate scaffold ArmorType name:string --no-migration
 
 rails generate scaffold Armor name:string description:string armor_class:integer movement_reduction:integer price:decimal alignment:references armor_type:references origin:references user:references --no-migration
 
-rails generate scaffold CampainJournal description:string idactive:boolean log_date:datetime campain:references --no-migration
+rails generate scaffold CampaignJournal description:string idactive:boolean log_date:datetime campaign:references --no-migration
 
-rails generate scaffold CampainMember campain:references character_sheet:references idactive:boolean --no-migration
+rails generate scaffold CampaignMember campaign:references character_sheet:references idactive:boolean --no-migration
 
-rails generate scaffold Campain title:string description:text start_date:datetime conclusion_date:datetime user:references --no-migration
+rails generate scaffold Campaign title:string description:text start_date:datetime conclusion_date:datetime user:references --no-migration
 
 rails generate scaffold CharacterClassArmorType character_class:references armor_type:references --no-migration
 

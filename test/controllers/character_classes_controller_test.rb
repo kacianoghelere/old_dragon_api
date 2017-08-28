@@ -13,7 +13,14 @@ class CharacterClassesControllerTest < ActionController::TestCase
 
   test "should create character_class" do
     assert_difference('CharacterClass.count') do
-      post :create, character_class: { character_class_type_id: @character_class.character_class_type_id, description: @character_class.description, dice_id: @character_class.dice_id, name: @character_class.name, perk_id: @character_class.perk_id, user_id: @character_class.user_id }
+      post :create, character_class: {
+        character_class_type_id: @character_class.character_class_type_id,
+        description: @character_class.description,
+        dice_id: @character_class.dice_id,
+        name: @character_class.name,
+        perk_id: @character_class.perk_id,
+        user_id: @character_class.user_id
+      }
     end
 
     assert_response 201
@@ -25,7 +32,14 @@ class CharacterClassesControllerTest < ActionController::TestCase
   end
 
   test "should update character_class" do
-    put :update, id: @character_class, character_class: { character_class_type_id: @character_class.character_class_type_id, description: @character_class.description, dice_id: @character_class.dice_id, name: @character_class.name, perk_id: @character_class.perk_id, user_id: @character_class.user_id }
+    put :update, id: @character_class, character_class: {
+      character_class_type_id: @character_class.character_class_type_id,
+      description: @character_class.description,
+      dice_id: @character_class.dice_id,
+      name: @character_class.name,
+      perk_id: @character_class.perk_id,
+      user_id: @character_class.user_id
+    }
     assert_response 204
   end
 

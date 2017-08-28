@@ -40,27 +40,27 @@ ActiveRecord::Schema.define(version: 20170119161614) do
   add_index :armors, [:origin_id], using: :btree
   add_index :armors, [:user_id], using: :btree
 
-  create_table :campain_journals, id: :integer, limit: 8 do |t|
+  create_table :campaign_journals, id: :integer, limit: 8 do |t|
     t.string   :description, limit: 45
     t.boolean  :idactive,               default: true, null: false
     t.datetime :log_date,                              null: false
-    t.integer  :campain_id,  limit: 8,                 null: false
+    t.integer  :campaign_id,  limit: 8,                 null: false
     t.timestamps null: false
   end
 
-  add_index :campain_journals, [:campain_id], using: :btree
+  add_index :campaign_journals, [:campaign_id], using: :btree
 
-  create_table :campain_members, id: false do |t|
-    t.integer  :campain_id,         limit: 8,                null: false
+  create_table :campaign_members, id: false do |t|
+    t.integer  :campaign_id,         limit: 8,                null: false
     t.integer  :character_sheet_id, limit: 8,                null: false
     t.boolean  :idactive,                     default: true, null: false
     t.timestamps null: false
   end
 
-  add_index :campain_members, [:campain_id], using: :btree
-  add_index :campain_members, [:character_sheet_id], using: :btree
+  add_index :campaign_members, [:campaign_id], using: :btree
+  add_index :campaign_members, [:character_sheet_id], using: :btree
 
-  create_table :campains, id: :integer, limit: 8 do |t|
+  create_table :campaigns, id: :integer, limit: 8 do |t|
     t.string   :title,           limit: 45,    null: false
     t.text     :description,     limit: 65535
     t.datetime :start_date,                    null: false
@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 20170119161614) do
     t.timestamps null: false
   end
 
-  add_index :campains, [:user_id], using: :btree
+  add_index :campaigns, [:user_id], using: :btree
 
   create_table :character_class_armor_types, id: false do |t|
     t.integer  :character_class_id, limit: 8, null: false
@@ -595,10 +595,10 @@ ActiveRecord::Schema.define(version: 20170119161614) do
   add_foreign_key :armors, :armor_types
   add_foreign_key :armors, :origins
   add_foreign_key :armors, :users
-  add_foreign_key :campain_journals, :campains
-  add_foreign_key :campain_members, :campains
-  add_foreign_key :campain_members, :character_sheets
-  add_foreign_key :campains, :users
+  add_foreign_key :campaign_journals, :campaigns
+  add_foreign_key :campaign_members, :campaigns
+  add_foreign_key :campaign_members, :character_sheets
+  add_foreign_key :campaigns, :users
   add_foreign_key :character_class_armor_types, :armor_types
   add_foreign_key :character_class_armor_types, :character_classes
   add_foreign_key :character_class_evolutions, :character_classes

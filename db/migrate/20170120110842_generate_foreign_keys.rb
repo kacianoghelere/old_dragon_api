@@ -4,10 +4,10 @@ class GenerateForeignKeys < ActiveRecord::Migration
     add_foreign_key :armors, :armor_types
     add_foreign_key :armors, :origins
     add_foreign_key :armors, :users
-    add_foreign_key :campain_journals, :campains
-    add_foreign_key :campain_members, :campains
-    add_foreign_key :campain_members, :character_sheets
-    add_foreign_key :campains, :users
+    add_foreign_key :campaign_journals, :campaigns
+    add_foreign_key :campaign_members, :campaigns
+    add_foreign_key :campaign_members, :characters
+    add_foreign_key :campaigns, :users
     add_foreign_key :character_class_armor_types, :armor_types
     add_foreign_key :character_class_armor_types, :character_classes
     add_foreign_key :character_class_evolutions, :character_classes
@@ -23,10 +23,10 @@ class GenerateForeignKeys < ActiveRecord::Migration
     add_foreign_key :character_classes, :dices
     add_foreign_key :character_classes, :perks
     add_foreign_key :character_classes, :users
-    add_foreign_key :character_sheet_expertises, :character_sheets
-    add_foreign_key :character_sheet_expertises, :expertises
-    add_foreign_key :character_sheet_journals, :alignments
-    add_foreign_key :character_sheet_journals, :character_sheets
+    add_foreign_key :character_expertises, :characters
+    add_foreign_key :character_expertises, :expertises
+    add_foreign_key :character_journals, :alignments
+    add_foreign_key :character_journals, :characters
     add_foreign_key :character_race_armors, :armor_types
     add_foreign_key :character_race_armors, :character_races
     add_foreign_key :character_race_languages, :character_races
@@ -41,10 +41,10 @@ class GenerateForeignKeys < ActiveRecord::Migration
     add_foreign_key :character_races, :alignments
     add_foreign_key :character_races, :dices
     add_foreign_key :character_races, :users
-    add_foreign_key :character_sheet_attributes, :character_sheets
-    add_foreign_key :character_sheets, :character_classes
-    add_foreign_key :character_sheets, :character_races
-    add_foreign_key :character_sheets, :users
+    add_foreign_key :character_attributes, :characters
+    add_foreign_key :characters, :character_classes
+    add_foreign_key :characters, :character_races
+    add_foreign_key :characters, :users
     add_foreign_key :effects, :effect_types
     add_foreign_key :effects, :users
     add_foreign_key :expertises, :users

@@ -27,6 +27,11 @@ ElementType.create!([
   {name: "Terra"},
   {name: "Ar"}
 ])
+WeaponSize.create!([
+  {name: "Pequeno", alternative_name: "Pequeno", alias: "P"},
+  {name: "Médio", alternative_name: "Médio", alias: "M"},
+  {name: "Grande", alternative_name: "Grande", alias: "G"}
+])
 WeaponType.create!([
   {name: "Corte"},
   {name: "Perfuração"},
@@ -101,8 +106,8 @@ CharacterClassType.create!([
 ])
 CharacterClass.create!([
   {name: "Clérigo", description: "Um homem devotado ao culto sagrado", dice_id: 3, perk_id: nil, character_class_type_id: 3, user_id: 1},
-  {name: "Homem de Armas", description: "Um combatente experiênte", dice_id: 4, perk_id: nil, character_class_type_id: 2, user_id: 1},
-  {name: "Ladino", description: "Um fora-da-lei", dice_id: 2, perk_id: nil, character_class_type_id: 4, user_id: 1},
+  {name: "Homem de Armas", description: "Um combatente experiente", dice_id: 4, perk_id: nil, character_class_type_id: 2, user_id: 1},
+  {name: "Ladino", description: "Um fora-da-lei virado no jiraia", dice_id: 2, perk_id: nil, character_class_type_id: 4, user_id: 1},
   {name: "Mago", description: "Um homem que dedicou sua vida ao conhecimento arcano", dice_id: 1, perk_id: nil, character_class_type_id: 1, user_id: 1}
 ])
 CharacterClassEvolution.create!([

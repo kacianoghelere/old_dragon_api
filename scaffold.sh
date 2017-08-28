@@ -4,13 +4,7 @@ rails generate scaffold ArmorType name:string --no-migration
 
 rails generate scaffold Armor name:string description:string armor_class:integer movement_reduction:integer price:decimal alignment:references armor_type:references origin:references user:references --no-migration
 
-rails generate scaffold CampainJournal description:string idactive:boolean log_date:datetime campain:references --no-migration
-
-rails generate scaffold CampainMember campain:references character_sheet:references idactive:boolean --no-migration
-
-rails generate scaffold CampainNote campain:references description:text dm_stuff:boolean idactive:boolean --no-migration
-
-rails generate scaffold Campain title:string description:text start_date:datetime conclusion_date:datetime user:references --no-migration
+rails generate scaffold Campaign title:string description:text start_date:datetime conclusion_date:datetime user:references --no-migration
 
 rails generate scaffold CharacterClassArmorType character_class:references armor_type:references --no-migration
 
@@ -44,13 +38,13 @@ rails generate scaffold CharacterRaceWeapon character_race:references weapon_typ
 
 rails generate scaffold CharacterRace name:string min_height:decimal max_height:decimal min_weight:decimal max_weight:decimal maturity:integer max_age:integer movement_base:integer armor_class_mod:integer str_mod:integer dex_mod:integer cons_mod:integer int_mod:integer wis_mod:integer char_mod:integer alignment:references dice:references user:references --no-migration
 
-rails generate scaffold CharacterSheetAttribute strength:integer dexterity:integer constitution:integer intelligence:integer wisdom:integer character_sheet:references --no-migration
+rails generate scaffold CharacterAttribute strength:integer dexterity:integer constitution:integer intelligence:integer wisdom:integer character:references --no-migration
 
-rails generate scaffold CharacterSheetExpertise character_sheet:references expertise:references --no-migration
+rails generate scaffold CharacterExpertise character:references expertise:references --no-migration
 
-rails generate scaffold CharacterSheetJournal current_level:integer current_exp:integer idactive:boolean inc_date:datetime character_sheet:references alignment:references --no-migration
+rails generate scaffold CharacterJournal current_level:integer current_exp:integer idactive:boolean character:references alignment:references --no-migration
 
-rails generate scaffold CharacterSheet name:string weight:decimal height:decimal age:integer description:text character_class:references character_race:references user:references --no-migration
+rails generate scaffold Character name:string weight:decimal height:decimal age:integer description:text character_class:references character_race:references user:references --no-migration
 
 rails generate scaffold CharismaMod value:integer followers_mod:integer reaction_mod:integer undead_mod:string --no-migration
 
@@ -102,7 +96,7 @@ rails generate scaffold ThiefTalent level:integer lockpick:integer find_traps:in
 
 rails generate scaffold UndeadBane level:integer skelleton_mod:string zombie_mod:string ghoul_mod:string inhuman_mod:string aparition_mod:string mummy_mod:string specter_mod:string vampire_mod:string --no-migration
 
-rails generate scaffold User name:string login:string pass:string inc_date:datetime last_login:datetime email:string role:references --no-migration
+rails generate scaffold User name:string login:string pass:string last_login:datetime email:string role:references --no-migration
 
 rails generate scaffold WeaponType name:string --no-migration
 

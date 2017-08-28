@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  campain_id: 
-  character_sheet_id: 
+  campaign_id: 
+  character_id: 
   idactive: false
 
 two:
-  campain_id: 
-  character_sheet_id: 
+  campaign_id: 
+  character_id: 
   idactive: false

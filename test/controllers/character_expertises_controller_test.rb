@@ -13,7 +13,10 @@ class CharacterExpertisesControllerTest < ActionController::TestCase
 
   test "should create character_expertise" do
     assert_difference('CharacterExpertise.count') do
-      post :create, character_expertise: { character_sheet_id: @character_expertise.character_sheet_id, expertise_id: @character_expertise.expertise_id }
+      post :create, character_expertise: {
+        character_id: @character_expertise.character_id,
+        expertise_id: @character_expertise.expertise_id
+      }
     end
 
     assert_response 201
@@ -25,7 +28,10 @@ class CharacterExpertisesControllerTest < ActionController::TestCase
   end
 
   test "should update character_expertise" do
-    put :update, id: @character_expertise, character_expertise: { character_sheet_id: @character_expertise.character_sheet_id, expertise_id: @character_expertise.expertise_id }
+    put :update, id: @character_expertise, character_expertise: {
+      character_id: @character_expertise.character_id,
+      expertise_id: @character_expertise.expertise_id
+    }
     assert_response 204
   end
 

@@ -13,7 +13,13 @@ class CharacterJournalsControllerTest < ActionController::TestCase
 
   test "should create character_journal" do
     assert_difference('CharacterJournal.count') do
-      post :create, character_journal: { alignment_id: @character_journal.alignment_id, character_sheet_id: @character_journal.character_sheet_id, current_exp: @character_journal.current_exp, current_level: @character_journal.current_level, idactive: @character_journal.idactive, inc_date: @character_journal.inc_date }
+      post :create, character_journal: {
+        alignment_id: @character_journal.alignment_id,
+        character_id: @character_journal.character_id,
+        current_exp: @character_journal.current_exp,
+        current_level: @character_journal.current_level,
+        idactive: @character_journal.idactive
+      }
     end
 
     assert_response 201
@@ -25,7 +31,13 @@ class CharacterJournalsControllerTest < ActionController::TestCase
   end
 
   test "should update character_journal" do
-    put :update, id: @character_journal, character_journal: { alignment_id: @character_journal.alignment_id, character_sheet_id: @character_journal.character_sheet_id, current_exp: @character_journal.current_exp, current_level: @character_journal.current_level, idactive: @character_journal.idactive, inc_date: @character_journal.inc_date }
+    put :update, id: @character_journal, character_journal: {
+      alignment_id: @character_journal.alignment_id,
+      character_id: @character_journal.character_id,
+      current_exp: @character_journal.current_exp,
+      current_level: @character_journal.current_level,
+      idactive: @character_journal.idactive
+    }
     assert_response 204
   end
 
