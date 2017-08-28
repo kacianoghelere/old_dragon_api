@@ -1,6 +1,6 @@
 class CreateCampaignNotes < ActiveRecord::Migration
   def change
-    create_table :campaign_note, id: :bigint do |t|
+    create_table :campaign_notes, id: :bigint do |t|
       t.string   :description, limit: 45
       t.boolean  :dm_only,                      default: false, null: false
       t.boolean  :idactive,                     default: true,  null: false
@@ -8,6 +8,6 @@ class CreateCampaignNotes < ActiveRecord::Migration
       t.timestamps null: false
     end
 
-    add_index :campaign_note, [:campaign_id], using: :btree
+    add_index :campaign_notes, [:campaign_id], using: :btree
   end
 end

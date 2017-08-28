@@ -14,6 +14,7 @@ class CreateWeapons < ActiveRecord::Migration
       t.integer  :material_type_id, limit: 8,                                  null: false
       t.integer  :origin_id,        limit: 8,                                  null: false
       t.integer  :user_id,          limit: 8,                                  null: false
+      t.integer  :weapon_size_id,   limit: 8,                                  null: false
       t.integer  :weapon_type_id,   limit: 8,                                  null: false
       t.timestamps null: false
     end
@@ -23,6 +24,7 @@ class CreateWeapons < ActiveRecord::Migration
     add_index :weapons, [:material_type_id], using: :btree
     add_index :weapons, [:origin_id], using: :btree
     add_index :weapons, [:user_id], using: :btree
+    add_index :weapons, [:weapon_size_id], using: :btree
     add_index :weapons, [:weapon_type_id], using: :btree
   end
 end

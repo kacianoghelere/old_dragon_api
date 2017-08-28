@@ -10,6 +10,7 @@ rails g migration create_character_class_evolutions
 rails g migration create_character_class_item_types
 rails g migration create_character_class_magic_circles
 rails g migration create_character_class_requirements
+rails g migration create_character_class_specializations
 rails g migration create_character_class_spell_types
 rails g migration create_character_class_types
 rails g migration create_character_class_weapon_types

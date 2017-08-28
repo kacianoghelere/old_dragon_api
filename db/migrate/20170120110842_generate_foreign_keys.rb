@@ -5,9 +5,11 @@ class GenerateForeignKeys < ActiveRecord::Migration
     add_foreign_key :armors, :origins
     add_foreign_key :armors, :users
     add_foreign_key :campaign_journals, :campaigns
+    add_foreign_key :campaign_notes, :campaigns
     add_foreign_key :campaign_members, :campaigns
     add_foreign_key :campaign_members, :characters
     add_foreign_key :campaigns, :users
+    add_foreign_key :character_attributes, :characters
     add_foreign_key :character_class_armor_types, :armor_types
     add_foreign_key :character_class_armor_types, :character_classes
     add_foreign_key :character_class_evolutions, :character_classes
@@ -15,6 +17,8 @@ class GenerateForeignKeys < ActiveRecord::Migration
     add_foreign_key :character_class_item_types, :item_types
     add_foreign_key :character_class_magic_circles, :character_classes
     add_foreign_key :character_class_requirements, :character_classes, column: :character_classes_id
+    add_foreign_key :character_class_specialization_stages, :character_class_specializations
+    add_foreign_key :character_class_specializations, :character_classes
     add_foreign_key :character_class_spell_types, :character_classes
     add_foreign_key :character_class_spell_types, :spell_types
     add_foreign_key :character_class_weapon_types, :character_classes
@@ -41,7 +45,6 @@ class GenerateForeignKeys < ActiveRecord::Migration
     add_foreign_key :character_races, :alignments
     add_foreign_key :character_races, :dices
     add_foreign_key :character_races, :users
-    add_foreign_key :character_attributes, :characters
     add_foreign_key :characters, :character_classes
     add_foreign_key :characters, :character_races
     add_foreign_key :characters, :users
@@ -67,5 +70,6 @@ class GenerateForeignKeys < ActiveRecord::Migration
     add_foreign_key :weapons, :origins
     add_foreign_key :weapons, :users
     add_foreign_key :weapons, :weapon_types
+    add_foreign_key :weapons, :weapon_sizes
   end
 end

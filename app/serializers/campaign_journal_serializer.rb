@@ -1,4 +1,4 @@
 class CampaignJournalSerializer < ActiveModel::Serializer
-  attributes :id, :description, :idactive, :log_date
+  attributes :id, :title, :description, :idactive
   has_one :campaign
 end
