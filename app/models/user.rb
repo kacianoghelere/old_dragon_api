@@ -12,4 +12,8 @@ class User < ActiveRecord::Base
   def User.find_for_authentication(**options)
     self.find_by(options)
   end
+
+  def register_log_in()
+    self.update_attribute(:last_login, DateTime.now)
+  end
 end

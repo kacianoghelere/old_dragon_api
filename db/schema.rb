@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(version: 20170120110842) do
 
   create_table "campaigns", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "title",           limit: 45,    null: false
+    t.string   "picture",         limit: 300
     t.text     "description",     limit: 65535
     t.datetime "start_date",                    null: false
     t.datetime "conclusion_date"
@@ -223,6 +224,7 @@ ActiveRecord::Schema.define(version: 20170120110842) do
 
   create_table "character_classes", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "name",                    limit: 45,  null: false
+    t.string   "picture",                 limit: 300
     t.string   "description",             limit: 500
     t.integer  "dice_id",                 limit: 8,   null: false
     t.integer  "perk_id",                 limit: 8
@@ -327,26 +329,27 @@ ActiveRecord::Schema.define(version: 20170120110842) do
   add_index "character_race_weapons", ["weapon_type_id"], name: "index_character_race_weapons_on_weapon_type_id", using: :btree
 
   create_table "character_races", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
-    t.string   "name",            limit: 45,                            null: false
-    t.decimal  "min_height",                 precision: 10, default: 0
-    t.decimal  "max_height",                 precision: 10, default: 0
-    t.decimal  "min_weight",                 precision: 10
-    t.decimal  "max_weight",                 precision: 10
+    t.string   "name",            limit: 45,                             null: false
+    t.string   "picture",         limit: 300
+    t.decimal  "min_height",                  precision: 10, default: 0
+    t.decimal  "max_height",                  precision: 10, default: 0
+    t.decimal  "min_weight",                  precision: 10
+    t.decimal  "max_weight",                  precision: 10
     t.integer  "maturity",        limit: 4
     t.integer  "max_age",         limit: 4
-    t.integer  "movement_base",   limit: 4,                 default: 1, null: false
-    t.integer  "armor_class_mod", limit: 4,                 default: 0, null: false
-    t.integer  "str_mod",         limit: 4,                 default: 0, null: false
-    t.integer  "dex_mod",         limit: 4,                 default: 0, null: false
-    t.integer  "cons_mod",        limit: 4,                 default: 0, null: false
-    t.integer  "int_mod",         limit: 4,                 default: 0, null: false
-    t.integer  "wis_mod",         limit: 4,                 default: 0, null: false
-    t.integer  "char_mod",        limit: 4,                 default: 0, null: false
-    t.integer  "alignment_id",    limit: 8,                             null: false
+    t.integer  "movement_base",   limit: 4,                  default: 1, null: false
+    t.integer  "armor_class_mod", limit: 4,                  default: 0, null: false
+    t.integer  "str_mod",         limit: 4,                  default: 0, null: false
+    t.integer  "dex_mod",         limit: 4,                  default: 0, null: false
+    t.integer  "cons_mod",        limit: 4,                  default: 0, null: false
+    t.integer  "int_mod",         limit: 4,                  default: 0, null: false
+    t.integer  "wis_mod",         limit: 4,                  default: 0, null: false
+    t.integer  "char_mod",        limit: 4,                  default: 0, null: false
+    t.integer  "alignment_id",    limit: 8,                              null: false
     t.integer  "dice_id",         limit: 8
-    t.integer  "user_id",         limit: 8,                             null: false
-    t.datetime "created_at",                                            null: false
-    t.datetime "updated_at",                                            null: false
+    t.integer  "user_id",         limit: 8,                              null: false
+    t.datetime "created_at",                                             null: false
+    t.datetime "updated_at",                                             null: false
   end
 
   add_index "character_races", ["alignment_id"], name: "index_character_races_on_alignment_id", using: :btree
@@ -618,7 +621,7 @@ ActiveRecord::Schema.define(version: 20170120110842) do
 
   create_table "users", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "name",            limit: 45,  null: false
-    t.string   "login",           limit: 45,  null: false
+    t.string   "user_code",       limit: 45,  null: false
     t.string   "password_digest", limit: 255
     t.datetime "last_login"
     t.string   "email",           limit: 64
@@ -627,7 +630,9 @@ ActiveRecord::Schema.define(version: 20170120110842) do
     t.datetime "updated_at",                  null: false
   end
 
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["role_id"], name: "index_users_on_role_id", using: :btree
+  add_index "users", ["user_code"], name: "index_users_on_user_code", unique: true, using: :btree
 
   create_table "weapon_sizes", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "name",             limit: 100, null: false

@@ -77,7 +77,7 @@ Role.create!([
 User.create!([
   {
     name: "Administrador",
-    login: "admin",
+    user_code: "admin",
     password: "123456",
     password_confirmation: "123456",
     last_login: nil,
@@ -93,10 +93,10 @@ Perk.create!([
   {name: "Corpo Ósseo", description: "Ataques de corte e perfuração recebidos causam apenas metade do dano", perk_type_id: 1, user_id: 1}
 ])
 CharacterRace.create!([
-  {name: "Anões", min_height: 1, max_height: 2, min_weight: 50, max_weight: 70, maturity: 70, max_age: 350, movement_base: 9, armor_class_mod: 0, str_mod: 0, dex_mod: 0, cons_mod: 2, int_mod: 0, wis_mod: 0, char_mod: -2, alignment_id: 1, dice_id: nil, user_id: 1},
-  {name: "Elfos", min_height: 2, max_height: 2, min_weight: 40, max_weight: 50, maturity: 150, max_age: 700, movement_base: 9, armor_class_mod: 0, str_mod: 0, dex_mod: 2, cons_mod: -2, int_mod: 0, wis_mod: 0, char_mod: 0, alignment_id: 2, dice_id: 3, user_id: 1},
-  {name: "Humanos", min_height: 2, max_height: 2, min_weight: 55, max_weight: 90, maturity: 15, max_age: 70, movement_base: 9, armor_class_mod: 0, str_mod: 0, dex_mod: 0, cons_mod: 0, int_mod: 0, wis_mod: 0, char_mod: 0, alignment_id: 2, dice_id: nil, user_id: 1},
-  {name: "Halflings", min_height: 1, max_height: 1, min_weight: 20, max_weight: 35, maturity: 30, max_age: 70, movement_base: 9, armor_class_mod: 2, str_mod: 0, dex_mod: 2, cons_mod: 0, int_mod: 0, wis_mod: 0, char_mod: 0, alignment_id: 3, dice_id: nil, user_id: 1}
+  {name: "Anões", picture: "https://i.pinimg.com/564x/29/03/7c/29037c18b75badfeaa7dafe3f17f333a.jpg", min_height: 1, max_height: 2, min_weight: 50, max_weight: 70, maturity: 70, max_age: 350, movement_base: 9, armor_class_mod: 0, str_mod: 0, dex_mod: 0, cons_mod: 2, int_mod: 0, wis_mod: 0, char_mod: -2, alignment_id: 1, dice_id: nil, user_id: 1},
+  {name: "Elfos", picture: "https://i.pinimg.com/736x/81/1a/7a/811a7aa0c7621053c62ab5fa17a1ec8d--male-elf-character-concept.jpg", min_height: 2, max_height: 2, min_weight: 40, max_weight: 50, maturity: 150, max_age: 700, movement_base: 9, armor_class_mod: 0, str_mod: 0, dex_mod: 2, cons_mod: -2, int_mod: 0, wis_mod: 0, char_mod: 0, alignment_id: 2, dice_id: 3, user_id: 1},
+  {name: "Humanos", picture: "https://i.pinimg.com/564x/ba/66/34/ba6634ac7be1b24a3f7482ebb0fa4927.jpg", min_height: 2, max_height: 2, min_weight: 55, max_weight: 90, maturity: 15, max_age: 70, movement_base: 9, armor_class_mod: 0, str_mod: 0, dex_mod: 0, cons_mod: 0, int_mod: 0, wis_mod: 0, char_mod: 0, alignment_id: 2, dice_id: nil, user_id: 1},
+  {name: "Halflings", picture: "http://3.bp.blogspot.com/-6D8tlIzKPR0/UJ4rELOM9LI/AAAAAAAAAl8/3sw0UV0tmcE/s1600/halfling+02.jpg", min_height: 1, max_height: 1, min_weight: 20, max_weight: 35, maturity: 30, max_age: 70, movement_base: 9, armor_class_mod: 2, str_mod: 0, dex_mod: 2, cons_mod: 0, int_mod: 0, wis_mod: 0, char_mod: 0, alignment_id: 3, dice_id: nil, user_id: 1}
 ])
 CharacterClassType.create!([
   {name: "Arcano", magic: true, protection: 15, key_attr: "INT", can_bane_undead: false, has_thief_talents: false},
@@ -105,10 +105,10 @@ CharacterClassType.create!([
   {name: "Furtivo", magic: false, protection: 15, key_attr: "DEX", can_bane_undead: false, has_thief_talents: true}
 ])
 CharacterClass.create!([
-  {name: "Clérigo", description: "Um homem devotado ao culto sagrado", dice_id: 3, perk_id: nil, character_class_type_id: 3, user_id: 1},
-  {name: "Homem de Armas", description: "Um combatente experiente", dice_id: 4, perk_id: nil, character_class_type_id: 2, user_id: 1},
-  {name: "Ladino", description: "Um fora-da-lei virado no jiraia", dice_id: 2, perk_id: nil, character_class_type_id: 4, user_id: 1},
-  {name: "Mago", description: "Um homem que dedicou sua vida ao conhecimento arcano", dice_id: 1, perk_id: nil, character_class_type_id: 1, user_id: 1}
+  {name: "Clérigo", picture: "", description: "Um homem devotado ao culto sagrado", dice_id: 3, perk_id: nil, character_class_type_id: 3, user_id: 1},
+  {name: "Homem de Armas", picture: "", description: "Um combatente experiente", dice_id: 4, perk_id: nil, character_class_type_id: 2, user_id: 1},
+  {name: "Ladino", picture: "", description: "Um fora-da-lei virado no jiraia", dice_id: 2, perk_id: nil, character_class_type_id: 4, user_id: 1},
+  {name: "Mago", picture: "", description: "Um homem que dedicou sua vida ao conhecimento arcano", dice_id: 1, perk_id: nil, character_class_type_id: 1, user_id: 1}
 ])
 CharacterClassEvolution.create!([
   {level: 1, exp: 0, life_amount: 1, plus_life: false, attack_base: 0, attack_base2: 0, protection_mod: 15, character_class_id: 1},

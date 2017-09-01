@@ -1,5 +1,5 @@
 class CampaignSerializer < ActiveModel::Serializer
-  attributes :id, :title, :description, :start_date, :conclusion_date
+  attributes :id, :title, :picture, :description, :start_date, :conclusion_date
   has_many :campaign_journals
   has_many :campaign_members
   has_many :campaign_notes

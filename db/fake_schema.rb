@@ -541,7 +541,7 @@ ActiveRecord::Schema.define(version: 20170119161614) do
 
   create_table :users, id: :bigint do |t|
     t.string   :name,       limit: 45, null: false
-    t.string   :login,      limit: 45, null: false
+    t.string   :user_code,  limit: 45, null: false
     t.string   :pass,       limit: 64, null: false
     t.datetime :inc_date,              null: false
     t.datetime :last_login

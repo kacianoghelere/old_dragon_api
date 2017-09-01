@@ -2,6 +2,7 @@ class CreateCampaigns < ActiveRecord::Migration
   def change
     create_table :campaigns, id: :bigint do |t|
       t.string   :title,           limit: 45,    null: false
+      t.string   :picture,         limit: 300
       t.text     :description,     limit: 65535
       t.datetime :start_date,                    null: false
       t.datetime :conclusion_date
