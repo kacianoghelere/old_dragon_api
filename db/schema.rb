@@ -157,18 +157,19 @@ ActiveRecord::Schema.define(version: 20170120110842) do
   add_index "character_class_magic_circles", ["character_class_id"], name: "index_character_class_magic_circles_on_character_class_id", using: :btree
 
   create_table "character_class_requirements", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
-    t.integer  "str_mod",              limit: 4, default: 0, null: false
-    t.integer  "dex_mod",              limit: 4, default: 0, null: false
-    t.integer  "cons_mod",             limit: 4, default: 0, null: false
-    t.integer  "int_mod",              limit: 4, default: 0, null: false
-    t.integer  "wis_mod",              limit: 4, default: 0, null: false
-    t.integer  "char_mod",             limit: 4, default: 0, null: false
-    t.integer  "character_classes_id", limit: 8,             null: false
-    t.datetime "created_at",                                 null: false
-    t.datetime "updated_at",                                 null: false
+    t.integer  "str_mod",            limit: 4, default: 0, null: false
+    t.integer  "dex_mod",            limit: 4, default: 0, null: false
+    t.integer  "cons_mod",           limit: 4, default: 0, null: false
+    t.integer  "int_mod",            limit: 4, default: 0, null: false
+    t.integer  "wis_mod",            limit: 4, default: 0, null: false
+    t.integer  "char_mod",           limit: 4, default: 0, null: false
+    t.integer  "character_class_id", limit: 8,             null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
   end
 
-  add_index "character_class_requirements", ["character_classes_id"], name: "index_character_class_requirements_on_character_classes_id", using: :btree
+  add_index "character_class_requirements", ["character_class_id"], name: "index_character_class_requirements_on_character_class_id", using: :btree
+  add_index "character_class_requirements", ["character_class_id"], name: "index_character_class_requirements_on_character_class_id_uk", unique: true, using: :btree
 
   create_table "character_class_specialization_stages", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "description",                       limit: 500, null: false
@@ -702,7 +703,7 @@ ActiveRecord::Schema.define(version: 20170120110842) do
   add_foreign_key "character_class_item_types", "character_classes"
   add_foreign_key "character_class_item_types", "item_types"
   add_foreign_key "character_class_magic_circles", "character_classes"
-  add_foreign_key "character_class_requirements", "character_classes", column: "character_classes_id"
+  add_foreign_key "character_class_requirements", "character_classes"
   add_foreign_key "character_class_specialization_stages", "character_class_specializations"
   add_foreign_key "character_class_specializations", "character_classes"
   add_foreign_key "character_class_spell_types", "character_classes"

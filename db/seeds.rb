@@ -99,16 +99,75 @@ CharacterRace.create!([
   {name: "Halflings", picture: "http://3.bp.blogspot.com/-6D8tlIzKPR0/UJ4rELOM9LI/AAAAAAAAAl8/3sw0UV0tmcE/s1600/halfling+02.jpg", min_height: 1, max_height: 1, min_weight: 20, max_weight: 35, maturity: 30, max_age: 70, movement_base: 9, armor_class_mod: 2, str_mod: 0, dex_mod: 2, cons_mod: 0, int_mod: 0, wis_mod: 0, char_mod: 0, alignment_id: 3, dice_id: nil, user_id: 1}
 ])
 CharacterClassType.create!([
-  {name: "Arcano", magic: true, protection: 15, key_attr: "INT", can_bane_undead: false, has_thief_talents: false},
-  {name: "Combatente", magic: false, protection: 15, key_attr: "STR", can_bane_undead: false, has_thief_talents: false},
-  {name: "Espiritualista", magic: true, protection: 15, key_attr: "WIS", can_bane_undead: true, has_thief_talents: false},
-  {name: "Furtivo", magic: false, protection: 15, key_attr: "DEX", can_bane_undead: false, has_thief_talents: true}
+  {
+    name: "Arcano", 
+    magic: true, 
+    protection: 15, 
+    key_attr: "INT", 
+    can_bane_undead: false, 
+    has_thief_talents: false
+  },
+  {
+    name: "Combatente", 
+    magic: false, 
+    protection: 15, 
+    key_attr: "STR", 
+    can_bane_undead: false, 
+    has_thief_talents: false
+  },
+  {
+    name: "Espiritualista", 
+    magic: true, 
+    protection: 15, 
+    key_attr: "WIS", 
+    can_bane_undead: true, 
+    has_thief_talents: false
+  },
+  {
+    name: "Furtivo", 
+    magic: false, 
+    protection: 15, 
+    key_attr: "DEX", 
+    can_bane_undead: false, has_thief_talents: true
+  }
 ])
 CharacterClass.create!([
-  {name: "Clérigo", picture: "", description: "Um homem devotado ao culto sagrado", dice_id: 3, perk_id: nil, character_class_type_id: 3, user_id: 1},
-  {name: "Homem de Armas", picture: "", description: "Um combatente experiente", dice_id: 4, perk_id: nil, character_class_type_id: 2, user_id: 1},
-  {name: "Ladino", picture: "", description: "Um fora-da-lei virado no jiraia", dice_id: 2, perk_id: nil, character_class_type_id: 4, user_id: 1},
-  {name: "Mago", picture: "", description: "Um homem que dedicou sua vida ao conhecimento arcano", dice_id: 1, perk_id: nil, character_class_type_id: 1, user_id: 1}
+  {
+    name: "Clérigo",
+    picture: "https://nerdsonearth.com/wp-content/uploads/2017/05/bcfd5368fb063a6cd15f566d516b242a.jpg",
+    description: "Um homem devotado ao culto sagrado", 
+    dice_id: 3,
+    perk_id: nil,
+    character_class_type_id: 3,
+    user_id: 1
+  },
+  {
+    name: "Homem de Armas",
+    picture: "http://s1.1zoom.me/big0/354/388898-sepik.jpg",
+    description: "Um combatente experiente", 
+    dice_id: 4,
+    perk_id: nil,
+    character_class_type_id: 2,
+    user_id: 1
+  },
+  {
+    name: "Ladino",
+    picture: "http://sm.ign.com/ign_br/news/n/new-thief-/new-thief-sequel-rumours-quashed-by-developer_aq2f.jpg",
+    description: "Um fora-da-lei virado no jiraia", 
+    dice_id: 2,
+    perk_id: nil,
+    character_class_type_id: 4,
+    user_id: 1
+  },
+  {
+    name: "Mago",
+    picture: "http://ll-c.ooyala.com/e1/VweTk5YzE6uMVLB0BoRaGmMkCsUVotQN/promo326678796",
+    description: "Um homem que dedicou sua vida ao conhecimento arcano", 
+    dice_id: 1,
+    perk_id: nil,
+    character_class_type_id: 1,
+    user_id: 1
+  }
 ])
 CharacterClassEvolution.create!([
   {level: 1, exp: 0, life_amount: 1, plus_life: false, attack_base: 0, attack_base2: 0, protection_mod: 15, character_class_id: 1},
@@ -235,10 +294,10 @@ CharacterClassMagicCircle.create!([
   {level: 20, magic_circle_1: 6, magic_circle_2: 6, magic_circle_3: 5, magic_circle_4: 4, magic_circle_5: 4, magic_circle_6: 3, magic_circle_7: 3, magic_circle_8: 3, magic_circle_9: 2, character_class_id: 4}
 ])
 CharacterClassRequirement.create!([
-  {str_mod: 12, dex_mod: 0, cons_mod: 12, int_mod: 0, wis_mod: 0, char_mod: 0, character_classes_id: 2},
-  {str_mod: 0, dex_mod: 0, cons_mod: 0, int_mod: 0, wis_mod: 12, char_mod: 0, character_classes_id: 1},
-  {str_mod: 0, dex_mod: 12, cons_mod: 0, int_mod: 0, wis_mod: 0, char_mod: 0, character_classes_id: 3},
-  {str_mod: 0, dex_mod: 0, cons_mod: 0, int_mod: 12, wis_mod: 0, char_mod: 0, character_classes_id: 4}
+  {str_mod: 12, dex_mod: 0, cons_mod: 12, int_mod: 0, wis_mod: 0, char_mod: 0, character_class_id: 2},
+  {str_mod: 0, dex_mod: 0, cons_mod: 0, int_mod: 0, wis_mod: 12, char_mod: 0, character_class_id: 1},
+  {str_mod: 0, dex_mod: 12, cons_mod: 0, int_mod: 0, wis_mod: 0, char_mod: 0, character_class_id: 3},
+  {str_mod: 0, dex_mod: 0, cons_mod: 0, int_mod: 12, wis_mod: 0, char_mod: 0, character_class_id: 4}
 ])
 CharacterRaceLanguage.create!([
   {character_race_id: 1, language_type_id: 1},
