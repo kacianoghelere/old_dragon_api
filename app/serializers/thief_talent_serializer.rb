@@ -1,3 +1,3 @@
 class ThiefTalentSerializer < ActiveModel::Serializer
-  attributes :id, :level, :lockpick, :find_traps, :climb, :silent_movement, :stealth, :pickpocket, :hear_noises, :backstab
+  attributes :id, :level, :lockpick, :traps, :climb, :stealth, :pickpocket, :perception, :sneak_attack
 end

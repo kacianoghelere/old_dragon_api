@@ -21,6 +21,7 @@ class GenerateForeignKeys < ActiveRecord::Migration
     add_foreign_key :character_class_specializations, :character_classes
     add_foreign_key :character_class_spell_types, :character_classes
     add_foreign_key :character_class_spell_types, :spell_types
+    add_foreign_key :character_class_types, :spell_types
     add_foreign_key :character_class_weapon_types, :character_classes
     add_foreign_key :character_class_weapon_types, :weapon_types
     add_foreign_key :character_classes, :character_class_types
@@ -63,6 +64,8 @@ class GenerateForeignKeys < ActiveRecord::Migration
     add_foreign_key :spells, :element_types
     add_foreign_key :spells, :spell_circles
     add_foreign_key :spells, :users
+    add_foreign_key :thief_talents, :character_classes
+    add_foreign_key :undead_banes, :character_classes
     add_foreign_key :users, :roles
     add_foreign_key :weapons, :alignments
     add_foreign_key :weapons, :dices

@@ -43,6 +43,8 @@ Rails.application.routes.draw do
       resources :weapon_types, except: [:new, :edit]
       resources :weapons, except: [:new, :edit]
       resources :wisdom_mods, except: [:new, :edit]
+
+      get 'character_classes/:id/showcase' => 'character_classes#showcase'
     end
   end
 

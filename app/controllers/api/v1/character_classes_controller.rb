@@ -1,5 +1,5 @@
 class API::V1::CharacterClassesController < ApplicationController
-  before_action :set_character_class, only: [:show, :update, :destroy]
+  before_action :set_character_class, only: [:show, :showcase, :update, :destroy]
 
   # GET /character_classes
   # GET /character_classes.json
@@ -13,6 +13,12 @@ class API::V1::CharacterClassesController < ApplicationController
   # GET /character_classes/1.json
   def show
     render json: @character_class
+  end
+
+  # GET /character_classes/1/showcase
+  # GET /character_classes/1/showcase.json
+  def showcase
+    render json: @character_class, :serializer => CharacterClassShowcaseSerializer
   end
 
   # POST /character_classes

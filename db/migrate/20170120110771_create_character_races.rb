@@ -2,6 +2,7 @@ class CreateCharacterRaces < ActiveRecord::Migration
   def change
     create_table :character_races, id: :bigint do |t|
       t.string   :name,            limit: 45,                            null: false
+      t.text     :description
       t.string   :picture,         limit: 300
       t.decimal  :min_height,                 precision: 10, default: 0
       t.decimal  :max_height,                 precision: 10, default: 0

@@ -5,5 +5,4 @@ class CharacterClassSerializer < ActiveModel::Serializer
   has_one :character_class_type, key: :type
   has_one :user
   has_one :character_class_requirement, key: :requirement
-  has_many :character_class_evolutions, key: :evolutions
 end

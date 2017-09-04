@@ -140,15 +140,15 @@ ActiveRecord::Schema.define(version: 20170120110842) do
 
   create_table "character_class_magic_circles", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.integer  "level",              limit: 4, default: 1, null: false
-    t.integer  "magic_circle_1",     limit: 4, default: 0, null: false
-    t.integer  "magic_circle_2",     limit: 4, default: 0, null: false
-    t.integer  "magic_circle_3",     limit: 4, default: 0, null: false
-    t.integer  "magic_circle_4",     limit: 4, default: 0, null: false
-    t.integer  "magic_circle_5",     limit: 4, default: 0, null: false
-    t.integer  "magic_circle_6",     limit: 4, default: 0, null: false
-    t.integer  "magic_circle_7",     limit: 4, default: 0, null: false
-    t.integer  "magic_circle_8",     limit: 4, default: 0, null: false
-    t.integer  "magic_circle_9",     limit: 4, default: 0, null: false
+    t.integer  "circle_1",           limit: 4, default: 0, null: false
+    t.integer  "circle_2",           limit: 4, default: 0, null: false
+    t.integer  "circle_3",           limit: 4, default: 0, null: false
+    t.integer  "circle_4",           limit: 4, default: 0, null: false
+    t.integer  "circle_5",           limit: 4, default: 0, null: false
+    t.integer  "circle_6",           limit: 4, default: 0, null: false
+    t.integer  "circle_7",           limit: 4, default: 0, null: false
+    t.integer  "circle_8",           limit: 4, default: 0, null: false
+    t.integer  "circle_9",           limit: 4, default: 0, null: false
     t.integer  "character_class_id", limit: 8,             null: false
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
@@ -204,14 +204,17 @@ ActiveRecord::Schema.define(version: 20170120110842) do
 
   create_table "character_class_types", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "name",              limit: 45,                 null: false
-    t.boolean  "magic",                        default: false, null: false
     t.integer  "protection",        limit: 4,                  null: false
     t.string   "key_attr",          limit: 4,  default: "0",   null: false
+    t.boolean  "can_use_magic",                default: false, null: false
     t.boolean  "can_bane_undead",              default: false, null: false
     t.boolean  "has_thief_talents",            default: false, null: false
+    t.integer  "spell_type_id",     limit: 8
     t.datetime "created_at",                                   null: false
     t.datetime "updated_at",                                   null: false
   end
+
+  add_index "character_class_types", ["spell_type_id"], name: "index_character_class_types_on_spell_type_id", using: :btree
 
   create_table "character_class_weapon_types", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.integer  "character_class_id", limit: 8, null: false
@@ -224,15 +227,15 @@ ActiveRecord::Schema.define(version: 20170120110842) do
   add_index "character_class_weapon_types", ["weapon_type_id"], name: "index_character_class_weapon_types_on_weapon_type_id", using: :btree
 
   create_table "character_classes", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
-    t.string   "name",                    limit: 45,  null: false
+    t.string   "name",                    limit: 45,    null: false
     t.string   "picture",                 limit: 300
-    t.string   "description",             limit: 500
-    t.integer  "dice_id",                 limit: 8,   null: false
+    t.text     "description",             limit: 65535
+    t.integer  "dice_id",                 limit: 8,     null: false
     t.integer  "perk_id",                 limit: 8
-    t.integer  "character_class_type_id", limit: 8,   null: false
-    t.integer  "user_id",                 limit: 8,   null: false
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.integer  "character_class_type_id", limit: 8,     null: false
+    t.integer  "user_id",                 limit: 8,     null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
   end
 
   add_index "character_classes", ["character_class_type_id"], name: "index_character_classes_on_character_class_type_id", using: :btree
@@ -304,17 +307,16 @@ ActiveRecord::Schema.define(version: 20170120110842) do
   add_index "character_race_skills", ["skill_id"], name: "index_character_race_skills_on_skill_id", using: :btree
 
   create_table "character_race_thief_talents", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
-    t.integer  "lockpick_mod",        limit: 4,                 null: false
-    t.integer  "find_traps_mod",      limit: 4,                 null: false
-    t.integer  "climb_mod",           limit: 4,                 null: false
-    t.integer  "silent_movement_mod", limit: 4,                 null: false
-    t.integer  "stealth_mod",         limit: 4,                 null: false
-    t.integer  "pickpocket_mod",      limit: 4,                 null: false
-    t.string   "hear_noises_mod",     limit: 3, default: "1-1", null: false
-    t.string   "backstab_mod",        limit: 2, default: "x2",  null: false
-    t.integer  "character_race_id",   limit: 8,                 null: false
-    t.datetime "created_at",                                    null: false
-    t.datetime "updated_at",                                    null: false
+    t.integer  "lockpick",          limit: 4
+    t.integer  "traps",             limit: 4
+    t.integer  "climb",             limit: 4
+    t.integer  "stealth",           limit: 4
+    t.integer  "pickpocket",        limit: 4
+    t.integer  "perception",        limit: 4
+    t.integer  "sneak_attack",      limit: 4
+    t.integer  "character_race_id", limit: 8, null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   add_index "character_race_thief_talents", ["character_race_id"], name: "index_character_race_thief_talents_on_character_race_id", using: :btree
@@ -330,27 +332,28 @@ ActiveRecord::Schema.define(version: 20170120110842) do
   add_index "character_race_weapons", ["weapon_type_id"], name: "index_character_race_weapons_on_weapon_type_id", using: :btree
 
   create_table "character_races", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
-    t.string   "name",            limit: 45,                             null: false
+    t.string   "name",            limit: 45,                               null: false
+    t.text     "description",     limit: 65535
     t.string   "picture",         limit: 300
-    t.decimal  "min_height",                  precision: 10, default: 0
-    t.decimal  "max_height",                  precision: 10, default: 0
-    t.decimal  "min_weight",                  precision: 10
-    t.decimal  "max_weight",                  precision: 10
+    t.decimal  "min_height",                    precision: 10, default: 0
+    t.decimal  "max_height",                    precision: 10, default: 0
+    t.decimal  "min_weight",                    precision: 10
+    t.decimal  "max_weight",                    precision: 10
     t.integer  "maturity",        limit: 4
     t.integer  "max_age",         limit: 4
-    t.integer  "movement_base",   limit: 4,                  default: 1, null: false
-    t.integer  "armor_class_mod", limit: 4,                  default: 0, null: false
-    t.integer  "str_mod",         limit: 4,                  default: 0, null: false
-    t.integer  "dex_mod",         limit: 4,                  default: 0, null: false
-    t.integer  "cons_mod",        limit: 4,                  default: 0, null: false
-    t.integer  "int_mod",         limit: 4,                  default: 0, null: false
-    t.integer  "wis_mod",         limit: 4,                  default: 0, null: false
-    t.integer  "char_mod",        limit: 4,                  default: 0, null: false
-    t.integer  "alignment_id",    limit: 8,                              null: false
+    t.integer  "movement_base",   limit: 4,                    default: 1, null: false
+    t.integer  "armor_class_mod", limit: 4,                    default: 0, null: false
+    t.integer  "str_mod",         limit: 4,                    default: 0, null: false
+    t.integer  "dex_mod",         limit: 4,                    default: 0, null: false
+    t.integer  "cons_mod",        limit: 4,                    default: 0, null: false
+    t.integer  "int_mod",         limit: 4,                    default: 0, null: false
+    t.integer  "wis_mod",         limit: 4,                    default: 0, null: false
+    t.integer  "char_mod",        limit: 4,                    default: 0, null: false
+    t.integer  "alignment_id",    limit: 8,                                null: false
     t.integer  "dice_id",         limit: 8
-    t.integer  "user_id",         limit: 8,                              null: false
-    t.datetime "created_at",                                             null: false
-    t.datetime "updated_at",                                             null: false
+    t.integer  "user_id",         limit: 8,                                null: false
+    t.datetime "created_at",                                               null: false
+    t.datetime "updated_at",                                               null: false
   end
 
   add_index "character_races", ["alignment_id"], name: "index_character_races_on_alignment_id", using: :btree
@@ -393,18 +396,20 @@ ActiveRecord::Schema.define(version: 20170120110842) do
   end
 
   create_table "dexterity_mods", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
-    t.integer  "value",               limit: 4,             null: false
-    t.integer  "attack_mod",          limit: 4, default: 0, null: false
-    t.integer  "surprise_mod",        limit: 4, default: 0, null: false
-    t.integer  "armor_class_mod",     limit: 4, default: 0, null: false
-    t.integer  "protection_mod",      limit: 4, default: 0, null: false
-    t.integer  "find_traps_mod",      limit: 4, default: 0, null: false
-    t.integer  "silent_movement_mod", limit: 4, default: 0, null: false
-    t.integer  "lockpick_mod",        limit: 4, default: 0, null: false
-    t.integer  "stealth_mod",         limit: 4, default: 0, null: false
-    t.integer  "pickpocket_mod",      limit: 4, default: 0, null: false
-    t.datetime "created_at",                                null: false
-    t.datetime "updated_at",                                null: false
+    t.integer  "value",           limit: 4,             null: false
+    t.integer  "attack_mod",      limit: 4, default: 0, null: false
+    t.integer  "surprise_mod",    limit: 4, default: 0, null: false
+    t.integer  "armor_class_mod", limit: 4, default: 0, null: false
+    t.integer  "protection_mod",  limit: 4, default: 0, null: false
+    t.integer  "lockpick",        limit: 4
+    t.integer  "traps",           limit: 4
+    t.integer  "climb",           limit: 4
+    t.integer  "stealth",         limit: 4
+    t.integer  "pickpocket",      limit: 4
+    t.integer  "perception",      limit: 4
+    t.integer  "sneak_attack",    limit: 4
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
   end
 
   create_table "dices", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
@@ -593,32 +598,47 @@ ActiveRecord::Schema.define(version: 20170120110842) do
   end
 
   create_table "thief_talents", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
-    t.integer  "level",           limit: 4,                 null: false
-    t.integer  "lockpick",        limit: 4,                 null: false
-    t.integer  "find_traps",      limit: 4,                 null: false
-    t.integer  "climb",           limit: 4,                 null: false
-    t.integer  "silent_movement", limit: 4,                 null: false
-    t.integer  "stealth",         limit: 4,                 null: false
-    t.integer  "pickpocket",      limit: 4,                 null: false
-    t.string   "hear_noises",     limit: 3, default: "1-1", null: false
-    t.string   "backstab",        limit: 2, default: "x2",  null: false
-    t.datetime "created_at",                                null: false
-    t.datetime "updated_at",                                null: false
+    t.integer  "level",              limit: 4, null: false
+    t.integer  "lockpick",           limit: 4, null: false
+    t.integer  "traps",              limit: 4, null: false
+    t.integer  "climb",              limit: 4, null: false
+    t.integer  "stealth",            limit: 4, null: false
+    t.integer  "pickpocket",         limit: 4, null: false
+    t.integer  "perception",         limit: 4, null: false
+    t.integer  "sneak_attack",       limit: 4, null: false
+    t.integer  "character_class_id", limit: 8, null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
+  add_index "thief_talents", ["character_class_id"], name: "index_thief_talents_on_character_class_id", using: :btree
+
   create_table "undead_banes", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
-    t.integer  "level",         limit: 4, default: 1,   null: false
-    t.string   "skelleton_mod", limit: 2, default: "N", null: false
-    t.string   "zombie_mod",    limit: 2, default: "N", null: false
-    t.string   "ghoul_mod",     limit: 2, default: "N", null: false
-    t.string   "inhuman_mod",   limit: 2, default: "N", null: false
-    t.string   "aparition_mod", limit: 2, default: "N", null: false
-    t.string   "mummy_mod",     limit: 2, default: "N", null: false
-    t.string   "specter_mod",   limit: 2, default: "N", null: false
-    t.string   "vampire_mod",   limit: 2, default: "N", null: false
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
+    t.integer  "level",              limit: 4, default: 1, null: false
+    t.string   "dv1",                limit: 2,             null: false
+    t.string   "dv2",                limit: 2,             null: false
+    t.string   "dv3",                limit: 2,             null: false
+    t.string   "dv4",                limit: 2,             null: false
+    t.string   "dv5",                limit: 2,             null: false
+    t.string   "dv6",                limit: 2,             null: false
+    t.string   "dv7",                limit: 2,             null: false
+    t.string   "dv8",                limit: 2,             null: false
+    t.string   "dv9",                limit: 2,             null: false
+    t.string   "dv10",               limit: 2,             null: false
+    t.string   "dv11",               limit: 2,             null: false
+    t.string   "dv12",               limit: 2,             null: false
+    t.string   "dv13",               limit: 2,             null: false
+    t.string   "dv14",               limit: 2,             null: false
+    t.string   "dv15",               limit: 2,             null: false
+    t.string   "dv16",               limit: 2,             null: false
+    t.string   "dv17",               limit: 2,             null: false
+    t.string   "dv18",               limit: 2,             null: false
+    t.integer  "character_class_id", limit: 8,             null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
   end
+
+  add_index "undead_banes", ["character_class_id"], name: "index_undead_banes_on_character_class_id", using: :btree
 
   create_table "users", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "name",            limit: 45,  null: false
@@ -708,6 +728,7 @@ ActiveRecord::Schema.define(version: 20170120110842) do
   add_foreign_key "character_class_specializations", "character_classes"
   add_foreign_key "character_class_spell_types", "character_classes"
   add_foreign_key "character_class_spell_types", "spell_types"
+  add_foreign_key "character_class_types", "spell_types"
   add_foreign_key "character_class_weapon_types", "character_classes"
   add_foreign_key "character_class_weapon_types", "weapon_types"
   add_foreign_key "character_classes", "character_class_types"
@@ -750,6 +771,8 @@ ActiveRecord::Schema.define(version: 20170120110842) do
   add_foreign_key "spells", "element_types"
   add_foreign_key "spells", "spell_circles"
   add_foreign_key "spells", "users"
+  add_foreign_key "thief_talents", "character_classes"
+  add_foreign_key "undead_banes", "character_classes"
   add_foreign_key "users", "roles"
   add_foreign_key "weapons", "alignments"
   add_foreign_key "weapons", "dices"
