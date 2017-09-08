@@ -26,7 +26,6 @@ class GenerateForeignKeys < ActiveRecord::Migration
     add_foreign_key :character_class_weapon_types, :weapon_types
     add_foreign_key :character_classes, :character_class_types
     add_foreign_key :character_classes, :dices
-    add_foreign_key :character_classes, :perks
     add_foreign_key :character_classes, :users
     add_foreign_key :character_expertises, :characters
     add_foreign_key :character_expertises, :expertises
@@ -36,8 +35,8 @@ class GenerateForeignKeys < ActiveRecord::Migration
     add_foreign_key :character_race_armors, :character_races
     add_foreign_key :character_race_languages, :character_races
     add_foreign_key :character_race_languages, :language_types
-    add_foreign_key :character_race_perks, :character_races
-    add_foreign_key :character_race_perks, :perks
+    add_foreign_key :character_race_traits, :character_races
+    add_foreign_key :character_race_traits, :traits
     add_foreign_key :character_race_skills, :character_races
     add_foreign_key :character_race_skills, :skills
     add_foreign_key :character_race_thief_talents, :character_races
@@ -54,8 +53,8 @@ class GenerateForeignKeys < ActiveRecord::Migration
     add_foreign_key :expertises, :users
     add_foreign_key :items, :item_types
     add_foreign_key :items, :users
-    add_foreign_key :perks, :perk_types
-    add_foreign_key :perks, :users
+    add_foreign_key :traits, :trait_types
+    add_foreign_key :traits, :users
     add_foreign_key :skills, :effects
     add_foreign_key :skills, :skill_types
     add_foreign_key :skills, :users

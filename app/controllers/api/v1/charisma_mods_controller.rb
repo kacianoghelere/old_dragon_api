@@ -1,4 +1,6 @@
-class API::V1::CharismaModsController < ApplicationController
+class API::V1::CharismaModsController  < ApplicationController
+
+  before_filter :authenticate_request!
   before_action :set_charisma_mod, only: [:show, :update, :destroy]
 
   # GET /charisma_mods

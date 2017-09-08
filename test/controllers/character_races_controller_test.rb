@@ -13,7 +13,7 @@ class CharacterRacesControllerTest < ActionController::TestCase
 
   test "should create character_race" do
     assert_difference('CharacterRace.count') do
-      post :create, character_race: { alignment_id: @character_race.alignment_id, armor_class_mod: @character_race.armor_class_mod, char_mod: @character_race.char_mod, cons_mod: @character_race.cons_mod, dex_mod: @character_race.dex_mod, dice_id: @character_race.dice_id, int_mod: @character_race.int_mod, maturity: @character_race.maturity, max_age: @character_race.max_age, max_height: @character_race.max_height, max_weight: @character_race.max_weight, min_height: @character_race.min_height, min_weight: @character_race.min_weight, movement_base: @character_race.movement_base, name: @character_race.name, str_mod: @character_race.str_mod, user_id: @character_race.user_id, wis_mod: @character_race.wis_mod }
+      post :create, character_race: { alignment_id: @character_race.alignment_id, char_mod: @character_race.char_mod, cons_mod: @character_race.cons_mod, dex_mod: @character_race.dex_mod, dice_id: @character_race.dice_id, int_mod: @character_race.int_mod, maturity: @character_race.maturity, max_age: @character_race.max_age, max_height: @character_race.max_height, max_weight: @character_race.max_weight, min_height: @character_race.min_height, min_weight: @character_race.min_weight, movement_base: @character_race.movement_base, name: @character_race.name, str_mod: @character_race.str_mod, user_id: @character_race.user_id, wis_mod: @character_race.wis_mod }
     end
 
     assert_response 201
@@ -25,7 +25,7 @@ class CharacterRacesControllerTest < ActionController::TestCase
   end
 
   test "should update character_race" do
-    put :update, id: @character_race, character_race: { alignment_id: @character_race.alignment_id, armor_class_mod: @character_race.armor_class_mod, char_mod: @character_race.char_mod, cons_mod: @character_race.cons_mod, dex_mod: @character_race.dex_mod, dice_id: @character_race.dice_id, int_mod: @character_race.int_mod, maturity: @character_race.maturity, max_age: @character_race.max_age, max_height: @character_race.max_height, max_weight: @character_race.max_weight, min_height: @character_race.min_height, min_weight: @character_race.min_weight, movement_base: @character_race.movement_base, name: @character_race.name, str_mod: @character_race.str_mod, user_id: @character_race.user_id, wis_mod: @character_race.wis_mod }
+    put :update, id: @character_race, character_race: { alignment_id: @character_race.alignment_id, char_mod: @character_race.char_mod, cons_mod: @character_race.cons_mod, dex_mod: @character_race.dex_mod, dice_id: @character_race.dice_id, int_mod: @character_race.int_mod, maturity: @character_race.maturity, max_age: @character_race.max_age, max_height: @character_race.max_height, max_weight: @character_race.max_weight, min_height: @character_race.min_height, min_weight: @character_race.min_weight, movement_base: @character_race.movement_base, name: @character_race.name, str_mod: @character_race.str_mod, user_id: @character_race.user_id, wis_mod: @character_race.wis_mod }
     assert_response 204
   end
 

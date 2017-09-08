@@ -4,7 +4,6 @@ one:
   name: MyString
   description: MyString
   dice_id: 
-  perk_id: 
   character_class_type_id: 
   user_id: 
 
@@ -12,6 +11,5 @@ two:
   name: MyString
   description: MyString
   dice_id: 
-  perk_id: 
   character_class_type_id: 
   user_id: 

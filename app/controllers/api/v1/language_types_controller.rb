@@ -1,4 +1,6 @@
-class API::V1::LanguageTypesController < ApplicationController
+class API::V1::LanguageTypesController  < ApplicationController
+
+  before_filter :authenticate_request!
   before_action :set_language_type, only: [:show, :update, :destroy]
 
   # GET /language_types

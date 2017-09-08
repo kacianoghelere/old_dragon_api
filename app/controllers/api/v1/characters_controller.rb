@@ -1,4 +1,6 @@
-class API::V1::CharactersController < ApplicationController
+class API::V1::CharactersController  < ApplicationController
+
+  before_filter :authenticate_request!
   before_action :set_character, only: [:show, :update, :destroy]
 
   # GET /characters

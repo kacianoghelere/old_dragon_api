@@ -19,7 +19,7 @@ rails g migration create_character_expertises
 rails g migration create_character_journals
 rails g migration create_character_race_armors
 rails g migration create_character_race_languages
-rails g migration create_character_race_perks
+rails g migration create_character_race_traits
 rails g migration create_character_race_skills
 rails g migration create_character_race_thief_talents
 rails g migration create_character_race_weapons
@@ -40,8 +40,6 @@ rails g migration create_items
 rails g migration create_language_types
 rails g migration create_material_types
 rails g migration create_origins
-rails g migration create_perk_types
-rails g migration create_perks
 rails g migration create_role_accesses
 rails g migration create_roles
 rails g migration create_skill_types
@@ -51,6 +49,8 @@ rails g migration create_spell_types
 rails g migration create_spells
 rails g migration create_strength_mods
 rails g migration create_thief_talents
+rails g migration create_trait_types
+rails g migration create_traits
 rails g migration create_undead_banes
 rails g migration create_users
 rails g migration create_weapon_sizes

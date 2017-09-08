@@ -1,4 +1,6 @@
-class API::V1::ExpertisesController < ApplicationController
+class API::V1::ExpertisesController  < ApplicationController
+
+  before_filter :authenticate_request!
   before_action :set_expertise, only: [:show, :update, :destroy]
 
   # GET /expertises

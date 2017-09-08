@@ -18,7 +18,6 @@ class CharacterClassesControllerTest < ActionController::TestCase
         description: @character_class.description,
         dice_id: @character_class.dice_id,
         name: @character_class.name,
-        perk_id: @character_class.perk_id,
         user_id: @character_class.user_id
       }
     end
@@ -37,7 +36,6 @@ class CharacterClassesControllerTest < ActionController::TestCase
       description: @character_class.description,
       dice_id: @character_class.dice_id,
       name: @character_class.name,
-      perk_id: @character_class.perk_id,
       user_id: @character_class.user_id
     }
     assert_response 204

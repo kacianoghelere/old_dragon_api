@@ -1,4 +1,5 @@
-class API::V1::CharacterClassEvolutionsController < ApplicationController
+class API::V1::CharacterClassEvolutionsController  < ApplicationController
+  before_filter :authenticate_request!
   before_action :set_character_class_evolution, only: [:show, :update, :destroy]
 
   # GET /character_class_evolutions

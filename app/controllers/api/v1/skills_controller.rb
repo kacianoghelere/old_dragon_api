@@ -1,4 +1,6 @@
-class API::V1::SkillsController < ApplicationController
+class API::V1::SkillsController  < ApplicationController
+
+  before_filter :authenticate_request!
   before_action :set_skill, only: [:show, :update, :destroy]
 
   # GET /skills

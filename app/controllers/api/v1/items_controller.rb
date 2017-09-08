@@ -1,4 +1,6 @@
-class API::V1::ItemsController < ApplicationController
+class API::V1::ItemsController  < ApplicationController
+
+  before_filter :authenticate_request!
   before_action :set_item, only: [:show, :update, :destroy]
 
   # GET /items

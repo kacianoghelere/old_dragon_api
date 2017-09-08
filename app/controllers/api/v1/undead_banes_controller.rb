@@ -1,4 +1,6 @@
-class API::V1::UndeadBanesController < ApplicationController
+class API::V1::UndeadBanesController  < ApplicationController
+
+  before_filter :authenticate_request!
   before_action :set_undead_bane, only: [:show, :update, :destroy]
 
   # GET /undead_banes

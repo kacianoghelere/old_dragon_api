@@ -3,11 +3,11 @@
 one:
   name: MyString
   description: MyString
-  perk_type_id: 
+  trait_type_id: 
   user_id: 
 
 two:
   name: MyString
   description: MyString
-  perk_type_id: 
+  trait_type_id: 
   user_id: 

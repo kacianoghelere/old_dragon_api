@@ -1,4 +1,6 @@
-class API::V1::IntelligenceModsController < ApplicationController
+class API::V1::IntelligenceModsController  < ApplicationController
+
+  before_filter :authenticate_request!
   before_action :set_intelligence_mod, only: [:show, :update, :destroy]
 
   # GET /intelligence_mods

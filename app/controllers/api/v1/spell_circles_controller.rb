@@ -1,4 +1,6 @@
-class API::V1::SpellCirclesController < ApplicationController
+class API::V1::SpellCirclesController  < ApplicationController
+
+  before_filter :authenticate_request!
   before_action :set_spell_circle, only: [:show, :update, :destroy]
 
   # GET /spell_circles

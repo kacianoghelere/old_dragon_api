@@ -1,4 +1,6 @@
-class API::V1::WeaponTypesController < ApplicationController
+class API::V1::WeaponTypesController  < ApplicationController
+
+  before_filter :authenticate_request!
   before_action :set_weapon_type, only: [:show, :update, :destroy]
 
   # GET /weapon_types

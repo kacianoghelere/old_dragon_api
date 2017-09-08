@@ -1,4 +1,6 @@
-class API::V1::EffectsController < ApplicationController
+class API::V1::EffectsController  < ApplicationController
+
+  before_filter :authenticate_request!
   before_action :set_effect, only: [:show, :update, :destroy]
 
   # GET /effects

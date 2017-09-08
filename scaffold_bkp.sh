@@ -40,7 +40,7 @@ rails generate scaffold CharacterRaceThiefTalent lockpick_mod:integer find_traps
 
 rails generate scaffold CharacterRaceWeapon character_race:references weapon_type:references --no-migration
 
-rails generate scaffold CharacterRace name:string min_height:decimal max_height:decimal min_weight:decimal max_weight:decimal maturity:integer max_age:integer movement_base:integer armor_class_mod:integer str_mod:integer dex_mod:integer cons_mod:integer int_mod:integer wis_mod:integer char_mod:integer alignment:references dice:references user:references --no-migration
+rails generate scaffold CharacterRace name:string min_height:decimal max_height:decimal min_weight:decimal max_weight:decimal maturity:integer max_age:integer movement_base:integer str_mod:integer dex_mod:integer cons_mod:integer int_mod:integer wis_mod:integer char_mod:integer alignment:references dice:references user:references --no-migration
 
 rails generate scaffold CharacterSheetAttribute strength:integer dexterity:integer constitution:integer intelligence:integer wisdom:integer character_sheet:references --no-migration
 

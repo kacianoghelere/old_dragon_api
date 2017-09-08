@@ -1,4 +1,6 @@
-class API::V1::OriginsController < ApplicationController
+class API::V1::OriginsController  < ApplicationController
+
+  before_filter :authenticate_request!
   before_action :set_origin, only: [:show, :update, :destroy]
 
   # GET /origins

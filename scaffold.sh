@@ -22,13 +22,13 @@ rails generate scaffold CharacterClassType name:string magic:boolean protection:
 
 rails generate scaffold CharacterClassWeaponType character_class:references weapon_type:references --no-migration
 
-rails generate scaffold CharacterClass name:string picture:string description:string dice:references perk:references character_class_type:references user:references --no-migration
+rails generate scaffold CharacterClass name:string picture:string description:string dice:references character_class_type:references user:references --no-migration
 
 rails generate scaffold CharacterRaceArmor armor_type:references character_race:references --no-migration
 
 rails generate scaffold CharacterRaceLanguage character_race:references language_type:references --no-migration
 
-rails generate scaffold CharacterRacePerk character_race:references perk:references --no-migration
+rails generate scaffold CharacterRaceTrait character_race:references trait:references --no-migration
 
 rails generate scaffold CharacterRaceSkill character_race:references skill:references --no-migration
 
@@ -74,9 +74,9 @@ rails generate scaffold MaterialType name:string --no-migration
 
 rails generate scaffold Origin name:string variation:string bonus:integer --no-migration
 
-rails generate scaffold PerkType name:string --no-migration
+rails generate scaffold TraitType name:string --no-migration
 
-rails generate scaffold Perk name:string description:string perk_type:references user:references --no-migration
+rails generate scaffold Trait name:string description:string trait_type:references user:references --no-migration
 
 rails generate scaffold Role name:string admin:boolean --no-migration
 

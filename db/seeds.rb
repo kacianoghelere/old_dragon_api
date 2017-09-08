@@ -1,21 +1,20 @@
-Alignment.create!([
-  {name: "Ordeiro"},
-  {name: "Neutro"},
-  {name: "Caótico"}
-])
+lawfull = Alignment.create!({name: "Ordeiro"})
+neutral = Alignment.create!({name: "Neutro"})
+chaotic = Alignment.create!({name: "Caótico"})
+
 ArmorType.create!([
   {name: "Completa"},
   {name: "Parcial"}
 ])
-Dice.create!([
-  {name: "D4"},
-  {name: "D6"},
-  {name: "D8"},
-  {name: "D10"},
-  {name: "D12"},
-  {name: "D20"},
-  {name: "D100"}
-])
+
+d4   = Dice.create!({name: "D4"})
+d6   = Dice.create!({name: "D6"})
+d8   = Dice.create!({name: "D8"})
+d10  = Dice.create!({name: "D10"})
+d12  = Dice.create!({name: "D12"})
+d20  = Dice.create!({name: "D20"})
+d100 = Dice.create!({name: "D100"})
+
 EffectType.create!([
   {name: "Instantâneo"},
   {name: "Temporario"},
@@ -27,20 +26,18 @@ ElementType.create!([
   {name: "Terra"},
   {name: "Ar"}
 ])
-WeaponSize.create!([
-  {name: "Pequeno", alternative_name: "Pequeno", alias: "P"},
-  {name: "Médio", alternative_name: "Médio", alias: "M"},
-  {name: "Grande", alternative_name: "Grande", alias: "G"}
-])
-WeaponType.create!([
-  {name: "Corte"},
-  {name: "Perfuração"},
-  {name: "Deformação"}
-])
-SkillType.create!([
-  {name: "Natural"},
-  {name: "Adquirido"}
-])
+
+smallWeapon  = WeaponSize.create!({name: "Pequeno", alternative_name: "Pequeno", alias: "P"})
+mediumWeapon = WeaponSize.create!({name: "Médio", alternative_name: "Médio", alias: "M"})
+greatWeapon  = WeaponSize.create!({name: "Grande", alternative_name: "Grande", alias: "G"})
+
+cutWeapon   = WeaponType.create!({name: "Corte"})
+pirceWeapon = WeaponType.create!({name: "Perfuração"})
+bluntWeapon = WeaponType.create!({name: "Deformação"})
+
+inbornSkill    = SkillType.create!({name: "Inato / Natural"})
+acquiredSkill = SkillType.create!({name: "Adquirido"})
+
 SpellType.create!([
   {name: "Arcana"},
   {name: "Divina"}
@@ -50,8 +47,8 @@ Origin.create!([
   {name: "Élfico", variation: "Élfica", bonus: 1},
   {name: "Anão", variation: "Anã", bonus: 1}
 ])
-PerkType.create!([
-  {name: "Natural"},
+TraitType.create!([
+  {name: "Inato / Natural"},
   {name: "Adquirida"}
 ])
 ItemType.create!([
@@ -70,124 +67,172 @@ LanguageType.create!([
   {name: "Dracônico", description: nil},
   {name: "Antigo", description: nil}
 ])
+
 Role.create!([
   {name: "Administrador", admin: true},
   {name: "Comum", admin: false}
 ])
-User.create!([
+adminUser = User.create!({
+  name: "Administrador",
+  user_code: "admin",
+  password: "123456",
+  password_confirmation: "123456",
+  last_login: nil,
+  email: "themohawkeagle@gmail.com",
+  role_id: 1
+})
+
+TraitType.create!([
+  {name: "Natural"},
+  {name: "Adquirida"}
+])
+
+# Trait.create!([
+#   {name: "Couraça", description: "Ataques de perfuração recebidos causam apenas metade do dano", trait_type_id: 1, user: adminUser},
+#   {name: "Corpo Ósseo", description: "Ataques de corte e perfuração recebidos causam apenas metade do dano", trait_type_id: 1, user: adminUser}
+# ])
+
+dwarves = CharacterRace.create!({name: "Anões",
+  picture: "https://i.pinimg.com/564x/29/03/7c/29037c18b75badfeaa7dafe3f17f333a.jpg",
+  description: "Os anões são pequenos seres robustos e atarracados, famosos por serem rabugentos e teimosos. Como habitantes do subterrâneo, os anões são mineradores fabulosos e ferreiros extremamente competentes, conhecidos pela capacidade de transformarem blocos metálicos em verdadeiras obras de arte e armas dignas das melhores estórias."\
+    "\nEntretanto, os anões são criaturas extremamente honradas e valorosas. Um ser que coloca sua honra, palavra e dignidade acima de quaisquer outros valores, prezando a ordem e desprezando quase que absolutamente o caos, sendo ainda raros os anões neutros. É tido como senso comum que a palavra de um anão vale mais do que qualquer assinatura. A amizade de um anão é dura de ser conquistada, e, uma vez estabelecida, é ainda mais difícil de ser desfeita. Por outro lado a inimizade é levada até as últimas consequências, passando de geração a geração dentro de um mesmo clã de anões."\
+    "\nOs anões possuem uma rivalidade histórica com os elfos. Oriunda de guerras de tempos longínquos, esse ranço pessoal se perpetuou através das eras, apesar de ter sido um pouco amenizada com o passar do tempo. Mesmo sem chegar à agressão aberta, um anão sempre buscará diminuir os feitos de um elfo, exaltando, sempre que possível, as suas próprias conquistas.",
+  min_height: 1,
+  max_height: 2,
+  min_weight: 50,
+  max_weight: 70,
+  maturity: 70,
+  max_age: 350,
+  movement_base: 9,
+  cons_mod: 2,
+  char_mod: -2,
+  alignment_id: 1,
+  user: adminUser
+})
+dwarves.skills.create!([
   {
-    name: "Administrador",
-    user_code: "admin",
-    password: "123456",
-    password_confirmation: "123456",
-    last_login: nil,
-    email: "themohawkeagle@gmail.com",
-    role_id: 1
+    name: "Visão no Escuro 15m",
+    description: "Por estarem totalmente adaptados à vida no subterrâneo, os "\
+      "anões conseguem enxergar no escuro completo devido à sua visão no "\
+      "escuro, de alcance de até 15 metros.",
+    effect_id: nil,
+    skill_type: inbornSkill,
+    user: adminUser
+  },
+  {
+    name: "Mineradores",
+    description: "Por viverem em túneis e minas, os anões aprendem desde cedo "\
+      "a avaliar passagens e condições de muralhas e portais. Assim, são "\
+      "capazes de detectar desníveis e armadilhas de pedra ou fossos "\
+      "escondidos com um resultado de 1 ou 2 em 1d6.",
+    effect_id: nil,
+    skill_type: acquiredSkill,
+    user: adminUser
   }
 ])
-Skill.create!([
-  {name: "Visão na Penumbra", description: "Visão na Penumbra em até 15 metros", effect_id: nil, skill_type_id: 1, user_id: 1}
-])
-Perk.create!([
-  {name: "Couraça", description: "Ataques de perfuração recebidos causam apenas metade do dano", perk_type_id: 1, user_id: 1},
-  {name: "Corpo Ósseo", description: "Ataques de corte e perfuração recebidos causam apenas metade do dano", perk_type_id: 1, user_id: 1}
-])
-CharacterRace.create!([
-  {name: "Anões",
-    picture: "https://i.pinimg.com/564x/29/03/7c/29037c18b75badfeaa7dafe3f17f333a.jpg",
-    description: "Os anões são pequenos seres robustos e atarracados, famosos por serem rabugentos e teimosos. Como habitantes do subterrâneo, os anões são mineradores fabulosos e ferreiros extremamente competentes, conhecidos pela capacidade de transformarem blocos metálicos em verdadeiras obras de arte e armas dignas das melhores estórias."\
-      "Entretanto, os anões são criaturas extremamente honradas e valorosas. Um ser que coloca sua honra, palavra e dignidade acima de quaisquer outros valores, prezando a ordem e desprezando quase que absolutamente o caos, sendo ainda raros os anões neutros. É tido como senso comum que a palavra de um anão vale mais do que qualquer assinatura. A amizade de um anão é dura de ser conquistada, e, uma vez estabelecida, é ainda mais difícil de ser desfeita. Por outro lado a inimizade é levada até as últimas consequências, passando de geração a geração dentro de um mesmo clã de anões."\
-      "Os anões possuem uma rivalidade histórica com os elfos. Oriunda de guerras de tempos longínquos, esse ranço pessoal se perpetuou através das eras, apesar de ter sido um pouco amenizada com o passar do tempo. Mesmo sem chegar à agressão aberta, um anão sempre buscará diminuir os feitos de um elfo, exaltando, sempre que possível, as suas próprias conquistas.",
-    min_height: 1,
-    max_height: 2,
-    min_weight: 50,
-    max_weight: 70,
-    maturity: 70,
-    max_age: 350,
-    movement_base: 9,
-    armor_class_mod: 0,
-    str_mod: 0,
-    dex_mod: 0,
-    cons_mod: 2,
-    int_mod: 0,
-    wis_mod: 0,
-    char_mod: -2,
-    alignment_id: 1,
-    dice_id: nil,
-    user_id: 1
+
+elves = CharacterRace.create!({
+  name: "Elfos",
+  picture: "https://i.pinimg.com/736x/81/1a/7a/811a7aa0c7621053c62ab5fa17a1ec8d--male-elf-character-concept.jpg",
+  description: "Os elfos são humanoides esguios e silvestres, com antecedentes místicos e aparência inconfundível. São ligeiramente mais baixos que os humanos, se diferenciando ainda mais nos traços faciais delicados, finos e graciosos. As orelhas são longas e pontudas, e os olhos amendoados, levemente alongados. Os cabelos são sempre lisos e limpos e comumente longos, mesmo entre os elfos machos,podendo ter uma miríade de cores e tons que vão do completo negro ao branco prateado."\
+    "\nComo habitantes das áreas selvagens e florestais, os elfos possuem uma eterna ligação com as árvores e demais seres silvestres. Os elfos são seres reclusos e raramente abandonam sua terra em busca de aventuras. Quando um elfo se rende aos encantos do mundo além das fronteiras, normalmente o faz pelo desejo de adquirir conhecimento, aperfeiçoar suas técnicas ou ainda como embaixador de seu povo. "\
+    "\nPelo ponto de vista élfico, a rivalidade histórica entre elfos e anões é fomentada mais pelas divergências 15artísticas, sendo que os elfos consideram as técnicas empregadas pelos anões como rudes e grosseiras, preferindo a delicadeza intrincada que empregam em detrimento da precisão metódica do povo anão.",
+  min_height: 2,
+  max_height: 2,
+  min_weight: 40,
+  max_weight: 50,
+  maturity: 150,
+  max_age: 700,
+  movement_base: 9,
+  dex_mod: 2,
+  cons_mod: -2,
+  alignment_id: 2,
+  dice: d8,
+  user: adminUser
+})
+elves.skills.create!([
+  {
+    name: "Visão na Penumbra 50m",
+    description: "Treinados e adaptados à parca luz natural das noites "\
+      "silvestres, os elfos adquiriram a capacidade de ver normalmente mesmo "\
+      "em condições de baixa luminosidade, com alcance de até 50 metros.",
+    effect_id: nil,
+    skill_type: inbornSkill,
+    user: adminUser
+    },
+  {
+    name: "Imunidade a efeitos de sono",
+    description: "uma vez que elfos não dormem, são imunes a magias ou "\
+      "efeitos que envolvam sono.",
+    effect_id: nil,
+    skill_type: inbornSkill,
+    user: adminUser
   },
   {
-    name: "Elfos",
-    picture: "https://i.pinimg.com/736x/81/1a/7a/811a7aa0c7621053c62ab5fa17a1ec8d--male-elf-character-concept.jpg",
-    description: "Os elfos são humanoides esguios e silvestres, com antecedentes místicos e aparência inconfundível. São ligeiramente mais baixos que os humanos, se diferenciando ainda mais nos traços faciais delicados, finos e graciosos. As orelhas são longas e pontudas, e os olhos amendoados, levemente alongados. Os cabelos são sempre lisos e limpos e comumente longos, mesmo entre os elfos machos,podendo ter uma miríade de cores e tons que vão do completo negro ao branco prateado."\
-      "Como habitantes das áreas selvagens e florestais, os elfos possuem uma eterna ligação com as árvores e demais seres silvestres. Os elfos são seres reclusos e raramente abandonam sua terra em busca de aventuras. Quando um elfo se rende aos encantos do mundo além das fronteiras, normalmente o faz pelo desejo de adquirir conhecimento, aperfeiçoar suas técnicas ou ainda como embaixador de seu povo. "\
-      "Pelo ponto de vista élfico, a rivalidade histórica entre elfos e anões é fomentada mais pelas divergências 15artísticas, sendo que os elfos consideram as técnicas empregadas pelos anões como rudes e grosseiras, preferindo a delicadeza intrincada que empregam em detrimento da precisão metódica do povo anão.",
-    min_height: 2,
-    max_height: 2,
-    min_weight: 40,
-    max_weight: 50,
-    maturity: 150,
-    max_age: 700,
-    movement_base: 9,
-    armor_class_mod: 0,
-    str_mod: 0,
-    dex_mod: 2,
-    cons_mod: -2,
-    int_mod: 0,
-    wis_mod: 0,
-    char_mod: 0,
-    alignment_id: 2,
-    dice_id: 3,
-    user_id: 1
-  },
-  {
-    name: "Humanos",
-    picture: "https://i.pinimg.com/564x/ba/66/34/ba6634ac7be1b24a3f7482ebb0fa4927.jpg",
-    description: "Os humanos são criaturas versáteis, valorosas e muito ambiciosas e, por isso, acabam representando a maioria da população. Essa versatilidade e ambição fazem com que humanos de diferentes lugares possuam hábitos e costumes também diferentes, sendo que o ambiente acaba inf luenciando a forma como a raça se desenvolve como um todo. Os grandes homens dos ermos gelados, de pele alva, estatura impressionante e músculos tenazes, serão tratados como humanos, exatamente como os morenos e franzinos habitantes das planícies desérticas.",
-    min_height: 2,
-    max_height: 2,
-    min_weight: 55,
-    max_weight: 90,
-    maturity: 15,
-    max_age: 70,
-    movement_base: 9,
-    armor_class_mod: 0,
-    str_mod: 0,
-    dex_mod: 0,
-    cons_mod: 0,
-    int_mod: 0,
-    wis_mod: 0,
-    char_mod: 0,
-    alignment_id: 2,
-    dice_id: nil,
-    user_id: 1
-  },
-  {
-    name: "Halflings",
-    picture: "http://3.bp.blogspot.com/-6D8tlIzKPR0/UJ4rELOM9LI/AAAAAAAAAl8/3sw0UV0tmcE/s1600/halfling+02.jpg",
-    description: "Os halflings são seres pequenos, cuja capacidade de encrencar-se é inversamente proporcional ao seu tamanho. Odiando o marasmo, os half lings preferem a confusão e a diversão ao tédio, e é justamente esse sentimento de aventura que os torna tão aptos a caírem na estrada e se tornarem peregrinos e aventureiros. "\
-      "Halflings podem apresentar à primeira vista características que erroneamente os classifiquem como frágeis, mas a prática demonstra exatamente o contrário. "\
-      "Curiosos, confiantes e assombrosamente corajosos, os half lings confiam em seus destinos e habilidades para superarem desafios, com uma sagacidade que beira o sobrenatural."\
-      "As vilas half lings são normalmente encontradas próximas ou integradas às cidades humanas e, de certa forma, essa característica demonstra como os seres destas duas raças interagem bem. Quando próximas, as comunidades half lings costumam ser pacatas, brejeiras, aconchegantes e hospitaleiras.",
-    min_height: 1,
-    max_height: 1,
-    min_weight: 20,
-    max_weight: 35,
-    maturity: 30,
-    max_age: 70,
-    movement_base: 9,
-    armor_class_mod: 2,
-    str_mod: 0,
-    dex_mod: 2,
-    cons_mod: 0,
-    int_mod: 0,
-    wis_mod: 0,
-    char_mod: 0,
-    alignment_id: 3,
-    dice_id: nil,
-    user_id: 1
+    name: "Percepção",
+    description: "A forma como as casas élficas são construídas, "\
+      "respeitando sempre a forma natural das árvores e cavernas, dá aos elfos "\
+      "uma percepção especial no que diz respeito a portas e passagens não "\
+      "convencionais e até mesmo secretas. Ao passarem a até 5 metros de uma "\
+      "passagem secreta, os elfos podem detectá-la com um resultado 1 em 1d6 "\
+      "(rolado secretamente pelo mestre). Caso estejam efetivamente "\
+      "procurando pela passagem, essa chance sobe para 1-2 em 1d6.",
+    effect_id: nil,
+    skill_type: acquiredSkill,
+    user: adminUser
   }
 ])
+elves.traits.create!([
+  {name: "Arqueiro", description: "Por estarem sempre treinados e possuírem a facilidade natural para a mira, os elfos recebem um bônus de +1 para acertar quando empunham um arco.", ranged_attack_bonus: 1, trait_type_id: 2, user: adminUser}
+])
+
+humans = CharacterRace.create!({
+  name: "Humanos",
+  picture: "https://i.pinimg.com/564x/ba/66/34/ba6634ac7be1b24a3f7482ebb0fa4927.jpg",
+  description: "Os humanos são criaturas versáteis, valorosas e muito ambiciosas e, por isso, acabam representando a maioria da população. Essa versatilidade e ambição fazem com que humanos de diferentes lugares possuam hábitos e costumes também diferentes, sendo que o ambiente acaba inf luenciando a forma como a raça se desenvolve como um todo. Os grandes homens dos ermos gelados, de pele alva, estatura impressionante e músculos tenazes, serão tratados como humanos, exatamente como os morenos e franzinos habitantes das planícies desérticas.",
+  min_height: 2,
+  max_height: 2,
+  min_weight: 55,
+  max_weight: 90,
+  maturity: 15,
+  max_age: 70,
+  movement_base: 9,
+  versatile_mod: true,
+  alignment_id: 2,
+  user: adminUser
+})
+
+halflings = CharacterRace.create!({
+  name: "Halflings",
+  picture: "http://3.bp.blogspot.com/-6D8tlIzKPR0/UJ4rELOM9LI/AAAAAAAAAl8/3sw0UV0tmcE/s1600/halfling+02.jpg",
+  description: "Os halflings são seres pequenos, cuja capacidade de encrencar-se é inversamente proporcional ao seu tamanho. Odiando o marasmo, os half lings preferem a confusão e a diversão ao tédio, e é justamente esse sentimento de aventura que os torna tão aptos a caírem na estrada e se tornarem peregrinos e aventureiros. "\
+    "\nHalflings podem apresentar à primeira vista características que erroneamente os classifiquem como frágeis, mas a prática demonstra exatamente o contrário. "\
+    "\nCuriosos, confiantes e assombrosamente corajosos, os half lings confiam em seus destinos e habilidades para superarem desafios, com uma sagacidade que beira o sobrenatural."\
+    "\nAs vilas half lings são normalmente encontradas próximas ou integradas às cidades humanas e, de certa forma, essa característica demonstra como os seres destas duas raças interagem bem. Quando próximas, as comunidades half lings costumam ser pacatas, brejeiras, aconchegantes e hospitaleiras.",
+  min_height: 1,
+  max_height: 1,
+  min_weight: 20,
+  max_weight: 35,
+  maturity: 30,
+  max_age: 70,
+  movement_base: 9,
+  str_mod: -2,
+  dex_mod: 2,
+  alignment_id: 3,
+  user: adminUser
+})
+halflings.traits.create!([
+  {name: "Pequeno", description: "Por serem pequenos e ágeis, os haflings recebem um bônus de +2 na sua Classe de Armadura sempre que estiver em combate com criaturas maiores que um humano.", armor_class_bonus: 2, trait_type_id: 1, user: adminUser},
+  {name: "Furtivo", description: "Haflings são mestres na camuflagem e na furtividade. Possuem 10\% de chance de passarem furtivamente ou de esconder-se, mesmo que não sejam ladrões. Caso pertençam à classe ladrão, esse bônus será adicionado ao percentual conferido pelo nível do personagem na classe.", stealth: 10, trait_type_id: 1, user: adminUser}
+])
+
+CharacterRaceLanguage.create!([
+  {character_race_id: 1, language_type_id: 1},
+  {character_race_id: 1, language_type_id: 2},
+  {character_race_id: 2, language_type_id: 1},
+  {character_race_id: 2, language_type_id: 3}
+])
+
 CharacterClassType.create!([
   {
     name: "Arcano", 
@@ -237,9 +282,8 @@ CharacterClass.create!([
       "fé lhe mpõe. É através dessa devoção que o seu deus lhe confere suas "\
       "magias, tão importantes para seguir pregando a sua palavra.",
     dice_id: 3,
-    perk_id: nil,
     character_class_type_id: 3,
-    user_id: 1
+    user: adminUser
   },
   {
     name: "Homem de Armas",
@@ -251,9 +295,8 @@ CharacterClass.create!([
       "a sua atenção e, dessa forma, proteger seus companheiros mais fracos "\
       "e feridos.", 
     dice_id: 4,
-    perk_id: nil,
     character_class_type_id: 2,
-    user_id: 1
+    user: adminUser
   },
   {
     name: "Ladrão",
@@ -266,9 +309,8 @@ CharacterClass.create!([
       "vigília aceita peças de ouro para fingir que não viu um determinado "\
       "halfling pulando a janela da casa de alguém no meio da noite.", 
     dice_id: 2,
-    perk_id: nil,
     character_class_type_id: 4,
-    user_id: 1
+    user: adminUser
   },
   {
     name: "Mago",
@@ -280,9 +322,8 @@ CharacterClass.create!([
       "marcial em combate e deve evitar a todo custo o confronto direto com "\
       "inimigos.", 
     dice_id: 1,
-    perk_id: nil,
     character_class_type_id: 1,
-    user_id: 1
+    user: adminUser
   }
 ])
 CharacterClassEvolution.create!([
@@ -418,18 +459,6 @@ CharacterClassRequirement.create!([
   {str_mod: 0, dex_mod: 0, cons_mod: 0, int_mod: 0, wis_mod: 12, char_mod: 0, character_class_id: 1},
   {str_mod: 0, dex_mod: 12, cons_mod: 0, int_mod: 0, wis_mod: 0, char_mod: 0, character_class_id: 3},
   {str_mod: 0, dex_mod: 0, cons_mod: 0, int_mod: 12, wis_mod: 0, char_mod: 0, character_class_id: 4}
-])
-CharacterRaceLanguage.create!([
-  {character_race_id: 1, language_type_id: 1},
-  {character_race_id: 1, language_type_id: 2},
-  {character_race_id: 2, language_type_id: 1},
-  {character_race_id: 2, language_type_id: 3}
-])
-CharacterRaceSkill.create!([
-  {character_race_id: 2, skill_id: 1}
-])
-CharacterRaceThiefTalent.create!([
-  {stealth: 10, character_race_id: 4}
 ])
 CharismaMod.create!([
   {value: 1, followers_mod: 0, reaction_mod: -25, undead_mod: "'0'"},

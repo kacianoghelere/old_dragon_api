@@ -1,4 +1,6 @@
-class API::V1::CharacterClassesController < ApplicationController
+class API::V1::CharacterClassesController  < ApplicationController
+
+  before_filter :authenticate_request!
   before_action :set_character_class, only: [:show, :showcase, :update, :destroy]
 
   # GET /character_classes
@@ -60,6 +62,6 @@ class API::V1::CharacterClassesController < ApplicationController
     end
 
     def character_class_params
-      params.require(:character_class).permit(:name, :description, :dice_id, :perk_id, :character_class_type_id, :user_id)
+      params.require(:character_class).permit(:name, :description, :dice_id, :character_class_type_id, :user_id)
     end
 end
