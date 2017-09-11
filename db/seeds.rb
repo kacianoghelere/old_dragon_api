@@ -1,3 +1,17 @@
+Role.create!([
+  {name: "Administrador", admin: true},
+  {name: "Comum", admin: false}
+])
+adminUser = User.create!({
+  name: "Administrador",
+  user_code: "admin",
+  password: "123456",
+  password_confirmation: "123456",
+  last_login: nil,
+  email: "themohawkeagle@gmail.com",
+  role_id: 1
+})
+
 lawfull = Alignment.create!({name: "Ordeiro"})
 neutral = Alignment.create!({name: "Neutro"})
 chaotic = Alignment.create!({name: "Caótico"})
@@ -38,6 +52,21 @@ bluntWeapon = WeaponType.create!({name: "Deformação"})
 inbornSkill    = SkillType.create!({name: "Inato / Natural"})
 acquiredSkill = SkillType.create!({name: "Adquirido"})
 
+campaign = Campaign.create!({
+  title: "Ao norte da muralha",
+  description: "Um grupo de corajosos aventureiros parte em uma missão "\
+    "suicida ao norte da grande muralha com um único objetivo em mente: "\
+    "Matar o Rei da Noite.",
+  picture: "https://i.ytimg.com/vi/tw8iO46fYxI/maxresdefault.jpg",
+  start_date: DateTime.now,
+  user: adminUser
+})
+campaign.journals.create!({
+  title: "Atravessando a muralha",
+  description: "Os aventureiros se reunem no castelo da patrula da noite e "\
+    "recebem uma ordem para partir para o norte da muralha."
+})
+
 SpellType.create!([
   {name: "Arcana"},
   {name: "Divina"}
@@ -68,19 +97,6 @@ LanguageType.create!([
   {name: "Antigo", description: nil}
 ])
 
-Role.create!([
-  {name: "Administrador", admin: true},
-  {name: "Comum", admin: false}
-])
-adminUser = User.create!({
-  name: "Administrador",
-  user_code: "admin",
-  password: "123456",
-  password_confirmation: "123456",
-  last_login: nil,
-  email: "themohawkeagle@gmail.com",
-  role_id: 1
-})
 
 TraitType.create!([
   {name: "Natural"},
