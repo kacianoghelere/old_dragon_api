@@ -8,8 +8,7 @@ class API::V1::CharacterRacesController  < ApplicationController
   # GET /character_races.json
   def index
     @character_races = CharacterRace.all
-
-    render json: @character_races
+    render json: @character_races, each_serializer: CharacterRacesSerializer
   end
 
   # GET /character_races/1
