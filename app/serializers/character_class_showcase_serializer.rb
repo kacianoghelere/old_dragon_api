@@ -1,5 +1,6 @@
 class CharacterClassShowcaseSerializer < ActiveModel::Serializer
   attributes :id, :name, :picture, :description
+  attribute :short_description
   has_one :dice
   has_one :character_class_type, key: :type
   has_one :user
@@ -19,5 +20,9 @@ class CharacterClassShowcaseSerializer < ActiveModel::Serializer
 
   def can_use_magic?
     true if object.character_class_type.can_use_magic
+  end
+
+  def short_description
+    object.description.split('.').first unless object.description.empty?
   end
 end
