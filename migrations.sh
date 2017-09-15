@@ -24,7 +24,6 @@ rails g migration create_character_race_skills
 rails g migration create_character_race_thief_talents
 rails g migration create_character_race_weapons
 rails g migration create_character_races
-rails g migration create_character_attributes
 rails g migration create_characters
 rails g migration create_charisma_mods
 rails g migration create_constitution_mods

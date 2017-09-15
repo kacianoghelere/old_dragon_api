@@ -4,4 +4,12 @@ class CampaignSerializer < ActiveModel::Serializer
   has_many :notes
   has_many :characters, through: :campaign_members
   has_one :user
+
+  def picture
+    if !object.picture
+      'https://fakeimg.pl/1280x720'
+    else
+      object.picture
+    end
+  end
 end

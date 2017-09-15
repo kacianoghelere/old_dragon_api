@@ -1,6 +1,7 @@
 class API::V1::CampaignsController  < ApplicationController
   before_filter :authenticate_request!
   before_action :set_campaign, only: [:show, :update, :destroy]
+  before_action :delete_associations, only: [:update]
 
   # GET /campaigns
   # GET /campaigns.json
@@ -19,10 +20,11 @@ class API::V1::CampaignsController  < ApplicationController
   # POST /campaigns
   # POST /campaigns.json
   def create
-    @campaign = Campaign.new(campaign_params)
-
+    @campaign = Campaign.new(create_campaign_params)
+    @campaign.start_date = DateTime.now
+    @campaign.user = get_current_user
     if @campaign.save
-      render json: @campaign, status: :created, location: @campaign
+      render json: @campaign, status: :created
     else
       render json: @campaign.errors, status: :unprocessable_entity
     end
@@ -31,9 +33,9 @@ class API::V1::CampaignsController  < ApplicationController
   # PATCH/PUT /campaigns/1
   # PATCH/PUT /campaigns/1.json
   def update
-    @campaign = Campaign.find(params[:id])
-
-    if @campaign.update(campaign_params)
+    if @campaign.update(update_campaign_params)
+      @campaign.journals.create(create_campaign_journals_params)
+      @campaign.notes.create(create_campaign_notes_params)
       head :no_content
     else
       render json: @campaign.errors, status: :unprocessable_entity
@@ -54,8 +56,30 @@ class API::V1::CampaignsController  < ApplicationController
       @campaign = Campaign.find(params[:id])
     end
 
-    def campaign_params
-      params.require(:campaign).permit(:title, :description, :start_date, 
+    def create_campaign_params
+      params.require(:campaign).permit(:title, :description, :picture,
+        :start_date, :conclusion_date, :user_id,
+        journals_attributes: [:title, :description],
+        notes_attributes: [:description, :dm_only])
+    end
+
+    def update_campaign_params
+      params.require(:campaign).permit(:id, :title, :description, :picture,
         :conclusion_date, :user_id)
+    end
+
+    def delete_associations
+      @campaign.journals.destroy_all
+      @campaign.notes.destroy_all
+    end
+
+    # Retorna parametros de construção de diários de campanha
+    def create_campaign_journals_params
+      deep_symbolize_keys(params[:campaign][:journals_attributes])
+    end
+
+    # Retorna parametros de construção de notas de campanha
+    def create_campaign_notes_params
+      deep_symbolize_keys(params[:campaign][:notes_attributes])
     end
 end

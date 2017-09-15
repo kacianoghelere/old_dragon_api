@@ -67,12 +67,12 @@ ActiveRecord::Schema.define(version: 20170120110842) do
   add_index "campaign_members", ["character_id"], name: "index_campaign_members_on_character_id", using: :btree
 
   create_table "campaign_notes", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
-    t.string   "description", limit: 45
-    t.boolean  "dm_only",                default: false, null: false
-    t.boolean  "idactive",               default: true,  null: false
-    t.integer  "campaign_id", limit: 8,                  null: false
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
+    t.string   "description", limit: 300
+    t.boolean  "dm_only",                 default: false, null: false
+    t.boolean  "idactive",                default: true,  null: false
+    t.integer  "campaign_id", limit: 8,                   null: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
   end
 
   add_index "campaign_notes", ["campaign_id"], name: "index_campaign_notes_on_campaign_id", using: :btree
@@ -89,19 +89,6 @@ ActiveRecord::Schema.define(version: 20170120110842) do
   end
 
   add_index "campaigns", ["user_id"], name: "index_campaigns_on_user_id", using: :btree
-
-  create_table "character_attributes", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
-    t.integer  "strength",     limit: 4, default: 0, null: false
-    t.integer  "dexterity",    limit: 4, default: 0, null: false
-    t.integer  "constitution", limit: 4, default: 0, null: false
-    t.integer  "intelligence", limit: 4, default: 0, null: false
-    t.integer  "wisdom",       limit: 4, default: 0, null: false
-    t.integer  "character_id", limit: 8,             null: false
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
-  end
-
-  add_index "character_attributes", ["character_id"], name: "fk_rails_8937f39d59", using: :btree
 
   create_table "character_class_armor_types", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.integer  "character_class_id", limit: 8, null: false
@@ -254,6 +241,12 @@ ActiveRecord::Schema.define(version: 20170120110842) do
   create_table "character_journals", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.integer  "current_level", limit: 4
     t.integer  "current_exp",   limit: 4
+    t.integer  "strength",      limit: 4, default: 0,    null: false
+    t.integer  "dexterity",     limit: 4, default: 0,    null: false
+    t.integer  "constitution",  limit: 4, default: 0,    null: false
+    t.integer  "intelligence",  limit: 4, default: 0,    null: false
+    t.integer  "wisdom",        limit: 4, default: 0,    null: false
+    t.integer  "charisma",      limit: 4, default: 0,    null: false
     t.boolean  "idactive",                default: true, null: false
     t.integer  "character_id",  limit: 8,                null: false
     t.integer  "alignment_id",  limit: 8,                null: false
@@ -360,6 +353,7 @@ ActiveRecord::Schema.define(version: 20170120110842) do
 
   create_table "characters", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "name",               limit: 45
+    t.string   "picture",            limit: 300
     t.decimal  "weight",                           precision: 10
     t.decimal  "height",                           precision: 10
     t.integer  "age",                limit: 4
@@ -724,7 +718,6 @@ ActiveRecord::Schema.define(version: 20170120110842) do
   add_foreign_key "campaign_members", "characters"
   add_foreign_key "campaign_notes", "campaigns"
   add_foreign_key "campaigns", "users"
-  add_foreign_key "character_attributes", "characters"
   add_foreign_key "character_class_armor_types", "armor_types"
   add_foreign_key "character_class_armor_types", "character_classes"
   add_foreign_key "character_class_evolutions", "character_classes"

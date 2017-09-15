@@ -1,6 +1,17 @@
 class ApplicationController < ActionController::API
   include ActionController::Serialization
 
+  def deep_symbolize_keys(array)
+    return [] unless array
+    array.map do |x|
+      x.symbolize_keys
+    end
+  end
+
+  def get_current_user
+    User.find(auth_token[:user_id])
+  end
+
   protected
 
     def authenticate_request!
@@ -8,10 +19,11 @@ class ApplicationController < ActionController::API
         render json: { errors: ['Not Authenticated'] }, status: :unauthorized
         return
       end
-      @current_user = User.find(auth_token[:user_id])
+      @current_user = get_current_user
     rescue JWT::VerificationError, JWT::DecodeError
       render json: { errors: ['Not Authenticated'] }, status: :unauthorized
     end
+
 
   private
 
