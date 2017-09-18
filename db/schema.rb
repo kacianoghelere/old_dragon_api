@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170120110842) do
+ActiveRecord::Schema.define(version: 20170918132608) do
 
   create_table "alignments", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "name",       limit: 15, null: false
@@ -43,6 +43,18 @@ ActiveRecord::Schema.define(version: 20170120110842) do
   add_index "armors", ["armor_type_id"], name: "index_armors_on_armor_type_id", using: :btree
   add_index "armors", ["origin_id"], name: "index_armors_on_origin_id", using: :btree
   add_index "armors", ["user_id"], name: "index_armors_on_user_id", using: :btree
+
+  create_table "campaign_invitations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+    t.text     "message",     limit: 65535
+    t.boolean  "completed",                 default: true, null: false
+    t.integer  "campaign_id", limit: 8,                    null: false
+    t.integer  "user_id",     limit: 8,                    null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+  end
+
+  add_index "campaign_invitations", ["campaign_id"], name: "index_campaign_invitations_on_campaign_id", using: :btree
+  add_index "campaign_invitations", ["user_id"], name: "index_campaign_invitations_on_user_id", using: :btree
 
   create_table "campaign_journals", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "title",       limit: 45,                   null: false
@@ -324,6 +336,7 @@ ActiveRecord::Schema.define(version: 20170120110842) do
 
   create_table "character_races", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "name",          limit: 45,                                   null: false
+    t.string   "singular_name", limit: 45,                                   null: false
     t.text     "description",   limit: 65535
     t.string   "picture",       limit: 300
     t.decimal  "min_height",                  precision: 10, default: 0
@@ -700,19 +713,25 @@ ActiveRecord::Schema.define(version: 20170120110842) do
   add_index "weapons", ["weapon_type_id"], name: "index_weapons_on_weapon_type_id", using: :btree
 
   create_table "wisdom_mods", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
-    t.integer  "value",             limit: 4,             null: false
-    t.integer  "protection_mod",    limit: 4, default: 0, null: false
-    t.integer  "magic_cicle_1_mod", limit: 4, default: 0, null: false
-    t.integer  "magic_cicle_2_mod", limit: 4, default: 0, null: false
-    t.integer  "magic_cicle_3_mod", limit: 4, default: 0, null: false
-    t.datetime "created_at",                              null: false
-    t.datetime "updated_at",                              null: false
+    t.integer  "value",              limit: 4,             null: false
+    t.integer  "protection_mod",     limit: 4, default: 0, null: false
+    t.integer  "magic_circle_1_mod", limit: 4, default: 0, null: false
+    t.integer  "magic_circle_2_mod", limit: 4, default: 0, null: false
+    t.integer  "magic_circle_3_mod", limit: 4, default: 0, null: false
+    t.integer  "magic_circle_4_mod", limit: 4, default: 0, null: false
+    t.integer  "magic_circle_5_mod", limit: 4, default: 0, null: false
+    t.integer  "magic_circle_6_mod", limit: 4, default: 0, null: false
+    t.integer  "magic_circle_7_mod", limit: 4, default: 0, null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
   end
 
   add_foreign_key "armors", "alignments"
   add_foreign_key "armors", "armor_types"
   add_foreign_key "armors", "origins"
   add_foreign_key "armors", "users"
+  add_foreign_key "campaign_invitations", "campaigns"
+  add_foreign_key "campaign_invitations", "users"
   add_foreign_key "campaign_journals", "campaigns"
   add_foreign_key "campaign_members", "campaigns"
   add_foreign_key "campaign_members", "characters"

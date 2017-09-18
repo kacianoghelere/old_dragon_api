@@ -1,7 +1,6 @@
-Role.create!([
-  {name: "Administrador", admin: true},
-  {name: "Comum", admin: false}
-])
+adminRole = Role.create!({name: "Administrador", admin: true})
+commonRole = Role.create!({name: "Comum", admin: false})
+
 adminUser = User.create!({
   name: "Administrador",
   user_code: "admin",
@@ -9,7 +8,17 @@ adminUser = User.create!({
   password_confirmation: "123456",
   last_login: nil,
   email: "themohawkeagle@gmail.com",
-  role_id: 1
+  role: adminRole
+})
+
+otherUser = User.create!({
+  name: "João",
+  user_code: "joao.testador",
+  password: "123456",
+  password_confirmation: "123456",
+  last_login: nil,
+  email: "joao@teste.com",
+  role: commonRole
 })
 
 lawfull = Alignment.create!({name: "Ordeiro"})
@@ -94,7 +103,9 @@ TraitType.create!([
 #   {name: "Corpo Ósseo", description: "Ataques de corte e perfuração recebidos causam apenas metade do dano", trait_type_id: 1, user: adminUser}
 # ])
 
-dwarves = CharacterRace.create!({name: "Anões",
+dwarves = CharacterRace.create!({
+  name: "Anões",
+  singular_name: "Anão",
   picture: "https://i.pinimg.com/564x/29/03/7c/29037c18b75badfeaa7dafe3f17f333a.jpg",
   description: "Os anões são pequenos seres robustos e atarracados, famosos por serem rabugentos e teimosos. Como habitantes do subterrâneo, os anões são mineradores fabulosos e ferreiros extremamente competentes, conhecidos pela capacidade de transformarem blocos metálicos em verdadeiras obras de arte e armas dignas das melhores estórias."\
     "\nEntretanto, os anões são criaturas extremamente honradas e valorosas. Um ser que coloca sua honra, palavra e dignidade acima de quaisquer outros valores, prezando a ordem e desprezando quase que absolutamente o caos, sendo ainda raros os anões neutros. É tido como senso comum que a palavra de um anão vale mais do que qualquer assinatura. A amizade de um anão é dura de ser conquistada, e, uma vez estabelecida, é ainda mais difícil de ser desfeita. Por outro lado a inimizade é levada até as últimas consequências, passando de geração a geração dentro de um mesmo clã de anões."\
@@ -135,6 +146,7 @@ dwarves.skills.create!([
 
 elves = CharacterRace.create!({
   name: "Elfos",
+  singular_name: "Elfo",
   picture: "https://i.pinimg.com/736x/81/1a/7a/811a7aa0c7621053c62ab5fa17a1ec8d--male-elf-character-concept.jpg",
   description: "Os elfos são humanoides esguios e silvestres, com antecedentes místicos e aparência inconfundível. São ligeiramente mais baixos que os humanos, se diferenciando ainda mais nos traços faciais delicados, finos e graciosos. As orelhas são longas e pontudas, e os olhos amendoados, levemente alongados. Os cabelos são sempre lisos e limpos e comumente longos, mesmo entre os elfos machos,podendo ter uma miríade de cores e tons que vão do completo negro ao branco prateado."\
     "\nComo habitantes das áreas selvagens e florestais, os elfos possuem uma eterna ligação com as árvores e demais seres silvestres. Os elfos são seres reclusos e raramente abandonam sua terra em busca de aventuras. Quando um elfo se rende aos encantos do mundo além das fronteiras, normalmente o faz pelo desejo de adquirir conhecimento, aperfeiçoar suas técnicas ou ainda como embaixador de seu povo. "\
@@ -190,6 +202,7 @@ elves.traits.create!([
 
 humans = CharacterRace.create!({
   name: "Humanos",
+  singular_name: "Humano",
   picture: "https://i.pinimg.com/564x/ba/66/34/ba6634ac7be1b24a3f7482ebb0fa4927.jpg",
   description: "Os humanos são criaturas versáteis, valorosas e muito ambiciosas e, por isso, acabam representando a maioria da população. Essa versatilidade e ambição fazem com que humanos de diferentes lugares possuam hábitos e costumes também diferentes, sendo que o ambiente acaba inf luenciando a forma como a raça se desenvolve como um todo. Os grandes homens dos ermos gelados, de pele alva, estatura impressionante e músculos tenazes, serão tratados como humanos, exatamente como os morenos e franzinos habitantes das planícies desérticas.",
   min_height: 2,
@@ -206,6 +219,7 @@ humans = CharacterRace.create!({
 
 halflings = CharacterRace.create!({
   name: "Halflings",
+  singular_name: "Halfling",
   picture: "http://3.bp.blogspot.com/-6D8tlIzKPR0/UJ4rELOM9LI/AAAAAAAAAl8/3sw0UV0tmcE/s1600/halfling+02.jpg",
   description: "Os halflings são seres pequenos, cuja capacidade de encrencar-se é inversamente proporcional ao seu tamanho. Odiando o marasmo, os half lings preferem a confusão e a diversão ao tédio, e é justamente esse sentimento de aventura que os torna tão aptos a caírem na estrada e se tornarem peregrinos e aventureiros. "\
     "\nHalflings podem apresentar à primeira vista características que erroneamente os classifiquem como frágeis, mas a prática demonstra exatamente o contrário. "\
@@ -224,8 +238,8 @@ halflings = CharacterRace.create!({
   user: adminUser
 })
 halflings.traits.create!([
-  {name: "Pequeno", description: "Por serem pequenos e ágeis, os haflings recebem um bônus de +2 na sua Classe de Armadura sempre que estiver em combate com criaturas maiores que um humano.", armor_class_bonus: 2, trait_type_id: 1, user: adminUser},
-  {name: "Furtivo", description: "Haflings são mestres na camuflagem e na furtividade. Possuem 10\% de chance de passarem furtivamente ou de esconder-se, mesmo que não sejam ladrões. Caso pertençam à classe ladrão, esse bônus será adicionado ao percentual conferido pelo nível do personagem na classe.", stealth: 10, trait_type_id: 1, user: adminUser}
+  {name: "Pequeno", description: "Por serem pequenos e ágeis, os halflings recebem um bônus de +2 na sua Classe de Armadura sempre que estiver em combate com criaturas maiores que um humano.", armor_class_bonus: 2, trait_type_id: 1, user: adminUser},
+  {name: "Furtivo", description: "Halflings são mestres na camuflagem e na furtividade. Possuem 10\% de chance de passarem furtivamente ou de esconder-se, mesmo que não sejam ladrões. Caso pertençam à classe ladrão, esse bônus será adicionado ao percentual conferido pelo nível do personagem na classe.", stealth: 10, trait_type_id: 1, user: adminUser}
 ])
 
 CharacterRaceLanguage.create!([
@@ -587,16 +601,16 @@ ConstitutionMod.create!([
   {value: 17, hitpoints_mod: 3, protection_mod: 3, resurrection_mod: 75},
   {value: 18, hitpoints_mod: 4, protection_mod: 4, resurrection_mod: 95},
   {value: 19, hitpoints_mod: 4, protection_mod: 4, resurrection_mod: 95},
-  {value: 20, hitpoints_mod: 5, protection_mod: 5, resurrection_mod: 100},
-  {value: 21, hitpoints_mod: 5, protection_mod: 5, resurrection_mod: 100},
-  {value: 22, hitpoints_mod: 6, protection_mod: 6, resurrection_mod: 100},
-  {value: 23, hitpoints_mod: 6, protection_mod: 6, resurrection_mod: 100},
-  {value: 24, hitpoints_mod: 7, protection_mod: 7, resurrection_mod: 100},
-  {value: 25, hitpoints_mod: 7, protection_mod: 7, resurrection_mod: 100},
-  {value: 26, hitpoints_mod: 8, protection_mod: 8, resurrection_mod: 100},
-  {value: 27, hitpoints_mod: 8, protection_mod: 8, resurrection_mod: 100},
-  {value: 28, hitpoints_mod: 9, protection_mod: 9, resurrection_mod: 100},
-  {value: 29, hitpoints_mod: 9, protection_mod: 9, resurrection_mod: 100}
+  {value: 20, hitpoints_mod: 5, protection_mod: 5, resurrection_mod: 95},
+  {value: 21, hitpoints_mod: 5, protection_mod: 5, resurrection_mod: 95},
+  {value: 22, hitpoints_mod: 6, protection_mod: 6, resurrection_mod: 95},
+  {value: 23, hitpoints_mod: 6, protection_mod: 6, resurrection_mod: 95},
+  {value: 24, hitpoints_mod: 7, protection_mod: 7, resurrection_mod: 95},
+  {value: 25, hitpoints_mod: 7, protection_mod: 7, resurrection_mod: 95},
+  {value: 26, hitpoints_mod: 8, protection_mod: 8, resurrection_mod: 95},
+  {value: 27, hitpoints_mod: 8, protection_mod: 8, resurrection_mod: 95},
+  {value: 28, hitpoints_mod: 9, protection_mod: 9, resurrection_mod: 95},
+  {value: 29, hitpoints_mod: 9, protection_mod: 9, resurrection_mod: 95}
 ])
 
 DexterityMod.create!([
@@ -632,35 +646,35 @@ DexterityMod.create!([
 ])
 
 IntelligenceMod.create!([
-  {value: 1, languages_mod: 0, learn_magic_mod: 0, magic_circle_1_mod: 0, magic_circle_2_mod: 0, magic_circle_3_mod: 0, magic_circle_4_mod: 0, magic_circle_5_mod: 0, magic_circle_6_mod: 0, magic_circle_7_mod: 0, magic_circle_8_mod: 0, magic_circle_9_mod: 0},
-  {value: 2, languages_mod: 0, learn_magic_mod: 0, magic_circle_1_mod: 0, magic_circle_2_mod: 0, magic_circle_3_mod: 0, magic_circle_4_mod: 0, magic_circle_5_mod: 0, magic_circle_6_mod: 0, magic_circle_7_mod: 0, magic_circle_8_mod: 0, magic_circle_9_mod: 0},
-  {value: 3, languages_mod: 0, learn_magic_mod: 0, magic_circle_1_mod: 0, magic_circle_2_mod: 0, magic_circle_3_mod: 0, magic_circle_4_mod: 0, magic_circle_5_mod: 0, magic_circle_6_mod: 0, magic_circle_7_mod: 0, magic_circle_8_mod: 0, magic_circle_9_mod: 0},
-  {value: 4, languages_mod: 0, learn_magic_mod: 0, magic_circle_1_mod: 0, magic_circle_2_mod: 0, magic_circle_3_mod: 0, magic_circle_4_mod: 0, magic_circle_5_mod: 0, magic_circle_6_mod: 0, magic_circle_7_mod: 0, magic_circle_8_mod: 0, magic_circle_9_mod: 0},
-  {value: 5, languages_mod: 0, learn_magic_mod: 0, magic_circle_1_mod: 0, magic_circle_2_mod: 0, magic_circle_3_mod: 0, magic_circle_4_mod: 0, magic_circle_5_mod: 0, magic_circle_6_mod: 0, magic_circle_7_mod: 0, magic_circle_8_mod: 0, magic_circle_9_mod: 0},
-  {value: 6, languages_mod: 0, learn_magic_mod: 0, magic_circle_1_mod: 0, magic_circle_2_mod: 0, magic_circle_3_mod: 0, magic_circle_4_mod: 0, magic_circle_5_mod: 0, magic_circle_6_mod: 0, magic_circle_7_mod: 0, magic_circle_8_mod: 0, magic_circle_9_mod: 0},
-  {value: 7, languages_mod: 0, learn_magic_mod: 0, magic_circle_1_mod: 0, magic_circle_2_mod: 0, magic_circle_3_mod: 0, magic_circle_4_mod: 0, magic_circle_5_mod: 0, magic_circle_6_mod: 0, magic_circle_7_mod: 0, magic_circle_8_mod: 0, magic_circle_9_mod: 0},
-  {value: 8, languages_mod: 0, learn_magic_mod: 0, magic_circle_1_mod: 0, magic_circle_2_mod: 0, magic_circle_3_mod: 0, magic_circle_4_mod: 0, magic_circle_5_mod: 0, magic_circle_6_mod: 0, magic_circle_7_mod: 0, magic_circle_8_mod: 0, magic_circle_9_mod: 0},
-  {value: 9, languages_mod: 0, learn_magic_mod: 0, magic_circle_1_mod: 0, magic_circle_2_mod: 0, magic_circle_3_mod: 0, magic_circle_4_mod: 0, magic_circle_5_mod: 0, magic_circle_6_mod: 0, magic_circle_7_mod: 0, magic_circle_8_mod: 0, magic_circle_9_mod: 0},
-  {value: 10, languages_mod: 0, learn_magic_mod: 0, magic_circle_1_mod: 0, magic_circle_2_mod: 0, magic_circle_3_mod: 0, magic_circle_4_mod: 0, magic_circle_5_mod: 0, magic_circle_6_mod: 0, magic_circle_7_mod: 0, magic_circle_8_mod: 0, magic_circle_9_mod: 0},
-  {value: 11, languages_mod: 0, learn_magic_mod: 0, magic_circle_1_mod: 0, magic_circle_2_mod: 0, magic_circle_3_mod: 0, magic_circle_4_mod: 0, magic_circle_5_mod: 0, magic_circle_6_mod: 0, magic_circle_7_mod: 0, magic_circle_8_mod: 0, magic_circle_9_mod: 0},
-  {value: 12, languages_mod: 0, learn_magic_mod: 0, magic_circle_1_mod: 0, magic_circle_2_mod: 0, magic_circle_3_mod: 0, magic_circle_4_mod: 0, magic_circle_5_mod: 0, magic_circle_6_mod: 0, magic_circle_7_mod: 0, magic_circle_8_mod: 0, magic_circle_9_mod: 0},
-  {value: 13, languages_mod: 0, learn_magic_mod: 0, magic_circle_1_mod: 0, magic_circle_2_mod: 0, magic_circle_3_mod: 0, magic_circle_4_mod: 0, magic_circle_5_mod: 0, magic_circle_6_mod: 0, magic_circle_7_mod: 0, magic_circle_8_mod: 0, magic_circle_9_mod: 0},
-  {value: 14, languages_mod: 1, learn_magic_mod: 25, magic_circle_1_mod: 0, magic_circle_2_mod: 0, magic_circle_3_mod: 0, magic_circle_4_mod: 0, magic_circle_5_mod: 0, magic_circle_6_mod: 0, magic_circle_7_mod: 0, magic_circle_8_mod: 0, magic_circle_9_mod: 0},
-  {value: 15, languages_mod: 1, learn_magic_mod: 25, magic_circle_1_mod: 0, magic_circle_2_mod: 0, magic_circle_3_mod: 0, magic_circle_4_mod: 0, magic_circle_5_mod: 0, magic_circle_6_mod: 0, magic_circle_7_mod: 0, magic_circle_8_mod: 0, magic_circle_9_mod: 0},
-  {value: 16, languages_mod: 2, learn_magic_mod: 35, magic_circle_1_mod: 1, magic_circle_2_mod: 0, magic_circle_3_mod: 0, magic_circle_4_mod: 0, magic_circle_5_mod: 0, magic_circle_6_mod: 0, magic_circle_7_mod: 0, magic_circle_8_mod: 0, magic_circle_9_mod: 0},
-  {value: 17, languages_mod: 2, learn_magic_mod: 35, magic_circle_1_mod: 1, magic_circle_2_mod: 0, magic_circle_3_mod: 0, magic_circle_4_mod: 0, magic_circle_5_mod: 0, magic_circle_6_mod: 0, magic_circle_7_mod: 0, magic_circle_8_mod: 0, magic_circle_9_mod: 0},
-  {value: 18, languages_mod: 3, learn_magic_mod: 45, magic_circle_1_mod: 2, magic_circle_2_mod: 0, magic_circle_3_mod: 0, magic_circle_4_mod: 0, magic_circle_5_mod: 0, magic_circle_6_mod: 0, magic_circle_7_mod: 0, magic_circle_8_mod: 0, magic_circle_9_mod: 0},
-  {value: 19, languages_mod: 3, learn_magic_mod: 45, magic_circle_1_mod: 2, magic_circle_2_mod: 0, magic_circle_3_mod: 0, magic_circle_4_mod: 0, magic_circle_5_mod: 0, magic_circle_6_mod: 0, magic_circle_7_mod: 0, magic_circle_8_mod: 0, magic_circle_9_mod: 0},
-  {value: 20, languages_mod: 4, learn_magic_mod: 55, magic_circle_1_mod: 2, magic_circle_2_mod: 1, magic_circle_3_mod: 0, magic_circle_4_mod: 0, magic_circle_5_mod: 0, magic_circle_6_mod: 0, magic_circle_7_mod: 0, magic_circle_8_mod: 0, magic_circle_9_mod: 0},
-  {value: 21, languages_mod: 4, learn_magic_mod: 55, magic_circle_1_mod: 2, magic_circle_2_mod: 1, magic_circle_3_mod: 0, magic_circle_4_mod: 0, magic_circle_5_mod: 0, magic_circle_6_mod: 0, magic_circle_7_mod: 0, magic_circle_8_mod: 0, magic_circle_9_mod: 0},
-  {value: 22, languages_mod: 5, learn_magic_mod: 65, magic_circle_1_mod: 2, magic_circle_2_mod: 2, magic_circle_3_mod: 0, magic_circle_4_mod: 0, magic_circle_5_mod: 0, magic_circle_6_mod: 0, magic_circle_7_mod: 0, magic_circle_8_mod: 0, magic_circle_9_mod: 0},
-  {value: 23, languages_mod: 5, learn_magic_mod: 65, magic_circle_1_mod: 2, magic_circle_2_mod: 2, magic_circle_3_mod: 0, magic_circle_4_mod: 0, magic_circle_5_mod: 0, magic_circle_6_mod: 0, magic_circle_7_mod: 0, magic_circle_8_mod: 0, magic_circle_9_mod: 0},
-  {value: 24, languages_mod: 6, learn_magic_mod: 75, magic_circle_1_mod: 2, magic_circle_2_mod: 2, magic_circle_3_mod: 1, magic_circle_4_mod: 0, magic_circle_5_mod: 0, magic_circle_6_mod: 0, magic_circle_7_mod: 0, magic_circle_8_mod: 0, magic_circle_9_mod: 0},
-  {value: 25, languages_mod: 6, learn_magic_mod: 75, magic_circle_1_mod: 2, magic_circle_2_mod: 2, magic_circle_3_mod: 1, magic_circle_4_mod: 0, magic_circle_5_mod: 0, magic_circle_6_mod: 0, magic_circle_7_mod: 0, magic_circle_8_mod: 0, magic_circle_9_mod: 0},
-  {value: 26, languages_mod: 7, learn_magic_mod: 85, magic_circle_1_mod: 3, magic_circle_2_mod: 2, magic_circle_3_mod: 1, magic_circle_4_mod: 0, magic_circle_5_mod: 0, magic_circle_6_mod: 0, magic_circle_7_mod: 0, magic_circle_8_mod: 0, magic_circle_9_mod: 0},
-  {value: 27, languages_mod: 7, learn_magic_mod: 85, magic_circle_1_mod: 3, magic_circle_2_mod: 2, magic_circle_3_mod: 1, magic_circle_4_mod: 0, magic_circle_5_mod: 0, magic_circle_6_mod: 0, magic_circle_7_mod: 0, magic_circle_8_mod: 0, magic_circle_9_mod: 0},
-  {value: 28, languages_mod: 8, learn_magic_mod: 95, magic_circle_1_mod: 3, magic_circle_2_mod: 3, magic_circle_3_mod: 1, magic_circle_4_mod: 0, magic_circle_5_mod: 0, magic_circle_6_mod: 0, magic_circle_7_mod: 0, magic_circle_8_mod: 0, magic_circle_9_mod: 0},
-  {value: 29, languages_mod: 8, learn_magic_mod: 95, magic_circle_1_mod: 3, magic_circle_2_mod: 3, magic_circle_3_mod: 1, magic_circle_4_mod: 0, magic_circle_5_mod: 0, magic_circle_6_mod: 0, magic_circle_7_mod: 0, magic_circle_8_mod: 0, magic_circle_9_mod: 0}
+  {value: 1, languages_mod: 0, learn_magic_mod: 0, magic_circle_1_mod: 0, magic_circle_2_mod: 0, magic_circle_3_mod: 0},
+  {value: 2, languages_mod: 0, learn_magic_mod: 0, magic_circle_1_mod: 0, magic_circle_2_mod: 0, magic_circle_3_mod: 0},
+  {value: 3, languages_mod: 0, learn_magic_mod: 0, magic_circle_1_mod: 0, magic_circle_2_mod: 0, magic_circle_3_mod: 0},
+  {value: 4, languages_mod: 0, learn_magic_mod: 0, magic_circle_1_mod: 0, magic_circle_2_mod: 0, magic_circle_3_mod: 0},
+  {value: 5, languages_mod: 0, learn_magic_mod: 0, magic_circle_1_mod: 0, magic_circle_2_mod: 0, magic_circle_3_mod: 0},
+  {value: 6, languages_mod: 0, learn_magic_mod: 0, magic_circle_1_mod: 0, magic_circle_2_mod: 0, magic_circle_3_mod: 0},
+  {value: 7, languages_mod: 0, learn_magic_mod: 0, magic_circle_1_mod: 0, magic_circle_2_mod: 0, magic_circle_3_mod: 0},
+  {value: 8, languages_mod: 0, learn_magic_mod: 0, magic_circle_1_mod: 0, magic_circle_2_mod: 0, magic_circle_3_mod: 0},
+  {value: 9, languages_mod: 0, learn_magic_mod: 0, magic_circle_1_mod: 0, magic_circle_2_mod: 0, magic_circle_3_mod: 0},
+  {value: 10, languages_mod: 0, learn_magic_mod: 0, magic_circle_1_mod: 0, magic_circle_2_mod: 0, magic_circle_3_mod: 0},
+  {value: 11, languages_mod: 0, learn_magic_mod: 0, magic_circle_1_mod: 0, magic_circle_2_mod: 0, magic_circle_3_mod: 0},
+  {value: 12, languages_mod: 0, learn_magic_mod: 0, magic_circle_1_mod: 0, magic_circle_2_mod: 0, magic_circle_3_mod: 0},
+  {value: 13, languages_mod: 0, learn_magic_mod: 0, magic_circle_1_mod: 0, magic_circle_2_mod: 0, magic_circle_3_mod: 0},
+  {value: 14, languages_mod: 1, learn_magic_mod: 25, magic_circle_1_mod: 0, magic_circle_2_mod: 0, magic_circle_3_mod: 0},
+  {value: 15, languages_mod: 1, learn_magic_mod: 25, magic_circle_1_mod: 0, magic_circle_2_mod: 0, magic_circle_3_mod: 0},
+  {value: 16, languages_mod: 2, learn_magic_mod: 35, magic_circle_1_mod: 1, magic_circle_2_mod: 0, magic_circle_3_mod: 0},
+  {value: 17, languages_mod: 2, learn_magic_mod: 35, magic_circle_1_mod: 1, magic_circle_2_mod: 0, magic_circle_3_mod: 0},
+  {value: 18, languages_mod: 3, learn_magic_mod: 45, magic_circle_1_mod: 2, magic_circle_2_mod: 0, magic_circle_3_mod: 0},
+  {value: 19, languages_mod: 3, learn_magic_mod: 45, magic_circle_1_mod: 2, magic_circle_2_mod: 0, magic_circle_3_mod: 0},
+  {value: 20, languages_mod: 4, learn_magic_mod: 55, magic_circle_1_mod: 2, magic_circle_2_mod: 1, magic_circle_3_mod: 0},
+  {value: 21, languages_mod: 4, learn_magic_mod: 55, magic_circle_1_mod: 2, magic_circle_2_mod: 1, magic_circle_3_mod: 0},
+  {value: 22, languages_mod: 5, learn_magic_mod: 65, magic_circle_1_mod: 2, magic_circle_2_mod: 2, magic_circle_3_mod: 0},
+  {value: 23, languages_mod: 5, learn_magic_mod: 65, magic_circle_1_mod: 2, magic_circle_2_mod: 2, magic_circle_3_mod: 0},
+  {value: 24, languages_mod: 6, learn_magic_mod: 75, magic_circle_1_mod: 2, magic_circle_2_mod: 2, magic_circle_3_mod: 1},
+  {value: 25, languages_mod: 6, learn_magic_mod: 75, magic_circle_1_mod: 2, magic_circle_2_mod: 2, magic_circle_3_mod: 1},
+  {value: 26, languages_mod: 7, learn_magic_mod: 85, magic_circle_1_mod: 3, magic_circle_2_mod: 2, magic_circle_3_mod: 1},
+  {value: 27, languages_mod: 7, learn_magic_mod: 85, magic_circle_1_mod: 3, magic_circle_2_mod: 2, magic_circle_3_mod: 1},
+  {value: 28, languages_mod: 8, learn_magic_mod: 95, magic_circle_1_mod: 3, magic_circle_2_mod: 3, magic_circle_3_mod: 1},
+  {value: 29, languages_mod: 8, learn_magic_mod: 95, magic_circle_1_mod: 3, magic_circle_2_mod: 3, magic_circle_3_mod: 1}
 ])
 
 StrengthMod.create!([
@@ -696,35 +710,35 @@ StrengthMod.create!([
 ])
 
 WisdomMod.create!([
-  {value: 1, protection_mod: -5, magic_cicle_1_mod: 0, magic_cicle_2_mod: 0, magic_cicle_3_mod: 0},
-  {value: 2, protection_mod: -4, magic_cicle_1_mod: 0, magic_cicle_2_mod: 0, magic_cicle_3_mod: 0},
-  {value: 3, protection_mod: -4, magic_cicle_1_mod: 0, magic_cicle_2_mod: 0, magic_cicle_3_mod: 0},
-  {value: 4, protection_mod: -3, magic_cicle_1_mod: 0, magic_cicle_2_mod: 0, magic_cicle_3_mod: 0},
-  {value: 5, protection_mod: -3, magic_cicle_1_mod: 0, magic_cicle_2_mod: 0, magic_cicle_3_mod: 0},
-  {value: 6, protection_mod: -2, magic_cicle_1_mod: 0, magic_cicle_2_mod: 0, magic_cicle_3_mod: 0},
-  {value: 7, protection_mod: -2, magic_cicle_1_mod: 0, magic_cicle_2_mod: 0, magic_cicle_3_mod: 0},
-  {value: 8, protection_mod: -1, magic_cicle_1_mod: 0, magic_cicle_2_mod: 0, magic_cicle_3_mod: 0},
-  {value: 9, protection_mod: -1, magic_cicle_1_mod: 0, magic_cicle_2_mod: 0, magic_cicle_3_mod: 0},
-  {value: 10, protection_mod: 0, magic_cicle_1_mod: 0, magic_cicle_2_mod: 0, magic_cicle_3_mod: 0},
-  {value: 11, protection_mod: 0, magic_cicle_1_mod: 0, magic_cicle_2_mod: 0, magic_cicle_3_mod: 0},
-  {value: 12, protection_mod: 1, magic_cicle_1_mod: 0, magic_cicle_2_mod: 0, magic_cicle_3_mod: 0},
-  {value: 13, protection_mod: 1, magic_cicle_1_mod: 0, magic_cicle_2_mod: 0, magic_cicle_3_mod: 0},
-  {value: 14, protection_mod: 2, magic_cicle_1_mod: 0, magic_cicle_2_mod: 0, magic_cicle_3_mod: 0},
-  {value: 15, protection_mod: 2, magic_cicle_1_mod: 0, magic_cicle_2_mod: 0, magic_cicle_3_mod: 0},
-  {value: 16, protection_mod: 3, magic_cicle_1_mod: 1, magic_cicle_2_mod: 0, magic_cicle_3_mod: 0},
-  {value: 17, protection_mod: 3, magic_cicle_1_mod: 1, magic_cicle_2_mod: 0, magic_cicle_3_mod: 0},
-  {value: 18, protection_mod: 4, magic_cicle_1_mod: 2, magic_cicle_2_mod: 0, magic_cicle_3_mod: 0},
-  {value: 19, protection_mod: 4, magic_cicle_1_mod: 2, magic_cicle_2_mod: 0, magic_cicle_3_mod: 0},
-  {value: 20, protection_mod: 5, magic_cicle_1_mod: 2, magic_cicle_2_mod: 1, magic_cicle_3_mod: 0},
-  {value: 21, protection_mod: 5, magic_cicle_1_mod: 2, magic_cicle_2_mod: 1, magic_cicle_3_mod: 0},
-  {value: 22, protection_mod: 6, magic_cicle_1_mod: 2, magic_cicle_2_mod: 2, magic_cicle_3_mod: 0},
-  {value: 23, protection_mod: 6, magic_cicle_1_mod: 2, magic_cicle_2_mod: 2, magic_cicle_3_mod: 0},
-  {value: 24, protection_mod: 7, magic_cicle_1_mod: 2, magic_cicle_2_mod: 2, magic_cicle_3_mod: 1},
-  {value: 25, protection_mod: 7, magic_cicle_1_mod: 2, magic_cicle_2_mod: 2, magic_cicle_3_mod: 1},
-  {value: 26, protection_mod: 8, magic_cicle_1_mod: 3, magic_cicle_2_mod: 2, magic_cicle_3_mod: 2},
-  {value: 27, protection_mod: 8, magic_cicle_1_mod: 3, magic_cicle_2_mod: 2, magic_cicle_3_mod: 2},
-  {value: 28, protection_mod: 9, magic_cicle_1_mod: 3, magic_cicle_2_mod: 3, magic_cicle_3_mod: 2},
-  {value: 29, protection_mod: 9, magic_cicle_1_mod: 3, magic_cicle_2_mod: 3, magic_cicle_3_mod: 2}
+  {value: 1, protection_mod: -5, magic_circle_1_mod: 0, magic_circle_2_mod: 0, magic_circle_3_mod: 0},
+  {value: 2, protection_mod: -4, magic_circle_1_mod: 0, magic_circle_2_mod: 0, magic_circle_3_mod: 0},
+  {value: 3, protection_mod: -4, magic_circle_1_mod: 0, magic_circle_2_mod: 0, magic_circle_3_mod: 0},
+  {value: 4, protection_mod: -3, magic_circle_1_mod: 0, magic_circle_2_mod: 0, magic_circle_3_mod: 0},
+  {value: 5, protection_mod: -3, magic_circle_1_mod: 0, magic_circle_2_mod: 0, magic_circle_3_mod: 0},
+  {value: 6, protection_mod: -2, magic_circle_1_mod: 0, magic_circle_2_mod: 0, magic_circle_3_mod: 0},
+  {value: 7, protection_mod: -2, magic_circle_1_mod: 0, magic_circle_2_mod: 0, magic_circle_3_mod: 0},
+  {value: 8, protection_mod: -1, magic_circle_1_mod: 0, magic_circle_2_mod: 0, magic_circle_3_mod: 0},
+  {value: 9, protection_mod: -1, magic_circle_1_mod: 0, magic_circle_2_mod: 0, magic_circle_3_mod: 0},
+  {value: 10, protection_mod: 0, magic_circle_1_mod: 0, magic_circle_2_mod: 0, magic_circle_3_mod: 0},
+  {value: 11, protection_mod: 0, magic_circle_1_mod: 0, magic_circle_2_mod: 0, magic_circle_3_mod: 0},
+  {value: 12, protection_mod: 1, magic_circle_1_mod: 0, magic_circle_2_mod: 0, magic_circle_3_mod: 0},
+  {value: 13, protection_mod: 1, magic_circle_1_mod: 0, magic_circle_2_mod: 0, magic_circle_3_mod: 0},
+  {value: 14, protection_mod: 2, magic_circle_1_mod: 0, magic_circle_2_mod: 0, magic_circle_3_mod: 0},
+  {value: 15, protection_mod: 2, magic_circle_1_mod: 0, magic_circle_2_mod: 0, magic_circle_3_mod: 0},
+  {value: 16, protection_mod: 3, magic_circle_1_mod: 1, magic_circle_2_mod: 0, magic_circle_3_mod: 0},
+  {value: 17, protection_mod: 3, magic_circle_1_mod: 1, magic_circle_2_mod: 0, magic_circle_3_mod: 0},
+  {value: 18, protection_mod: 4, magic_circle_1_mod: 2, magic_circle_2_mod: 0, magic_circle_3_mod: 0},
+  {value: 19, protection_mod: 4, magic_circle_1_mod: 2, magic_circle_2_mod: 0, magic_circle_3_mod: 0},
+  {value: 20, protection_mod: 5, magic_circle_1_mod: 2, magic_circle_2_mod: 1, magic_circle_3_mod: 0},
+  {value: 21, protection_mod: 5, magic_circle_1_mod: 2, magic_circle_2_mod: 1, magic_circle_3_mod: 0},
+  {value: 22, protection_mod: 6, magic_circle_1_mod: 2, magic_circle_2_mod: 2, magic_circle_3_mod: 0},
+  {value: 23, protection_mod: 6, magic_circle_1_mod: 2, magic_circle_2_mod: 2, magic_circle_3_mod: 0},
+  {value: 24, protection_mod: 7, magic_circle_1_mod: 2, magic_circle_2_mod: 2, magic_circle_3_mod: 1},
+  {value: 25, protection_mod: 7, magic_circle_1_mod: 2, magic_circle_2_mod: 2, magic_circle_3_mod: 1},
+  {value: 26, protection_mod: 8, magic_circle_1_mod: 3, magic_circle_2_mod: 2, magic_circle_3_mod: 2},
+  {value: 27, protection_mod: 8, magic_circle_1_mod: 3, magic_circle_2_mod: 2, magic_circle_3_mod: 2},
+  {value: 28, protection_mod: 9, magic_circle_1_mod: 3, magic_circle_2_mod: 3, magic_circle_3_mod: 2},
+  {value: 29, protection_mod: 9, magic_circle_1_mod: 3, magic_circle_2_mod: 3, magic_circle_3_mod: 2}
 ])
 
 
@@ -829,6 +843,30 @@ sandor.journals.create!({
   intelligence: 11,
   wisdom: 12,
   charisma: 10,
+  alignment: chaotic
+})
+
+thoros = Character.create!({
+  name: 'Thoros de Myr',
+  picture: 'http://i.lv3.hbo.com/assets/images/series/game-of-thrones/character/s7/thoros-of-myr-1280.jpg',
+  weight: 85,
+  height: 170,
+  age: 55,
+  description: "Thoros de Myr é um sacerdote vermelho de R'hllor, da Cidade "\
+    "Livre de Myr, e um membro da corte em Porto Real.",
+  character_class: cleric,
+  character_race: humans,
+  user: otherUser
+})
+thoros.journals.create!({
+  current_level: 4,
+  current_exp: 6000,
+  strength: 12,
+  dexterity: 10,
+  constitution: 13,
+  intelligence: 11,
+  wisdom: 14,
+  charisma: 11,
   alignment: chaotic
 })
 

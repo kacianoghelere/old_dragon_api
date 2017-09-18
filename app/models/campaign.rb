@@ -6,4 +6,8 @@ class Campaign < ActiveRecord::Base
   has_many :characters, through: :campaign_members
   accepts_nested_attributes_for :journals, :allow_destroy => true
   accepts_nested_attributes_for :notes, :allow_destroy => true
+
+  def find_users
+    self.characters.map {|char| char.user_id}.uniq
+  end
 end

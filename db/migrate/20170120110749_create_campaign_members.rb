@@ -1,9 +1,9 @@
 class CreateCampaignMembers < ActiveRecord::Migration
   def change
     create_table :campaign_members, id: :bigint do |t|
-      t.integer  :campaign_id,         limit: 8,                null: false
+      t.integer  :campaign_id,  limit: 8,                null: false
       t.integer  :character_id, limit: 8,                null: false
-      t.boolean  :idactive,                     default: true, null: false
+      t.boolean  :idactive,               default: true, null: false
       t.timestamps null: false
     end
 

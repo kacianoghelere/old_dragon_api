@@ -10,6 +10,6 @@ class CharacterSerializer < ActiveModel::Serializer
   end
 
   class CharacterRaceSerializer < ActiveModel::Serializer
-    attributes :id, :name
+    attributes :id, :name, :singular_name
   end
 end

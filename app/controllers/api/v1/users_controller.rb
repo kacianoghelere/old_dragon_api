@@ -7,7 +7,7 @@ class API::V1::UsersController  < ApplicationController
   def index
     @users = User.all
 
-    render json: @users, serializer: UsersSerializer
+    render json: @users
   end
 
   # GET /users/1
@@ -39,6 +39,14 @@ class API::V1::UsersController  < ApplicationController
     else
       render json: @user.errors, status: :unprocessable_entity
     end
+  end
+
+  def find_invitable
+    campaign_members = Campaign.find(params[:campaign_id]).find_users
+    users_invited = CampaignInvitation.find_invited_users(params[:campaign_id])
+    unavailable_ids = campaign_members + users_invited
+    @users = User.where.not(id: unavailable_ids)
+    render json: @users, each_serializer: SimpleUserSerializer
   end
 
   # DELETE /users/1

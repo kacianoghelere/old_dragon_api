@@ -1,5 +1,5 @@
 class CharacterRaceSerializer < ActiveModel::Serializer
-  attributes :id, :name, :description, :picture, :min_height, :max_height, :min_weight, :max_weight, :maturity, :max_age, :movement_base, :versatile_mod, :str_mod, :dex_mod, :cons_mod, :int_mod, :wis_mod, :char_mod
+  attributes :id, :name, :singular_name, :description, :picture, :min_height, :max_height, :min_weight, :max_weight, :maturity, :max_age, :movement_base, :versatile_mod, :str_mod, :dex_mod, :cons_mod, :int_mod, :wis_mod, :char_mod
   attribute :short_description
   has_one :alignment
   has_one :dice
