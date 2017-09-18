@@ -7,14 +7,13 @@ class API::V1::CampaignsController  < ApplicationController
   # GET /campaigns.json
   def index
     @campaigns = Campaign.all
-
     render json: @campaigns
   end
 
   # GET /campaigns/1
   # GET /campaigns/1.json
   def show
-    render json: @campaign
+    render json: @campaign, include: ['*', characters: [:class, :race]]
   end
 
   # POST /campaigns

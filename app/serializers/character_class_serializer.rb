@@ -4,7 +4,7 @@ class CharacterClassSerializer < ActiveModel::Serializer
   has_one :dice
   has_one :character_class_type, key: :type
   has_one :user
-  has_one :character_class_requirement, key: :requirement
+  has_one :requirements
 
   def short_description
     object.description.split('.').first unless object.description.empty?

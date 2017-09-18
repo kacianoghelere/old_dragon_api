@@ -1,3 +1,3 @@
 class CharacterClassRequirement < ActiveRecord::Base
-  belongs_to :character_classes
+  belongs_to :character_class
 end

@@ -7,13 +7,13 @@ class API::V1::UsersController  < ApplicationController
   def index
     @users = User.all
 
-    render json: @users
+    render json: @users, serializer: UsersSerializer
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
-    render json: @user
+    render json: @user, include: ['*', characters: [:class, :race]]
   end
 
   # POST /users
