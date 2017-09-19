@@ -1,14 +1,6 @@
 class API::V1::CampaignInvitationsController < ApplicationController
   before_action :set_campaign, only: [:create]
-  before_action :set_campaign_invitation, only: [:show, :update, :destroy]
-
-  # GET /campaign_invitations
-  # GET /campaign_invitations.json
-  def index
-    @campaign_invitations = CampaignInvitation.all
-
-    render json: @campaign_invitations
-  end
+  before_action :set_campaign_invitation, only: [:update, :destroy]
 
   def invitations
     @campaign_invitations = CampaignInvitation
@@ -17,17 +9,11 @@ class API::V1::CampaignInvitationsController < ApplicationController
     render json: @campaign_invitations
   end
 
-  # GET /campaign_invitations/1
-  # GET /campaign_invitations/1.json
-  def show
-    render json: @campaign_invitation
-  end
-
   def create
     @campaign_invitation = CampaignInvitation.new(invitate_params)
     @campaign_invitation.message = "Você recebeu um convite para participar da "\
-      "campanha #{@campaign.title}. Para aceitar, basta escolher um personagem "\
-      "e clicar em aceitar"
+      "campanha \"#{@campaign.title}\". Para aceitar, basta escolher um "\
+      "personagem e clicar em aceitar"
 
     if @campaign_invitation.save
       render json: @campaign_invitation, status: :created
@@ -36,17 +22,20 @@ class API::V1::CampaignInvitationsController < ApplicationController
     end
   end
 
-  # # PATCH/PUT /campaign_invitations/1
-  # # PATCH/PUT /campaign_invitations/1.json
-  # def update
-  #   @campaign_invitation = CampaignInvitation.find(params[:id])
+  # PATCH/PUT /campaign_invitations/1
+  # PATCH/PUT /campaign_invitations/1.json
+  def update
+    @campaign_invitation = CampaignInvitation.find(params[:id])
+    @campaign_invitation.completed = true
 
-  #   if @campaign_invitation.update(campaign_invitation_params)
-  #     head :no_content
-  #   else
-  #     render json: @campaign_invitation.errors, status: :unprocessable_entity
-  #   end
-  # end
+    if @campaign_invitation.update(invitate_update_params)
+      user_character = @campaign_invitation.user.characters.first
+      @campaign_invitation.campaign.characters.push(user_character)
+      head :no_content
+    else
+      render json: @campaign_invitation.errors, status: :unprocessable_entity
+    end
+  end
 
   # # DELETE /campaign_invitations/1
   # # DELETE /campaign_invitations/1.json
@@ -58,15 +47,19 @@ class API::V1::CampaignInvitationsController < ApplicationController
 
   private
 
+    def invitate_params
+      params.require(:campaign_invitation).permit(:campaign_id, :user_id)
+    end
+
+    def invitate_update_params
+      params.require(:campaign_invitation).permit(:accepted, :denied)
+    end
+
     def set_campaign
       @campaign = Campaign.find(invitate_params[:campaign_id])
     end
 
     def set_campaign_invitation
       @campaign_invitation = CampaignInvitation.find(params[:id])
-    end
-
-    def invitate_params
-      params.require(:campaign_invitation).permit(:campaign_id, :user_id)
     end
 end

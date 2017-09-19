@@ -46,11 +46,13 @@ ActiveRecord::Schema.define(version: 20170918132608) do
 
   create_table "campaign_invitations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.text     "message",     limit: 65535
-    t.boolean  "completed",                 default: true, null: false
-    t.integer  "campaign_id", limit: 8,                    null: false
-    t.integer  "user_id",     limit: 8,                    null: false
-    t.datetime "created_at",                               null: false
-    t.datetime "updated_at",                               null: false
+    t.boolean  "completed",                 default: false, null: false
+    t.boolean  "accepted",                  default: false, null: false
+    t.boolean  "denied",                    default: false, null: false
+    t.integer  "campaign_id", limit: 8,                     null: false
+    t.integer  "user_id",     limit: 8,                     null: false
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
   end
 
   add_index "campaign_invitations", ["campaign_id"], name: "index_campaign_invitations_on_campaign_id", using: :btree

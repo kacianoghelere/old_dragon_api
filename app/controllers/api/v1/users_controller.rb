@@ -7,7 +7,7 @@ class API::V1::UsersController  < ApplicationController
   def index
     @users = User.all
 
-    render json: @users
+    render json: @users, each_serializer: UsersSerializer
   end
 
   # GET /users/1

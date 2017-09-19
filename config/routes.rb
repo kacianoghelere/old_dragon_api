@@ -8,7 +8,7 @@ Rails.application.routes.draw do
       resources :armor_types, except: [:new, :edit]
       resources :armors, except: [:new, :edit]
       resources :campaigns, except: [:new, :edit]
-      resources :campaign_invitations, except: [:new, :edit]
+      resources :campaign_invitations, except: [:index, :show, :new, :edit]
       resources :character_classes, except: [:new, :edit]
       resources :character_races, except: [:new, :edit]
       resources :characters, except: [:new, :edit]
