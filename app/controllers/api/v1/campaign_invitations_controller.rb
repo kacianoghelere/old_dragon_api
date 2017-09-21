@@ -29,8 +29,8 @@ class API::V1::CampaignInvitationsController < ApplicationController
     @campaign_invitation.completed = true
 
     if @campaign_invitation.update(invitate_update_params)
-      user_character = @campaign_invitation.user.characters.first
-      @campaign_invitation.campaign.characters.push(user_character)
+      character = Character.find(params[:campaign_invitation][:character_id])
+      @campaign_invitation.campaign.characters.push(character)
       head :no_content
     else
       render json: @campaign_invitation.errors, status: :unprocessable_entity
