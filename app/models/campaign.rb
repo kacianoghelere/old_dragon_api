@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: campaigns
+#
+#  id              :integer          not null, primary key
+#  title           :string(45)       not null
+#  picture         :string(300)
+#  description     :text(65535)
+#  start_date      :datetime         not null
+#  conclusion_date :datetime
+#  user_id         :integer          not null
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
+
 class Campaign < ActiveRecord::Base
   belongs_to :user
   has_many :journals, class_name: 'CampaignJournal', dependent: :destroy

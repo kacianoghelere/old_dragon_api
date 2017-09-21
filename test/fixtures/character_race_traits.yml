@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: character_race_traits
+#
+#  id                :integer          not null, primary key
+#  character_race_id :integer          not null
+#  trait_id          :integer          not null
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#
+
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
