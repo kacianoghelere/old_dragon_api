@@ -25,4 +25,11 @@ class Campaign < ActiveRecord::Base
   def find_users
     self.characters.map {|char| char.user_id}.uniq
   end
+
+  def add_members(characters)
+    # debugger
+    characters.each do |character|
+      self.campaign_members.create!({character_id: character[:id]})
+    end
+  end
 end

@@ -4,6 +4,7 @@
 #
 #  id                 :integer          not null, primary key
 #  name               :string(45)
+#  title              :string(45)
 #  picture            :string(300)
 #  weight             :decimal(10, )
 #  height             :decimal(10, )

@@ -35,6 +35,7 @@ class API::V1::CampaignsController  < ApplicationController
     if @campaign.update(update_campaign_params)
       @campaign.journals.create(create_campaign_journals_params)
       @campaign.notes.create(create_campaign_notes_params)
+      @campaign.add_members(create_campaign_members_params)
       head :no_content
     else
       render json: @campaign.errors, status: :unprocessable_entity
@@ -70,6 +71,7 @@ class API::V1::CampaignsController  < ApplicationController
     def delete_associations
       @campaign.journals.destroy_all
       @campaign.notes.destroy_all
+      @campaign.campaign_members.destroy_all
     end
 
     # Retorna parametros de construção de diários de campanha
@@ -80,5 +82,10 @@ class API::V1::CampaignsController  < ApplicationController
     # Retorna parametros de construção de notas de campanha
     def create_campaign_notes_params
       deep_symbolize_keys(params[:campaign][:notes_attributes])
+    end
+
+    # Retorna parametros de criação de vinculos com personagens
+    def create_campaign_members_params
+      deep_symbolize_keys(params[:campaign][:characters])
     end
 end

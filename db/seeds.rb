@@ -11,13 +11,53 @@ adminUser = User.create!({
   role: adminRole
 })
 
-otherUser = User.create!({
-  name: "João",
-  user_code: "joao.testador",
+player1 = User.create!({
+  name: "Rick Sanchez (C-137)",
+  user_code: "rick.c137",
   password: "123456",
   password_confirmation: "123456",
   last_login: nil,
-  email: "joao@teste.com",
+  email: "rick@c137.com",
+  role: commonRole
+})
+
+player2 = User.create!({
+  name: "Morty Smith (C-137)",
+  user_code: "morty.c137",
+  password: "123456",
+  password_confirmation: "123456",
+  last_login: nil,
+  email: "morty@c137.com",
+  role: commonRole
+})
+
+player3 = User.create!({
+  name: "Severus Snape",
+  user_code: "snape.tester",
+  password: "123456",
+  password_confirmation: "123456",
+  last_login: nil,
+  email: "snape@tester.com",
+  role: commonRole
+})
+
+player4 = User.create!({
+  name: "Jimmy McGuill",
+  user_code: "jimmy.tester",
+  password: "123456",
+  password_confirmation: "123456",
+  last_login: nil,
+  email: "jimmy@tester.com",
+  role: commonRole
+})
+
+player5 = User.create!({
+  name: "Dexter Morgan",
+  user_code: "dexter.tester",
+  password: "123456",
+  password_confirmation: "123456",
+  last_login: nil,
+  email: "dexter@tester.com",
   role: commonRole
 })
 
@@ -747,6 +787,7 @@ WisdomMod.create!([
 # CHARACTERS
 jon = Character.create!({
   name: 'Jon Snow',
+  title: 'Não sabe de nada',
   picture: 'https://jovemnerd.com.br/wp-content/uploads/2017/08/jon-snow-1280-760x428.jpg',
   weight: 80,
   height: 175,
@@ -754,7 +795,7 @@ jon = Character.create!({
   description: "Jon Snow é o filho bastardo de Ned Stark, Lorde de Winrterfell",
   character_class: manOfArms,
   character_race: humans,
-  user: adminUser
+  user: player2
 })
 jon.journals.create!({
   current_level: 1,
@@ -770,6 +811,7 @@ jon.journals.create!({
 
 jorah = Character.create!({
   name: 'Jorah Mormont, o Ândalo',
+  title: 'Frindzone encarnada',
   picture: 'http://smallscreensesska.com/wp-content/uploads/2015/04/throne9.jpg',
   weight: 88,
   height: 177,
@@ -780,7 +822,7 @@ jorah = Character.create!({
     "na Muralha de Westeros.",
   character_class: manOfArms,
   character_race: humans,
-  user: adminUser
+  user: player3
 })
 jorah.journals.create!({
   current_level: 5,
@@ -796,6 +838,7 @@ jorah.journals.create!({
 
 sandor = Character.create!({
   name: 'Sandor Clegane, o Cão',
+  title: 'Fuck the king!',
   picture: 'http://media.comicbook.com/2016/05/sandor-clegane-184126-1280x0.jpg',
   weight: 110,
   height: 198,
@@ -807,7 +850,7 @@ sandor = Character.create!({
     "Clegane, o \"Montanha\".",
   character_class: manOfArms,
   character_race: humans,
-  user: adminUser
+  user: player1
 })
 sandor.journals.create!({
   current_level: 7,
@@ -823,6 +866,7 @@ sandor.journals.create!({
 
 tormund = Character.create!({
   name: 'Tormund, Giantsbane',
+  title: 'Beijado pelo fogo',
   picture: 'http://ll-c.ooyala.com/e1/o3bmxsYzE6cqDcBRwDriGSdUeRR8Skns/promo329184407',
   weight: 98,
   height: 187,
@@ -832,7 +876,7 @@ tormund = Character.create!({
     "Homens Livres.",
   character_class: manOfArms,
   character_race: humans,
-  user: adminUser
+  user: player4
 })
 sandor.journals.create!({
   current_level: 5,
@@ -848,6 +892,7 @@ sandor.journals.create!({
 
 thoros = Character.create!({
   name: 'Thoros de Myr',
+  title: 'O mais bêbado',
   picture: 'http://i.lv3.hbo.com/assets/images/series/game-of-thrones/character/s7/thoros-of-myr-1280.jpg',
   weight: 85,
   height: 170,
@@ -856,7 +901,7 @@ thoros = Character.create!({
     "Livre de Myr, e um membro da corte em Porto Real.",
   character_class: cleric,
   character_race: humans,
-  user: otherUser
+  user: player5
 })
 thoros.journals.create!({
   current_level: 4,
@@ -900,5 +945,3 @@ campaign.notes.create!({
 })
 campaign.characters.push(jon)
 campaign.characters.push(jorah)
-campaign.characters.push(sandor)
-campaign.characters.push(tormund)

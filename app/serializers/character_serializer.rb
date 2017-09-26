@@ -1,5 +1,5 @@
 class CharacterSerializer < ActiveModel::Serializer
-  attributes :id, :name, :picture, :weight, :height, :age, :description
+  attributes :id, :name, :title, :picture, :weight, :height, :age, :description
   has_many :journals
   has_one :character_class, key: :class
   has_one :character_race, key: :race
