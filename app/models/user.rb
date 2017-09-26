@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
   validates :password, presence: true, length: { minimum: 6 }, allow_blank: true
   has_many :campaigns
   has_many :characters
-  has_many :campaign_invitations, -> { where completed: false }
+  has_many :campaign_invitations, -> {where completed: false}
 
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
@@ -33,5 +33,12 @@ class User < ActiveRecord::Base
 
   def register_log_in()
     self.update_attribute(:last_login, DateTime.now)
+  end
+
+  def User.with_campaign_invitations(user) 
+    includes(:campaign_invitations)
+      .where('campaign_invitations.user_id IS NULL
+                OR campaign_invitations.user_id = :user_id', {:user_id => user.id})
+      .references(:campaign_invitations)
   end
 end
