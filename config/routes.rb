@@ -7,7 +7,10 @@ Rails.application.routes.draw do
       resources :alignments, except: [:new, :edit]
       resources :armor_types, except: [:new, :edit]
       resources :armors, except: [:new, :edit]
-      resources :campaigns, except: [:new, :edit]
+      resources :campaigns, except: [:new, :edit] 
+      # do
+      #   resources :campaign_invitations, only: :index, as: :invitations
+      # end
       resources :campaign_invitations, except: [:index, :show, :new, :edit]
       resources :character_classes, except: [:new, :edit]
       resources :character_races, except: [:new, :edit]
@@ -37,14 +40,18 @@ Rails.application.routes.draw do
       resources :strength_mods, except: [:new, :edit]
       resources :thief_talents, except: [:new, :edit]
       resources :undead_banes, except: [:new, :edit]
-      resources :users, except: [:new, :edit]
+      resources :users, except: [:new, :edit] do
+        resources :campaigns,            only: :index, as: :campaigns
+        resources :characters,           only: :index, as: :characters
+        resources :campaign_invitations, only: :index, as: :invitations
+      end
       resources :weapon_types, except: [:new, :edit]
       resources :weapons, except: [:new, :edit]
       resources :wisdom_mods, except: [:new, :edit]
 
       get 'character_classes/:id/showcase' => 'character_classes#showcase'
-      get 'invitable_users/:campaign_id' => 'users#find_invitable'
-      get 'users/:user_id/invitations' => 'users#invitations'
+      get 'invitable_users/:campaign_id' => 'users#find_invitable_users'
+      # get 'users/:user_id/invitations' => 'campaign_invitations#index'
       # get 'campaign_invitations/:campaign_id/invite/:user_id', to: 'campaign_invitations#invite'
     end
   end
@@ -103,4 +110,21 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+  
+  # ----------------------------------------------------------------------------
+  #   EXEMPLOS
+  # resources :users do
+  #   member do
+  #     get :following, :followers
+  #   end
+  # end
+  # resources :npcs do
+  #   resources :skills,      only: :index,   as: :skills
+  #   resources :npc_weapons, only: :destroy, as: :equipments
+  # end
+  # resources :parties do
+  #   resources :npcs,       only: :index,             as: :npcs
+  #   resources :party_npcs, only: [:index, :destroy], as: :members
+  # end
+  # resources :relationships, only: [:create, :destroy]
 end

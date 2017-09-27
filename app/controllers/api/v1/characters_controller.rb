@@ -6,8 +6,11 @@ class API::V1::CharactersController  < ApplicationController
   # GET /characters
   # GET /characters.json
   def index
-    @characters = Character.all
-
+    if params[:user_id]
+      @characters = Character.where(user_id: params[:user_id])
+    else
+      @characters = Character.all
+    end
     render json: @characters
   end
 

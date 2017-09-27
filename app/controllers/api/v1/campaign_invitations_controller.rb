@@ -2,10 +2,13 @@ class API::V1::CampaignInvitationsController < ApplicationController
   before_action :set_campaign, only: [:create]
   before_action :set_campaign_invitation, only: [:update, :destroy]
 
-  def invitations
-    @campaign_invitations = CampaignInvitation
-      .where(user_id: params[:user_id], completed: false)
-
+  def index
+    if get_current_user.id === params[:user_id].to_i
+      @campaign_invitations = CampaignInvitation.where(completed: false,
+                                                      user_id: params[:user_id])
+    else
+      @campaign_invitations = []
+    end
     render json: @campaign_invitations
   end
 

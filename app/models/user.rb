@@ -20,6 +20,7 @@ class User < ActiveRecord::Base
   has_many :campaigns
   has_many :characters
   has_many :campaign_invitations, -> {where completed: false}
+  # has_many :posts, ->(post) { where("max_post_length > ?", post.length) }
 
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :

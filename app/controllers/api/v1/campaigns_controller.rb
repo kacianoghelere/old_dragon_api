@@ -6,14 +6,18 @@ class API::V1::CampaignsController  < ApplicationController
   # GET /campaigns
   # GET /campaigns.json
   def index
-    @campaigns = Campaign.all
+    if params[:user_id]
+      @campaigns = Campaign.where(user_id: params[:user_id])
+    else
+      @campaigns = Campaign.all
+    end
     render json: @campaigns
   end
 
   # GET /campaigns/1
   # GET /campaigns/1.json
   def show
-    render json: @campaign, include: ['*', characters: [:class, :race]]
+    render json: @campaign, include: ['*', characters: [:class, :race, :player]]
   end
 
   # POST /campaigns

@@ -12,4 +12,8 @@ class CharacterSerializer < ActiveModel::Serializer
   class CharacterRaceSerializer < ActiveModel::Serializer
     attributes :id, :name, :singular_name
   end
+
+  class UserSerializer < ActiveModel::Serializer
+    attributes :id, :name
+  end
 end

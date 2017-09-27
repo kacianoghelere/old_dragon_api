@@ -41,12 +41,12 @@ class API::V1::UsersController  < ApplicationController
     end
   end
 
-  def find_invitable
-    campaign_members = Campaign.find(params[:campaign_id]).find_users
+  def find_invitable_users
+    campaign_members = Campaign.find(params[:campaign_id]).users
     users_invited = CampaignInvitation.find_invited_users(params[:campaign_id])
     unavailable_ids = campaign_members + users_invited
     @users = User.where.not(id: unavailable_ids)
-    render json: @users, each_serializer: SimpleUserSerializer
+    render json: @users, each_serializer: UserSimpleSerializer
   end
 
   # DELETE /users/1
@@ -60,7 +60,8 @@ class API::V1::UsersController  < ApplicationController
   private
 
     def set_user
-      @user = User.with_campaign_invitations(get_current_user).find(params[:id])
+      # @user = User.with_campaign_invitations(get_current_user).find(params[:id])
+      @user = User.find(params[:id])
     end
 
     def user_params
