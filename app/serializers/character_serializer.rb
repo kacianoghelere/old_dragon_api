@@ -1,19 +1,10 @@
 class CharacterSerializer < ActiveModel::Serializer
-  attributes :id, :name, :title, :picture, :weight, :height, :age, :description
-  has_many :journals
-  has_one :character_class, key: :class
-  has_one :character_race, key: :race
-  has_one :user
-
-  class CharacterClassSerializer < ActiveModel::Serializer
-    attributes :id, :name
-  end
-
-  class CharacterRaceSerializer < ActiveModel::Serializer
-    attributes :id, :name, :singular_name
-  end
-
-  class UserSerializer < ActiveModel::Serializer
-    attributes :id, :name
-  end
+  attributes :id, :name, :title, :quote, :picture, :weight, :height, :age, :description
+  # has_many :journals
+  belongs_to :character_class, serializer: CharacterClassSimpleSerializer, 
+                               key: :class
+  belongs_to :character_race, serializer: CharacterRaceSimpleSerializer,
+                              key: :race
+  has_one :status, serializer: CharacterJournalSerializer
+  belongs_to :user, serializer: UserSimpleSerializer, key: :player
 end

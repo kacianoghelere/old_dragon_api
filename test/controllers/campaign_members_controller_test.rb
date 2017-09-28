@@ -16,7 +16,7 @@ class CampaignMembersControllerTest < ActionController::TestCase
       post :create, campaign_member: {
         campaign_id: @campaign_member.campaign_id,
         character_id: @campaign_member.character_id,
-        idactive: @campaign_member.idactive
+        active: @campaign_member.active
       }
     end
 
@@ -32,7 +32,7 @@ class CampaignMembersControllerTest < ActionController::TestCase
     put :update, id: @campaign_member, campaign_member: {
       campaign_id: @campaign_member.campaign_id,
       character_id: @campaign_member.character_id,
-      idactive: @campaign_member.idactive
+      active: @campaign_member.active
     }
     assert_response 204
   end

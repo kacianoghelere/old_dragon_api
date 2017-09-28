@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(version: 20170918132608) do
 
   create_table "alignments", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "name",       limit: 15, null: false
+    t.string   "style",      limit: 45, null: false
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
   end
@@ -61,7 +62,7 @@ ActiveRecord::Schema.define(version: 20170918132608) do
   create_table "campaign_journals", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "title",       limit: 45,                   null: false
     t.text     "description", limit: 65535,                null: false
-    t.boolean  "idactive",                  default: true, null: false
+    t.boolean  "active",                    default: true, null: false
     t.integer  "campaign_id", limit: 8,                    null: false
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
@@ -72,7 +73,7 @@ ActiveRecord::Schema.define(version: 20170918132608) do
   create_table "campaign_members", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.integer  "campaign_id",  limit: 8,                null: false
     t.integer  "character_id", limit: 8,                null: false
-    t.boolean  "idactive",               default: true, null: false
+    t.boolean  "active",                 default: true, null: false
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
   end
@@ -83,7 +84,7 @@ ActiveRecord::Schema.define(version: 20170918132608) do
   create_table "campaign_notes", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "description", limit: 300
     t.boolean  "dm_only",                 default: false, null: false
-    t.boolean  "idactive",                default: true,  null: false
+    t.boolean  "active",                  default: true,  null: false
     t.integer  "campaign_id", limit: 8,                   null: false
     t.datetime "created_at",                              null: false
     t.datetime "updated_at",                              null: false
@@ -261,7 +262,7 @@ ActiveRecord::Schema.define(version: 20170918132608) do
     t.integer  "intelligence",  limit: 4, default: 0,    null: false
     t.integer  "wisdom",        limit: 4, default: 0,    null: false
     t.integer  "charisma",      limit: 4, default: 0,    null: false
-    t.boolean  "idactive",                default: true, null: false
+    t.boolean  "active",                  default: true, null: false
     t.integer  "character_id",  limit: 8,                null: false
     t.integer  "alignment_id",  limit: 8,                null: false
     t.datetime "created_at",                             null: false
@@ -369,6 +370,7 @@ ActiveRecord::Schema.define(version: 20170918132608) do
   create_table "characters", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "name",               limit: 45
     t.string   "title",              limit: 45
+    t.string   "quote",              limit: 300
     t.string   "picture",            limit: 300
     t.decimal  "weight",                           precision: 10
     t.decimal  "height",                           precision: 10

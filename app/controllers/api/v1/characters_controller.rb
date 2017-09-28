@@ -17,7 +17,7 @@ class API::V1::CharactersController  < ApplicationController
   # GET /characters/1
   # GET /characters/1.json
   def show
-    render json: @character
+    render json: @character, include: ['*', status: [:alignment]]
   end
 
   # POST /characters
@@ -38,6 +38,7 @@ class API::V1::CharactersController  < ApplicationController
     @character = Character.find(params[:id])
 
     if @character.update(character_params)
+      @character.journals.where(active: true).update_all(active: false)
       head :no_content
     else
       render json: @character.errors, status: :unprocessable_entity

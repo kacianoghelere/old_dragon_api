@@ -2,12 +2,12 @@
 
 one:
   description: MyString
-  idactive: false
+  active: false
   log_date: 2017-01-20 11:36:50
   campaign_id: 
 
 two:
   description: MyString
-  idactive: false
+  active: false
   log_date: 2017-01-20 11:36:50
   campaign_id: 

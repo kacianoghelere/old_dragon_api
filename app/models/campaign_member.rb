@@ -5,7 +5,7 @@
 #  id           :integer          not null, primary key
 #  campaign_id  :integer          not null
 #  character_id :integer          not null
-#  idactive     :boolean          default("1"), not null
+#  active       :boolean          default("1"), not null
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #

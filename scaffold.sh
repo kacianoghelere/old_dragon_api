@@ -42,7 +42,7 @@ rails generate scaffold CharacterAttribute strength:integer dexterity:integer co
 
 rails generate scaffold CharacterExpertise character:references expertise:references --no-migration
 
-rails generate scaffold CharacterJournal current_level:integer current_exp:integer idactive:boolean character:references alignment:references --no-migration
+rails generate scaffold CharacterJournal current_level:integer current_exp:integer active:boolean character:references alignment:references --no-migration
 
 rails generate scaffold Character name:string weight:decimal height:decimal age:integer description:text character_class:references character_race:references user:references --no-migration
 

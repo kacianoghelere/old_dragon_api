@@ -9,7 +9,7 @@ class CreateCharacterJournals < ActiveRecord::Migration
       t.integer  :intelligence,  limit: 4, default: 0,    null: false
       t.integer  :wisdom,        limit: 4, default: 0,    null: false
       t.integer  :charisma,      limit: 4, default: 0,    null: false
-      t.boolean  :idactive,                default: true, null: false
+      t.boolean  :active,                  default: true, null: false
       t.integer  :character_id,  limit: 8,                null: false
       t.integer  :alignment_id,  limit: 8,                null: false
       t.timestamps null: false

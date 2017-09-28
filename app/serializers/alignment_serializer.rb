@@ -1,3 +1,3 @@
 class AlignmentSerializer < ActiveModel::Serializer
-  attributes :id, :name
+  attributes :id, :name, :style
 end

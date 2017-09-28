@@ -3,6 +3,7 @@ class CreateCharacters < ActiveRecord::Migration
     create_table :characters, id: :bigint do |t|
       t.string   :name,               limit: 45
       t.string   :title,              limit: 45
+      t.string   :quote,              limit: 300
       t.string   :picture,            limit: 300
       t.decimal  :weight,                           precision: 10
       t.decimal  :height,                           precision: 10

@@ -22,4 +22,5 @@ class Character < ActiveRecord::Base
   belongs_to :character_race
   belongs_to :user
   has_many :journals, class_name: 'CharacterJournal'
+  has_one :status, -> { where active: true }, class_name: 'CharacterJournal'
 end

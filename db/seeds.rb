@@ -61,9 +61,9 @@ player5 = User.create!({
   role: commonRole
 })
 
-lawfull = Alignment.create!({name: "Ordeiro"})
-neutral = Alignment.create!({name: "Neutro"})
-chaotic = Alignment.create!({name: "Caótico"})
+lawfull = Alignment.create!({name: "Ordeiro", style: "lawfull"})
+neutral = Alignment.create!({name: "Neutro", style: "neutral"})
+chaotic = Alignment.create!({name: "Caótico", style: "chaotic"})
 
 ArmorType.create!([
   {name: "Completa"},
@@ -787,12 +787,13 @@ WisdomMod.create!([
 # CHARACTERS
 jon = Character.create!({
   name: 'Jon Snow',
-  title: 'Não sabe de nada',
+  title: 'Bastardo de Winterfell, Lobo Branco, Rei Corvo e Rei do Norte',
+  quote: '"Só existe uma guerra para a ser lutada e é a guerra contra os mortos!"',
   picture: 'https://jovemnerd.com.br/wp-content/uploads/2017/08/jon-snow-1280-760x428.jpg',
   weight: 80,
   height: 175,
   age: 26,
-  description: "Jon Snow é o filho bastardo de Ned Stark, Lorde de Winrterfell",
+  description: "Jon Snow é o filho bastardo de Ned Stark, Lorde de Winterfell",
   character_class: manOfArms,
   character_race: humans,
   user: player2
@@ -810,8 +811,9 @@ jon.journals.create!({
 })
 
 jorah = Character.create!({
-  name: 'Jorah Mormont, o Ândalo',
-  title: 'Frindzone encarnada',
+  name: "Jorah Mormont",
+  title: "O Ândalo",
+  quote: '"Existe uma fera dentro de cada homem e ela se agita quando ele tem uma espada nas mãos."',
   picture: 'http://smallscreensesska.com/wp-content/uploads/2015/04/throne9.jpg',
   weight: 88,
   height: 177,
@@ -824,21 +826,72 @@ jorah = Character.create!({
   character_race: humans,
   user: player3
 })
-jorah.journals.create!({
-  current_level: 5,
-  current_exp: 16000,
-  strength: 11,
-  dexterity: 12,
-  constitution: 10,
-  intelligence: 11,
-  wisdom: 14,
-  charisma: 11,
-  alignment: lawfull
-})
+jorah.journals.create!([
+  {
+    current_level: 1,
+    current_exp: 0,
+    strength: 11,
+    dexterity: 12,
+    constitution: 10,
+    intelligence: 11,
+    wisdom: 14,
+    charisma: 11,
+    alignment: neutral,
+    active: false
+  },
+  {
+    current_level: 2,
+    current_exp: 2000,
+    strength: 11,
+    dexterity: 12,
+    constitution: 10,
+    intelligence: 11,
+    wisdom: 14,
+    charisma: 11,
+    alignment: neutral,
+    active: false
+  },
+  {
+    current_level: 3,
+    current_exp: 4000,
+    strength: 11,
+    dexterity: 12,
+    constitution: 10,
+    intelligence: 11,
+    wisdom: 14,
+    charisma: 11,
+    alignment: lawfull,
+    active: false
+  },
+  {
+    current_level: 4,
+    current_exp: 8000,
+    strength: 11,
+    dexterity: 12,
+    constitution: 10,
+    intelligence: 11,
+    wisdom: 14,
+    charisma: 11,
+    alignment: lawfull,
+    active: false
+  },
+  {
+    current_level: 5,
+    current_exp: 16000,
+    strength: 11,
+    dexterity: 12,
+    constitution: 10,
+    intelligence: 11,
+    wisdom: 14,
+    charisma: 11,
+    alignment: lawfull
+  }
+])
 
 sandor = Character.create!({
-  name: 'Sandor Clegane, o Cão',
-  title: 'Fuck the king!',
+  name: 'Sandor Clegane',
+  title: 'O Cão de Caça',
+  quote: '"Foda-se o rei..."',
   picture: 'http://media.comicbook.com/2016/05/sandor-clegane-184126-1280x0.jpg',
   weight: 110,
   height: 198,
@@ -852,21 +905,96 @@ sandor = Character.create!({
   character_race: humans,
   user: player1
 })
-sandor.journals.create!({
-  current_level: 7,
-  current_exp: 64000,
-  strength: 16,
-  dexterity: 11,
-  constitution: 13,
-  intelligence: 11,
-  wisdom: 10,
-  charisma: 9,
-  alignment: chaotic
-})
+sandor.journals.create!([
+  {
+    current_level: 1,
+    current_exp: 0,
+    strength: 16,
+    dexterity: 11,
+    constitution: 13,
+    intelligence: 11,
+    wisdom: 10,
+    charisma: 9,
+    alignment: chaotic,
+    active: false
+  },
+  {
+    current_level: 2,
+    current_exp: 2000,
+    strength: 16,
+    dexterity: 11,
+    constitution: 13,
+    intelligence: 11,
+    wisdom: 10,
+    charisma: 9,
+    alignment: chaotic,
+    active: false
+  },
+  {
+    current_level: 3,
+    current_exp: 4000,
+    strength: 16,
+    dexterity: 11,
+    constitution: 13,
+    intelligence: 11,
+    wisdom: 10,
+    charisma: 9,
+    alignment: chaotic,
+    active: false
+  },
+  {
+    current_level: 4,
+    current_exp: 8000,
+    strength: 16,
+    dexterity: 11,
+    constitution: 13,
+    intelligence: 11,
+    wisdom: 10,
+    charisma: 9,
+    alignment: chaotic,
+    active: false
+  },
+  {
+    current_level: 5,
+    current_exp: 16000,
+    strength: 16,
+    dexterity: 11,
+    constitution: 13,
+    intelligence: 11,
+    wisdom: 10,
+    charisma: 9,
+    alignment: chaotic,
+    active: false
+  },
+  {
+    current_level: 6,
+    current_exp: 32000,
+    strength: 16,
+    dexterity: 11,
+    constitution: 13,
+    intelligence: 11,
+    wisdom: 10,
+    charisma: 9,
+    alignment: chaotic,
+    active: false
+  },
+  {
+    current_level: 7,
+    current_exp: 64000,
+    strength: 16,
+    dexterity: 11,
+    constitution: 13,
+    intelligence: 11,
+    wisdom: 10,
+    charisma: 9,
+    alignment: chaotic
+  }
+])
 
 tormund = Character.create!({
-  name: 'Tormund, Giantsbane',
-  title: 'Beijado pelo fogo',
+  name: "Tormund Giantsbane",
+  title: "O Ruivo",
+  quote: '"Nós, os ruivos, somos beijados pelo fogo!"',
   picture: 'http://ll-c.ooyala.com/e1/o3bmxsYzE6cqDcBRwDriGSdUeRR8Skns/promo329184407',
   weight: 98,
   height: 187,
@@ -878,21 +1006,72 @@ tormund = Character.create!({
   character_race: humans,
   user: player4
 })
-sandor.journals.create!({
-  current_level: 5,
-  current_exp: 16000,
-  strength: 14,
-  dexterity: 13,
-  constitution: 11,
-  intelligence: 11,
-  wisdom: 12,
-  charisma: 10,
-  alignment: chaotic
-})
+tormund.journals.create!([
+  {
+    current_level: 1,
+    current_exp: 0,
+    strength: 14,
+    dexterity: 13,
+    constitution: 11,
+    intelligence: 11,
+    wisdom: 12,
+    charisma: 10,
+    alignment: chaotic,
+    active: false
+  },
+  {
+    current_level: 2,
+    current_exp: 2000,
+    strength: 14,
+    dexterity: 13,
+    constitution: 11,
+    intelligence: 11,
+    wisdom: 12,
+    charisma: 10,
+    alignment: chaotic,
+    active: false
+  },
+  {
+    current_level: 3,
+    current_exp: 4000,
+    strength: 14,
+    dexterity: 13,
+    constitution: 11,
+    intelligence: 11,
+    wisdom: 12,
+    charisma: 10,
+    alignment: chaotic,
+    active: false
+  },
+  {
+    current_level: 4,
+    current_exp: 8000,
+    strength: 14,
+    dexterity: 13,
+    constitution: 11,
+    intelligence: 11,
+    wisdom: 12,
+    charisma: 10,
+    alignment: chaotic,
+    active: false
+  },
+  {
+    current_level: 5,
+    current_exp: 16000,
+    strength: 14,
+    dexterity: 13,
+    constitution: 11,
+    intelligence: 11,
+    wisdom: 12,
+    charisma: 10,
+    alignment: chaotic
+  }
+])
 
 thoros = Character.create!({
-  name: 'Thoros de Myr',
-  title: 'O mais bêbado',
+  name: "Thoros de Myr",
+  title: "Sacerdote de R\'hllor",
+  quote: '"Eu não era o mais bravo, apenas o mais bêbado..."',
   picture: 'http://i.lv3.hbo.com/assets/images/series/game-of-thrones/character/s7/thoros-of-myr-1280.jpg',
   weight: 85,
   height: 170,
@@ -903,17 +1082,55 @@ thoros = Character.create!({
   character_race: humans,
   user: player5
 })
-thoros.journals.create!({
-  current_level: 4,
-  current_exp: 6000,
-  strength: 12,
-  dexterity: 10,
-  constitution: 13,
-  intelligence: 11,
-  wisdom: 14,
-  charisma: 11,
-  alignment: chaotic
-})
+thoros.journals.create!([
+  {
+    current_level: 1,
+    current_exp: 0,
+    strength: 12,
+    dexterity: 10,
+    constitution: 10,
+    intelligence: 13,
+    wisdom: 14,
+    charisma: 11,
+    alignment: lawfull,
+    active: false
+  },
+  {
+    current_level: 2,
+    current_exp: 1500,
+    strength: 12,
+    dexterity: 10,
+    constitution: 11,
+    intelligence: 12,
+    wisdom: 14,
+    charisma: 11,
+    alignment: neutral,
+    active: false
+  },
+  {
+    current_level: 3,
+    current_exp: 3000,
+    strength: 12,
+    dexterity: 10,
+    constitution: 12,
+    intelligence: 12,
+    wisdom: 14,
+    charisma: 11,
+    alignment: chaotic,
+    active: false
+  },
+  {
+    current_level: 4,
+    current_exp: 6000,
+    strength: 12,
+    dexterity: 10,
+    constitution: 13,
+    intelligence: 10,
+    wisdom: 14,
+    charisma: 11,
+    alignment: chaotic
+  }
+])
 
 # ------------------------------------------------------------------------------
 # CAMPAIGN

@@ -11,7 +11,7 @@
 #  intelligence  :integer          default("0"), not null
 #  wisdom        :integer          default("0"), not null
 #  charisma      :integer          default("0"), not null
-#  idactive      :boolean          default("1"), not null
+#  active        :boolean          default("1"), not null
 #  character_id  :integer          not null
 #  alignment_id  :integer          not null
 #  created_at    :datetime         not null

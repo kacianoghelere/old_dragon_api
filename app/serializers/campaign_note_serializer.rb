@@ -1,3 +1,3 @@
 class CampaignNoteSerializer < ActiveModel::Serializer
-  attributes :id, :description, :dm_only, :idactive
+  attributes :id, :description, :dm_only, :active
 end

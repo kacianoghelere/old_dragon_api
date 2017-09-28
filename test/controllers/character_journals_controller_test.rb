@@ -18,7 +18,7 @@ class CharacterJournalsControllerTest < ActionController::TestCase
         character_id: @character_journal.character_id,
         current_exp: @character_journal.current_exp,
         current_level: @character_journal.current_level,
-        idactive: @character_journal.idactive
+        active: @character_journal.active
       }
     end
 
@@ -36,7 +36,7 @@ class CharacterJournalsControllerTest < ActionController::TestCase
       character_id: @character_journal.character_id,
       current_exp: @character_journal.current_exp,
       current_level: @character_journal.current_level,
-      idactive: @character_journal.idactive
+      active: @character_journal.active
     }
     assert_response 204
   end

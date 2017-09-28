@@ -1,3 +1,3 @@
 class CampaignJournalSerializer < ActiveModel::Serializer
-  attributes :id, :title, :description, :idactive
+  attributes :id, :title, :description, :active
 end
