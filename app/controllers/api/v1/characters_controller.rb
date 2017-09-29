@@ -9,7 +9,7 @@ class API::V1::CharactersController  < ApplicationController
     if params[:user_id]
       @characters = Character.where(user_id: params[:user_id])
     else
-      @characters = Character.all
+      @characters = get_current_user.characters
     end
     render json: @characters
   end
@@ -17,7 +17,9 @@ class API::V1::CharactersController  < ApplicationController
   # GET /characters/1
   # GET /characters/1.json
   def show
-    render json: @character, include: ['*', status: [:alignment]]
+    render json: @character, include: [
+      '*', campaigns: [:dungeonMaster], status: [:alignment]
+    ]
   end
 
   # POST /characters

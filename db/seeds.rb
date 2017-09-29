@@ -787,7 +787,7 @@ WisdomMod.create!([
 # CHARACTERS
 jon = Character.create!({
   name: 'Jon Snow',
-  title: 'Bastardo de Winterfell, Lobo Branco, Rei Corvo e Rei do Norte',
+  title: 'Bastardo de Winterfell',
   quote: '"Só existe uma guerra para a ser lutada e é a guerra contra os mortos!"',
   picture: 'https://jovemnerd.com.br/wp-content/uploads/2017/08/jon-snow-1280-760x428.jpg',
   weight: 80,
