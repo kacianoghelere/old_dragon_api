@@ -1,14 +1,14 @@
 class CharacterClassShowcaseSerializer < ActiveModel::Serializer
-  attributes :id, :name, :picture, :description
+  attributes :id, :name, :picture, :example_picture, :description
   attribute :short_description
   has_one :dice
   has_one :character_class_type, key: :type
   has_one :user
-  has_one :character_class_requirement, key: :requirement
-  has_many :character_class_evolutions, key: :evolutions
+  has_one :requirement
+  has_many :evolutions
   has_many :thief_talents, if: :has_thief_talents?
   has_many :undead_banes, if: :can_bane_undead?
-  has_many :character_class_magic_circles, key: :magic_circles, if: :can_use_magic?
+  has_many :magic_circles, if: :can_use_magic?
 
   def has_thief_talents?
     true if object.character_class_type.has_thief_talents

@@ -60,7 +60,6 @@ ActiveRecord::Schema.define(version: 20170918132608) do
   add_index "campaign_invitations", ["user_id"], name: "index_campaign_invitations_on_user_id", using: :btree
 
   create_table "campaign_journals", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
-    t.string   "title",       limit: 45,                   null: false
     t.text     "description", limit: 65535,                null: false
     t.boolean  "active",                    default: true, null: false
     t.integer  "campaign_id", limit: 8,                    null: false
@@ -231,6 +230,7 @@ ActiveRecord::Schema.define(version: 20170918132608) do
   create_table "character_classes", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "name",                    limit: 45,    null: false
     t.string   "picture",                 limit: 300
+    t.string   "example_picture",         limit: 300
     t.text     "description",             limit: 65535
     t.integer  "dice_id",                 limit: 8,     null: false
     t.integer  "character_class_type_id", limit: 8,     null: false
@@ -338,29 +338,30 @@ ActiveRecord::Schema.define(version: 20170918132608) do
   add_index "character_race_weapons", ["weapon_type_id"], name: "index_character_race_weapons_on_weapon_type_id", using: :btree
 
   create_table "character_races", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
-    t.string   "name",          limit: 45,                                   null: false
-    t.string   "singular_name", limit: 45,                                   null: false
-    t.text     "description",   limit: 65535
-    t.string   "picture",       limit: 300
-    t.decimal  "min_height",                  precision: 10, default: 0
-    t.decimal  "max_height",                  precision: 10, default: 0
-    t.decimal  "min_weight",                  precision: 10
-    t.decimal  "max_weight",                  precision: 10
-    t.integer  "maturity",      limit: 4
-    t.integer  "max_age",       limit: 4
-    t.integer  "movement_base", limit: 4,                    default: 1,     null: false
-    t.boolean  "versatile_mod",                              default: false, null: false
-    t.integer  "str_mod",       limit: 4,                    default: 0,     null: false
-    t.integer  "dex_mod",       limit: 4,                    default: 0,     null: false
-    t.integer  "cons_mod",      limit: 4,                    default: 0,     null: false
-    t.integer  "int_mod",       limit: 4,                    default: 0,     null: false
-    t.integer  "wis_mod",       limit: 4,                    default: 0,     null: false
-    t.integer  "char_mod",      limit: 4,                    default: 0,     null: false
-    t.integer  "alignment_id",  limit: 8,                                    null: false
-    t.integer  "dice_id",       limit: 8
-    t.integer  "user_id",       limit: 8,                                    null: false
-    t.datetime "created_at",                                                 null: false
-    t.datetime "updated_at",                                                 null: false
+    t.string   "name",            limit: 45,                                   null: false
+    t.string   "singular_name",   limit: 45,                                   null: false
+    t.text     "description",     limit: 65535
+    t.string   "picture",         limit: 300
+    t.string   "example_picture", limit: 300
+    t.decimal  "min_height",                    precision: 10, default: 0
+    t.decimal  "max_height",                    precision: 10, default: 0
+    t.decimal  "min_weight",                    precision: 10
+    t.decimal  "max_weight",                    precision: 10
+    t.integer  "maturity",        limit: 4
+    t.integer  "max_age",         limit: 4
+    t.integer  "movement_base",   limit: 4,                    default: 1,     null: false
+    t.boolean  "versatile_mod",                                default: false, null: false
+    t.integer  "str_mod",         limit: 4,                    default: 0,     null: false
+    t.integer  "dex_mod",         limit: 4,                    default: 0,     null: false
+    t.integer  "cons_mod",        limit: 4,                    default: 0,     null: false
+    t.integer  "int_mod",         limit: 4,                    default: 0,     null: false
+    t.integer  "wis_mod",         limit: 4,                    default: 0,     null: false
+    t.integer  "char_mod",        limit: 4,                    default: 0,     null: false
+    t.integer  "alignment_id",    limit: 8,                                    null: false
+    t.integer  "dice_id",         limit: 8
+    t.integer  "user_id",         limit: 8,                                    null: false
+    t.datetime "created_at",                                                   null: false
+    t.datetime "updated_at",                                                   null: false
   end
 
   add_index "character_races", ["alignment_id"], name: "index_character_races_on_alignment_id", using: :btree

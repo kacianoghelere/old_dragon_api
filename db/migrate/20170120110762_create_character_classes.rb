@@ -3,6 +3,7 @@ class CreateCharacterClasses < ActiveRecord::Migration
     create_table :character_classes, id: :bigint do |t|
       t.string   :name,                    limit: 45,  null: false
       t.string   :picture,                 limit: 300
+      t.string   :example_picture,         limit: 300
       t.text     :description
       t.integer  :dice_id,                 limit: 8,   null: false
       t.integer  :character_class_type_id, limit: 8,   null: false

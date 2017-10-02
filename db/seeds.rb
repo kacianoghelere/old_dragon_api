@@ -147,6 +147,7 @@ dwarves = CharacterRace.create!({
   name: "Anões",
   singular_name: "Anão",
   picture: "https://i.pinimg.com/564x/29/03/7c/29037c18b75badfeaa7dafe3f17f333a.jpg",
+  example_picture: "https://i.pinimg.com/564x/fb/cf/59/fbcf59cd7a8fa21b4f732b4761c041da.jpg",
   description: "Os anões são pequenos seres robustos e atarracados, famosos por serem rabugentos e teimosos. Como habitantes do subterrâneo, os anões são mineradores fabulosos e ferreiros extremamente competentes, conhecidos pela capacidade de transformarem blocos metálicos em verdadeiras obras de arte e armas dignas das melhores estórias."\
     "\nEntretanto, os anões são criaturas extremamente honradas e valorosas. Um ser que coloca sua honra, palavra e dignidade acima de quaisquer outros valores, prezando a ordem e desprezando quase que absolutamente o caos, sendo ainda raros os anões neutros. É tido como senso comum que a palavra de um anão vale mais do que qualquer assinatura. A amizade de um anão é dura de ser conquistada, e, uma vez estabelecida, é ainda mais difícil de ser desfeita. Por outro lado a inimizade é levada até as últimas consequências, passando de geração a geração dentro de um mesmo clã de anões."\
     "\nOs anões possuem uma rivalidade histórica com os elfos. Oriunda de guerras de tempos longínquos, esse ranço pessoal se perpetuou através das eras, apesar de ter sido um pouco amenizada com o passar do tempo. Mesmo sem chegar à agressão aberta, um anão sempre buscará diminuir os feitos de um elfo, exaltando, sempre que possível, as suas próprias conquistas.",
@@ -188,6 +189,7 @@ elves = CharacterRace.create!({
   name: "Elfos",
   singular_name: "Elfo",
   picture: "https://i.pinimg.com/736x/81/1a/7a/811a7aa0c7621053c62ab5fa17a1ec8d--male-elf-character-concept.jpg",
+  example_picture: "https://i.pinimg.com/564x/42/d2/b8/42d2b83f9c4ed3546785bb365e5b15e8.jpg",
   description: "Os elfos são humanoides esguios e silvestres, com antecedentes místicos e aparência inconfundível. São ligeiramente mais baixos que os humanos, se diferenciando ainda mais nos traços faciais delicados, finos e graciosos. As orelhas são longas e pontudas, e os olhos amendoados, levemente alongados. Os cabelos são sempre lisos e limpos e comumente longos, mesmo entre os elfos machos,podendo ter uma miríade de cores e tons que vão do completo negro ao branco prateado."\
     "\nComo habitantes das áreas selvagens e florestais, os elfos possuem uma eterna ligação com as árvores e demais seres silvestres. Os elfos são seres reclusos e raramente abandonam sua terra em busca de aventuras. Quando um elfo se rende aos encantos do mundo além das fronteiras, normalmente o faz pelo desejo de adquirir conhecimento, aperfeiçoar suas técnicas ou ainda como embaixador de seu povo. "\
     "\nPelo ponto de vista élfico, a rivalidade histórica entre elfos e anões é fomentada mais pelas divergências 15artísticas, sendo que os elfos consideram as técnicas empregadas pelos anões como rudes e grosseiras, preferindo a delicadeza intrincada que empregam em detrimento da precisão metódica do povo anão.",
@@ -244,6 +246,7 @@ humans = CharacterRace.create!({
   name: "Humanos",
   singular_name: "Humano",
   picture: "https://i.pinimg.com/564x/ba/66/34/ba6634ac7be1b24a3f7482ebb0fa4927.jpg",
+  example_picture: "https://i.pinimg.com/564x/92/38/be/9238be8625e38d36b6e8a4b6fa80c211.jpg",
   description: "Os humanos são criaturas versáteis, valorosas e muito ambiciosas e, por isso, acabam representando a maioria da população. Essa versatilidade e ambição fazem com que humanos de diferentes lugares possuam hábitos e costumes também diferentes, sendo que o ambiente acaba inf luenciando a forma como a raça se desenvolve como um todo. Os grandes homens dos ermos gelados, de pele alva, estatura impressionante e músculos tenazes, serão tratados como humanos, exatamente como os morenos e franzinos habitantes das planícies desérticas.",
   min_height: 2,
   max_height: 2,
@@ -261,6 +264,7 @@ halflings = CharacterRace.create!({
   name: "Halflings",
   singular_name: "Halfling",
   picture: "http://3.bp.blogspot.com/-6D8tlIzKPR0/UJ4rELOM9LI/AAAAAAAAAl8/3sw0UV0tmcE/s1600/halfling+02.jpg",
+  example_picture: "https://i.pinimg.com/564x/c2/52/48/c25248a05aca896a937d6ce0da6e7cc0.jpg",
   description: "Os halflings são seres pequenos, cuja capacidade de encrencar-se é inversamente proporcional ao seu tamanho. Odiando o marasmo, os half lings preferem a confusão e a diversão ao tédio, e é justamente esse sentimento de aventura que os torna tão aptos a caírem na estrada e se tornarem peregrinos e aventureiros. "\
     "\nHalflings podem apresentar à primeira vista características que erroneamente os classifiquem como frágeis, mas a prática demonstra exatamente o contrário. "\
     "\nCuriosos, confiantes e assombrosamente corajosos, os half lings confiam em seus destinos e habilidades para superarem desafios, com uma sagacidade que beira o sobrenatural."\
@@ -1145,12 +1149,10 @@ campaign = Campaign.create!({
 })
 campaign.journals.create!([
   {
-    title: "Atravessando a muralha",
     description: "Os aventureiros se reunem no castelo da patrula da noite e "\
       "recebem uma ordem para partir para o norte da muralha."
   },
   {
-    title: "Imensidão branca",
     description: "Após atravessarem a muralha, os aventureiros se encontram "\
       "com um grupo de selvagens e um pequeno conflito acontece, resultando "\
       "em mortes em ambos os grupos."

@@ -5,6 +5,7 @@ class CreateCharacterRaces < ActiveRecord::Migration
       t.string   :singular_name,     limit: 45,                                null: false
       t.text     :description
       t.string   :picture,           limit: 300
+      t.string   :example_picture,   limit: 300
       t.decimal  :min_height,                   precision: 10, default: 0
       t.decimal  :max_height,                   precision: 10, default: 0
       t.decimal  :min_weight,                   precision: 10

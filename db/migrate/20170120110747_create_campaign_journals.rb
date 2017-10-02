@@ -1,7 +1,6 @@
 class CreateCampaignJournals < ActiveRecord::Migration
   def change
     create_table :campaign_journals, id: :bigint do |t|
-      t.string   :title,        limit: 45,                null: false
       t.text     :description,                            null: false
       t.boolean  :active,                  default: true, null: false
       t.integer  :campaign_id,  limit: 8,                 null: false
