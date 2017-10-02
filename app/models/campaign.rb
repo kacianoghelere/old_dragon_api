@@ -14,11 +14,13 @@
 #
 
 class Campaign < ActiveRecord::Base
+  after_create :generate_first_page
   belongs_to :user
   has_many :journals, class_name: 'CampaignJournal', dependent: :destroy
   has_many :campaign_members
-  has_many :notes, class_name: 'CampaignNote', dependent: :destroy
   has_many :characters, -> { order('id') }, through: :campaign_members
+  has_many :notes, class_name: 'CampaignNote', dependent: :destroy
+  has_many :pages, class_name: 'CampaignWikiPage', dependent: :destroy
   has_many :users, -> { order('id') }, through: :characters
   accepts_nested_attributes_for :journals, :allow_destroy => true
   accepts_nested_attributes_for :notes, :allow_destroy => true
@@ -28,5 +30,14 @@ class Campaign < ActiveRecord::Base
     characters.each do |character|
       self.campaign_members.create!({character_id: character[:id]})
     end
+  end
+
+  def generate_first_page
+    self.pages.create!({
+      title: "Bem-vindo ao #{self.title} Wiki!",
+      body: "Esta é a primeira página da wiki da sua campanha!"\
+        " Você pode editá-la ou criar novas páginas dividdas por categorias,"\
+        " só não vale deixar de se divertir ;)"
+    })
   end
 end

@@ -7,10 +7,10 @@ Rails.application.routes.draw do
       resources :alignments, except: [:new, :edit]
       resources :armor_types, except: [:new, :edit]
       resources :armors, except: [:new, :edit]
-      resources :campaigns, except: [:new, :edit] 
-      # do
-      #   resources :campaign_invitations, only: :index, as: :invitations
-      # end
+      resources :campaigns, except: [:new, :edit] do
+        # resources :campaign_invitations, only: :index, as: :invitations
+        resources :campaign_wiki_pages, except: [:new, :edit]
+            end
       resources :campaign_invitations, except: [:index, :show, :new, :edit]
       resources :character_classes, except: [:new, :edit]
       resources :character_races, except: [:new, :edit]

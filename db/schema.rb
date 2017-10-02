@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170918132608) do
+ActiveRecord::Schema.define(version: 20171002194635) do
 
   create_table "alignments", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "name",       limit: 15, null: false
@@ -90,6 +90,16 @@ ActiveRecord::Schema.define(version: 20170918132608) do
   end
 
   add_index "campaign_notes", ["campaign_id"], name: "index_campaign_notes_on_campaign_id", using: :btree
+
+  create_table "campaign_wiki_pages", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+    t.string   "title",       limit: 255
+    t.text     "body",        limit: 65535
+    t.integer  "campaign_id", limit: 8,     null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "campaign_wiki_pages", ["campaign_id"], name: "index_campaign_wiki_pages_on_campaign_id", using: :btree
 
   create_table "campaigns", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "title",           limit: 45,    null: false
@@ -742,6 +752,7 @@ ActiveRecord::Schema.define(version: 20170918132608) do
   add_foreign_key "campaign_members", "campaigns"
   add_foreign_key "campaign_members", "characters"
   add_foreign_key "campaign_notes", "campaigns"
+  add_foreign_key "campaign_wiki_pages", "campaigns"
   add_foreign_key "campaigns", "users"
   add_foreign_key "character_class_armor_types", "armor_types"
   add_foreign_key "character_class_armor_types", "character_classes"

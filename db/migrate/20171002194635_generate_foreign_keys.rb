@@ -7,9 +7,10 @@ class GenerateForeignKeys < ActiveRecord::Migration
     add_foreign_key :campaign_invitations, :campaigns
     add_foreign_key :campaign_invitations, :users
     add_foreign_key :campaign_journals, :campaigns
-    add_foreign_key :campaign_notes, :campaigns
     add_foreign_key :campaign_members, :campaigns
     add_foreign_key :campaign_members, :characters
+    add_foreign_key :campaign_notes, :campaigns
+    add_foreign_key :campaign_wiki_pages, :campaigns
     add_foreign_key :campaigns, :users
     add_foreign_key :character_class_armor_types, :armor_types
     add_foreign_key :character_class_armor_types, :character_classes
@@ -36,11 +37,11 @@ class GenerateForeignKeys < ActiveRecord::Migration
     add_foreign_key :character_race_armors, :character_races
     add_foreign_key :character_race_languages, :character_races
     add_foreign_key :character_race_languages, :language_types
-    add_foreign_key :character_race_traits, :character_races
-    add_foreign_key :character_race_traits, :traits
     add_foreign_key :character_race_skills, :character_races
     add_foreign_key :character_race_skills, :skills
     add_foreign_key :character_race_thief_talents, :character_races
+    add_foreign_key :character_race_traits, :character_races
+    add_foreign_key :character_race_traits, :traits
     add_foreign_key :character_race_weapons, :character_races
     add_foreign_key :character_race_weapons, :weapon_types
     add_foreign_key :character_races, :alignments
@@ -54,8 +55,6 @@ class GenerateForeignKeys < ActiveRecord::Migration
     add_foreign_key :expertises, :users
     add_foreign_key :items, :item_types
     add_foreign_key :items, :users
-    add_foreign_key :traits, :trait_types
-    add_foreign_key :traits, :users
     add_foreign_key :skills, :effects
     add_foreign_key :skills, :skill_types
     add_foreign_key :skills, :users
@@ -65,6 +64,8 @@ class GenerateForeignKeys < ActiveRecord::Migration
     add_foreign_key :spells, :spell_circles
     add_foreign_key :spells, :users
     add_foreign_key :thief_talents, :character_classes
+    add_foreign_key :traits, :trait_types
+    add_foreign_key :traits, :users
     add_foreign_key :undead_banes, :character_classes
     add_foreign_key :users, :roles
     add_foreign_key :weapons, :alignments
@@ -72,7 +73,7 @@ class GenerateForeignKeys < ActiveRecord::Migration
     add_foreign_key :weapons, :material_types
     add_foreign_key :weapons, :origins
     add_foreign_key :weapons, :users
-    add_foreign_key :weapons, :weapon_types
     add_foreign_key :weapons, :weapon_sizes
+    add_foreign_key :weapons, :weapon_types
   end
 end
