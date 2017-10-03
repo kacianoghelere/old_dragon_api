@@ -36,7 +36,7 @@ class Campaign < ActiveRecord::Base
     self.pages.create!({
       title: "Bem-vindo ao #{self.title} Wiki!",
       body: "Esta é a primeira página da wiki da sua campanha!"\
-        " Você pode editá-la ou criar novas páginas dividdas por categorias,"\
+        " Você pode editá-la ou criar novas páginas divididas por categorias,"\
         " só não vale deixar de se divertir ;)"
     })
   end

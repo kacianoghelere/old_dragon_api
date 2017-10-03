@@ -1,22 +1,27 @@
 class API::V1::CampaignWikiPagesController < ApplicationController
   before_action :set_campaign_wiki_page, only: [:show, :update, :destroy]
 
-  # GET /campaign_wiki_pages
-  # GET /campaign_wiki_pages.json
+  # GET 1/campaign_wiki_pages
+  # GET 1/campaign_wiki_pages.json
   def index
-    @campaign_wiki_pages = CampaignWikiPage.all
+    campaign = Campaign.find_by(id: params[:campaign_id])
+    if campaign
+      @campaign_wiki_pages = campaign.pages
+    else
+      @campaign_wiki_pages = []
+    end
 
     render json: @campaign_wiki_pages
   end
 
-  # GET /campaign_wiki_pages/1
-  # GET /campaign_wiki_pages/1.json
+  # GET 1/campaign_wiki_pages/1
+  # GET 1/campaign_wiki_pages/1.json
   def show
     render json: @campaign_wiki_page
   end
 
-  # POST /campaign_wiki_pages
-  # POST /campaign_wiki_pages.json
+  # POST 1/campaign_wiki_pages
+  # POST 1/campaign_wiki_pages.json
   def create
     @campaign_wiki_page = CampaignWikiPage.new(campaign_wiki_page_params)
 
@@ -27,8 +32,8 @@ class API::V1::CampaignWikiPagesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /campaign_wiki_pages/1
-  # PATCH/PUT /campaign_wiki_pages/1.json
+  # PATCH/PUT 1/campaign_wiki_pages/1
+  # PATCH/PUT 1/campaign_wiki_pages/1.json
   def update
     @campaign_wiki_page = CampaignWikiPage.find(params[:id])
 
@@ -39,8 +44,8 @@ class API::V1::CampaignWikiPagesController < ApplicationController
     end
   end
 
-  # DELETE /campaign_wiki_pages/1
-  # DELETE /campaign_wiki_pages/1.json
+  # DELETE 1/campaign_wiki_pages/1
+  # DELETE 1/campaign_wiki_pages/1.json
   def destroy
     @campaign_wiki_page.destroy
 
