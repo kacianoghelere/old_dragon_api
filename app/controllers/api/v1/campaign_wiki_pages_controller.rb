@@ -1,5 +1,5 @@
 class API::V1::CampaignWikiPagesController < ApplicationController
-  before_action :set_campaign_wiki_page, only: [:show, :update, :destroy]
+  before_action :set_campaign_wiki_page, only: [:show, :destroy]
 
   # GET 1/campaign_wiki_pages
   # GET 1/campaign_wiki_pages.json
@@ -35,6 +35,7 @@ class API::V1::CampaignWikiPagesController < ApplicationController
   # PATCH/PUT 1/campaign_wiki_pages/1
   # PATCH/PUT 1/campaign_wiki_pages/1.json
   def update
+    @campaign_wiki_page = CampaignWikiPage.find_by(id: params[:id])
     if @campaign_wiki_page.update(campaign_wiki_page_params)
       head :no_content
     else
