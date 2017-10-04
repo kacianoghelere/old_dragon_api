@@ -92,8 +92,10 @@ ActiveRecord::Schema.define(version: 20171002194635) do
   add_index "campaign_notes", ["campaign_id"], name: "index_campaign_notes_on_campaign_id", using: :btree
 
   create_table "campaign_wiki_pages", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
-    t.string   "title",       limit: 255
+    t.string   "title",       limit: 45,    null: false
+    t.string   "wiki_name",   limit: 100,   null: false
     t.text     "body",        limit: 65535
+    t.string   "picture",     limit: 300
     t.integer  "campaign_id", limit: 8,     null: false
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false

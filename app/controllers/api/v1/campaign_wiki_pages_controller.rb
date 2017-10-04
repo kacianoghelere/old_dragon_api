@@ -35,8 +35,6 @@ class API::V1::CampaignWikiPagesController < ApplicationController
   # PATCH/PUT 1/campaign_wiki_pages/1
   # PATCH/PUT 1/campaign_wiki_pages/1.json
   def update
-    @campaign_wiki_page = CampaignWikiPage.find(params[:id])
-
     if @campaign_wiki_page.update(campaign_wiki_page_params)
       head :no_content
     else
@@ -55,11 +53,11 @@ class API::V1::CampaignWikiPagesController < ApplicationController
   private
 
     def set_campaign_wiki_page
-      @campaign_wiki_page = CampaignWikiPage.find(params[:id])
+      @campaign_wiki_page = CampaignWikiPage.find_by(wiki_name: params[:id])
     end
 
     def campaign_wiki_page_params
       params.require(:campaign_wiki_page)
-        .permit(:title, :body, :campaign_id)
+        .permit(:title, :body, :picture, :campaign_id)
     end
 end

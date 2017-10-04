@@ -1162,5 +1162,26 @@ campaign.notes.create!({
   description: "Existem armas de obsidiana em um bau atrás da Árvore morta.",
   dm_only: true
 })
+campaign.pages.create!([
+  {
+    title: "A Muralha",
+    body: "Nada sobrevive ao norte gélido da grande muralha de gelo.\n"\
+      "Um ambiente completamente inospito aguarda aqueles que se atrevem a "\
+      "adentrar as planicies congeladas do norte extremo.\n"\
+      "Os [White Walkers]([[White Walkers]]) rondam os ermos em busca de "\
+      "novos membros para suas tropas"
+  },
+  {
+    title: "Rei da Noite",
+    body: "Uma **criatura maligna** detentora de poderes mágicos cujos limites"\
+      " são desconhecidos até então.",
+    picture: "http://static1.uk.businessinsider.com/image/599ae53ad0302030607e89ac-1632/screen\%20shot\%202017-08-21\%20at\%2085935\%20am.png"
+  },
+  {
+    title: "White Walkers",
+    body: "Humanos que foram modificados pela magia [Rei da Noite]([[Rei da Noite]])",
+    picture: "http://vignette1.wikia.nocookie.net/gameofthrones/images/3/3a/White-Walkers-on-Horses.jpg/revision/latest?cb=20160721115355"
+  }
+])
 campaign.characters.push(jon)
 campaign.characters.push(jorah)
