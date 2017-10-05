@@ -7,10 +7,12 @@ class GenerateForeignKeys < ActiveRecord::Migration
     add_foreign_key :campaign_invitations, :campaigns
     add_foreign_key :campaign_invitations, :users
     add_foreign_key :campaign_journals, :campaigns
+    add_foreign_key :campaign_maps, :campaigns
     add_foreign_key :campaign_members, :campaigns
     add_foreign_key :campaign_members, :characters
     add_foreign_key :campaign_notes, :campaigns
     add_foreign_key :campaign_wiki_pages, :campaigns
+    add_foreign_key :campaign_wiki_pages, :wiki_categories
     add_foreign_key :campaigns, :users
     add_foreign_key :character_class_armor_types, :armor_types
     add_foreign_key :character_class_armor_types, :character_classes

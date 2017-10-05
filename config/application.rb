@@ -28,7 +28,7 @@ module OldDragonManager
     config.middleware.use Rack::Cors do
       allow do
         origins '*'
-        resource '*', :headers => :any, :methods => [:get, :post, :put, :options]
+        resource '*', :headers => :any, :methods => [:get, :delete, :options, :post, :put]
       end
     end
 

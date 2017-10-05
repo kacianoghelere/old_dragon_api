@@ -40,6 +40,7 @@ class API::V1::CampaignsController  < ApplicationController
   def update
     if @campaign.update(update_campaign_params)
       @campaign.journals.create(create_campaign_journals_params)
+      @campaign.maps.create(create_campaign_maps_params)
       @campaign.notes.create(create_campaign_notes_params)
       @campaign.add_members(create_campaign_members_params)
       head :no_content
@@ -63,9 +64,10 @@ class API::V1::CampaignsController  < ApplicationController
     end
 
     def create_campaign_params
-      params.require(:campaign).permit(:title, :description, :picture,
-        :start_date, :conclusion_date, :user_id,
+      params.require(:campaign).permit(
+        :title, :description, :picture, :start_date, :conclusion_date, :user_id,
         journals_attributes: [:title, :description],
+        maps_attributes: [:url, :description],
         notes_attributes: [:description, :dm_only])
     end
 
@@ -76,6 +78,7 @@ class API::V1::CampaignsController  < ApplicationController
 
     def delete_associations
       @campaign.journals.destroy_all
+      @campaign.maps.destroy_all
       @campaign.notes.destroy_all
       @campaign.campaign_members.destroy_all
     end
@@ -83,6 +86,11 @@ class API::V1::CampaignsController  < ApplicationController
     # Retorna parametros de construção de diários de campanha
     def create_campaign_journals_params
       deep_symbolize_keys(params[:campaign][:journals_attributes])
+    end
+
+    # Retorna parametros de construção de mapas de campanha
+    def create_campaign_maps_params
+      deep_symbolize_keys(params[:campaign][:maps_attributes])
     end
 
     # Retorna parametros de construção de notas de campanha

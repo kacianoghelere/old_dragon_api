@@ -132,11 +132,16 @@ LanguageType.create!([
   {name: "Antigo", description: nil}
 ])
 
-
 TraitType.create!([
   {name: "Natural"},
   {name: "Adquirida"}
 ])
+
+events = WikiCategory.create!({title: "Acontecimentos"})
+creatures = WikiCategory.create!({title: "Criaturas"})
+locations = WikiCategory.create!({title: "Localidades"})
+npc = WikiCategory.create!({title: "Personagens"})
+organizations = WikiCategory.create!({title: "Organizações"})
 
 # Trait.create!([
 #   {name: "Couraça", description: "Ataques de perfuração recebidos causam apenas metade do dano", trait_type_id: 1, user: adminUser},
@@ -1158,29 +1163,56 @@ campaign.journals.create!([
       "em mortes em ambos os grupos."
   }
 ])
+campaign.maps.create!({
+  description: "Mapa de Westeros",
+  url: "https://vignette1.wikia.nocookie.net/gameofthrones/images/7/71/Westeros_HBO.png/revision/latest?cb=20111113154717"
+})
 campaign.notes.create!({
   description: "Existem armas de obsidiana em um bau atrás da Árvore morta.",
   dm_only: true
 })
 campaign.pages.create!([
   {
-    title: "A Muralha",
+    title: "A Muralha de Gelo",
     body: "Nada sobrevive ao norte gélido da grande muralha de gelo.\n"\
       "Um ambiente completamente inospito aguarda aqueles que se atrevem a "\
       "adentrar as planicies congeladas do norte extremo.\n"\
       "Os [White Walkers]([[White Walkers]]) rondam os ermos em busca de "\
-      "novos membros para suas tropas"
+      "novos membros para suas tropas",
+    wiki_category: locations
   },
   {
     title: "Rei da Noite",
     body: "Uma **criatura maligna** detentora de poderes mágicos cujos limites"\
       " são desconhecidos até então.",
-    picture: "http://static1.uk.businessinsider.com/image/599ae53ad0302030607e89ac-1632/screen\%20shot\%202017-08-21\%20at\%2085935\%20am.png"
+    picture: "http://static1.uk.businessinsider.com/image/599ae53ad0302030607e89ac-1632/screen\%20shot\%202017-08-21\%20at\%2085935\%20am.png",
+    wiki_category: creatures
   },
   {
     title: "White Walkers",
     body: "Humanos que foram modificados pela magia [Rei da Noite]([[Rei da Noite]])",
-    picture: "http://vignette1.wikia.nocookie.net/gameofthrones/images/3/3a/White-Walkers-on-Horses.jpg/revision/latest?cb=20160721115355"
+    picture: "http://vignette1.wikia.nocookie.net/gameofthrones/images/3/3a/White-Walkers-on-Horses.jpg/revision/latest?cb=20160721115355",
+    wiki_category: creatures
+  },
+  {
+    title: "Wights",
+    body: "Mortos-vivos que foram revividos pela magia [Rei da Noite]([[Rei da Noite]]) e dos [White Walkers]([[White Walkers]]).",
+    wiki_category: creatures
+  },
+  {
+    title: "Filhos da Floresta",
+    body: "Primeiros habitantes de Westeros",
+    wiki_category: organizations
+  },
+  {
+    title: "Primeiros Homens",
+    body: "Humanos que invadiram Westeros milhares de anos atrás",
+    wiki_category: organizations
+  },
+  {
+    title: "Patrulha da Noite",
+    body: "Ordem de guardiões da [Muralha de Gelo]([[A Muralha de Gelo]]).",
+    wiki_category: organizations
   }
 ])
 campaign.characters.push(jon)

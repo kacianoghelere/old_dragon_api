@@ -2,6 +2,7 @@ class CampaignSerializer < ActiveModel::Serializer
   attributes :id, :title, :picture, :description, :start_date, :conclusion_date
   has_many :journals
   has_many :notes
+  has_many :maps
   # has_many :users, serializer: UserSimpleSerializer, key: :members
   has_many :characters, serializer: CharacterSimpleSerializer
   belongs_to :user, serializer: UserSimpleSerializer, key: :dungeonMaster

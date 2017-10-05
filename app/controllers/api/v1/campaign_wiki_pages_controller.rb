@@ -59,6 +59,7 @@ class API::V1::CampaignWikiPagesController < ApplicationController
 
     def campaign_wiki_page_params
       params.require(:campaign_wiki_page)
-        .permit(:title, :body, :picture, :campaign_id)
+        .permit(:title, :body, :picture, :campaign_id, 
+          :campaign_wiki_category_id)
     end
 end

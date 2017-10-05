@@ -19,6 +19,7 @@ class Campaign < ActiveRecord::Base
   has_many :journals, class_name: 'CampaignJournal', dependent: :destroy
   has_many :campaign_members
   has_many :characters, -> { order('id') }, through: :campaign_members
+  has_many :maps, class_name: 'CampaignMap', dependent: :destroy
   has_many :notes, class_name: 'CampaignNote', dependent: :destroy
   has_many :pages, class_name: 'CampaignWikiPage', dependent: :destroy
   has_many :users, -> { order('id') }, through: :characters
