@@ -6,7 +6,11 @@ class API::V1::CampaignWikiPagesController < ApplicationController
   def index
     campaign = Campaign.find_by(id: params[:campaign_id])
     if campaign
-      @campaign_wiki_pages = campaign.pages
+      if campaign.user.id === get_current_user.id
+        @campaign_wiki_pages = campaign.pages
+      else
+        @campaign_wiki_pages = campaign.pages.where(dm_only: false)
+      end
     else
       @campaign_wiki_pages = []
     end
@@ -59,7 +63,7 @@ class API::V1::CampaignWikiPagesController < ApplicationController
 
     def campaign_wiki_page_params
       params.require(:campaign_wiki_page)
-        .permit(:title, :body, :picture, :campaign_id, 
-          :campaign_wiki_category_id)
+        .permit(:title, :body, :picture, :dm_only, :campaign_id,
+          :wiki_category_id)
     end
 end

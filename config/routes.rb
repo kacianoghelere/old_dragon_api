@@ -47,6 +47,7 @@ Rails.application.routes.draw do
       end
       resources :weapon_types, except: [:new, :edit]
       resources :weapons, except: [:new, :edit]
+      resources :wiki_categories, except: [:new, :edit, :create, :update, :destroy]
       resources :wisdom_mods, except: [:new, :edit]
 
       get 'character_classes/:id/showcase' => 'character_classes#showcase'

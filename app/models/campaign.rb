@@ -17,7 +17,7 @@ class Campaign < ActiveRecord::Base
   after_create :generate_first_page
   belongs_to :user
   has_many :journals, class_name: 'CampaignJournal', dependent: :destroy
-  has_many :campaign_members
+  has_many :campaign_members, dependent: :destroy
   has_many :characters, -> { order('id') }, through: :campaign_members
   has_many :maps, class_name: 'CampaignMap', dependent: :destroy
   has_many :notes, class_name: 'CampaignNote', dependent: :destroy

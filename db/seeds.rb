@@ -1192,16 +1192,20 @@ campaign.pages.create!([
     title: "White Walkers",
     body: "Humanos que foram modificados pela magia [Rei da Noite]([[Rei da Noite]])",
     picture: "http://vignette1.wikia.nocookie.net/gameofthrones/images/3/3a/White-Walkers-on-Horses.jpg/revision/latest?cb=20160721115355",
+    dm_only: true,
     wiki_category: creatures
   },
   {
     title: "Wights",
     body: "Mortos-vivos que foram revividos pela magia [Rei da Noite]([[Rei da Noite]]) e dos [White Walkers]([[White Walkers]]).",
+    picture: "https://vignette.wikia.nocookie.net/gameofthrones/images/2/2c/Breached_wall_wights_.png/revision/latest?cb=20170828052754",
+    dm_only: true,
     wiki_category: creatures
   },
   {
     title: "Filhos da Floresta",
     body: "Primeiros habitantes de Westeros",
+    dm_only: true,
     wiki_category: organizations
   },
   {

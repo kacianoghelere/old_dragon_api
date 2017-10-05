@@ -1,3 +1,3 @@
 class WikiCategorySerializer < ActiveModel::Serializer
-  attributes :id, :name, :wiki_name
+  attributes :id, :title, :wiki_name
 end

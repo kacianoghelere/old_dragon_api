@@ -60,7 +60,7 @@ class API::V1::CampaignsController  < ApplicationController
   private
 
     def set_campaign
-      @campaign = Campaign.find(params[:id])
+      @campaign = Campaign.find_by(id: params[:id])
     end
 
     def create_campaign_params
