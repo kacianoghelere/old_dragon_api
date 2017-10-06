@@ -3,7 +3,6 @@
 # Table name: campaign_journals
 #
 #  id          :integer          not null, primary key
-#  title       :string(45)       not null
 #  description :text(65535)      not null
 #  active      :boolean          default("1"), not null
 #  campaign_id :integer          not null

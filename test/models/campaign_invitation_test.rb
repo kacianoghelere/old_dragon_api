@@ -4,7 +4,9 @@
 #
 #  id          :integer          not null, primary key
 #  message     :text(65535)
-#  completed   :boolean          default("1"), not null
+#  completed   :boolean          default("0"), not null
+#  accepted    :boolean          default("0"), not null
+#  denied      :boolean          default("0"), not null
 #  campaign_id :integer          not null
 #  user_id     :integer          not null
 #  created_at  :datetime         not null

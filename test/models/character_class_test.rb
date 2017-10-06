@@ -5,6 +5,7 @@
 #  id                      :integer          not null, primary key
 #  name                    :string(45)       not null
 #  picture                 :string(300)
+#  example_picture         :string(300)
 #  description             :text(65535)
 #  dice_id                 :integer          not null
 #  character_class_type_id :integer          not null
