@@ -1173,12 +1173,20 @@ campaign.notes.create!({
 })
 campaign.pages.create!([
   {
+    title: "Westeros",
+    body: "Local onde se passa a campanha, mais precisamente no norte, na "\
+      "[Muralha de Gelo]([[A Muralha de Gelo]]).",
+    picture: "http://img.manoramaonline.com/content/dam/mm/en/travel/travel-news/images/2017/7/31/westeros-fb.jpg.image.784.410.jpg",
+    wiki_category: locations
+  },
+  {
     title: "A Muralha de Gelo",
     body: "Nada sobrevive ao norte gélido da grande muralha de gelo.\n"\
       "Um ambiente completamente inospito aguarda aqueles que se atrevem a "\
       "adentrar as planicies congeladas do norte extremo.\n"\
       "Os [White Walkers]([[White Walkers]]) rondam os ermos em busca de "\
       "novos membros para suas tropas",
+    picture: "https://misteriosdomundo.org/wp-content/uploads/2016/04/muralha-got.jpg",
     wiki_category: locations
   },
   {
@@ -1204,18 +1212,21 @@ campaign.pages.create!([
   },
   {
     title: "Filhos da Floresta",
-    body: "Primeiros habitantes de Westeros",
+    body: "Primeiros habitantes de [Westeros]([[Westeros]])",
+    picture: "https://img3.goodfon.com/wallpaper/big/d/55/game-of-thrones-children-of.jpg",
     dm_only: true,
     wiki_category: organizations
   },
   {
     title: "Primeiros Homens",
-    body: "Humanos que invadiram Westeros milhares de anos atrás",
+    body: "Humanos que invadiram [Westeros]([[Westeros]]) milhares de anos atrás",
+    picture: "https://vignette.wikia.nocookie.net/gameofthrones/images/1/13/TheLongNightVictory.png/revision/latest?cb=20120626193649",
     wiki_category: organizations
   },
   {
     title: "Patrulha da Noite",
     body: "Ordem de guardiões da [Muralha de Gelo]([[A Muralha de Gelo]]).",
+    picture: "http://images.entertainment.ie/images_content/rectangle/620x372/Screen-Shot-2017-05-06-at-202807.png",
     wiki_category: organizations
   }
 ])
