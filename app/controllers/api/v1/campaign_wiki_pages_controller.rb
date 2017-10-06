@@ -1,31 +1,38 @@
 class API::V1::CampaignWikiPagesController < ApplicationController
+  before_action :set_campaign,           only: [:index, :update, :show]
   before_action :set_campaign_wiki_page, only: [:show, :destroy]
 
-  # GET 1/campaign_wiki_pages
-  # GET 1/campaign_wiki_pages.json
+  # GET campaigns/1/campaign_wiki_pages
+  # GET campaigns/1/campaign_wiki_pages.json
   def index
-    campaign = Campaign.find_by(id: params[:campaign_id])
-    if campaign
-      if campaign.user.id === get_current_user.id
-        @campaign_wiki_pages = campaign.pages
+    if @campaign
+      if is_dungeon_master?
+        @campaign_wiki_pages = @campaign.pages
       else
-        @campaign_wiki_pages = campaign.pages.where(dm_only: false)
+        @campaign_wiki_pages = @campaign.pages.where(dm_only: false)
+      end
+      render json: @campaign_wiki_pages
+    else
+      render json: @campaign_wiki_pages.errors, status: :unprocessable_entity
+    end
+  end
+
+  # GET campaigns/1/campaign_wiki_pages/1
+  # GET campaigns/1/campaign_wiki_pages/1.json
+  def show
+    if @campaign
+      if !is_dm_only? || (is_dm_only? && is_dungeon_master?)
+        render json: @campaign_wiki_page
+      else
+        render json: @campaign_wiki_page.errors, status: :forbidden
       end
     else
-      @campaign_wiki_pages = []
+      render json: @campaign_wiki_page.errors, status: :unprocessable_entity
     end
-
-    render json: @campaign_wiki_pages
   end
 
-  # GET 1/campaign_wiki_pages/1
-  # GET 1/campaign_wiki_pages/1.json
-  def show
-    render json: @campaign_wiki_page
-  end
-
-  # POST 1/campaign_wiki_pages
-  # POST 1/campaign_wiki_pages.json
+  # POST campaigns/1/campaign_wiki_pages
+  # POST campaigns/1/campaign_wiki_pages.json
   def create
     @campaign_wiki_page = CampaignWikiPage.new(campaign_wiki_page_params)
 
@@ -36,19 +43,23 @@ class API::V1::CampaignWikiPagesController < ApplicationController
     end
   end
 
-  # PATCH/PUT 1/campaign_wiki_pages/1
-  # PATCH/PUT 1/campaign_wiki_pages/1.json
+  # PATCH/PUT campaigns/1/campaign_wiki_pages/1
+  # PATCH/PUT campaigns/1/campaign_wiki_pages/1.json
   def update
     @campaign_wiki_page = CampaignWikiPage.find_by(id: params[:id])
-    if @campaign_wiki_page.update(campaign_wiki_page_params)
-      head :no_content
+    if is_dungeon_master?
+      if @campaign_wiki_page.update(campaign_wiki_page_params)
+        head :no_content
+      else
+        render json: @campaign_wiki_page.errors, status: :unprocessable_entity
+      end
     else
-      render json: @campaign_wiki_page.errors, status: :unprocessable_entity
+      render json: @campaign_wiki_page.errors, status: :forbidden
     end
   end
 
-  # DELETE 1/campaign_wiki_pages/1
-  # DELETE 1/campaign_wiki_pages/1.json
+  # DELETE campaigns/1/campaign_wiki_pages/1
+  # DELETE campaigns/1/campaign_wiki_pages/1.json
   def destroy
     @campaign_wiki_page.destroy
 
@@ -56,6 +67,20 @@ class API::V1::CampaignWikiPagesController < ApplicationController
   end
 
   private
+
+    # verifica se a página é de acesso exclusivo do narrador da campanha
+    def is_dm_only?
+      @campaign_wiki_page.dm_only
+    end
+
+    # verifica se o usuário atual é o narrador da campanha
+    def is_dungeon_master?
+      @campaign.user.id === get_current_user.id
+    end
+
+    def set_campaign
+      @campaign = Campaign.find_by(id: params[:campaign_id])
+    end
 
     def set_campaign_wiki_page
       @campaign_wiki_page = CampaignWikiPage.find_by(wiki_name: params[:id])
