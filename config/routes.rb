@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :campaign_members, except: [:new, :edit]
   post 'authentication' => 'authentication#authenticate'
 
   namespace :api do
@@ -9,10 +10,17 @@ Rails.application.routes.draw do
       resources :armors, except: [:new, :edit]
       resources :campaigns, except: [:new, :edit] do
         # resources :campaign_invitations, only: :index, as: :invitations
-        resources :journals, controller: 'campaign_journals',   except: [:new, :edit], as: :wiki
-        resources :maps,     controller: 'campaign_maps',       except: [:new, :edit], as: :wiki
-        resources :notes,    controller: 'campaign_notes',      except: [:new, :edit], as: :wiki
-        resources :pages,    controller: 'campaign_wiki_pages', except: [:new, :edit], as: :wiki
+        resources :characters, controller: 'campaign_characters',   
+                                except: [:update, :destroy, :new, :edit],
+                                as: :characters
+        resources :journals,   controller: 'campaign_journals',  
+                                except: [:new, :edit], as: :journals
+        resources :maps,       controller: 'campaign_maps',      
+                                except: [:new, :edit], as: :maps
+        resources :notes,      controller: 'campaign_notes',     
+                                except: [:new, :edit], as: :notes
+        resources :pages,      controller: 'campaign_wiki_pages',
+                                except: [:new, :edit], as: :pages
       end
       resources :campaign_invitations, except: [:index, :show, :new, :edit]
       resources :character_classes, except: [:new, :edit]

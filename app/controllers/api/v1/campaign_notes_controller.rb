@@ -1,6 +1,7 @@
 class API::V1::CampaignNotesController < ApplicationController
-  before_action :set_campaign,           only: [:index, :update, :show]
-  before_action :set_note, only: [:show, :destroy]
+  before_filter :authenticate_request!
+  before_action :set_campaign, only: [:create, :index, :show, :update]
+  before_action :set_note,     only: [:show, :destroy]
 
   # GET campaigns/1/notes
   # GET campaigns/1/notes.json
@@ -90,7 +91,7 @@ class API::V1::CampaignNotesController < ApplicationController
     end
 
     def note_params
-      params.require(:notes).permit(:id, :description, :dm_only, :active,
-        :campaign_id)
+      params.require(:campaign_note).permit(:id, :description, :dm_only,
+        :active, :campaign_id)
     end
 end

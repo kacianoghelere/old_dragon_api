@@ -15,13 +15,19 @@
 #
 
 class CampaignWikiPage < ActiveRecord::Base
+  include Core
+
   before_save :generate_wiki_name, only: [:create, :update]
   belongs_to :campaign
   belongs_to :wiki_category
 
   def generate_wiki_name
-    # string.tr( "ÀÁÂÃÄÅàáâãäåĀāĂăĄąÇçĆćĈĉĊċČčÐðĎďĐđÈÉÊËèéêëĒēĔĕĖėĘęĚěĜĝĞğĠġĢ‌​ģĤĥĦħÌÍÎÏìíîïĨĩĪīĬĭĮ‌​įİıĴĵĶķĸĹĺĻļĽľĿŀŁłÑñ‌​ŃńŅņŇňŉŊŋÒÓÔÕÖØòóôõö‌​øŌōŎŏŐőŔŕŖŗŘřŚśŜŝŞşŠ‌​šȘșſŢţŤťŦŧȚțÙÚÛÜùúûü‌​ŨũŪūŬŭŮůŰűŲųŴŵÝýÿŶŷŸ‌​ŹźŻżŽž", "AAAAAAaaaaaaAaAaAaCcCcCcCcCcDdDdDdEEEEeeeeEeEeEeEeEeGgGgGgG‌​gHhHhIIIIiiiiIiIiIiI‌​iIiJjKkkLlLlLlLlLlNn‌​NnNnNnnNnOOOOOOooooo‌​oOoOoOoRrRrRrSsSsSsS‌​sSssTtTtTtTtUUUUuuuu‌​UuUuUuUuUuUuWwYyyYyY‌​ZzZzZz")
-    wiki_name = self.title.unicode_normalize(:nfkd).encode('ASCII', replace: '')
-    self.wiki_name = wiki_name.strip.downcase.gsub(' ', '_')
+    # wiki_name = self.title.unicode_normalize(:nfkd).encode('ASCII', replace: '')
+    # wiki_name = wiki_name.strip.downcase
+    # wiki_name = wiki_name.strip.gsub('\,', ' ')
+    # wiki_name = wiki_name.strip.gsub('\.', ' ')
+    # wiki_name = wiki_name.strip.gsub(' ', '_')
+    # self.wiki_name = wiki_name
+    self.wiki_name = generate_api_name(self.title)
   end
 end

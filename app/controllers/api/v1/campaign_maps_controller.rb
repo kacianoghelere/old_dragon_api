@@ -1,5 +1,6 @@
 class API::V1::CampaignMapsController < ApplicationController
-  before_action :set_campaign, only: [:index, :update, :show]
+  before_filter :authenticate_request!
+  before_action :set_campaign, only: [:create, :index, :show, :update]
   before_action :set_map,      only: [:show, :update, :destroy]
 
   # GET campaigns/1/maps
@@ -77,6 +78,7 @@ class API::V1::CampaignMapsController < ApplicationController
     end
 
     def map_params
-      params.require(:maps).permit(:id, :description, :active, :campaign_id)
+      params.require(:campaign_map).permit(:id, :description, :url, :active,
+        :campaign_id)
     end
 end

@@ -1,4 +1,5 @@
 class API::V1::CampaignInvitationsController < ApplicationController
+  before_filter :authenticate_request!
   before_action :set_campaign, only: [:create]
   before_action :set_campaign_invitation, only: [:update, :destroy]
 

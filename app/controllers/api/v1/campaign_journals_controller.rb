@@ -1,5 +1,5 @@
 class API::V1::CampaignJournalsController < ApplicationController
-  before_action :set_campaign, only: [:index, :update, :show]
+  before_action :set_campaign, only: [:create, :destroy, :index, :show, :update]
   before_action :set_journal,  only: [:show, :destroy]
 
   # GET campaigns/1/journals
@@ -78,6 +78,7 @@ class API::V1::CampaignJournalsController < ApplicationController
     end
 
     def journal_params
-      params.require(:journals).permit(:id, :description, :active, :campaign_id)
+      params.require(:campaign_journal)
+        .permit(:id, :description, :active, :campaign_id)
     end
 end
