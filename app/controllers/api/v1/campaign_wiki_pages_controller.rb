@@ -50,7 +50,7 @@ class API::V1::CampaignWikiPagesController < ApplicationController
     @campaign_wiki_page = CampaignWikiPage.find_by(id: params[:id])
     if is_dungeon_master?
       if @campaign_wiki_page.update(campaign_wiki_page_params)
-        head :no_content
+        render json: @campaign_wiki_page, status: :accepted
       else
         render json: @campaign_wiki_page.errors, status: :unprocessable_entity
       end
