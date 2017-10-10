@@ -21,11 +21,13 @@ class API::V1::CampaignCharactersController < ApplicationController
   # POST /campaign/1/characters.json
   def create
     if is_dungeon_master?
-      @campaign.campaign_members.destroy_all
-      if @campaign.campaign_members.create(create_campaign_characters_params)
-        render json: @campaign.characters, status: :created
-      else
-        render json: @campaign.characters.errors, status: :unprocessable_entity
+      ActiveRecord::Base.transaction do
+        @campaign.campaign_members.destroy_all
+        if @campaign.campaign_members.create(create_campaign_characters_params)
+          render json: @campaign.characters, status: :created
+        else
+          render json: @campaign.characters.errors, status: :unprocessable_entity
+        end
       end
     else
       render json: @campaign.characters.errors, status: :forbidden
@@ -41,7 +43,7 @@ class API::V1::CampaignCharactersController < ApplicationController
 
     # Retorna parametros de criação de vinculos com personagens
     def create_campaign_characters_params
-      deep_symbolize_keys(params[:campaign][:characters]) # :character_id
+      params.permit(characters: [:character_id])[:characters]
     end
 
     def set_campaign
