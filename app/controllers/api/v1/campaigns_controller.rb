@@ -1,6 +1,6 @@
 class API::V1::CampaignsController  < ApplicationController
   before_filter :authenticate_request!
-  before_action :set_campaign, only: [:show, :update, :destroy]
+  before_action :set_campaign, only: [:show, :destroy]
 
   # GET /campaigns
   # GET /campaigns.json
@@ -37,6 +37,7 @@ class API::V1::CampaignsController  < ApplicationController
   # PATCH/PUT /campaigns/1
   # PATCH/PUT /campaigns/1.json
   def update
+    @campaign = Campaign.find_by(id: params[:id])
     if @campaign.update(update_campaign_params)
       head :no_content
     else
@@ -55,16 +56,16 @@ class API::V1::CampaignsController  < ApplicationController
   private
 
     def set_campaign
-      @campaign = Campaign.find_by(id: params[:id])
+      @campaign = Campaign.find_by(uuid: params[:id])
     end
 
     def create_campaign_params
       params.require(:campaign).permit(:title, :description, :picture,
-        :start_date, :conclusion_date, :user_id)
+        :start_date, :user_id)
     end
 
     def update_campaign_params
-      params.require(:campaign).permit(:id, :title, :description, :picture,
+      params.require(:campaign).permit(:title, :description, :picture,
         :conclusion_date, :user_id)
     end
 end

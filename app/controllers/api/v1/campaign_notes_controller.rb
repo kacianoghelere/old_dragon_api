@@ -1,10 +1,10 @@
 class API::V1::CampaignNotesController < ApplicationController
   before_filter :authenticate_request!
   before_action :set_campaign, only: [:create, :index, :show, :update]
-  before_action :set_note,     only: [:show, :destroy]
+  before_action :set_note,     only: [:show, :destroy, :update]
 
-  # GET campaigns/1/notes
-  # GET campaigns/1/notes.json
+  # GET campaigns/abc111def22/notes
+  # GET campaigns/abc111def22/notes.json
   def index
     if @campaign
       if is_dungeon_master?
@@ -18,8 +18,8 @@ class API::V1::CampaignNotesController < ApplicationController
     end
   end
 
-  # GET campaigns/1/notes/1
-  # GET campaigns/1/notes/1.json
+  # GET campaigns/abc111def22/notes/1
+  # GET campaigns/abc111def22/notes/1.json
   def show
     if @campaign
       if !is_dm_only? || (is_dm_only? && is_dungeon_master?)
@@ -32,11 +32,12 @@ class API::V1::CampaignNotesController < ApplicationController
     end
   end
 
-  # POST campaigns/1/notes
-  # POST campaigns/1/notes.json
+  # POST campaigns/abc111def22/notes
+  # POST campaigns/abc111def22/notes.json
   def create
     @note = CampaignNote.new(note_params)
     if is_dungeon_master?
+      @note.campaign = @campaign
       if @note.save
         render json: @note, status: :created
       else
@@ -47,10 +48,9 @@ class API::V1::CampaignNotesController < ApplicationController
     end
   end
 
-  # PATCH/PUT campaigns/1/notes/1
-  # PATCH/PUT campaigns/1/notes/1.json
+  # PATCH/PUT campaigns/abc111def22/notes/1
+  # PATCH/PUT campaigns/abc111def22/notes/1.json
   def update
-    @note = CampaignNote.find_by(id: params[:id])
     if is_dungeon_master?
       if @note.update(note_params)
         head :no_content
@@ -62,8 +62,8 @@ class API::V1::CampaignNotesController < ApplicationController
     end
   end
 
-  # DELETE campaigns/1/notes/1
-  # DELETE campaigns/1/notes/1.json
+  # DELETE campaigns/abc111def22/notes/1
+  # DELETE campaigns/abc111def22/notes/1.json
   def destroy
     @note.destroy
 
@@ -83,7 +83,7 @@ class API::V1::CampaignNotesController < ApplicationController
     end
 
     def set_campaign
-      @campaign = Campaign.find_by(id: params[:campaign_id])
+      @campaign = Campaign.find_by(uuid: params[:campaign_id])
     end
 
     def set_note
@@ -91,7 +91,6 @@ class API::V1::CampaignNotesController < ApplicationController
     end
 
     def note_params
-      params.require(:campaign_note).permit(:id, :description, :dm_only,
-        :active, :campaign_id)
+      params.require(:campaign_note).permit(:id, :description, :dm_only, :active)
     end
 end

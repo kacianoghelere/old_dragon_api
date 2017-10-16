@@ -1,10 +1,10 @@
 class API::V1::CampaignMapsController < ApplicationController
   before_filter :authenticate_request!
   before_action :set_campaign, only: [:create, :index, :show, :update]
-  before_action :set_map,      only: [:show, :update, :destroy]
+  before_action :set_map,      only: [:show, :update, :destroy, :update]
 
-  # GET campaigns/1/maps
-  # GET campaigns/1/maps.json
+  # GET campaigns/abc111def22/maps
+  # GET campaigns/abc111def22/maps.json
   def index
     if @campaign
       @maps = @campaign.maps
@@ -14,8 +14,8 @@ class API::V1::CampaignMapsController < ApplicationController
     end
   end
 
-  # GET campaigns/1/maps/1
-  # GET campaigns/1/maps/1.json
+  # GET campaigns/abc111def22/maps/1
+  # GET campaigns/abc111def22/maps/1.json
   def show
     if @campaign
       render json: @map
@@ -24,12 +24,12 @@ class API::V1::CampaignMapsController < ApplicationController
     end
   end
 
-  # POST campaigns/1/maps
-  # POST campaigns/1/maps.json
+  # POST campaigns/abc111def22/maps
+  # POST campaigns/abc111def22/maps.json
   def create
     @map = CampaignMap.new(map_params)
-
     if is_dungeon_master?
+      @map.campaign = @campaign
       if @map.save
         render json: @map, status: :created
       else
@@ -40,8 +40,8 @@ class API::V1::CampaignMapsController < ApplicationController
     end
   end
 
-  # PATCH/PUT campaigns/1/maps/1
-  # PATCH/PUT campaigns/1/maps/1.json
+  # PATCH/PUT campaigns/abc111def22/maps/1
+  # PATCH/PUT campaigns/abc111def22/maps/1.json
   def update
     if is_dungeon_master?
       if @map.update(map_params)
@@ -54,8 +54,8 @@ class API::V1::CampaignMapsController < ApplicationController
     end
   end
 
-  # DELETE campaigns/1/maps/1
-  # DELETE campaigns/1/maps/1.json
+  # DELETE campaigns/abc111def22/maps/1
+  # DELETE campaigns/abc111def22/maps/1.json
   def destroy
     @map.destroy
 
@@ -70,7 +70,7 @@ class API::V1::CampaignMapsController < ApplicationController
     end
 
     def set_campaign
-      @campaign = Campaign.find_by(id: params[:campaign_id])
+      @campaign = Campaign.find_by(uuid: params[:campaign_id])
     end
 
     def set_map
@@ -78,7 +78,6 @@ class API::V1::CampaignMapsController < ApplicationController
     end
 
     def map_params
-      params.require(:campaign_map).permit(:id, :description, :url, :active,
-        :campaign_id)
+      params.require(:campaign_map).permit(:id, :description, :url, :active)
     end
 end

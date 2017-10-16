@@ -36,9 +36,13 @@ class API::V1::CampaignWikiPagesController < ApplicationController
   # POST campaigns/1/campaign_wiki_pages.json
   def create
     @campaign_wiki_page = CampaignWikiPage.new(campaign_wiki_page_params)
-
-    if @campaign_wiki_page.save
-      render json: @campaign_wiki_page, status: :created
+    if @campaign
+      @campaign_invitation.campaign = @campaign
+      if @campaign_wiki_page.save
+        render json: @campaign_wiki_page, status: :created
+      else
+        render json: @campaign_wiki_page.errors, status: :unprocessable_entity
+      end
     else
       render json: @campaign_wiki_page.errors, status: :unprocessable_entity
     end
@@ -80,7 +84,7 @@ class API::V1::CampaignWikiPagesController < ApplicationController
     end
 
     def set_campaign
-      @campaign = Campaign.find_by(id: params[:campaign_id])
+      @campaign = Campaign.find_by(uuid: params[:campaign_id])
     end
 
     def set_campaign_wiki_page
@@ -89,7 +93,6 @@ class API::V1::CampaignWikiPagesController < ApplicationController
 
     def campaign_wiki_page_params
       params.require(:campaign_wiki_page)
-        .permit(:title, :body, :picture, :dm_only, :campaign_id,
-          :wiki_category_id)
+        .permit(:title, :body, :picture, :dm_only, :wiki_category_id)
     end
 end

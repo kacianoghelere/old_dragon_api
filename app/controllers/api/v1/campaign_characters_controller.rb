@@ -48,6 +48,6 @@ class API::V1::CampaignCharactersController < ApplicationController
     end
 
     def set_campaign
-      @campaign = Campaign.find_by(id: params[:campaign_id])
+      @campaign = Campaign.find_by(uuid: params[:campaign_id])
     end
 end

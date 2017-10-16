@@ -12,6 +12,6 @@ class CreateUsers < ActiveRecord::Migration
 
     add_index :users, [:role_id], using: :btree
     add_index :users, :user_code, unique: true
-    add_index :users, :email, unique: true
+    add_index :users, :email,     unique: true
   end
 end

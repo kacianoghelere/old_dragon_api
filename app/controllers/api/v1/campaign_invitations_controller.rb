@@ -15,6 +15,7 @@ class API::V1::CampaignInvitationsController < ApplicationController
 
   def create
     @campaign_invitation = CampaignInvitation.new(invitate_params)
+    @campaign_invitation.campaign = @campaign
     @campaign_invitation.message = "Você recebeu um convite para participar da "\
       "campanha \"#{@campaign.title}\". Para aceitar, basta escolher um "\
       "personagem e clicar em aceitar"
@@ -52,7 +53,7 @@ class API::V1::CampaignInvitationsController < ApplicationController
   private
 
     def invitate_params
-      params.require(:campaign_invitation).permit(:campaign_id, :user_id)
+      params.require(:campaign_invitation).permit(:user_id)
     end
 
     def invitate_update_params
@@ -60,7 +61,7 @@ class API::V1::CampaignInvitationsController < ApplicationController
     end
 
     def set_campaign
-      @campaign = Campaign.find(invitate_params[:campaign_id])
+      @campaign = Campaign.find_by(uuid: invitate_params[:campaign_id])
     end
 
     def set_campaign_invitation
