@@ -14,6 +14,7 @@
 #
 
 class Campaign < ActiveRecord::Base
+  before_create :generate_uuid
   after_create :generate_first_page
   belongs_to :user
   has_many :journals, class_name: 'CampaignJournal', dependent: :destroy
@@ -27,10 +28,14 @@ class Campaign < ActiveRecord::Base
   accepts_nested_attributes_for :notes, :allow_destroy => true
 
   def add_members(characters)
-    # debugger
     characters.each do |character|
       self.campaign_members.create!({character_id: character[:id]})
     end
+  end
+
+  def generate_uuid
+    time = DateTime.now.strftime("%Y%m%d%H%M%S%L")
+    self.uuid = time.to_i.to_s(36)
   end
 
   def generate_first_page

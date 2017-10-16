@@ -6,11 +6,12 @@ class API::V1::CampaignCharactersController < ApplicationController
   # GET /campaign/1/characters.json
   def index
     if @campaign
-      if is_dungeon_master?
-        @characters = @campaign.characters
-      else
-        @characters = @campaign.characters
-      end
+      # if is_dungeon_master?
+      #   @characters = @campaign.characters
+      # else
+      #   @characters = @campaign.characters
+      # end
+      @characters = @campaign.characters
       render json: @characters
     else
       render json: @characters.errors, status: :unprocessable_entity

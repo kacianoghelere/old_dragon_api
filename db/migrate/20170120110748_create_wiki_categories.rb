@@ -6,5 +6,6 @@ class CreateWikiCategories < ActiveRecord::Migration
 
       t.timestamps null: false
     end
+    add_index :wiki_categories, [:wiki_name], using: :btree
   end
 end

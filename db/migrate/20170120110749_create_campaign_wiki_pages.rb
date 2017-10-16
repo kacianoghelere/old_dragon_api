@@ -13,5 +13,6 @@ class CreateCampaignWikiPages < ActiveRecord::Migration
     end
     add_index :campaign_wiki_pages, [:campaign_id], using: :btree
     add_index :campaign_wiki_pages, [:wiki_category_id], using: :btree
+    add_index :campaign_wiki_pages, [:wiki_name], using: :btree
   end
 end

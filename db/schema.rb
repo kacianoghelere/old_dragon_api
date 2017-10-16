@@ -116,9 +116,11 @@ ActiveRecord::Schema.define(version: 20171002194635) do
 
   add_index "campaign_wiki_pages", ["campaign_id"], name: "index_campaign_wiki_pages_on_campaign_id", using: :btree
   add_index "campaign_wiki_pages", ["wiki_category_id"], name: "index_campaign_wiki_pages_on_wiki_category_id", using: :btree
+  add_index "campaign_wiki_pages", ["wiki_name"], name: "index_campaign_wiki_pages_on_wiki_name", using: :btree
 
   create_table "campaigns", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "title",           limit: 45,    null: false
+    t.string   "uuid",            limit: 11,    null: false
     t.string   "picture",         limit: 300
     t.text     "description",     limit: 65535
     t.datetime "start_date",                    null: false
@@ -129,6 +131,7 @@ ActiveRecord::Schema.define(version: 20171002194635) do
   end
 
   add_index "campaigns", ["user_id"], name: "index_campaigns_on_user_id", using: :btree
+  add_index "campaigns", ["uuid"], name: "index_campaigns_on_uuid", using: :btree
 
   create_table "character_class_armor_types", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.integer  "character_class_id", limit: 8, null: false
@@ -750,6 +753,8 @@ ActiveRecord::Schema.define(version: 20171002194635) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
+
+  add_index "wiki_categories", ["wiki_name"], name: "index_wiki_categories_on_wiki_name", using: :btree
 
   create_table "wisdom_mods", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.integer  "value",              limit: 4,             null: false
