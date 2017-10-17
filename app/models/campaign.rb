@@ -22,7 +22,7 @@ class Campaign < ActiveRecord::Base
   has_many :characters, -> { order('id') }, through: :campaign_members
   has_many :maps, class_name: 'CampaignMap', dependent: :destroy
   has_many :notes, class_name: 'CampaignNote', dependent: :destroy
-  has_many :pages, class_name: 'CampaignWikiPage', dependent: :destroy
+  has_many :pages, class_name: 'CampaignPage', dependent: :destroy
   has_many :users, -> { order('id') }, through: :characters
   accepts_nested_attributes_for :journals, :allow_destroy => true
   accepts_nested_attributes_for :notes, :allow_destroy => true
@@ -40,8 +40,8 @@ class Campaign < ActiveRecord::Base
 
   def generate_first_page
     self.pages.create!({
-      title: "#{self.title} Wiki!",
-      body: "Esta é a primeira página da wiki da sua campanha!"\
+      title: "#{self.title}!",
+      body: "Esta é a primeira página da sua campanha!"\
         " Você pode editá-la ou criar novas páginas divididas por categorias,"\
         " só não vale deixar de se divertir ;)"
     })

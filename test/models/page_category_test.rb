@@ -1,17 +1,17 @@
 # == Schema Information
 #
-# Table name: wiki_categories
+# Table name: page_categories
 #
 #  id         :integer          not null, primary key
 #  title      :string(45)       not null
-#  wiki_name  :string(100)      not null
+#  flat_name  :string(100)      not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
 require 'test_helper'
 
-class WikiCategoryTest < ActiveSupport::TestCase
+class PageCategoryTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

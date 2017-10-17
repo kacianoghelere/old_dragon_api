@@ -102,21 +102,21 @@ ActiveRecord::Schema.define(version: 20171002194635) do
 
   add_index "campaign_notes", ["campaign_id"], name: "index_campaign_notes_on_campaign_id", using: :btree
 
-  create_table "campaign_wiki_pages", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "campaign_pages", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "title",            limit: 45,                    null: false
-    t.string   "wiki_name",        limit: 100,                   null: false
+    t.string   "flat_name",        limit: 100,                   null: false
     t.text     "body",             limit: 65535
     t.string   "picture",          limit: 300
     t.boolean  "dm_only",                        default: false, null: false
     t.integer  "campaign_id",      limit: 8,                     null: false
-    t.integer  "wiki_category_id", limit: 8
+    t.integer  "page_category_id", limit: 8
     t.datetime "created_at",                                     null: false
     t.datetime "updated_at",                                     null: false
   end
 
-  add_index "campaign_wiki_pages", ["campaign_id"], name: "index_campaign_wiki_pages_on_campaign_id", using: :btree
-  add_index "campaign_wiki_pages", ["wiki_category_id"], name: "index_campaign_wiki_pages_on_wiki_category_id", using: :btree
-  add_index "campaign_wiki_pages", ["wiki_name"], name: "index_campaign_wiki_pages_on_wiki_name", using: :btree
+  add_index "campaign_pages", ["campaign_id"], name: "index_campaign_pages_on_campaign_id", using: :btree
+  add_index "campaign_pages", ["flat_name"], name: "index_campaign_pages_on_flat_name", unique: true, using: :btree
+  add_index "campaign_pages", ["page_category_id"], name: "index_campaign_pages_on_page_category_id", using: :btree
 
   create_table "campaigns", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "title",           limit: 45,    null: false
@@ -551,6 +551,15 @@ ActiveRecord::Schema.define(version: 20171002194635) do
     t.datetime "updated_at",                        null: false
   end
 
+  create_table "page_categories", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+    t.string   "title",      limit: 45,  null: false
+    t.string   "flat_name",  limit: 100, null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "page_categories", ["flat_name"], name: "index_page_categories_on_flat_name", unique: true, using: :btree
+
   create_table "roles", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "name",       limit: 45,                 null: false
     t.boolean  "admin",                 default: false, null: false
@@ -747,15 +756,6 @@ ActiveRecord::Schema.define(version: 20171002194635) do
   add_index "weapons", ["weapon_size_id"], name: "index_weapons_on_weapon_size_id", using: :btree
   add_index "weapons", ["weapon_type_id"], name: "index_weapons_on_weapon_type_id", using: :btree
 
-  create_table "wiki_categories", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
-    t.string   "title",      limit: 45,  null: false
-    t.string   "wiki_name",  limit: 100, null: false
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-  end
-
-  add_index "wiki_categories", ["wiki_name"], name: "index_wiki_categories_on_wiki_name", using: :btree
-
   create_table "wisdom_mods", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.integer  "value",              limit: 4,             null: false
     t.integer  "protection_mod",     limit: 4, default: 0, null: false
@@ -781,8 +781,8 @@ ActiveRecord::Schema.define(version: 20171002194635) do
   add_foreign_key "campaign_members", "campaigns"
   add_foreign_key "campaign_members", "characters"
   add_foreign_key "campaign_notes", "campaigns"
-  add_foreign_key "campaign_wiki_pages", "campaigns"
-  add_foreign_key "campaign_wiki_pages", "wiki_categories"
+  add_foreign_key "campaign_pages", "campaigns"
+  add_foreign_key "campaign_pages", "page_categories"
   add_foreign_key "campaigns", "users"
   add_foreign_key "character_class_armor_types", "armor_types"
   add_foreign_key "character_class_armor_types", "character_classes"

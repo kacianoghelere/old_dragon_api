@@ -137,11 +137,13 @@ TraitType.create!([
   {name: "Adquirida"}
 ])
 
-events = WikiCategory.create!({title: "Acontecimentos"})
-creatures = WikiCategory.create!({title: "Criaturas"})
-locations = WikiCategory.create!({title: "Localidades"})
-npc = WikiCategory.create!({title: "Personagens"})
-organizations = WikiCategory.create!({title: "Organizações"})
+events = PageCategory.create!({title: "Acontecimentos"})
+creatures = PageCategory.create!({title: "Criaturas"})
+journals = PageCategory.create!({title: "Diários de Campanha"})
+locations = PageCategory.create!({title: "Localidades"})
+maps = PageCategory.create!({title: "Mapas"})
+npc = PageCategory.create!({title: "Aliados"})
+organizations = PageCategory.create!({title: "Organizações"})
 
 # Trait.create!([
 #   {name: "Couraça", description: "Ataques de perfuração recebidos causam apenas metade do dano", trait_type_id: 1, user: adminUser},
@@ -1152,32 +1154,34 @@ campaign = Campaign.create!({
   start_date: DateTime.now,
   user: adminUser
 })
-campaign.journals.create!([
+campaign.pages.create!([
   {
-    description: "Os aventureiros se reunem no castelo da patrula da noite e "\
-      "recebem uma ordem para partir para o norte da muralha."
+    title: "Primeira Sessão",
+    body: "Os aventureiros se reunem no castelo da patrula da noite e "\
+      "recebem uma ordem para partir para o norte da muralha.\n"\
+      "```dm-content\nCuidado com o urso zumbi...\n```",
+    page_category: journals
   },
   {
-    description: "Após atravessarem a muralha, os aventureiros se encontram "\
+    title: "Segunda Sessão",
+    body: "Após atravessarem a muralha, os aventureiros se encontram "\
       "com um grupo de selvagens e um pequeno conflito acontece, resultando "\
-      "em mortes em ambos os grupos."
-  }
-])
-campaign.maps.create!({
-  description: "Mapa de Westeros",
-  url: "https://vignette1.wikia.nocookie.net/gameofthrones/images/7/71/Westeros_HBO.png/revision/latest?cb=20111113154717"
-})
-campaign.notes.create!({
-  description: "Existem armas de obsidiana em um bau atrás da Árvore morta.",
-  dm_only: true
-})
-campaign.pages.create!([
+      "em mortes em ambos os grupos.",
+    page_category: journals
+  },
   {
     title: "Westeros",
     body: "Local onde se passa a campanha, mais precisamente no norte, na "\
-      "[Muralha de Gelo]([[A Muralha de Gelo]]).",
+      "[Muralha de Gelo]([[A Muralha de Gelo]]).\n"\
+      "[Mapa]([[Mapa de Westeros]])",
     picture: "http://img.manoramaonline.com/content/dam/mm/en/travel/travel-news/images/2017/7/31/westeros-fb.jpg.image.784.410.jpg",
-    wiki_category: locations
+    page_category: locations
+  },
+  {
+    title: "Mapa de Westeros",
+    body: "![Westeros](https://vignette1.wikia.nocookie.net/gameofthrones/images/7/71/Westeros_HBO.png/revision/latest?cb=20111113154717)",
+    picture: "https://vignette1.wikia.nocookie.net/gameofthrones/images/7/71/Westeros_HBO.png/revision/latest?cb=20111113154717",
+    page_category: maps
   },
   {
     title: "A Muralha de Gelo",
@@ -1187,48 +1191,49 @@ campaign.pages.create!([
       "Os [White Walkers]([[White Walkers]]) rondam os ermos em busca de "\
       "novos membros para suas tropas",
     picture: "https://misteriosdomundo.org/wp-content/uploads/2016/04/muralha-got.jpg",
-    wiki_category: locations
+    page_category: locations
   },
   {
     title: "Rei da Noite",
     body: "Uma **criatura maligna** detentora de poderes mágicos cujos limites"\
       " são desconhecidos até então.",
     picture: "http://static1.uk.businessinsider.com/image/599ae53ad0302030607e89ac-1632/screen\%20shot\%202017-08-21\%20at\%2085935\%20am.png",
-    wiki_category: creatures
+    page_category: creatures
   },
   {
     title: "White Walkers",
     body: "Humanos que foram modificados pela magia [Rei da Noite]([[Rei da Noite]])",
     picture: "http://vignette1.wikia.nocookie.net/gameofthrones/images/3/3a/White-Walkers-on-Horses.jpg/revision/latest?cb=20160721115355",
     dm_only: true,
-    wiki_category: creatures
+    page_category: creatures
   },
   {
     title: "Wights",
     body: "Mortos-vivos que foram revividos pela magia [Rei da Noite]([[Rei da Noite]]) e dos [White Walkers]([[White Walkers]]).",
     picture: "https://vignette.wikia.nocookie.net/gameofthrones/images/2/2c/Breached_wall_wights_.png/revision/latest?cb=20170828052754",
     dm_only: true,
-    wiki_category: creatures
+    page_category: creatures
   },
   {
     title: "Filhos da Floresta",
     body: "Primeiros habitantes de [Westeros]([[Westeros]])",
     picture: "https://img3.goodfon.com/wallpaper/big/d/55/game-of-thrones-children-of.jpg",
     dm_only: true,
-    wiki_category: organizations
+    page_category: organizations
   },
   {
     title: "Primeiros Homens",
     body: "Humanos que invadiram [Westeros]([[Westeros]]) milhares de anos atrás",
     picture: "https://vignette.wikia.nocookie.net/gameofthrones/images/1/13/TheLongNightVictory.png/revision/latest?cb=20120626193649",
-    wiki_category: organizations
+    page_category: organizations
   },
   {
     title: "Patrulha da Noite",
     body: "Ordem de guardiões da [Muralha de Gelo]([[A Muralha de Gelo]]).",
     picture: "http://images.entertainment.ie/images_content/rectangle/620x372/Screen-Shot-2017-05-06-at-202807.png",
-    wiki_category: organizations
+    page_category: organizations
   }
 ])
+
 campaign.characters.push(jon)
 campaign.characters.push(jorah)

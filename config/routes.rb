@@ -19,7 +19,7 @@ Rails.application.routes.draw do
                                 except: [:new, :edit], as: :maps
         resources :notes,      controller: 'campaign_notes',     
                                 except: [:new, :edit], as: :notes
-        resources :pages,      controller: 'campaign_wiki_pages',
+        resources :pages,      controller: 'campaign_pages',
                                 except: [:new, :edit], as: :pages
       end
       resources :campaign_invitations, except: [:index, :show, :new, :edit]
@@ -58,7 +58,7 @@ Rails.application.routes.draw do
       end
       resources :weapon_types, except: [:new, :edit]
       resources :weapons, except: [:new, :edit]
-      resources :wiki_categories, except: [:new, :edit, :create, :update, :destroy]
+      resources :page_categories, except: [:new, :edit, :create, :update, :destroy]
       resources :wisdom_mods, except: [:new, :edit]
 
       get 'character_classes/:id/showcase' => 'character_classes#showcase'
