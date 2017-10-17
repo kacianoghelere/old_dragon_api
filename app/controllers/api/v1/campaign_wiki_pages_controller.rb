@@ -3,8 +3,7 @@ class API::V1::CampaignWikiPagesController < ApplicationController
   before_action :set_campaign,           only: [:index, :update, :show]
   before_action :set_campaign_wiki_page, only: [:show, :destroy]
 
-  # GET campaigns/1/campaign_wiki_pages
-  # GET campaigns/1/campaign_wiki_pages.json
+  # GET campaigns/abc111def22/campaign_wiki_pages
   def index
     if @campaign
       if is_dungeon_master?
@@ -18,10 +17,9 @@ class API::V1::CampaignWikiPagesController < ApplicationController
     end
   end
 
-  # GET campaigns/1/campaign_wiki_pages/1
-  # GET campaigns/1/campaign_wiki_pages/1.json
+  # GET campaigns/abc111def22/campaign_wiki_pages/1
   def show
-    if @campaign
+    if !!@campaign && !!@campaign_wiki_page
       if !is_dm_only? || (is_dm_only? && is_dungeon_master?)
         render json: @campaign_wiki_page
       else
@@ -32,8 +30,7 @@ class API::V1::CampaignWikiPagesController < ApplicationController
     end
   end
 
-  # POST campaigns/1/campaign_wiki_pages
-  # POST campaigns/1/campaign_wiki_pages.json
+  # POST campaigns/abc111def22/campaign_wiki_pages
   def create
     @campaign_wiki_page = CampaignWikiPage.new(campaign_wiki_page_params)
     if @campaign
@@ -48,8 +45,7 @@ class API::V1::CampaignWikiPagesController < ApplicationController
     end
   end
 
-  # PATCH/PUT campaigns/1/campaign_wiki_pages/1
-  # PATCH/PUT campaigns/1/campaign_wiki_pages/1.json
+  # PATCH/PUT campaigns/abc111def22/campaign_wiki_pages/1
   def update
     @campaign_wiki_page = CampaignWikiPage.find_by(id: params[:id])
     if is_dungeon_master?
@@ -63,8 +59,7 @@ class API::V1::CampaignWikiPagesController < ApplicationController
     end
   end
 
-  # DELETE campaigns/1/campaign_wiki_pages/1
-  # DELETE campaigns/1/campaign_wiki_pages/1.json
+  # DELETE campaigns/abc111def22/campaign_wiki_pages/1
   def destroy
     @campaign_wiki_page.destroy
 

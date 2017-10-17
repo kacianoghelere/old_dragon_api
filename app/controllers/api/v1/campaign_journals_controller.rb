@@ -3,7 +3,6 @@ class API::V1::CampaignJournalsController < ApplicationController
   before_action :set_journal,  only: [:show, :destroy, :update]
 
   # GET campaigns/abc111def22/journals
-  # GET campaigns/abc111def22/journals.json
   def index
     if @campaign
       @journals = @campaign.journals
@@ -14,7 +13,6 @@ class API::V1::CampaignJournalsController < ApplicationController
   end
 
   # GET campaigns/abc111def22/journals/1
-  # GET campaigns/abc111def22/journals/1.json
   def show
     if @campaign
       render json: @journal
@@ -24,7 +22,6 @@ class API::V1::CampaignJournalsController < ApplicationController
   end
 
   # POST campaigns/abc111def22/journals
-  # POST campaigns/abc111def22/journals.json
   def create
     @journal = CampaignJournal.new(journal_params)
     if is_dungeon_master?
@@ -40,7 +37,6 @@ class API::V1::CampaignJournalsController < ApplicationController
   end
 
   # PATCH/PUT campaigns/abc111def22/journals/1
-  # PATCH/PUT campaigns/abc111def22/journals/1.json
   def update
     if is_dungeon_master?
       if @journal.update(journal_params)
@@ -54,7 +50,6 @@ class API::V1::CampaignJournalsController < ApplicationController
   end
 
   # DELETE campaigns/abc111def22/journals/1
-  # DELETE campaigns/abc111def22/journals/1.json
   def destroy
     @journal.destroy
 
