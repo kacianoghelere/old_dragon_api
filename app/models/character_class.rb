@@ -23,4 +23,5 @@ class CharacterClass < ActiveRecord::Base
   has_many :thief_talents
   has_many :undead_banes
   has_many :magic_circles, class_name: 'CharacterClassMagicCircle'
+  has_many :specializations, class_name: 'CharacterSpecialization'
 end

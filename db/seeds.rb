@@ -429,6 +429,79 @@ cleric.undead_banes.create!([
 
 CharacterClassRequirement.create!({str_mod: 0, dex_mod: 0, cons_mod: 0, int_mod: 0, wis_mod: 12, char_mod: 0, character_class: cleric})
 
+cleric.specializations.create!([
+  {
+    name: "Druida",
+    description: "Um cultuador da natureza",
+    min_level: 5,
+    stages_attributes: [
+      {
+        description: "A partir do 5o nível, o clérigo não se dedica mais a um "\
+          "deus em específico, dedicando sua adoração à natureza silvestre "\
+          "como um todo e, a partir desse ponto, passa a se deslocar sem "\
+          "deixar rastros, além de ser capaz de se comunicar com animais "\
+          "silvestres.",
+        unlock_level: 5
+      },
+      {
+        description: "No 8o nível, o druida troca o seu poder de afastar "\
+          "mortos-vivos pelo poder de controlar animais silvestres, que "\
+          "funciona da mesma forma. Um animal com 1 DVs corresponde a um "\
+          "esqueleto, um animal com 2 DVs equivale a um zumbi e assim "\
+          "sucessivamente, até o máximo de um animal com 8 DVs, que "\
+          "corresponde a um vampiro. A indicação A na tabela T3-2 indica "\
+          "que o animal é automaticamente controlado, e a indicação D não "\
+          "gera efeito adicional.",
+        unlock_level: 8
+      },
+      {
+        description: "No 16o nível o druida pode assumir a forma de um animal "\
+          "silvestre até 3 vezes por dia. Nessa metamorfose, o druida "\
+          "recuperará 3d8 PVs, e durante a metamorfose, a roupa e um item à "\
+          "escolha do druida serão absorvidos, reaparecendo quando este "\
+          "retornar à forma original. Um clérigo que se torna um druida não "\
+          "constrói uma fortaleza, mas sim cria um círculo druídico para "\
+          "adoração da natureza, junto com os seguidores que conquista.",
+        unlock_level: 16
+      }
+    ]
+  },
+  {
+    name: "Cultista",
+    description: "Um cultuador de entidades não-divinas e profanas",
+    min_level: 5,
+    stages_attributes: [
+      {
+        description: "A partir do 5o nível, o clérigo não se dedica mais a um "\
+          "deus, mas sim a criaturas absolutamente caóticas, provenientes de "\
+          "outros planos de existência, recebendo através de sonhos os "\
+          "desejos de seus senhores caóticos. A partir desse ponto, o clérigo "\
+          "não precisa mais meditar para receber magias, sendo que as recebe "\
+          "durante os sonhos.",
+        unlock_level: 5
+      },
+      {
+        description: "A partir do 8o nível, o cultista pode optar, ao invés "\
+          "de afastar automaticamente um morto-vivo, por controlá-lo por até "\
+          "24 horas. Findo esse período, o morto-vivo não estará mais sob o "\
+          "controle do cultista.",
+        unlock_level: 8
+      },
+      {
+        description: "A partir do 16o nível, o cultista pode afastar "\
+          "criaturas ordeiras da mesma forma que um clérigo afasta "\
+          "mortos-vivos, sendo que um esqueleto equivale a uma criatura de "\
+          "1 DV, um zumbi equivale a uma criatura de 2 DVs e assim "\
+          "sucessivamente, até o máximo de uma criatura com 8 DVs, que "\
+          "equivale a um vampiro. A indicação A na tabela T3-2 indica que a "\
+          "criatura é automaticamente afastada, e a indicação D indica que a "\
+          "criatura é automaticamente destruída. Um cultista pode empregar o "\
+          "uso de armas cortantes para rituais.",
+        unlock_level: 16
+      }
+    ]
+  }
+])
 
 #  -----------------------------------------------------------------------------
 #  Man Of Arms

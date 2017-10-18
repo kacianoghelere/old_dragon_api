@@ -22,6 +22,7 @@ class Character < ActiveRecord::Base
   belongs_to :character_class
   belongs_to :character_race
   belongs_to :user
+  belongs_to :specialization, class_name: 'CharacterSpecialization'
   has_many :campaign_members
   has_many :campaigns, through: :campaign_members
   has_many :journals, class_name: 'CharacterJournal'
