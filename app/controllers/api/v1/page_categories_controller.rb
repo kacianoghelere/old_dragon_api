@@ -5,6 +5,9 @@ class API::V1::PageCategoriesController < ApplicationController
   # GET /page_categories
   # GET /page_categories.json
   def index
+    # @page_categories = PageCategory.all
+    #                         .includes(:pages)
+    #                         .where(campaign_pages: {dm_only: load_dm_content})
     @page_categories = PageCategory.all
 
     render json: @page_categories
