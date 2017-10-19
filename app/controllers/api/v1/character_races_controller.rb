@@ -52,10 +52,15 @@ class API::V1::CharacterRacesController  < ApplicationController
   private
 
     def set_character_race
-      @character_race = CharacterRace.find(params[:id])
+      @character_race = CharacterRace.find_by("id = :id OR flat_name = :id",
+                                              id: params[:id])
     end
 
     def character_race_params
-      params.require(:character_race).permit(:name, :min_height, :max_height, :min_weight, :max_weight, :maturity, :max_age, :movement_base, :armor_class_mod, :str_mod, :dex_mod, :cons_mod, :int_mod, :wis_mod, :char_mod, :alignment_id, :dice_id, :user_id)
+      params.require(:character_race).permit(
+        :name, :min_height, :max_height, :min_weight, :max_weight, :maturity,
+        :max_age, :movement_base, :armor_class_mod, :str_mod, :dex_mod,
+        :cons_mod, :int_mod, :wis_mod, :char_mod, :alignment_id, :dice_id,
+        :user_id)
     end
 end

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :campaign_members, except: [:new, :edit]
+  
   post 'authentication' => 'authentication#authenticate'
 
   namespace :api do
@@ -25,6 +25,7 @@ Rails.application.routes.draw do
       resources :campaign_invitations, except: [:index, :show, :new, :edit]
       resources :character_classes, except: [:new, :edit]
       resources :character_races, except: [:new, :edit]
+      resources :character_specializations, except: [:new, :edit]
       resources :characters, except: [:new, :edit]
       resources :charisma_mods, except: [:new, :edit]
       resources :constitution_mods, except: [:new, :edit]

@@ -10,12 +10,8 @@
 #
 
 class PageCategory < ActiveRecord::Base
-  include Core
+  include FlatNamed
 
   before_save :generate_flat_name, only: [:create, :update]
   has_many :pages, class_name: 'CampaignPage'
-
-  def generate_flat_name
-    self.flat_name = generate_api_name(self.title)
-  end
 end

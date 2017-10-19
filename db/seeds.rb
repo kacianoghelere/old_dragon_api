@@ -300,42 +300,43 @@ CharacterRaceLanguage.create!([
   {character_race_id: 2, language_type_id: 3}
 ])
 
-CharacterClassType.create!([
-  {
-    name: "Arcano", 
-    can_use_magic: true, 
-    protection: 15, 
-    key_attr: "INT", 
-    can_bane_undead: false, 
-    has_thief_talents: false,
-    spell_type_id: 1
-  },
-  {
-    name: "Combatente", 
-    can_use_magic: false, 
-    protection: 15, 
-    key_attr: "FOR", 
-    can_bane_undead: false, 
-    has_thief_talents: false
-  },
-  {
-    name: "Espiritualista", 
-    can_use_magic: true, 
-    protection: 15, 
-    key_attr: "SAB", 
-    can_bane_undead: true, 
-    has_thief_talents: false,
-    spell_type_id: 2
-  },
-  {
-    name: "Furtivo", 
-    can_use_magic: false, 
-    protection: 15, 
-    key_attr: "DES", 
-    can_bane_undead: false,
-    has_thief_talents: true
-  }
-])
+arcanist = CharacterClassType.create!({
+  name: "Arcano", 
+  can_use_magic: true, 
+  protection: 15, 
+  key_attr: "INT", 
+  can_bane_undead: false, 
+  has_thief_talents: false,
+  spell_type_id: 1
+})
+
+fighter = CharacterClassType.create!({
+  name: "Combatente", 
+  can_use_magic: false, 
+  protection: 15, 
+  key_attr: "FOR", 
+  can_bane_undead: false, 
+  has_thief_talents: false
+})
+
+spiritualist = CharacterClassType.create!({
+  name: "Espiritualista", 
+  can_use_magic: true, 
+  protection: 15, 
+  key_attr: "SAB", 
+  can_bane_undead: true, 
+  has_thief_talents: false,
+  spell_type_id: 2
+})
+
+stealthy = CharacterClassType.create!({
+  name: "Furtivo", 
+  can_use_magic: false, 
+  protection: 15, 
+  key_attr: "DES", 
+  can_bane_undead: false,
+  has_thief_talents: true
+})
 
 # ==============================================================================
 #  CLASSES
@@ -354,7 +355,7 @@ cleric = CharacterClass.create!({
     "fé lhe mpõe. É através dessa devoção que o seu deus lhe confere suas "\
     "magias, tão importantes para seguir pregando a sua palavra.",
   dice_id: 3,
-  character_class_type_id: 3,
+  character_class_type: spiritualist,
   user: adminUser
 })
 
@@ -432,11 +433,21 @@ CharacterClassRequirement.create!({str_mod: 0, dex_mod: 0, cons_mod: 0, int_mod:
 cleric.specializations.create!([
   {
     name: "Druida",
-    description: "Um cultuador da natureza",
+    alignment: neutral,
+    description: "O druida é um sacerdote devotado a proteger a natureza. "\
+      "Através de forte ligação com sua patrona natureza, ele é capaz de usar "\
+      "magia divinas, não tomando a energia natural para si, mas sim "\
+      "tornando-se um com ela. Essa relação dá outros poderes, como a "\
+      "capacidade de falar com animais e tomar para si a forma deles. A "\
+      "filosofia de um druida varia. Alguns apenas desejam proteger a "\
+      "natureza que permanece virgem, outros sentem asco da destruição "\
+      "causada pela evolução da civilização, buscando até mesmo destruir "\
+      "cidades para restaurar a glória da natureza.",
     min_level: 5,
+    picture: "https://cdna.artstation.com/p/assets/images/images/003/204/858/large/thea-turner-wood-elf-012-recovered.jpg?1471021526",
     stages_attributes: [
       {
-        description: "A partir do 5o nível, o clérigo não se dedica mais a um "\
+        description: "O clérigo não se dedica mais a um "\
           "deus em específico, dedicando sua adoração à natureza silvestre "\
           "como um todo e, a partir desse ponto, passa a se deslocar sem "\
           "deixar rastros, além de ser capaz de se comunicar com animais "\
@@ -444,7 +455,7 @@ cleric.specializations.create!([
         unlock_level: 5
       },
       {
-        description: "No 8o nível, o druida troca o seu poder de afastar "\
+        description: "O druida troca o seu poder de afastar "\
           "mortos-vivos pelo poder de controlar animais silvestres, que "\
           "funciona da mesma forma. Um animal com 1 DVs corresponde a um "\
           "esqueleto, um animal com 2 DVs equivale a um zumbi e assim "\
@@ -455,7 +466,7 @@ cleric.specializations.create!([
         unlock_level: 8
       },
       {
-        description: "No 16o nível o druida pode assumir a forma de um animal "\
+        description: "O druida pode assumir a forma de um animal "\
           "silvestre até 3 vezes por dia. Nessa metamorfose, o druida "\
           "recuperará 3d8 PVs, e durante a metamorfose, a roupa e um item à "\
           "escolha do druida serão absorvidos, reaparecendo quando este "\
@@ -468,11 +479,18 @@ cleric.specializations.create!([
   },
   {
     name: "Cultista",
-    description: "Um cultuador de entidades não-divinas e profanas",
+    alignment: chaotic,
+    description: "Os cultistas adoram os males mais antigos, alguns os adoram "\
+      "por loucura, apatia ou niilismo enquanto outros procuram seu poder. "\
+      "Alguns podem mesmo adorar essas criaturas vilões do idealismo. O "\
+      "Cultista quase nunca adora deidades, já que as divindades usam "\
+      "clérigos e não cultistas. Muitos cultos cultuam demônios e outras "\
+      "entidades caóticas.",
     min_level: 5,
+    picture: "https://s-media-cache-ak0.pinimg.com/originals/0d/83/cd/0d83cd90509dc96cff4038b31fd13bd4.jpg",
     stages_attributes: [
       {
-        description: "A partir do 5o nível, o clérigo não se dedica mais a um "\
+        description: "O clérigo não se dedica mais a um "\
           "deus, mas sim a criaturas absolutamente caóticas, provenientes de "\
           "outros planos de existência, recebendo através de sonhos os "\
           "desejos de seus senhores caóticos. A partir desse ponto, o clérigo "\
@@ -481,14 +499,14 @@ cleric.specializations.create!([
         unlock_level: 5
       },
       {
-        description: "A partir do 8o nível, o cultista pode optar, ao invés "\
+        description: "O cultista pode optar, ao invés "\
           "de afastar automaticamente um morto-vivo, por controlá-lo por até "\
           "24 horas. Findo esse período, o morto-vivo não estará mais sob o "\
           "controle do cultista.",
         unlock_level: 8
       },
       {
-        description: "A partir do 16o nível, o cultista pode afastar "\
+        description: "O cultista pode afastar "\
           "criaturas ordeiras da mesma forma que um clérigo afasta "\
           "mortos-vivos, sendo que um esqueleto equivale a uma criatura de "\
           "1 DV, um zumbi equivale a uma criatura de 2 DVs e assim "\
@@ -515,7 +533,7 @@ manOfArms = CharacterClass.create!({
     "a sua atenção e, dessa forma, proteger seus companheiros mais fracos "\
     "e feridos.", 
   dice_id: 4,
-  character_class_type_id: 2,
+  character_class_type: fighter,
   user: adminUser
 })
 
@@ -544,6 +562,118 @@ manOfArms.evolutions.create!([
 
 CharacterClassRequirement.create!({str_mod: 12, dex_mod: 0, cons_mod: 12, int_mod: 0, wis_mod: 0, char_mod: 0, character_class: manOfArms})
 
+manOfArms.specializations.create!([
+  {
+    name: "Paladino",
+    alignment: lawfull,
+    description: "Paladinos são campeões da justiça, bondade e lealdade. "\
+      "Possuem habilidades de combate como um guerreiro e prestam devoção a "\
+      "um deus (ou deuses), obtendo assim poder para lançar magias da mesma "\
+      "forma que um clérigo. Todavia, ao contrário dos clérigos, um paladino "\
+      "jamais pode servir um deus maligno. O Paladino é um guerreiro santo "\
+      "que promove o bem.",
+    min_level: 5,
+    picture: "http://www.fantasyesports.us/wp-content/uploads/2016/05/Consecration_(art).jpg",
+    stages_attributes: [
+      {
+        description: "O homem de armas passa a se dedicar "\
+          "fielmente a uma causa e a erradicar o caos, sendo que todos "\
+          "aqueles que se opõe a essa causa são seus adversários, e todos "\
+          "aqueles que abraçam essa causa são seus aliados. Um paladino é "\
+          "capaz de detectar o caos a 1 quilômetro de distância, desde que "\
+          "se concentre para tal. Existem diversas causas pelas quais um "\
+          "paladino pode vir lutar a favor, tais como a liberdade, a vida, a "\
+          "tirania, a opressão, dentre tantas outras possibilidades à escolha "\
+          "do jogador.",
+        unlock_level: 5
+      },
+      {
+        description: "O paladino causa +1d6 de dano nos ataques "\
+          "contra criaturas caóticas.",
+        unlock_level: 8
+      },
+      {
+        description: "O dano extra aumenta para +2d6 e o "\
+          "paladino passa a emanar uma aura de proteção contra o caos de 3 "\
+          "metros de raio. Se um paladino usar um item mágico caótico (mesmo "\
+          "sem saber do alinhamento do item), perderá automaticamente 2 "\
+          "níveis e não poderá usar seus poderes enquanto estiver portando "\
+          "esse item. Se um paladino, por algum motivo, deixar de ser "\
+          "ordeiro, perderá 3 níveis e perderá todos seus poderes, até que "\
+          "retorne ao alinhamento apropriado.",
+        unlock_level: 16
+      }
+    ]
+  },
+  {
+    name: "Guerreiro",
+    alignment: neutral,
+    description: "O  guerreiro é um especialista em armas, combate e, quando "\
+        "inteligente o suficiente, táticas e estratégia.",
+    min_level: 5,
+    picture: "https://i.pinimg.com/736x/46/75/14/467514245819ff22dfd5be8af7da3a56--warrior-queen-fantasy-warrior.jpg",
+    stages_attributes: [
+      {
+        description: "O homem de armas escolhe uma arma na qual "\
+          "se especializará, recebendo um bônus de +1 nos ataques e no dano "\
+          "usando a arma escolhida.",
+        unlock_level: 5
+      },
+      {
+        description: "O guerreiro receberá um bônus de "\
+          "+2 nos ataques e no dano usando essa arma, recebendo também uma "\
+          "penalidade de -2 nos ataques utilizando qualquer outra arma que "\
+          "não a que escolheu.",
+        unlock_level: 8
+      },
+      {
+        description: "O guerreiro receberá um bônus de "\
+          "+4 nos ataques e no dano usando utilizando a arma preferida, "\
+          "recebendo também uma penalidade de -4 nos ataques utilizando "\
+          "qualquer outra arma.",
+        unlock_level: 16
+      }
+    ]
+  },
+  {
+    name: "Bárbaro",
+    alignment: chaotic,
+    description: "Bárbaros são combatentes de origem selvagem, geralmente "\
+      "derivados de tribos bárbaras em regiões distantes. Justamente por sua "\
+      "distância da civilização, eles não tem refinamento algum em seu jeito "\
+      "de lutar, dando espaço ao uso de força bruta. Presumivelmente, também "\
+      "não são muito inteligentes.",
+    min_level: 5,
+    picture: "https://orig00.deviantart.net/4f0f/f/2013/316/0/d/snow_barbarian_leader_by_theboyofcheese-d6tyxwt.jpg",
+    stages_attributes: [
+      {
+        description: "O homem de armas rejeita as regras e os "\
+          "costumes da sociedade, adotando uma vida livre e desapegada de "\
+          "leis e da ordem. A partir desse nível, o homem de armas não "\
+          "poderá mais usar escudos nem armaduras superiores às de couro, "\
+          "porém sua selvageria o tornará mais resistente, concedendo um "\
+          "bônus de +2 para as jogadas de proteção que envolvam o atributo "\
+          "Constituição.",
+        unlock_level: 5
+      },
+      {
+        description: "Devido à sua determinação "\
+          "selvagem, o bárbaro não mais cairá ao chegar a 0 PVs, permanecendo "\
+          "em pé e lutando, até chegar a -10 PV, ocasião em que morrerá "\
+          "automaticamente.",
+        unlock_level: 8
+      },
+      {
+        description: "O bárbaro absorverá 1/3 de todo o "\
+          "dano que receber. Um bárbaro de 11o nível não ergue uma fortaleza, "\
+          "mas sim estabelece uma tribo de bárbaros proscritos, junto com os "\
+          "seguidores que conseguir.",
+        unlock_level: 16
+      }
+    ]
+  }
+])
+
 #  -----------------------------------------------------------------------------
 #  THIEF
 thief = CharacterClass.create!({
@@ -557,7 +687,7 @@ thief = CharacterClass.create!({
     "vigília aceita peças de ouro para fingir que não viu um determinado "\
     "halfling pulando a janela da casa de alguém no meio da noite.", 
   dice_id: 2,
-  character_class_type_id: 4,
+  character_class_type: stealthy,
   user: adminUser
 })
 
@@ -609,6 +739,147 @@ thief.thief_talents.create!([
 
 CharacterClassRequirement.create!({str_mod: 0, dex_mod: 12, cons_mod: 0, int_mod: 0, wis_mod: 0, char_mod: 0, character_class: thief})
 
+thief.specializations.create!([
+  {
+    name: "Ranger",
+    alignment: lawfull,
+    description: "Rangers são guerreiros que possuem ligações com forças da "\
+      "natureza, a quem são devotados e buscam proteger. Acostumados com o "\
+      "ambiente selvagem, sabem de coisas relativas a esse meio, o que "\
+      "geralmente os torna excelentes rastreadores e caçadores, bem como "\
+      "peritos em sobrevivência.",
+    min_level: 5,
+    picture: "https://s-media-cache-ak0.pinimg.com/originals/b3/69/9e/b3699ee549760bf567f9ce037ed8a885.jpg",
+    stages_attributes: [
+      {
+        description: "O ladrão toma o rumo dos ermos e "\
+          "se dedica a patrulhar uma determinada área, protegendo-a de um "\
+          "certo tipo de criatura, sendo que, a partir desse nível, o ladrão "\
+          "poderá se deslocar sem deixar qualquer tipo de rastro e receberá "\
+          "+1 para todas as jogadas envolvendo surpresa.",
+        unlock_level: 5
+      },
+      {
+        description: "O ranger receberá um bônus de +1 "\
+          "nos ataques e no dano contra o tipo de criatura escolhido. A "\
+          "partir desse ponto, o ranger não progredirá mais em arrombar "\
+          "fechaduras e pungar. Escalar muros poderá ser utilizado para "\
+          "árvores, penhascos, etc. Ouvir barulhos servirá para rastrear uma "\
+          "criatura.",
+        unlock_level: 8
+      },
+      {
+        description: "O bônus contra o tipo de "\
+          "criatura determinado no 5o nível passa para +2, o ranger não será "\
+          "mais surpreendido e sempre surpreenderá um inimigo, desde que não "\
+          "se trate de outro ranger.",
+        unlock_level: 16
+      }
+    ]
+  },
+  {
+    name: "Explorador",
+    alignment: lawfull,
+    description: "O explorador é aquele que procura o desconhecido. Ele "\
+      "explora desde florestas profundas e montanhas altas, até cavernas e "\
+      "ruínas antigas para explorar. Geralmente reconhece de longe uma "\
+      "armadilha, mesmo que muito bem preparada.",
+    min_level: 5,
+    picture: "https://s-media-cache-ak0.pinimg.com/originals/0b/24/21/0b242133cb0b12b0c1e9f7cc6b5a0919.jpg",
+    stages_attributes: [
+      {
+        description: "O ladrão abandona a vida de "\
+          "crimes, se dedicando à exploração de ruínas e templos perdidos. "\
+          "A partir desse nível o explorador possui 80% de chance de "\
+          "conseguir decifrar qualquer tipo de escrita. Em caso de falha, "\
+          "uma nova tentativa só poderá ser realizada após o explorador ter "\
+          "subido um nível.",
+        unlock_level: 5
+      },
+      {
+        description: "O explorador para de progredir em "\
+          "pungar, mas recebe um bônus de 10% para jogadas que envolvam "\
+          "reconhecer e desarmar armadilhas.",
+        unlock_level: 8
+      },
+      {
+        description: "O explorador pode lançar magias "\
+          "arcanas a partir de pergaminhos com 90% de chance de sucesso. Uma "\
+          "falha nessa jogada significa que ocorrerá um evento aleatório e de "\
+          "graves consequências para o explorador e para seu grupo.",
+        unlock_level: 16
+      }
+    ]
+  },
+  {
+    name: "Bardo",
+    alignment: neutral,
+    description: "Bardos são cantores e contadores de histórias natos. "\
+      "Geralmente são bons músicos, seja na forma do canto ou das notas de "\
+      "seu instrumento ou ainda bons atores ou artistas plásticos. Mas "\
+      "também, através da historias que conhecem dos contatos sociais que "\
+      "possuem, também são valiosíssimas fontes de informação.",
+    min_level: 5,
+    picture: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYpdv6FR87ZlrSF5x6kOPqW8dlcCx1XKiYzg3QvBog-rVU_6_U",
+    stages_attributes: [
+      {
+        description: "O ladrão passa a desenvolver a "\
+          "música e a oratória como forma de contar os feitos de seu grupo e "\
+          "como forma de motivar seus aliados, dando a eles um bônus de +1 "\
+          "para suas jogadas de proteção.",
+        unlock_level: 5
+      },
+      {
+        description: "O bardo não progredirá mais em "\
+          "ataque pelas costas. A partir deste nível o bardo aumenta em 10% a "\
+          "chance de que uma criatura que normalmente seria hostil para com "\
+          "ele aja de forma amistosa.",
+        unlock_level: 8
+      },
+      {
+        description: "O bônus de moral conferido pela "\
+          "canção do bardo passa para +3 para os ataques e jogadas de "\
+          "proteção de seus aliados.",
+        unlock_level: 16
+      }
+    ]
+  },
+  {
+    name: "Assassino",
+    alignment: chaotic,
+    description: "Os assassinos são especialistas na aplicação de golpes "\
+    "rápidos e mortais, treinados nas macabras artes do assassinato, o que "\
+    "inclui infiltração, disfarces, conhecimentos sobre anatomia, uso de "\
+    "venenos e artes macabras.",
+    min_level: 5,
+    picture: "http://www.wallpaperup.com/uploads/wallpapers/2014/11/22/523781/big_thumb_00f9df03bcf64330e9fe3c8e288d4adc.jpg",
+    stages_attributes: [
+      {
+        description: "O ladrão passa a desenvolver "\
+          "técnicas mais eficientes para matar seus oponentes, recebendo um "\
+          "bônus de +2 no dano sempre que sua jogada de ataque resultar em um "\
+          "acerto crítico.",
+        unlock_level: 5
+      },
+      {
+        description: "O assassino não progredirá mais "\
+          "em pungar e em reconhecer e desarmar armadilhas. A progressão "\
+          "antes utilizada para pungar passará a ser utilizada para que o "\
+          "assassino manipule veneno e o aplique com segurança em suas armas "\
+          "ou em objetos.",
+        unlock_level: 8
+      },
+      {
+        description: "Sempre que sua jogada de ataque "\
+          "resultar em acerto crítico, o alvo deverá realizar uma jogada de "\
+          "proteção modificada pela sua Constituição ou morrer "\
+          "automaticamente.",
+        unlock_level: 16
+      }
+    ]
+  }
+])
+
 #  -----------------------------------------------------------------------------
 #  MAGE
 mage = CharacterClass.create!({
@@ -621,7 +892,7 @@ mage = CharacterClass.create!({
     "marcial em combate e deve evitar a todo custo o confronto direto com "\
     "inimigos.", 
   dice_id: 1,
-  character_class_type_id: 1,
+  character_class_type: arcanist,
   user: adminUser
 })
 
@@ -672,6 +943,83 @@ mage.magic_circles.create!([
 ])
 
 CharacterClassRequirement.create!({str_mod: 0, dex_mod: 0, cons_mod: 0, int_mod: 12, wis_mod: 0, char_mod: 0, character_class: mage})
+
+mage.specializations.create!([
+  {
+    name: "Ilusionista",
+    alignment: neutral,
+    description: "Os ilusionistas são mágicos que se especializam na arte de "\
+      "ludibriar, usando os sentidos de seu alvo como meios de exibir suas "\
+      "habilidades.",
+    min_level: 5,
+    picture: "https://i.pinimg.com/736x/14/db/fb/14dbfb235b167dc5d28b178e317320de--character-ideas-character-art.jpg",
+    stages_attributes: [
+      {
+        description: "O mago passa a se dedicar ao estudo e à "\
+          "criação de ilusões, podendo uma vez ao dia criar uma ilusão menor "\
+          "e limitada ao seu corpo. Criaturas inteligentes têm 60% de chance "\
+          "de não acreditar na ilusão criada, enquanto criaturas não "\
+          "inteligentes têm apenas 40% de chance.",
+        unlock_level: 5
+      },
+      {
+        description: "O ilusionista pode criar uma "\
+          "ilusão que envolva uma área de tamanho equivalente ao seu nível "\
+          "em m3, três vezes ao dia. Criaturas inteligentes têm 50% de chance "\
+          "de não acreditar na ilusão criada, enquanto criaturas não "\
+          "inteligentes têm apenas 30% de chance.",
+        unlock_level: 8
+      },
+      {
+        description: "O ilusionista pode criar ilusões "\
+          "praticamente ilimitadas, cinco vezes ao dia. Criaturas "\
+          "inteligentes têm 40% de chance de não acreditar na ilusão criada, "\
+          "enquanto criaturas não inteligentes têm apenas 20% de chance.",
+        unlock_level: 16
+      }
+    ]
+  },
+  {
+    name: "Necromante",
+    alignment: chaotic,
+    description: "Um Necromante é um usuário de mágia que é capaz de utilizar "\
+      "as energias negativas que fluem através de suas veias. São semelhantes "\
+      "aos magos, mas são mais adeptos da necromancia e, até certo ponto, dos "\
+      "feitiços de encantamento. Eles usam suas habilidades para obter "\
+      "controle absoluto sobre os corpos, mentes e almas de seus inimigos e, "\
+      "geralmente, a melhor coisa a fazer é criar / convocar mortos-vivos de "\
+      "seus inimigos caídos, habilidade em que são incomparáveis.",
+    min_level: 5,
+    picture: "http://www.planeswalkerslibrary.com/images/m14/art/011.jpg",
+    stages_attributes: [
+      {
+        description: "O mago passa a se dedicar ao estudo das "\
+          "artes sombrias, que envolvem a criação e o controle de "\
+          "mortos-vivos, podendo reanimar um esqueleto por dia, que obedecerá "\
+          "às suas ordens e o efeito durará por uma semana.",
+        unlock_level: 5
+      },
+      {
+        description: "O necromante poderá reanimar três "\
+          "esqueletos por dia, que obedecerão às suas ordens e durarão até "\
+          "que sejam destruídos.",
+        unlock_level: 8
+      },
+      {
+        description: "O necromante poderá se tornar um "\
+          "lich, se tornando imune a efeitos de sono, medo, frio, veneno e "\
+          "outros que necessitem de alvos vivos, bem como se torna imune a "\
+          "acertos críticos. O lich transfere sua alma para uma filactéria, "\
+          "uma gema mágica criada no ritual em que o necromante se tornou um "\
+          "morto-vivo. Caso venha a ser destruído, o lich retornará em 1d4 "\
+          "dias, desde que a filactéria esteja intacta.",
+        unlock_level: 16
+      }
+    ]
+  },
+])
+
+# ==============================================================================
 
 CharismaMod.create!([
   {value: 1, followers_mod: 0, reaction_mod: -25, undead_mod: "0"},

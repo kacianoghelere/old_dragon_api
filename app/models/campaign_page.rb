@@ -15,13 +15,9 @@
 #
 
 class CampaignPage < ActiveRecord::Base
-  include Core
+  include FlatNamed
 
   before_save :generate_flat_name, only: [:create, :update]
   belongs_to :campaign
   belongs_to :page_category
-
-  def generate_flat_name
-    self.flat_name = generate_api_name(self.title)
-  end
 end

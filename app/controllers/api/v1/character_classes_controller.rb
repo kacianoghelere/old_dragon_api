@@ -20,7 +20,9 @@ class API::V1::CharacterClassesController  < ApplicationController
   # GET /character_classes/1/showcase
   # GET /character_classes/1/showcase.json
   def showcase
-    render json: @character_class, :serializer => CharacterClassShowcaseSerializer
+    render json: @character_class, include: [
+      '*', specializations: [:alignment]
+    ], :serializer => CharacterClassShowcaseSerializer
   end
 
   # POST /character_classes
@@ -58,10 +60,12 @@ class API::V1::CharacterClassesController  < ApplicationController
   private
 
     def set_character_class
-      @character_class = CharacterClass.find(params[:id])
+      @character_class = CharacterClass.find_by("id = :id OR flat_name = :id",
+                                                  id: params[:id])
     end
 
     def character_class_params
-      params.require(:character_class).permit(:name, :description, :dice_id, :character_class_type_id, :user_id)
+      params.require(:character_class).permit(:name, :description, :dice_id,
+        :user_id)
     end
 end

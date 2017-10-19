@@ -30,6 +30,8 @@
 #
 
 class CharacterRace < ActiveRecord::Base
+  include FlatNamed
+
   belongs_to :alignment
   belongs_to :dice
   belongs_to :user

@@ -15,6 +15,10 @@
 #
 
 class CharacterClass < ActiveRecord::Base
+  include FlatNamed
+
+  before_save :generate_flat_name, only: [:create, :update]
+
   belongs_to :dice
   belongs_to :character_class_type
   belongs_to :user

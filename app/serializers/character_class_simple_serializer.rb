@@ -1,3 +1,3 @@
 class CharacterClassSimpleSerializer < ActiveModel::Serializer
-  attributes :id, :name
+  attributes :id, :name, :flat_name
 end

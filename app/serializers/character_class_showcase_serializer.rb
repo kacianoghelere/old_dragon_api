@@ -1,5 +1,5 @@
 class CharacterClassShowcaseSerializer < ActiveModel::Serializer
-  attributes :id, :name, :picture, :example_picture, :description
+  attributes :id, :name, :flat_name, :picture, :example_picture, :description
   attribute :short_description
   has_one :dice
   has_one :character_class_type, key: :type
@@ -9,6 +9,7 @@ class CharacterClassShowcaseSerializer < ActiveModel::Serializer
   has_many :thief_talents, if: :has_thief_talents?
   has_many :undead_banes, if: :can_bane_undead?
   has_many :magic_circles, if: :can_use_magic?
+  has_many :specializations, serializer: CharacterSpecializationSimpleSerializer
 
   def has_thief_talents?
     true if object.character_class_type.has_thief_talents

@@ -61,7 +61,7 @@ class API::V1::UsersController  < ApplicationController
 
     def set_user
       # @user = User.with_campaign_invitations(get_current_user).find(params[:id])
-      @user = User.find(params[:id])
+      @user = User.find_by("id = :id OR user_code = :id", id: params[:id])
     end
 
     def user_params

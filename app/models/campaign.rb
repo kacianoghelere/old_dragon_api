@@ -4,6 +4,7 @@
 #
 #  id              :integer          not null, primary key
 #  title           :string(45)       not null
+#  uuid            :string(11)       not null
 #  picture         :string(300)
 #  description     :text(65535)
 #  start_date      :datetime         not null

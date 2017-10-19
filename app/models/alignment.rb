@@ -10,4 +10,5 @@
 #
 
 class Alignment < ActiveRecord::Base
+  has_many :character_specializations
 end
