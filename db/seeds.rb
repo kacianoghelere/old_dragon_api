@@ -573,7 +573,7 @@ manOfArms.specializations.create!([
       "jamais pode servir um deus maligno. O Paladino é um guerreiro santo "\
       "que promove o bem.",
     min_level: 5,
-    picture: "http://www.fantasyesports.us/wp-content/uploads/2016/05/Consecration_(art).jpg",
+    picture: "https://i.pinimg.com/736x/89/71/2f/89712f5c4035d3cab8ece6102a50691c--paladin-fantasy-artwork.jpg",
     stages_attributes: [
       {
         description: "O homem de armas passa a se dedicar "\
