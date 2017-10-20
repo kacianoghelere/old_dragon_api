@@ -238,6 +238,7 @@ ActiveRecord::Schema.define(version: 20171002194635) do
   create_table "character_classes", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "name",                    limit: 45,    null: false
     t.string   "flat_name",               limit: 45,    null: false
+    t.string   "style",                   limit: 45,    null: false
     t.string   "picture",                 limit: 300
     t.string   "example_picture",         limit: 300
     t.text     "description",             limit: 65535
@@ -396,12 +397,14 @@ ActiveRecord::Schema.define(version: 20171002194635) do
     t.integer  "min_level",          limit: 4,     default: 1, null: false
     t.integer  "alignment_id",       limit: 8
     t.integer  "character_class_id", limit: 8,                 null: false
+    t.integer  "user_id",            limit: 8,                 null: false
     t.datetime "created_at",                                   null: false
     t.datetime "updated_at",                                   null: false
   end
 
   add_index "character_specializations", ["alignment_id"], name: "index_character_specializations_on_alignment_id", using: :btree
   add_index "character_specializations", ["character_class_id"], name: "index_character_specializations_on_character_class_id", using: :btree
+  add_index "character_specializations", ["user_id"], name: "fk_rails_09228f1dde", using: :btree
 
   create_table "characters", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "name",               limit: 45
@@ -826,6 +829,7 @@ ActiveRecord::Schema.define(version: 20171002194635) do
   add_foreign_key "character_specialization_stages", "character_specializations"
   add_foreign_key "character_specializations", "alignments"
   add_foreign_key "character_specializations", "character_classes"
+  add_foreign_key "character_specializations", "users"
   add_foreign_key "characters", "character_classes"
   add_foreign_key "characters", "character_races"
   add_foreign_key "characters", "users"

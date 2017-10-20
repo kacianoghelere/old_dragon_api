@@ -345,6 +345,7 @@ stealthy = CharacterClassType.create!({
 #  CLERIC
 cleric = CharacterClass.create!({
   name: "Clérigo",
+  style: "ra-ankh",
   picture: "https://nerdsonearth.com/wp-content/uploads/2017/05/bcfd5368fb063a6cd15f566d516b242a.jpg",
   description: "O clérigo é visto como o líder espiritual de um grupo de "\
     "aventureiros. Dedicado a servir a uma criatura sobrenatural, muitas "\
@@ -432,6 +433,7 @@ CharacterClassRequirement.create!({str_mod: 0, dex_mod: 0, cons_mod: 0, int_mod:
 
 cleric.specializations.create!([
   {
+    user: adminUser,
     name: "Druida",
     alignment: neutral,
     description: "O druida é um sacerdote devotado a proteger a natureza. "\
@@ -478,6 +480,7 @@ cleric.specializations.create!([
     ]
   },
   {
+    user: adminUser,
     name: "Cultista",
     alignment: chaotic,
     description: "Os cultistas adoram os males mais antigos, alguns os adoram "\
@@ -525,6 +528,7 @@ cleric.specializations.create!([
 #  Man Of Arms
 manOfArms = CharacterClass.create!({
   name: "Homem de Armas",
+  style: "ra-battered-axe",
   picture: "http://s1.1zoom.me/big0/354/388898-sepik.jpg",
   description: "O homem de armas é o especialista em combate. Seu principal "\
     "atributo é a Força, que permite causar um considerável dano em seus "\
@@ -564,6 +568,7 @@ CharacterClassRequirement.create!({str_mod: 12, dex_mod: 0, cons_mod: 12, int_mo
 
 manOfArms.specializations.create!([
   {
+    user: adminUser,
     name: "Paladino",
     alignment: lawfull,
     description: "Paladinos são campeões da justiça, bondade e lealdade. "\
@@ -606,6 +611,7 @@ manOfArms.specializations.create!([
     ]
   },
   {
+    user: adminUser,
     name: "Guerreiro",
     alignment: neutral,
     description: "O  guerreiro é um especialista em armas, combate e, quando "\
@@ -636,6 +642,7 @@ manOfArms.specializations.create!([
     ]
   },
   {
+    user: adminUser,
     name: "Bárbaro",
     alignment: chaotic,
     description: "Bárbaros são combatentes de origem selvagem, geralmente "\
@@ -678,6 +685,7 @@ manOfArms.specializations.create!([
 #  THIEF
 thief = CharacterClass.create!({
   name: "Ladrão",
+  style: "ra-hood",
   picture: "http://sm.ign.com/ign_br/news/n/new-thief-/new-thief-sequel-rumours-quashed-by-developer_aq2f.jpg",
   description: "O ladrão é um personagem que se especializa em arrombar  "\
     "fechaduras, desarmar armadilhas e  outras atividades furtivas, além de "\
@@ -812,6 +820,7 @@ thief.specializations.create!([
     ]
   },
   {
+    user: adminUser,
     name: "Bardo",
     alignment: neutral,
     description: "Bardos são cantores e contadores de histórias natos. "\
@@ -845,6 +854,7 @@ thief.specializations.create!([
     ]
   },
   {
+    user: adminUser,
     name: "Assassino",
     alignment: chaotic,
     description: "Os assassinos são especialistas na aplicação de golpes "\
@@ -884,6 +894,7 @@ thief.specializations.create!([
 #  MAGE
 mage = CharacterClass.create!({
   name: "Mago",
+  style: "ra-burning-meteor",
   picture: "http://ll-c.ooyala.com/e1/VweTk5YzE6uMVLB0BoRaGmMkCsUVotQN/promo326678796",
   description: "O mago é um pesquisador de magias arcanas, que as escreve "\
     "em seus grimórios ou em pergaminhos, sendo que os mais experientes "\
@@ -946,6 +957,7 @@ CharacterClassRequirement.create!({str_mod: 0, dex_mod: 0, cons_mod: 0, int_mod:
 
 mage.specializations.create!([
   {
+    user: adminUser,
     name: "Ilusionista",
     alignment: neutral,
     description: "Os ilusionistas são mágicos que se especializam na arte de "\
@@ -980,6 +992,7 @@ mage.specializations.create!([
     ]
   },
   {
+    user: adminUser,
     name: "Necromante",
     alignment: chaotic,
     description: "Um Necromante é um usuário de mágia que é capaz de utilizar "\

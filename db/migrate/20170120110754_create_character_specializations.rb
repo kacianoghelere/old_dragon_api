@@ -8,6 +8,7 @@ class CreateCharacterSpecializations < ActiveRecord::Migration
       t.integer  :min_level,          limit: 4,   default: 1, null: false
       t.integer  :alignment_id,       limit: 8
       t.integer  :character_class_id, limit: 8,               null: false
+      t.integer  :user_id,            limit: 8,               null: false
       t.timestamps                                            null: false
     end
 

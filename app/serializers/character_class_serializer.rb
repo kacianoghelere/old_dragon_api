@@ -1,5 +1,5 @@
 class CharacterClassSerializer < ActiveModel::Serializer
-  attributes :id, :name, :flat_name, :picture, :description
+  attributes :id, :name, :style, :flat_name, :picture, :description
   attribute :short_description
   has_one :dice
   has_one :character_class_type, key: :type

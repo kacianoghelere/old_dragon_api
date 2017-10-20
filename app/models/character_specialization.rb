@@ -14,11 +14,10 @@
 
 class CharacterSpecialization < ActiveRecord::Base
   include FlatNamed
-  
-  before_save :generate_flat_name, only: [:create, :update]
 
   belongs_to :alignment
   belongs_to :character_class
+  belongs_to :user
   has_many :characters
   has_many :stages, class_name: 'CharacterSpecializationStage'
   accepts_nested_attributes_for :stages
