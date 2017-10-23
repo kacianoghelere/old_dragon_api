@@ -53,6 +53,7 @@ class GenerateForeignKeys < ActiveRecord::Migration
     add_foreign_key :character_specializations, :users
     add_foreign_key :characters, :character_classes
     add_foreign_key :characters, :character_races
+    add_foreign_key :characters, :character_specializations
     add_foreign_key :characters, :users
     add_foreign_key :effects, :effect_types
     add_foreign_key :effects, :users
@@ -69,6 +70,8 @@ class GenerateForeignKeys < ActiveRecord::Migration
     add_foreign_key :spells, :users
     add_foreign_key :thief_talents, :character_classes
     add_foreign_key :traits, :trait_types
+    add_foreign_key :traits, :armor_types
+    add_foreign_key :traits, :weapon_types
     add_foreign_key :traits, :users
     add_foreign_key :undead_banes, :character_classes
     add_foreign_key :users, :roles

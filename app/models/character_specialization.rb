@@ -19,6 +19,9 @@ class CharacterSpecialization < ActiveRecord::Base
   belongs_to :character_class
   belongs_to :user
   has_many :characters
-  has_many :stages, class_name: 'CharacterSpecializationStage'
-  accepts_nested_attributes_for :stages
+  has_many :stages, -> { order(:unlock_level) },
+                    class_name: 'CharacterSpecializationStage'
+  accepts_nested_attributes_for :stages,
+                            allow_destroy: true,
+                            reject_if: lambda { |a| a[:unlock_level].blank? }
 end

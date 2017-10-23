@@ -66,7 +66,9 @@ class API::V1::CharacterSpecializationsController < ApplicationController
 
     def specialization_params
       params.require(:character_specialization).permit(:name, :description,
-        :picture, :min_level, :alignment_id)
+        :picture, :min_level, :alignment_id,
+        stages_attributes: [:id, :description, :unlock_level, :_destroy]
+      )
     end
 
     def character_class_params

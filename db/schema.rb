@@ -407,23 +407,25 @@ ActiveRecord::Schema.define(version: 20171002194635) do
   add_index "character_specializations", ["user_id"], name: "fk_rails_09228f1dde", using: :btree
 
   create_table "characters", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
-    t.string   "name",               limit: 45
-    t.string   "title",              limit: 45
-    t.string   "quote",              limit: 300
-    t.string   "picture",            limit: 300
-    t.decimal  "weight",                           precision: 10
-    t.decimal  "height",                           precision: 10
-    t.integer  "age",                limit: 4
-    t.text     "description",        limit: 65535
-    t.integer  "character_class_id", limit: 8,                    null: false
-    t.integer  "character_race_id",  limit: 8,                    null: false
-    t.integer  "user_id",            limit: 8,                    null: false
-    t.datetime "created_at",                                      null: false
-    t.datetime "updated_at",                                      null: false
+    t.string   "name",                        limit: 45
+    t.string   "title",                       limit: 45
+    t.string   "quote",                       limit: 300
+    t.string   "picture",                     limit: 300
+    t.decimal  "weight",                                    precision: 10
+    t.decimal  "height",                                    precision: 10
+    t.integer  "age",                         limit: 4
+    t.text     "description",                 limit: 65535
+    t.integer  "character_class_id",          limit: 8,                    null: false
+    t.integer  "character_race_id",           limit: 8,                    null: false
+    t.integer  "character_specialization_id", limit: 8
+    t.integer  "user_id",                     limit: 8,                    null: false
+    t.datetime "created_at",                                               null: false
+    t.datetime "updated_at",                                               null: false
   end
 
   add_index "characters", ["character_class_id"], name: "index_characters_on_character_class_id", using: :btree
   add_index "characters", ["character_race_id"], name: "index_characters_on_character_race_id", using: :btree
+  add_index "characters", ["character_specialization_id"], name: "index_characters_on_character_specialization_id", using: :btree
   add_index "characters", ["user_id"], name: "index_characters_on_user_id", using: :btree
 
   create_table "charisma_mods", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
@@ -662,7 +664,11 @@ ActiveRecord::Schema.define(version: 20171002194635) do
   create_table "traits", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "name",                limit: 45
     t.string   "description",         limit: 500
+    t.integer  "movement_bonus",      limit: 4,   default: 0
     t.integer  "armor_class_bonus",   limit: 4,   default: 0
+    t.integer  "armor_type_id",       limit: 8
+    t.integer  "damage_bonus",        limit: 4,   default: 0
+    t.integer  "weapon_type_id",      limit: 8
     t.integer  "meele_attack_bonus",  limit: 4,   default: 0
     t.integer  "ranged_attack_bonus", limit: 4,   default: 0
     t.integer  "lockpick",            limit: 4,   default: 0
@@ -678,8 +684,10 @@ ActiveRecord::Schema.define(version: 20171002194635) do
     t.datetime "updated_at",                                  null: false
   end
 
+  add_index "traits", ["armor_type_id"], name: "index_traits_on_armor_type_id", using: :btree
   add_index "traits", ["trait_type_id"], name: "index_traits_on_trait_type_id", using: :btree
   add_index "traits", ["user_id"], name: "index_traits_on_user_id", using: :btree
+  add_index "traits", ["weapon_type_id"], name: "index_traits_on_weapon_type_id", using: :btree
 
   create_table "undead_banes", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.integer  "level",              limit: 4, default: 1, null: false
@@ -832,6 +840,7 @@ ActiveRecord::Schema.define(version: 20171002194635) do
   add_foreign_key "character_specializations", "users"
   add_foreign_key "characters", "character_classes"
   add_foreign_key "characters", "character_races"
+  add_foreign_key "characters", "character_specializations"
   add_foreign_key "characters", "users"
   add_foreign_key "effects", "effect_types"
   add_foreign_key "effects", "users"
@@ -847,8 +856,10 @@ ActiveRecord::Schema.define(version: 20171002194635) do
   add_foreign_key "spells", "spell_circles"
   add_foreign_key "spells", "users"
   add_foreign_key "thief_talents", "character_classes"
+  add_foreign_key "traits", "armor_types"
   add_foreign_key "traits", "trait_types"
   add_foreign_key "traits", "users"
+  add_foreign_key "traits", "weapon_types"
   add_foreign_key "undead_banes", "character_classes"
   add_foreign_key "users", "roles"
   add_foreign_key "weapons", "alignments"

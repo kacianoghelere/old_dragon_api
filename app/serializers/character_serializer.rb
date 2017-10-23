@@ -5,6 +5,9 @@ class CharacterSerializer < ActiveModel::Serializer
                                key: :class
   belongs_to :character_race, serializer: CharacterRaceSimpleSerializer,
                               key: :race
+  belongs_to :character_specialization,
+                            serializer: CharacterSpecializationSimpleSerializer,
+                            key: :specialization
   has_many :campaigns, serializer: CampaignSimpleSerializer
   has_one :status, serializer: CharacterJournalSerializer
   belongs_to :user, serializer: UserSimpleSerializer, key: :player
