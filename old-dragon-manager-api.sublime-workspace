@@ -235,6 +235,31 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "app/controllers/api/v1/spells_controller.rb",
+			"settings":
+			{
+				"buffer_size": 1210,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "db/seeds.rb",
+			"settings":
+			{
+				"buffer_size": 85315,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/controllers/api/v1/spell_types_controller.rb",
+			"settings":
+			{
+				"buffer_size": 1284,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -358,10 +383,16 @@
 	},
 	"expanded_folders":
 	[
-		"/home/kaciano/workspace/old_dragon_manager_api"
+		"/home/kaciano/workspace/old_dragon_manager_api",
+		"/home/kaciano/workspace/old_dragon_manager_api/app",
+		"/home/kaciano/workspace/old_dragon_manager_api/app/controllers",
+		"/home/kaciano/workspace/old_dragon_manager_api/app/controllers/api",
+		"/home/kaciano/workspace/old_dragon_manager_api/app/controllers/api/v1"
 	],
 	"file_history":
 	[
+		"/home/kaciano/workspace/old_dragon_manager_api/db/seeds.rb",
+		"/home/kaciano/workspace/old_dragon_manager_api/db/migrate/20170120110814_create_spells.rb",
 		"/home/kaciano/workspace/old_dragon_manager_api/old-dragon-manager-api.sublime-project",
 		"/var/www/blog/util/pullRequestRunTests.sh",
 		"/var/www/blog/src/PmtVct/PhotoBookBundle/Services/Buy/PagseguroCancelService.php",
@@ -487,9 +518,7 @@
 		"/var/www/blog/src/PmtVct/PhotoBookBundle/Services/Buy/ChooseBranchOfficeService.php",
 		"/var/www/blog/src/PmtVct/PhotoBookBundle/Entity/BranchOffice.php",
 		"/var/www/blog/src/PmtVct/PhotoBookBundle/Tests/Library/LibWebTestCase.php",
-		"/var/www/blog/vendor/pagseguro/pagseguro-php-sdk/source/Domains/Requests/Payment.php",
-		"/var/www/blog/vendor/pagseguro/pagseguro-php-sdk/source/Domains/Requests/Checkout/Payment/Request.php",
-		"/var/www/blog/vendor/pagseguro/pagseguro-php-sdk/source/Domains/Requests/Sender.php"
+		"/var/www/blog/vendor/pagseguro/pagseguro-php-sdk/source/Domains/Requests/Payment.php"
 	],
 	"find":
 	{
@@ -524,13 +553,108 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "app/controllers/api/v1/spells_controller.rb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1210,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"git_gutter_is_enabled": true,
+							"syntax": "Packages/Ruby/Ruby.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				}
 			]
 		},
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 1,
+					"file": "db/seeds.rb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 85315,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2066,
+								2066
+							]
+						],
+						"settings":
+						{
+							"git_gutter_is_enabled": true,
+							"syntax": "Packages/Ruby/Ruby.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 660.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "app/controllers/api/v1/spell_types_controller.rb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1284,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"git_gutter_is_enabled": true,
+							"syntax": "Packages/Ruby/Ruby.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -562,7 +686,7 @@
 		"cols":
 		[
 			0.0,
-			0.549632352941,
+			0.5,
 			1.0
 		],
 		"rows":
@@ -588,7 +712,7 @@
 	{
 		"height": 0.0
 	},
-	"pinned_build_system": "",
+	"pinned_build_system": "recreate",
 	"project": "old-dragon-manager-api.sublime-project",
 	"replace":
 	{
@@ -601,6 +725,14 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"seeds",
+				"db/seeds.rb"
+			],
+			[
+				"createspell",
+				"db/migrate/20170120110814_create_spells.rb"
+			],
 			[
 				"pullre",
 				"util/pullRequestRunTests.sh"
@@ -1104,14 +1236,6 @@
 			[
 				"pags",
 				"src/PmtVct/PhotoBookBundle/Controller/Buy/PagSeguro20Controller.php"
-			],
-			[
-				"pagseguro/domains/item",
-				"vendor/pagseguro/pagseguro-php-sdk/source/Domains/Item.php"
-			],
-			[
-				"pagseguro/domains/requests/payment",
-				"vendor/pagseguro/pagseguro-php-sdk/source/Domains/Requests/Payment.php"
 			]
 		],
 		"width": 0.0
@@ -1134,14 +1258,14 @@
 		],
 		"width": 0.0
 	},
-	"selected_group": 0,
+	"selected_group": 1,
 	"settings":
 	{
 	},
 	"show_minimap": true,
 	"show_open_files": false,
 	"show_tabs": true,
-	"side_bar_visible": true,
+	"side_bar_visible": false,
 	"side_bar_width": 278.0,
 	"status_bar_visible": true,
 	"template_settings":
