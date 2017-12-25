@@ -1350,6 +1350,7 @@ sandor = Character.create!({
     "Clegane, o \"Montanha\".",
   character_class: manOfArms,
   character_race: humans,
+  character_specialization: barbarian,
   user: player1
 })
 sandor.journals.create!([
