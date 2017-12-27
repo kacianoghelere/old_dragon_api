@@ -1,9 +1,8 @@
 class API::V1::UsersController  < ApplicationController
-  before_filter :authenticate_request!, only: [:show, :update, :destroy]
+  before_filter :authenticate_request!
   before_action :set_user, only: [:show, :update, :destroy]
 
   # GET /users
-  # GET /users.json
   def index
     @users = User.all
 
@@ -11,13 +10,11 @@ class API::V1::UsersController  < ApplicationController
   end
 
   # GET /users/1
-  # GET /users/1.json
   def show
     render json: @user, include: ['*', characters: [:class, :race]]
   end
 
   # POST /users
-  # POST /users.json
   def create
     @user = User.new(user_params)
     @user.role = Role.find_by(admin: false)
@@ -30,7 +27,6 @@ class API::V1::UsersController  < ApplicationController
   end
 
   # PATCH/PUT /users/1
-  # PATCH/PUT /users/1.json
   def update
     @user = User.find(params[:id])
 
@@ -50,7 +46,6 @@ class API::V1::UsersController  < ApplicationController
   end
 
   # DELETE /users/1
-  # DELETE /users/1.json
   def destroy
     @user.destroy
 

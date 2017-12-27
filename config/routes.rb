@@ -1,10 +1,14 @@
+require 'api_version_constraint'
+
 Rails.application.routes.draw do
 
-  
-  post 'authentication' => 'authentication#authenticate'
+  namespace :api, defaults: { format: :json },
+                  constraints: { subdomain: "api"}, path: "/" do
+    post 'authentication' => 'authentication#authenticate'
 
-  namespace :api do
-    namespace :v1 do
+    namespace :v1,
+        constraints: ApiVersionConstraint.new(version: 1, default: true),
+        path: "/" do
       resources :alignments, except: [:new, :edit]
       resources :armor_types, except: [:new, :edit]
       resources :armors, except: [:new, :edit]
