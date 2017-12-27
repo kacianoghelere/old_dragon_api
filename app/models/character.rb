@@ -19,6 +19,8 @@
 #
 
 class Character < ActiveRecord::Base
+  include FlatNamed
+
   belongs_to :character_class
   belongs_to :character_race
   belongs_to :character_specialization

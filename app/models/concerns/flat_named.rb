@@ -6,7 +6,7 @@ module FlatNamed
   end
 
   def generate_flat_name
-    if self.attributes['title']
+    if self.attributes['title'] && !self.attributes['name']
       self.flat_name = generate_api_name(self.title)
     else
       self.flat_name = generate_api_name(self.name)

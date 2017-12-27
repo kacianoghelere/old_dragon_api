@@ -17,7 +17,6 @@
 class CampaignPage < ActiveRecord::Base
   include FlatNamed
 
-  before_save :generate_flat_name, only: [:create, :update]
   belongs_to :campaign
   belongs_to :page_category
 end

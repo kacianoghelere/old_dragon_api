@@ -408,6 +408,7 @@ ActiveRecord::Schema.define(version: 20171002194635) do
 
   create_table "characters", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "name",                        limit: 45
+    t.string   "flat_name",                   limit: 100,                  null: false
     t.string   "title",                       limit: 45
     t.string   "quote",                       limit: 300
     t.string   "picture",                     limit: 300

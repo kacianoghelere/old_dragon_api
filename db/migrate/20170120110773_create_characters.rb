@@ -2,6 +2,7 @@ class CreateCharacters < ActiveRecord::Migration
   def change
     create_table :characters, id: :bigint do |t|
       t.string   :name,                        limit: 45
+      t.string  :flat_name,                    limit: 100,                  null: false
       t.string   :title,                       limit: 45
       t.string   :quote,                       limit: 300
       t.string   :picture,                     limit: 300

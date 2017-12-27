@@ -1591,6 +1591,7 @@ campaign = Campaign.create!({
   start_date: DateTime.now,
   user: adminUser
 })
+
 campaign.pages.create!([
   {
     title: "Primeira Sessão",
