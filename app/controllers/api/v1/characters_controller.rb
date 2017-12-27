@@ -4,7 +4,6 @@ class API::V1::CharactersController  < ApplicationController
   before_action :set_character, only: [:show, :update, :destroy]
 
   # GET /characters
-  # GET /characters.json
   def index
     if params[:user_id]
       @characters = Character.where(user_id: params[:user_id])
@@ -15,7 +14,6 @@ class API::V1::CharactersController  < ApplicationController
   end
 
   # GET /characters/1
-  # GET /characters/1.json
   def show
     render json: @character, include: [
       '*', campaigns: [:dungeonMaster], status: [:alignment]
@@ -23,7 +21,6 @@ class API::V1::CharactersController  < ApplicationController
   end
 
   # POST /characters
-  # POST /characters.json
   def create
     @character = Character.new(character_params)
 
@@ -35,7 +32,6 @@ class API::V1::CharactersController  < ApplicationController
   end
 
   # PATCH/PUT /characters/1
-  # PATCH/PUT /characters/1.json
   def update
     @character = Character.find(params[:id])
 
@@ -48,7 +44,6 @@ class API::V1::CharactersController  < ApplicationController
   end
 
   # DELETE /characters/1
-  # DELETE /characters/1.json
   def destroy
     @character.destroy
 
@@ -58,7 +53,8 @@ class API::V1::CharactersController  < ApplicationController
   private
 
     def set_character
-      @character = Character.find(params[:id])
+      @character = Character.find_by("id = :id OR flat_name = :id",
+                                      id: params[:id])
     end
 
     def character_params

@@ -4,7 +4,6 @@ class API::V1::CharacterClassesController  < ApplicationController
   before_action :set_character_class, only: [:show, :showcase, :update, :destroy]
 
   # GET /character_classes
-  # GET /character_classes.json
   def index
     @character_classes = CharacterClass.all
 
@@ -12,13 +11,11 @@ class API::V1::CharacterClassesController  < ApplicationController
   end
 
   # GET /character_classes/1
-  # GET /character_classes/1.json
   def show
     render json: @character_class
   end
 
   # GET /character_classes/1/showcase
-  # GET /character_classes/1/showcase.json
   def showcase
     render json: @character_class, include: [
       '*', specializations: [:alignment]
@@ -26,7 +23,6 @@ class API::V1::CharacterClassesController  < ApplicationController
   end
 
   # POST /character_classes
-  # POST /character_classes.json
   def create
     @character_class = CharacterClass.new(character_class_params)
 
@@ -38,7 +34,6 @@ class API::V1::CharacterClassesController  < ApplicationController
   end
 
   # PATCH/PUT /character_classes/1
-  # PATCH/PUT /character_classes/1.json
   def update
     @character_class = CharacterClass.find(params[:id])
 
@@ -50,7 +45,6 @@ class API::V1::CharacterClassesController  < ApplicationController
   end
 
   # DELETE /character_classes/1
-  # DELETE /character_classes/1.json
   def destroy
     @character_class.destroy
 
