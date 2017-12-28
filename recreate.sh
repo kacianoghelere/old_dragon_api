@@ -1,12 +1,3 @@
 #!/bin/bash
-echo "[Droping]";
-rake db:drop
-echo "[Recreating]";
-rake db:create
-echo "[Migrating]";
-rake db:migrate
-echo "[Seeding]";
-rake db:seed
-echo "[Dumping]";
-rake db:schema:dump
-echo "[Finished]";
+echo "Reconstruindo base de dados";
+sudo docker-compose run web rake db:drop db:create db:migrate db:seed db:schema:dump
