@@ -1,4 +1,4 @@
-class AuthenticationController < ApplicationController
+class API::V1::AuthenticationController < ApplicationController
 
   def authenticate
     user = User.find_for_authentication(email: params[:email])
