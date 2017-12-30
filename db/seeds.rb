@@ -432,6 +432,38 @@ cleric.undead_banes.create!([
 
 CharacterClassRequirement.create!({str_mod: 0, dex_mod: 0, cons_mod: 0, int_mod: 0, wis_mod: 12, char_mod: 0, character_class: cleric})
 
+undeadHunter = cleric.specializations.create!({
+  user: adminUser,
+  name: "Caçador",
+  description: "O clérigo passa a se dedicar à caça de mortos-vivos, " \
+    "adentrando masmorras e catacumbas infestadas de esqueletos e zumbis " \
+    "para colocar as pobres almas atormentadas para descansar",
+  min_level: 5,
+  picture: "http://www.myfreewallpapers.net/fantasy/wallpapers/cleric-vs-undead.jpg",
+  stages_attributes: [
+    {
+      description: "O seu modificador de Carisma do caçador afasta o dobro " \
+        "de dados de mortos-vivos.",
+      unlock_level: 5
+    },
+    {
+      description: "o caçador pode rolar novamente uma falha em jogada de " \
+        "proteção para evitar dreno de nível ou de atributo que tenha como " \
+        "origem um ataque de morto-vivo. Além disso, neste nível o caçador " \
+        "passa a sentir a presença de um morto-vivo em um raio de 30 metros " \
+        "ao seu redor.",
+      unlock_level: 8
+    },
+    {
+      description: "O caçador pode atingir normalmente um morto-vivo " \
+        "incorpóreo, sem qualquer tipo de penalidade, além disso ele se " \
+        "torna imune a todos efeitos mentais que tenham como origem um " \
+        "morto-vivo.",
+      unlock_level: 16
+    }
+  ]
+})
+
 druid = cleric.specializations.create!({
   user: adminUser,
   name: "Druida",
@@ -834,7 +866,7 @@ bard = thief.specializations.create!({
     "também, através da historias que conhecem dos contatos sociais que "\
     "possuem, também são valiosíssimas fontes de informação.",
   min_level: 5,
-  picture: "https://hdwallsbox.com/wallpapers/l/1920x1080/30/horses-kvothe-bard-lute-the-kingkiller-chronicle-1920x1080-29105.jpg",
+  picture: "https://data.whicdn.com/images/123666370/original.jpg",
   stages_attributes: [
     {
       description: "O ladrão passa a desenvolver a "\
@@ -900,7 +932,8 @@ assassin = thief.specializations.create!({
 mage = CharacterClass.create!({
   name: "Mago",
   style: "ra-burning-meteor",
-  picture: "http://ll-c.ooyala.com/e1/VweTk5YzE6uMVLB0BoRaGmMkCsUVotQN/promo326678796",
+  # picture: "http://ll-c.ooyala.com/e1/VweTk5YzE6uMVLB0BoRaGmMkCsUVotQN/promo326678796",
+  picture: "https://78.media.tumblr.com/tumblr_mcmg4qj6381qjvigio1_1280.jpg",
   example_picture: "https://i.pinimg.com/564x/45/f2/ae/45f2ae21ceb10c828a896a6a08eed4d1.jpg",
   description: "O mago é um pesquisador de magias arcanas, que as escreve "\
     "em seus grimórios ou em pergaminhos, sendo que os mais experientes "\
@@ -960,6 +993,54 @@ mage.magic_circles.create!([
 ])
 
 CharacterClassRequirement.create!({str_mod: 0, dex_mod: 0, cons_mod: 0, int_mod: 12, wis_mod: 0, char_mod: 0, character_class: mage})
+
+diviner = mage.specializations.create!({
+  user: adminUser,
+  name: "Adivinhador",
+  alignment: neutral,
+  description: "O mago adivinhador aperfeiçoa o seu estudo, se "\
+    "especializando em buscar objetos e conhecimentos perdidos e em analisar "\
+    "itens mágicos.",
+  min_level: 5,
+  picture: "https://i.pinimg.com/originals/3d/f5/a5/3df5a5f0ffaa7a8670d8c72a8596f715.jpg",
+  stages_attributes: [
+    {
+      description: "O adivinhador pode, ao analisar detidamente um item, "\
+        "identificar propriedades mágicas e outras informações a seu "\
+        "respeito.\n"\
+        "Para cada turno que o adivinhador se dedica a analisar o item, uma "\
+        "pergunta é respondida, na seguinte ordem:"\
+        "1. Alinhamento do item. 2. Propósito do item. 3. Material do item."\
+        "4. Habilidade mágica do item (havendo mais de uma, escolha aleatória)."\
+        "A análise de itens é uma atividade estafante.\n"\
+        "Para cada turno que o adivinhador se dedicar a analisar o item, é "\
+        "necessário uma jogada de proteção modificada pela Constituição para "\
+        "que o adivinhador não fique esgotado. Três falhas consecutivas ou "\
+        "cinco alternadas em um mesmo dia faz com que o adivinhador não "\
+        "consiga lançar magias até que descanse por oito horas (ou quatro, "\
+        "se for elfo).\nAinda, o adivinhador pode, através da observação, "\
+        "localizar portas, itens e armadilhas mágicas, além de identificar "\
+        "e compreender qualquer tipo de escrita. Essa observação é em formato "\
+        "de cone (3m + 1m/nível) e pode ficar ativa pela quantidade de turnos "\
+        "equivalentes ao nível do adivinhador. Para que essa habilidade "\
+        "funcione corretamente, é necessário que o adivinhador esteja olhando "\
+        "diretamente para o local específico, a não ser a partir do 11o "\
+        "nível, ponto em que o adivinhador pode utilizar essa habilidade "\
+        "através de uma bola de cristal.",
+      unlock_level: 5
+    },
+    {
+      description: "O adivinhador pode fazer duas perguntas em um mesmo "\
+        "turno, realizando apenas uma jogada de proteção nesse tempo.",
+      unlock_level: 8
+    },
+    {
+      description: "O adivinhador pode fazer quatro perguntas em um mesmo "\
+        "turno, realizando apenas uma jogada de proteção nesse tempo.",
+      unlock_level: 16
+    }
+  ]
+})
 
 illusionist = mage.specializations.create!({
   user: adminUser,
