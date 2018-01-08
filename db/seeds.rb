@@ -719,7 +719,8 @@ barbarian = manOfArms.specializations.create!({
 thief = CharacterClass.create!({
   name: "Ladrão",
   style: "ra-hood",
-  picture: "http://sm.ign.com/ign_br/news/n/new-thief-/new-thief-sequel-rumours-quashed-by-developer_aq2f.jpg",
+  # picture: "http://sm.ign.com/ign_br/news/n/new-thief-/new-thief-sequel-rumours-quashed-by-developer_aq2f.jpg",
+  picture: "https://img.fireden.net/tg/image/1457/18/1457187016507.jpg",
   example_picture: "https://i.pinimg.com/564x/4d/2c/7e/4d2c7eded5325bab2b70af297d7d888d.jpg",
   description: "O ladrão é um personagem que se especializa em arrombar  "\
     "fechaduras, desarmar armadilhas e  outras atividades furtivas, além de "\
