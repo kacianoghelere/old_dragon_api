@@ -196,7 +196,7 @@ elves = CharacterRace.create!({
   name: "Elfos",
   singular_name: "Elfo",
   picture: "https://i.pinimg.com/736x/81/1a/7a/811a7aa0c7621053c62ab5fa17a1ec8d--male-elf-character-concept.jpg",
-  example_picture: "https://i.pinimg.com/564x/42/d2/b8/42d2b83f9c4ed3546785bb365e5b15e8.jpg",
+  example_picture: "https://i.pinimg.com/736x/09/af/99/09af99d9b0d33f7f4334a904ab7251f0--character-inspiration-elves.jpg",
   description: "Os elfos são humanoides esguios e silvestres, com antecedentes místicos e aparência inconfundível. São ligeiramente mais baixos que os humanos, se diferenciando ainda mais nos traços faciais delicados, finos e graciosos. As orelhas são longas e pontudas, e os olhos amendoados, levemente alongados. Os cabelos são sempre lisos e limpos e comumente longos, mesmo entre os elfos machos,podendo ter uma miríade de cores e tons que vão do completo negro ao branco prateado."\
     "\nComo habitantes das áreas selvagens e florestais, os elfos possuem uma eterna ligação com as árvores e demais seres silvestres. Os elfos são seres reclusos e raramente abandonam sua terra em busca de aventuras. Quando um elfo se rende aos encantos do mundo além das fronteiras, normalmente o faz pelo desejo de adquirir conhecimento, aperfeiçoar suas técnicas ou ainda como embaixador de seu povo. "\
     "\nPelo ponto de vista élfico, a rivalidade histórica entre elfos e anões é fomentada mais pelas divergências 15artísticas, sendo que os elfos consideram as técnicas empregadas pelos anões como rudes e grosseiras, preferindo a delicadeza intrincada que empregam em detrimento da precisão metódica do povo anão.",
@@ -270,7 +270,7 @@ humans = CharacterRace.create!({
 halflings = CharacterRace.create!({
   name: "Halflings",
   singular_name: "Halfling",
-  picture: "http://3.bp.blogspot.com/-6D8tlIzKPR0/UJ4rELOM9LI/AAAAAAAAAl8/3sw0UV0tmcE/s1600/halfling+02.jpg",
+  picture: "http://paizo.com/image/content/PathfinderRPG/PZO1115-SickeningSong.jpg",
   example_picture: "https://i.pinimg.com/564x/c2/52/48/c25248a05aca896a937d6ce0da6e7cc0.jpg",
   description: "Os halflings são seres pequenos, cuja capacidade de encrencar-se é inversamente proporcional ao seu tamanho. Odiando o marasmo, os half lings preferem a confusão e a diversão ao tédio, e é justamente esse sentimento de aventura que os torna tão aptos a caírem na estrada e se tornarem peregrinos e aventureiros. "\
     "\nHalflings podem apresentar à primeira vista características que erroneamente os classifiquem como frágeis, mas a prática demonstra exatamente o contrário. "\
@@ -381,7 +381,7 @@ cleric.evolutions.create!([
   {level: 17, exp: 1000000, life_amount: 4, plus_life: true, attack_base: 7, attack_base2: 0, protection_mod: 10},
   {level: 18, exp: 1100000, life_amount: 5, plus_life: true, attack_base: 7, attack_base2: 0, protection_mod: 10},
   {level: 19, exp: 1200000, life_amount: 5, plus_life: true, attack_base: 7, attack_base2: 0, protection_mod: 9},
-  {level: 20, exp: 1300000, life_amount: 6, plus_life: true, attack_base: 8, attack_base2: 0, protection_mod: 9},
+  {level: 20, exp: 1300000, life_amount: 6, plus_life: true, attack_base: 8, attack_base2: 0, protection_mod: 9}
 ])
 
 cleric.magic_circles.create!([
@@ -404,7 +404,7 @@ cleric.magic_circles.create!([
   {level: 17, circle_1: 8, circle_2: 7, circle_3: 6, circle_4: 5, circle_5: 4, circle_6: 4, circle_7: 2},
   {level: 18, circle_1: 8, circle_2: 7, circle_3: 6, circle_4: 5, circle_5: 5, circle_6: 4, circle_7: 3},
   {level: 19, circle_1: 9, circle_2: 8, circle_3: 7, circle_4: 6, circle_5: 5, circle_6: 4, circle_7: 3},
-  {level: 20, circle_1: 9, circle_2: 8, circle_3: 7, circle_4: 6, circle_5: 5, circle_6: 5, circle_7: 3},
+  {level: 20, circle_1: 9, circle_2: 8, circle_3: 7, circle_4: 6, circle_5: 5, circle_6: 5, circle_7: 3}
 ])
 
 cleric.undead_banes.create!([
@@ -561,7 +561,7 @@ cultist = cleric.specializations.create!({
 manOfArms = CharacterClass.create!({
   name: "Homem de Armas",
   style: "ra-battered-axe",
-  picture: "http://s1.1zoom.me/big0/354/388898-sepik.jpg",
+  picture: "http://wallpoper.com/images/00/41/88/66/knights-fight_00418866.jpg",
   example_picture: "https://i.pinimg.com/564x/4c/da/35/4cda35a526dee024912c7e3da1e0f807.jpg",
   description: "O homem de armas é o especialista em combate. Seu principal "\
     "atributo é a Força, que permite causar um considerável dano em seus "\
