@@ -45,6 +45,49 @@ ActiveRecord::Schema.define(version: 20171002194635) do
   add_index "armors", ["origin_id"], name: "index_armors_on_origin_id", using: :btree
   add_index "armors", ["user_id"], name: "index_armors_on_user_id", using: :btree
 
+  create_table "attribute_mods", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+    t.integer  "attribute_id",       limit: 8,             null: false
+    t.integer  "value",              limit: 4,             null: false
+    t.integer  "armor_class_mod",    limit: 4, default: 0, null: false
+    t.integer  "climb_mod",          limit: 4, default: 0, null: false
+    t.integer  "damage_mod",         limit: 4, default: 0, null: false
+    t.integer  "followers_mod",      limit: 4, default: 0, null: false
+    t.integer  "hitpoints_mod",      limit: 4, default: 0, null: false
+    t.integer  "languages_mod",      limit: 4, default: 0, null: false
+    t.integer  "learn_magic_mod",    limit: 4, default: 0, null: false
+    t.integer  "lockpick_mod",       limit: 4, default: 0, null: false
+    t.integer  "magic_circle_1_mod", limit: 4, default: 0, null: false
+    t.integer  "magic_circle_2_mod", limit: 4, default: 0, null: false
+    t.integer  "magic_circle_3_mod", limit: 4, default: 0, null: false
+    t.integer  "magic_circle_4_mod", limit: 4, default: 0, null: false
+    t.integer  "magic_circle_5_mod", limit: 4, default: 0, null: false
+    t.integer  "magic_circle_6_mod", limit: 4, default: 0, null: false
+    t.integer  "magic_circle_7_mod", limit: 4, default: 0, null: false
+    t.integer  "magic_circle_8_mod", limit: 4, default: 0, null: false
+    t.integer  "magic_circle_9_mod", limit: 4, default: 0, null: false
+    t.integer  "melee_attack_mod",   limit: 4, default: 0, null: false
+    t.integer  "perception_mod",     limit: 4, default: 0, null: false
+    t.integer  "pickpocket_mod",     limit: 4, default: 0, null: false
+    t.integer  "protection_mod",     limit: 4, default: 0, null: false
+    t.integer  "ranged_attack_mod",  limit: 4, default: 0, null: false
+    t.integer  "reaction_mod",       limit: 4, default: 0, null: false
+    t.integer  "resurrection_mod",   limit: 4, default: 0, null: false
+    t.integer  "sneak_attack_mod",   limit: 4, default: 0, null: false
+    t.integer  "stealth_mod",        limit: 4, default: 0, null: false
+    t.integer  "surprise_mod",       limit: 4, default: 0, null: false
+    t.integer  "traps_mod",          limit: 4, default: 0, null: false
+    t.integer  "turn_undead_mod",    limit: 8, default: 0, null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+  end
+
+  create_table "attributes", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+    t.string   "abbreviation", limit: 3, null: false
+    t.string   "description",  limit: 3, null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
   create_table "campaign_invitations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.text     "message",     limit: 65535
     t.boolean  "completed",                 default: false, null: false
@@ -266,13 +309,13 @@ ActiveRecord::Schema.define(version: 20171002194635) do
   create_table "character_journals", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.integer  "current_level", limit: 4
     t.integer  "current_exp",   limit: 4
+    t.boolean  "active",                  default: true, null: false
     t.integer  "strength",      limit: 4, default: 0,    null: false
     t.integer  "dexterity",     limit: 4, default: 0,    null: false
     t.integer  "constitution",  limit: 4, default: 0,    null: false
     t.integer  "intelligence",  limit: 4, default: 0,    null: false
     t.integer  "wisdom",        limit: 4, default: 0,    null: false
     t.integer  "charisma",      limit: 4, default: 0,    null: false
-    t.boolean  "active",                  default: true, null: false
     t.integer  "character_id",  limit: 8,                null: false
     t.integer  "alignment_id",  limit: 8,                null: false
     t.datetime "created_at",                             null: false
@@ -430,12 +473,12 @@ ActiveRecord::Schema.define(version: 20171002194635) do
   add_index "characters", ["user_id"], name: "index_characters_on_user_id", using: :btree
 
   create_table "charisma_mods", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
-    t.integer  "value",         limit: 4,                null: false
-    t.integer  "followers_mod", limit: 4,  default: 0,   null: false
-    t.integer  "reaction_mod",  limit: 4,  default: 0,   null: false
-    t.string   "undead_mod",    limit: 10, default: "0", null: false
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
+    t.integer  "value",         limit: 4,             null: false
+    t.integer  "followers_mod", limit: 4, default: 0, null: false
+    t.integer  "reaction_mod",  limit: 4, default: 0, null: false
+    t.integer  "undead_mod",    limit: 8, default: 0, null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
   end
 
   create_table "constitution_mods", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
