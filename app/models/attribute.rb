@@ -1,3 +1,3 @@
 class Attribute < ActiveRecord::Base
-    has_many :attribute_mods
+    has_many :attribute_modifiers
 end

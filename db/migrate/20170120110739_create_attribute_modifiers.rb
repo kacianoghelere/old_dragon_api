@@ -1,6 +1,6 @@
-class CreateAttributeMods < ActiveRecord::Migration
+class CreateAttributeModifiers < ActiveRecord::Migration
   def change
-    create_table :attribute_mods, id: :bigint do |t|
+    create_table :attribute_modifiers, id: :bigint do |t|
       t.integer :attribute_id,        limit: 8,              null: false
       t.integer :value,               limit: 4,              null: false
       t.integer :armor_class_mod,     limit: 4, default: 0,  null: false
@@ -34,5 +34,6 @@ class CreateAttributeMods < ActiveRecord::Migration
       t.string  :turn_undead_mod,     limit: 5, default: '', null: false
       t.timestamps null: false
     end
+    add_index :attribute_modifiers, [:attribute_id, :value], unique: true
   end
 end

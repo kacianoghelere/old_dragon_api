@@ -45,47 +45,50 @@ ActiveRecord::Schema.define(version: 20171002194635) do
   add_index "armors", ["origin_id"], name: "index_armors_on_origin_id", using: :btree
   add_index "armors", ["user_id"], name: "index_armors_on_user_id", using: :btree
 
-  create_table "attribute_mods", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
-    t.integer  "attribute_id",       limit: 8,             null: false
-    t.integer  "value",              limit: 4,             null: false
-    t.integer  "armor_class_mod",    limit: 4, default: 0, null: false
-    t.integer  "climb_mod",          limit: 4, default: 0, null: false
-    t.integer  "damage_mod",         limit: 4, default: 0, null: false
-    t.integer  "followers_mod",      limit: 4, default: 0, null: false
-    t.integer  "hitpoints_mod",      limit: 4, default: 0, null: false
-    t.integer  "languages_mod",      limit: 4, default: 0, null: false
-    t.integer  "learn_magic_mod",    limit: 4, default: 0, null: false
-    t.integer  "lockpick_mod",       limit: 4, default: 0, null: false
-    t.integer  "magic_circle_1_mod", limit: 4, default: 0, null: false
-    t.integer  "magic_circle_2_mod", limit: 4, default: 0, null: false
-    t.integer  "magic_circle_3_mod", limit: 4, default: 0, null: false
-    t.integer  "magic_circle_4_mod", limit: 4, default: 0, null: false
-    t.integer  "magic_circle_5_mod", limit: 4, default: 0, null: false
-    t.integer  "magic_circle_6_mod", limit: 4, default: 0, null: false
-    t.integer  "magic_circle_7_mod", limit: 4, default: 0, null: false
-    t.integer  "magic_circle_8_mod", limit: 4, default: 0, null: false
-    t.integer  "magic_circle_9_mod", limit: 4, default: 0, null: false
-    t.integer  "melee_attack_mod",   limit: 4, default: 0, null: false
-    t.integer  "perception_mod",     limit: 4, default: 0, null: false
-    t.integer  "pickpocket_mod",     limit: 4, default: 0, null: false
-    t.integer  "protection_mod",     limit: 4, default: 0, null: false
-    t.integer  "ranged_attack_mod",  limit: 4, default: 0, null: false
-    t.integer  "reaction_mod",       limit: 4, default: 0, null: false
-    t.integer  "resurrection_mod",   limit: 4, default: 0, null: false
-    t.integer  "sneak_attack_mod",   limit: 4, default: 0, null: false
-    t.integer  "stealth_mod",        limit: 4, default: 0, null: false
-    t.integer  "surprise_mod",       limit: 4, default: 0, null: false
-    t.integer  "traps_mod",          limit: 4, default: 0, null: false
-    t.integer  "turn_undead_mod",    limit: 8, default: 0, null: false
-    t.datetime "created_at",                               null: false
-    t.datetime "updated_at",                               null: false
+  create_table "attribute_modifiers", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+    t.integer  "attribute_id",        limit: 8,              null: false
+    t.integer  "value",               limit: 4,              null: false
+    t.integer  "armor_class_mod",     limit: 4, default: 0,  null: false
+    t.integer  "climb_mod",           limit: 4, default: 0,  null: false
+    t.integer  "damage_mod",          limit: 4, default: 0,  null: false
+    t.integer  "followers_mod",       limit: 4, default: 0,  null: false
+    t.integer  "hitpoints_mod",       limit: 4, default: 0,  null: false
+    t.integer  "extra_languages_mod", limit: 4, default: 0,  null: false
+    t.integer  "learn_magic_mod",     limit: 4, default: 0,  null: false
+    t.integer  "lockpick_mod",        limit: 4, default: 0,  null: false
+    t.integer  "extra_spells_1_mod",  limit: 4, default: 0,  null: false
+    t.integer  "extra_spells_2_mod",  limit: 4, default: 0,  null: false
+    t.integer  "extra_spells_3_mod",  limit: 4, default: 0,  null: false
+    t.integer  "extra_spells_4_mod",  limit: 4, default: 0,  null: false
+    t.integer  "extra_spells_5_mod",  limit: 4, default: 0,  null: false
+    t.integer  "extra_spells_6_mod",  limit: 4, default: 0,  null: false
+    t.integer  "extra_spells_7_mod",  limit: 4, default: 0,  null: false
+    t.integer  "extra_spells_8_mod",  limit: 4, default: 0,  null: false
+    t.integer  "extra_spells_9_mod",  limit: 4, default: 0,  null: false
+    t.integer  "melee_attack_mod",    limit: 4, default: 0,  null: false
+    t.integer  "perception_mod",      limit: 4, default: 0,  null: false
+    t.integer  "pickpocket_mod",      limit: 4, default: 0,  null: false
+    t.integer  "protection_mod",      limit: 4, default: 0,  null: false
+    t.integer  "ranged_attack_mod",   limit: 4, default: 0,  null: false
+    t.integer  "reaction_mod",        limit: 4, default: 0,  null: false
+    t.integer  "resurrection_mod",    limit: 4, default: 0,  null: false
+    t.integer  "sneak_attack_mod",    limit: 4, default: 0,  null: false
+    t.integer  "stealth_mod",         limit: 4, default: 0,  null: false
+    t.integer  "surprise_mod",        limit: 4, default: 0,  null: false
+    t.integer  "traps_mod",           limit: 4, default: 0,  null: false
+    t.string   "turn_undead_mod",     limit: 5, default: "", null: false
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
   end
 
+  add_index "attribute_modifiers", ["attribute_id", "value"], name: "index_attribute_modifiers_on_attribute_id_and_value", unique: true, using: :btree
+
   create_table "attributes", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
-    t.string   "abbreviation", limit: 3, null: false
-    t.string   "description",  limit: 3, null: false
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string   "abbreviation", limit: 3,   null: false
+    t.string   "name",         limit: 20,  null: false
+    t.string   "description",  limit: 100, null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "campaign_invitations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
@@ -175,6 +178,26 @@ ActiveRecord::Schema.define(version: 20171002194635) do
 
   add_index "campaigns", ["user_id"], name: "index_campaigns_on_user_id", using: :btree
   add_index "campaigns", ["uuid"], name: "index_campaigns_on_uuid", using: :btree
+
+  create_table "character_attributes", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+    t.integer  "strength",     limit: 8, default: 0, null: false
+    t.integer  "dexterity",    limit: 8, default: 0, null: false
+    t.integer  "constitution", limit: 8, default: 0, null: false
+    t.integer  "intelligence", limit: 8, default: 0, null: false
+    t.integer  "wisdom",       limit: 8, default: 0, null: false
+    t.integer  "charisma",     limit: 8, default: 0, null: false
+    t.integer  "character_id", limit: 8,             null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+  end
+
+  add_index "character_attributes", ["character_id"], name: "index_character_attributes_on_character_id", using: :btree
+  add_index "character_attributes", ["charisma"], name: "index_character_attributes_on_charisma", using: :btree
+  add_index "character_attributes", ["constitution"], name: "index_character_attributes_on_constitution", using: :btree
+  add_index "character_attributes", ["dexterity"], name: "index_character_attributes_on_dexterity", using: :btree
+  add_index "character_attributes", ["intelligence"], name: "index_character_attributes_on_intelligence", using: :btree
+  add_index "character_attributes", ["strength"], name: "index_character_attributes_on_strength", using: :btree
+  add_index "character_attributes", ["wisdom"], name: "index_character_attributes_on_wisdom", using: :btree
 
   create_table "character_class_armor_types", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.integer  "character_class_id", limit: 8, null: false
@@ -310,12 +333,6 @@ ActiveRecord::Schema.define(version: 20171002194635) do
     t.integer  "current_level", limit: 4
     t.integer  "current_exp",   limit: 4
     t.boolean  "active",                  default: true, null: false
-    t.integer  "strength",      limit: 4, default: 0,    null: false
-    t.integer  "dexterity",     limit: 4, default: 0,    null: false
-    t.integer  "constitution",  limit: 4, default: 0,    null: false
-    t.integer  "intelligence",  limit: 4, default: 0,    null: false
-    t.integer  "wisdom",        limit: 4, default: 0,    null: false
-    t.integer  "charisma",      limit: 4, default: 0,    null: false
     t.integer  "character_id",  limit: 8,                null: false
     t.integer  "alignment_id",  limit: 8,                null: false
     t.datetime "created_at",                             null: false
@@ -835,6 +852,7 @@ ActiveRecord::Schema.define(version: 20171002194635) do
   add_foreign_key "armors", "armor_types"
   add_foreign_key "armors", "origins"
   add_foreign_key "armors", "users"
+  add_foreign_key "attribute_modifiers", "attributes"
   add_foreign_key "campaign_invitations", "campaigns"
   add_foreign_key "campaign_invitations", "users"
   add_foreign_key "campaign_journals", "campaigns"
@@ -845,6 +863,7 @@ ActiveRecord::Schema.define(version: 20171002194635) do
   add_foreign_key "campaign_pages", "campaigns"
   add_foreign_key "campaign_pages", "page_categories"
   add_foreign_key "campaigns", "users"
+  add_foreign_key "character_attributes", "characters"
   add_foreign_key "character_class_armor_types", "armor_types"
   add_foreign_key "character_class_armor_types", "character_classes"
   add_foreign_key "character_class_evolutions", "character_classes"

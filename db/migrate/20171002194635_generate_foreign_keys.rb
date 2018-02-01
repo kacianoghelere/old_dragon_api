@@ -4,6 +4,7 @@ class GenerateForeignKeys < ActiveRecord::Migration
     add_foreign_key :armors, :armor_types
     add_foreign_key :armors, :origins
     add_foreign_key :armors, :users
+    add_foreign_key :attribute_modifiers, :attributes
     add_foreign_key :campaign_invitations, :campaigns
     add_foreign_key :campaign_invitations, :users
     add_foreign_key :campaign_journals, :campaigns
@@ -14,6 +15,7 @@ class GenerateForeignKeys < ActiveRecord::Migration
     add_foreign_key :campaign_pages, :campaigns
     add_foreign_key :campaign_pages, :page_categories
     add_foreign_key :campaigns, :users
+    add_foreign_key :character_attributes, :characters
     add_foreign_key :character_class_armor_types, :armor_types
     add_foreign_key :character_class_armor_types, :character_classes
     add_foreign_key :character_class_evolutions, :character_classes
