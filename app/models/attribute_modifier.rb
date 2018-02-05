@@ -1,4 +1,4 @@
 class AttributeModifier < ActiveRecord::Base
-    belongs_to :base_attribute, class_name: 'Attribute'
-    belongs_to :character_attribute
+  belongs_to :base_attribute, class_name: 'Attribute'
+  has_many :character_attributes
 end

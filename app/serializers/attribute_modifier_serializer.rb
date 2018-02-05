@@ -1,0 +1,4 @@
+class AttributeModifierSerializer < ActiveModel::Serializer
+  attributes :value, :armor_class_mod, :climb_mod, :damage_mod, :followers_mod, :hitpoints_mod, :extra_languages_mod, :learn_magic_mod, :lockpick_mod, :extra_spells_1_mod, :extra_spells_2_mod, :extra_spells_3_mod, :extra_spells_4_mod, :extra_spells_5_mod, :extra_spells_6_mod, :extra_spells_7_mod, :extra_spells_8_mod, :extra_spells_9_mod, :melee_attack_mod, :perception_mod, :pickpocket_mod, :protection_mod, :ranged_attack_mod, :reaction_mod, :resurrection_mod, :sneak_attack_mod, :stealth_mod, :surprise_mod, :traps_mod, :turn_undead_mod
+  belongs_to :base_attribute, key: :attribute, serializer: AttributeSerializer
+end

@@ -1,4 +1,4 @@
 class CharacterAttributeSerializer < ActiveModel::Serializer
-  attributes :id, :strength, :dexterity, :constitution, :intelligence, :wisdom
-  has_one :character
+  attributes :id, :strength, :dexterity, :constitution, :intelligence, :wisdom, :charisma
+  belongs_to :character
 end

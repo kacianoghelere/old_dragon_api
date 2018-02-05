@@ -17,7 +17,13 @@ class API::V1::CampaignsController  < ApplicationController
   # GET /campaigns/1.json
   def show
     render json: @campaign, include: [
-      '*', characters: [:class, :race, :player, status: [:alignment]]
+      '*',
+      characters: [
+        :class,
+        :race,
+        :player,
+        status: [:alignment]
+      ]
     ]
   end
 
