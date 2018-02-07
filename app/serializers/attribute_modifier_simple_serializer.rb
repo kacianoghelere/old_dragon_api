@@ -1,4 +1,4 @@
 class AttributeModifierSimpleSerializer < ActiveModel::Serializer
   attributes :value
-  has_one :base_attribute, key: :attribute, serializer: AttributeSimpleSerializer
+  belongs_to :base_attribute, serializer: AttributeSimpleSerializer
 end

@@ -17,49 +17,56 @@ class API::V1::CharactersController  < ApplicationController
   def show
     render json: @character, include: [
       '**',
-      # campaigns: {
-      #   :dungeonMaster
-      # },
-      # status: {
-      #   :alignment
-      # },
-      # character_attribute: {
-      #   strength:     {:base_attribute},
-      #   dexterity:    {:base_attribute},
-      #   constitution: {:base_attribute},
-      #   intelligence: {:base_attribute},
-      #   wisdom:       {:base_attribute},
-      #   charisma:     {:base_attribute}
-      # }
-      campaigns: {
-        include: [:dungeonMaster]
-      },
-      status: {
-        include: [:alignment]
-      },
-      character_attribute: {
-        include: [
-          strength: {
-            include: [:base_attribute]
-          },
-          dexterity: {
-            include: [:base_attribute]
-          },
-          constitution: {
-            include: [:base_attribute]
-          },
-          intelligence: {
-            include: [:base_attribute]
-          },
-          wisdom: {
-            include: [:base_attribute]
-          },
-          charisma: {
-            include: [:base_attribute]
-          }
-        ]
-      }
+      'campaigns',
+      'campaigns.dungeonMaster',
+      'status',
+      'status.alignment',
+      'character_attribute',
+      'character_attribute.strength',
+      'character_attribute.strength.base_attribute',
+      'character_attribute.dexterity',
+      'character_attribute.dexterity.base_attribute',
+      'character_attribute.constitution',
+      'character_attribute.constitution.base_attribute',
+      'character_attribute.intelligence',
+      'character_attribute.intelligence.base_attribute',
+      'character_attribute.wisdom',
+      'character_attribute.wisdom.base_attribute',
+      'character_attribute.charisma',
+      'character_attribute.charisma.base_attribute',
     ]
+
+    # render json: @character, include: [
+    #   '**',
+    #   campaigns: {
+    #     include: [:dungeonMaster]
+    #   },
+    #   status: {
+    #     include: [:alignment]
+    #   },
+    #   character_attribute: {
+    #     include: [
+    #       strength: {
+    #         include: [:base_attribute]
+    #       },
+    #       dexterity: {
+    #         include: [:base_attribute]
+    #       },
+    #       constitution: {
+    #         include: [:base_attribute]
+    #       },
+    #       intelligence: {
+    #         include: [:base_attribute]
+    #       },
+    #       wisdom: {
+    #         include: [:base_attribute]
+    #       },
+    #       charisma: {
+    #         include: [:base_attribute]
+    #       }
+    #     ]
+    #   }
+    # ]
   end
 
   # POST /characters

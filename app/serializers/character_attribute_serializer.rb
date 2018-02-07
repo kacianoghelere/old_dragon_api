@@ -1,5 +1,4 @@
 class CharacterAttributeSerializer < ActiveModel::Serializer
-  attributes :strength, :dexterity, :constitution, :intelligence, :wisdom, :charisma
   has_one :strength, serializer: AttributeModifierSimpleSerializer
   has_one :dexterity, serializer: AttributeModifierSimpleSerializer
   has_one :constitution, serializer: AttributeModifierSimpleSerializer

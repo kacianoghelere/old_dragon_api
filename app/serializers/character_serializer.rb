@@ -9,8 +9,7 @@ class CharacterSerializer < ActiveModel::Serializer
   belongs_to :character_specialization,
               serializer: CharacterSpecializationSimpleSerializer,
               key: :specialization
-  has_many :campaigns,
-              serializer: CampaignSimpleSerializer
+  has_many :campaigns, serializer: CampaignSimpleSerializer
   has_one :character_attribute,
               serializer: CharacterAttributeSimpleSerializer,
               key: :attributes
