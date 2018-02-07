@@ -24,12 +24,12 @@ class API::V1::CharactersController  < ApplicationController
         :alignment
       ],
       character_attribute: [
-        strength:     [:attribute],
-        dexterity:    [:attribute],
-        constitution: [:attribute],
-        intelligence: [:attribute],
-        wisdom:       [:attribute],
-        charisma:     [:attribute]
+        strength:     [:base_attribute],
+        dexterity:    [:base_attribute],
+        constitution: [:base_attribute],
+        intelligence: [:base_attribute],
+        wisdom:       [:base_attribute],
+        charisma:     [:base_attribute]
       ]
     ]
   end

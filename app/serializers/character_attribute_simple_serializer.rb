@@ -1,9 +1,11 @@
 class CharacterAttributeSimpleSerializer < ActiveModel::Serializer
-  belongs_to :strength,     serializer: AttributeModifierSimpleSerializer
-  belongs_to :dexterity,    serializer: AttributeModifierSimpleSerializer
-  belongs_to :constitution, serializer: AttributeModifierSimpleSerializer
-  belongs_to :intelligence, serializer: AttributeModifierSimpleSerializer
-  belongs_to :wisdom,       serializer: AttributeModifierSimpleSerializer
-  belongs_to :charisma,     serializer: AttributeModifierSimpleSerializer
-  belongs_to :character
+  attributes :strength, :dexterity, :constitution, :intelligence, :wisdom, :charisma
+  has_one :strength, serializer: AttributeModifierSimpleSerializer
+  has_one :dexterity, serializer: AttributeModifierSimpleSerializer
+  has_one :constitution, serializer: AttributeModifierSimpleSerializer
+  has_one :intelligence, serializer: AttributeModifierSimpleSerializer
+  has_one :wisdom, serializer: AttributeModifierSimpleSerializer
+  has_one :charisma, serializer: AttributeModifierSimpleSerializer
+
+  has_one :character, serializer: UserSimpleSerializer
 end
