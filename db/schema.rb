@@ -180,24 +180,14 @@ ActiveRecord::Schema.define(version: 20171002194635) do
   add_index "campaigns", ["uuid"], name: "index_campaigns_on_uuid", using: :btree
 
   create_table "character_attributes", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
-    t.integer  "strength_id",     limit: 8, default: 0, null: false
-    t.integer  "dexterity_id",    limit: 8, default: 0, null: false
-    t.integer  "constitution_id", limit: 8, default: 0, null: false
-    t.integer  "intelligence_id", limit: 8, default: 0, null: false
-    t.integer  "wisdom_id",       limit: 8, default: 0, null: false
-    t.integer  "charisma_id",     limit: 8, default: 0, null: false
-    t.integer  "character_id",    limit: 8,             null: false
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
+    t.integer  "attribute_modifier_id", limit: 8, default: 0, null: false
+    t.integer  "character_id",          limit: 8,             null: false
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
   end
 
+  add_index "character_attributes", ["attribute_modifier_id"], name: "index_character_attributes_on_attribute_modifier_id", using: :btree
   add_index "character_attributes", ["character_id"], name: "index_character_attributes_on_character_id", using: :btree
-  add_index "character_attributes", ["charisma_id"], name: "index_character_attributes_on_charisma_id", using: :btree
-  add_index "character_attributes", ["constitution_id"], name: "index_character_attributes_on_constitution_id", using: :btree
-  add_index "character_attributes", ["dexterity_id"], name: "index_character_attributes_on_dexterity_id", using: :btree
-  add_index "character_attributes", ["intelligence_id"], name: "index_character_attributes_on_intelligence_id", using: :btree
-  add_index "character_attributes", ["strength_id"], name: "index_character_attributes_on_strength_id", using: :btree
-  add_index "character_attributes", ["wisdom_id"], name: "index_character_attributes_on_wisdom_id", using: :btree
 
   create_table "character_class_armor_types", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.integer  "character_class_id", limit: 8, null: false
@@ -863,6 +853,7 @@ ActiveRecord::Schema.define(version: 20171002194635) do
   add_foreign_key "campaign_pages", "campaigns"
   add_foreign_key "campaign_pages", "page_categories"
   add_foreign_key "campaigns", "users"
+  add_foreign_key "character_attributes", "attribute_modifiers"
   add_foreign_key "character_attributes", "characters"
   add_foreign_key "character_class_armor_types", "armor_types"
   add_foreign_key "character_class_armor_types", "character_classes"

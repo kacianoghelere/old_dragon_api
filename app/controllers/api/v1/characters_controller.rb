@@ -23,13 +23,8 @@ class API::V1::CharactersController  < ApplicationController
       status: [
         :alignment
       ],
-      character_attribute: [
-        strength:     [:attribute],
-        dexterity:    [:attribute],
-        constitution: [:attribute],
-        intelligence: [:attribute],
-        wisdom:       [:attribute],
-        charisma:     [:attribute]
+      attribute_modifiers: [
+        :base_attribute
       ]
     ]
   end

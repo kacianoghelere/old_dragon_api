@@ -36,7 +36,7 @@ class Character < ActiveRecord::Base
   has_many :campaigns, through: :campaign_members
   has_many :journals, class_name: 'CharacterJournal'
   has_many :character_attributes
-  has_many :attributes_modifiers, through: :character_attributes
+  has_many :attribute_modifiers, through: :character_attributes
   has_one :status, -> { where active: true }, class_name: 'CharacterJournal'
   has_one :strength, -> { where attribute_id: 1 }, class_name: 'AttributesModifier'
   has_one :dexterity, -> { where attribute_id: 2 }, class_name: 'AttributesModifier'
