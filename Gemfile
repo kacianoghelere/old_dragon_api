@@ -11,7 +11,7 @@ gem 'mysql2'
 
 gem 'activerecord-mysql-awesome'
 
-gem 'active_model_serializers'
+gem 'active_model_serializers', '~> 0.10.6'
 
 gem 'kaminari'
 
