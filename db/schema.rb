@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 20171002194635) do
   add_index "armors", ["user_id"], name: "index_armors_on_user_id", using: :btree
 
   create_table "attribute_modifiers", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
-    t.integer  "attribute_id",        limit: 8,              null: false
+    t.integer  "base_attribute_id",   limit: 8,              null: false
     t.integer  "value",               limit: 4,              null: false
     t.integer  "armor_class_mod",     limit: 4, default: 0,  null: false
     t.integer  "climb_mod",           limit: 4, default: 0,  null: false
@@ -81,9 +81,10 @@ ActiveRecord::Schema.define(version: 20171002194635) do
     t.datetime "updated_at",                                 null: false
   end
 
-  add_index "attribute_modifiers", ["attribute_id", "value"], name: "index_attribute_modifiers_on_attribute_id_and_value", unique: true, using: :btree
+  add_index "attribute_modifiers", ["base_attribute_id", "value"], name: "index_attribute_modifiers_on_base_attribute_id_and_value", unique: true, using: :btree
+  add_index "attribute_modifiers", ["base_attribute_id"], name: "index_attribute_modifiers_on_base_attribute_id", using: :btree
 
-  create_table "attributes", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "base_attributes", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "abbreviation", limit: 3,   null: false
     t.string   "name",         limit: 20,  null: false
     t.string   "description",  limit: 100, null: false
@@ -191,6 +192,7 @@ ActiveRecord::Schema.define(version: 20171002194635) do
     t.datetime "updated_at",                            null: false
   end
 
+  add_index "character_attributes", ["character_id"], name: "character_attributes_character_uk", unique: true, using: :btree
   add_index "character_attributes", ["character_id"], name: "index_character_attributes_on_character_id", using: :btree
   add_index "character_attributes", ["charisma_id"], name: "index_character_attributes_on_charisma_id", using: :btree
   add_index "character_attributes", ["constitution_id"], name: "index_character_attributes_on_constitution_id", using: :btree
@@ -852,7 +854,7 @@ ActiveRecord::Schema.define(version: 20171002194635) do
   add_foreign_key "armors", "armor_types"
   add_foreign_key "armors", "origins"
   add_foreign_key "armors", "users"
-  add_foreign_key "attribute_modifiers", "attributes"
+  add_foreign_key "attribute_modifiers", "base_attributes"
   add_foreign_key "campaign_invitations", "campaigns"
   add_foreign_key "campaign_invitations", "users"
   add_foreign_key "campaign_journals", "campaigns"

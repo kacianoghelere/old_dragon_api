@@ -1313,12 +1313,12 @@ WisdomMod.create!([
   {value: 29, protection_mod: 9, magic_circle_1_mod: 3, magic_circle_2_mod: 3, magic_circle_3_mod: 2}
 ])
 
-strength     = Attribute.create!(abbreviation: 'FOR', name: 'Força',        description: 'Força')
-dexterity    = Attribute.create!(abbreviation: 'DES', name: 'Destreza',     description: 'Destreza')
-constitution = Attribute.create!(abbreviation: 'CON', name: 'Constituição', description: 'Constituição')
-intelligence = Attribute.create!(abbreviation: 'INT', name: 'Inteligência', description: 'Inteligência')
-wisdom       = Attribute.create!(abbreviation: 'SAB', name: 'Sabedoria',    description: 'Sabedoria')
-charisma     = Attribute.create!(abbreviation: 'CAR', name: 'Carisma',      description: 'Carisma')
+strength     = BaseAttribute.create!(abbreviation: 'FOR', name: 'Força',        description: 'Força')
+dexterity    = BaseAttribute.create!(abbreviation: 'DES', name: 'Destreza',     description: 'Destreza')
+constitution = BaseAttribute.create!(abbreviation: 'CON', name: 'Constituição', description: 'Constituição')
+intelligence = BaseAttribute.create!(abbreviation: 'INT', name: 'Inteligência', description: 'Inteligência')
+wisdom       = BaseAttribute.create!(abbreviation: 'SAB', name: 'Sabedoria',    description: 'Sabedoria')
+charisma     = BaseAttribute.create!(abbreviation: 'CAR', name: 'Carisma',      description: 'Carisma')
 
 
 str_mods = strength.attribute_modifiers

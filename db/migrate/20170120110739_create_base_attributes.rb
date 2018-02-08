@@ -1,6 +1,6 @@
-class CreateAttributes < ActiveRecord::Migration
+class CreateBaseAttributes < ActiveRecord::Migration
   def change
-    create_table :attributes, id: :bigint do |t|
+    create_table :base_attributes, id: :bigint do |t|
       t.string :abbreviation, limit: 3,   null: false
       t.string :name,         limit: 20,  null: false
       t.string :description,  limit: 100, null: false

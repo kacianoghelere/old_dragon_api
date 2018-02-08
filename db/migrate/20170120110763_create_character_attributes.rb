@@ -18,5 +18,6 @@ class CreateCharacterAttributes < ActiveRecord::Migration
     add_index :character_attributes, [:wisdom_id],       using: :btree
     add_index :character_attributes, [:charisma_id],     using: :btree
     add_index :character_attributes, [:character_id],    using: :btree
+    add_index :character_attributes, [:character_id], unique: true, name: 'character_attributes_character_uk'
   end
 end
