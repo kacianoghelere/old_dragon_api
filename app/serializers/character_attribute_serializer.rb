@@ -5,6 +5,4 @@ class CharacterAttributeSerializer < ActiveModel::Serializer
   has_one :intelligence, serializer: AttributeModifierSimpleSerializer
   has_one :wisdom, serializer: AttributeModifierSimpleSerializer
   has_one :charisma, serializer: AttributeModifierSimpleSerializer
-
-  has_one :character, serializer: UserSimpleSerializer
 end
