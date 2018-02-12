@@ -16,18 +16,6 @@ class API::V1::CharactersController  < ApplicationController
   # GET /characters/1
   def show
     render json: @character, include: [
-<<<<<<< HEAD
-      '*',
-      campaigns: [
-        :dungeonMaster
-      ],
-      status: [
-        :alignment
-      ],
-      attribute_modifiers: [
-        :base_attribute
-      ]
-=======
       '**',
       campaigns: {
         include: [:dungeonMaster]
@@ -36,7 +24,6 @@ class API::V1::CharactersController  < ApplicationController
         include: [:alignment]
       },
       character_attribute: []
->>>>>>> 6e8396d94dceb280c51077d1d6dd4d0db21b0203
     ]
   end
 
