@@ -10,14 +10,7 @@ class API::V1::CampaignCharactersController < ApplicationController
       render json: @characters, each_serializer: CharacterSimpleSerializer, include: [
         '*',
         character: [
-          character_attribute: [
-            :strength,
-            :dexterity,
-            :constitution,
-            :intelligence,
-            :wisdom,
-            :charisma
-          ]
+          character_attribute: []
         ]
       ]
     else

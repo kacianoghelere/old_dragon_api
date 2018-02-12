@@ -23,28 +23,7 @@ class API::V1::CharactersController  < ApplicationController
       status: {
         include: [:alignment]
       },
-      character_attribute: {
-        include: [
-          strength: {
-            include: [:base_attribute]
-          },
-          dexterity: {
-            include: [:base_attribute]
-          },
-          constitution: {
-            include: [:base_attribute]
-          },
-          intelligence: {
-            include: [:base_attribute]
-          },
-          wisdom: {
-            include: [:base_attribute]
-          },
-          charisma: {
-            include: [:base_attribute]
-          }
-        ]
-      }
+      character_attribute: []
     ]
   end
 

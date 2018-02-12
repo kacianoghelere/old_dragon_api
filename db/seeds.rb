@@ -1539,12 +1539,12 @@ jon = Character.create!({
   user: player2
 })
 CharacterAttribute.create!({
-  strength:     str_12,
-  dexterity:    dex_14,
-  constitution: con_11,
-  intelligence: int_9,
-  wisdom:       wis_8,
-  charisma:     char_14,
+  strength:     12,
+  dexterity:    14,
+  constitution: 11,
+  intelligence: 9,
+  wisdom:       8,
+  charisma:     14,
   character:    jon
 })
 jon.journals.create!({
@@ -1571,12 +1571,12 @@ jorah = Character.create!({
   user: player3
 })
 CharacterAttribute.create!({
-  strength:     str_11,
-  dexterity:    dex_13,
-  constitution: con_10,
-  intelligence: int_11,
-  wisdom:       wis_14,
-  charisma:     char_11,
+  strength:     11,
+  dexterity:    13,
+  constitution: 10,
+  intelligence: 11,
+  wisdom:       14,
+  charisma:     11,
   character:    jorah
 })
 jorah.journals.create!([
@@ -1630,12 +1630,12 @@ sandor = Character.create!({
   user: player1
 })
 CharacterAttribute.create!({
-  strength:     str_16,
-  dexterity:    dex_11,
-  constitution: con_13,
-  intelligence: int_11,
-  wisdom:       wis_10,
-  charisma:     char_9,
+  strength:     16,
+  dexterity:    11,
+  constitution: 13,
+  intelligence: 11,
+  wisdom:       10,
+  charisma:     9,
   character:    sandor
 })
 sandor.journals.create!([
@@ -1698,12 +1698,12 @@ tormund = Character.create!({
   user: player4
 })
 CharacterAttribute.create!({
-  strength:     str_14,
-  dexterity:    dex_13,
-  constitution: con_11,
-  intelligence: int_11,
-  wisdom:       wis_12,
-  charisma:     char_10,
+  strength:     14,
+  dexterity:    13,
+  constitution: 11,
+  intelligence: 11,
+  wisdom:       12,
+  charisma:     10,
   character:    tormund
 })
 tormund.journals.create!([
@@ -1753,12 +1753,12 @@ thoros = Character.create!({
   user: player5
 })
 CharacterAttribute.create!({
-  strength:     str_12,
-  dexterity:    dex_10,
-  constitution: con_10,
-  intelligence: int_13,
-  wisdom:       wis_14,
-  charisma:     char_11,
+  strength:     12,
+  dexterity:    10,
+  constitution: 10,
+  intelligence: 13,
+  wisdom:       14,
+  charisma:     11,
   character:    thoros
 })
 thoros.journals.create!([

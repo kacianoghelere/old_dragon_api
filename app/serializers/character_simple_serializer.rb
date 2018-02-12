@@ -1,5 +1,5 @@
 class CharacterSimpleSerializer < ActiveModel::Serializer
-  attributes :id, :name, :title, :quote, :picture
+  attributes :id, :name, :flat_name, :title, :quote, :picture
   belongs_to :character_class, serializer: CharacterClassSimpleSerializer, 
                                key: :class
   belongs_to :character_race, serializer: CharacterRaceSimpleSerializer,

@@ -11,7 +11,7 @@ class CharacterSerializer < ActiveModel::Serializer
               key: :specialization
   has_many :campaigns, serializer: CampaignSimpleSerializer
   has_one :character_attribute,
-              serializer: CharacterAttributeSimpleSerializer,
+              serializer: CharacterAttributeSerializer,
               key: :attributes
   has_one :status,
               serializer: CharacterJournalSerializer
