@@ -1,4 +1,3 @@
 class CharacterAttributeSerializer < ActiveModel::Serializer
-  attributes :id
-  has_one :attribute_modifier, serializer: AttributeModifierSerializer
+  attributes :strength, :dexterity, :constitution, :intelligence, :wisdom, :charisma
 end

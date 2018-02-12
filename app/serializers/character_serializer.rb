@@ -9,10 +9,9 @@ class CharacterSerializer < ActiveModel::Serializer
   belongs_to :character_specialization,
               serializer: CharacterSpecializationSimpleSerializer,
               key: :specialization
-  has_many :campaigns,
-              serializer: CampaignSimpleSerializer
-  has_many :attribute_modifiers,
-              serializer: AttributeModifierSerializer,
+  has_many :campaigns, serializer: CampaignSimpleSerializer
+  has_one :character_attribute,
+              serializer: CharacterAttributeSerializer,
               key: :attributes
   has_one :status,
               serializer: CharacterJournalSerializer

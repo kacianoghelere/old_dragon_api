@@ -1313,12 +1313,12 @@ WisdomMod.create!([
   {value: 29, protection_mod: 9, magic_circle_1_mod: 3, magic_circle_2_mod: 3, magic_circle_3_mod: 2}
 ])
 
-strength     = Attribute.create!(abbreviation: 'FOR', name: 'Força',        description: 'Força')
-dexterity    = Attribute.create!(abbreviation: 'DES', name: 'Destreza',     description: 'Destreza')
-constitution = Attribute.create!(abbreviation: 'CON', name: 'Constituição', description: 'Constituição')
-intelligence = Attribute.create!(abbreviation: 'INT', name: 'Inteligência', description: 'Inteligência')
-wisdom       = Attribute.create!(abbreviation: 'SAB', name: 'Sabedoria',    description: 'Sabedoria')
-charisma     = Attribute.create!(abbreviation: 'CAR', name: 'Carisma',      description: 'Carisma')
+strength     = BaseAttribute.create!(abbreviation: 'FOR', name: 'Força',        description: 'Força')
+dexterity    = BaseAttribute.create!(abbreviation: 'DES', name: 'Destreza',     description: 'Destreza')
+constitution = BaseAttribute.create!(abbreviation: 'CON', name: 'Constituição', description: 'Constituição')
+intelligence = BaseAttribute.create!(abbreviation: 'INT', name: 'Inteligência', description: 'Inteligência')
+wisdom       = BaseAttribute.create!(abbreviation: 'SAB', name: 'Sabedoria',    description: 'Sabedoria')
+charisma     = BaseAttribute.create!(abbreviation: 'CAR', name: 'Carisma',      description: 'Carisma')
 
 
 str_mods = strength.attribute_modifiers
@@ -1538,14 +1538,15 @@ jon = Character.create!({
   character_race: humans,
   user: player2
 })
-
-jon.character_attributes.create!(attribute_modifier: str_12)
-jon.character_attributes.create!(attribute_modifier: dex_14)
-jon.character_attributes.create!(attribute_modifier: con_11)
-jon.character_attributes.create!(attribute_modifier: int_9)
-jon.character_attributes.create!(attribute_modifier: wis_8)
-jon.character_attributes.create!(attribute_modifier: char_14)
-
+CharacterAttribute.create!({
+  strength:     12,
+  dexterity:    14,
+  constitution: 11,
+  intelligence: 9,
+  wisdom:       8,
+  charisma:     14,
+  character:    jon
+})
 jon.journals.create!({
   current_level: 1,
   current_exp: 0,
@@ -1569,14 +1570,15 @@ jorah = Character.create!({
   character_specialization: warrior,
   user: player3
 })
-
-jorah.character_attributes.create!(attribute_modifier: str_11)
-jorah.character_attributes.create!(attribute_modifier: dex_13)
-jorah.character_attributes.create!(attribute_modifier: con_10)
-jorah.character_attributes.create!(attribute_modifier: int_11)
-jorah.character_attributes.create!(attribute_modifier: wis_14)
-jorah.character_attributes.create!(attribute_modifier: char_11)
-
+CharacterAttribute.create!({
+  strength:     11,
+  dexterity:    13,
+  constitution: 10,
+  intelligence: 11,
+  wisdom:       14,
+  charisma:     11,
+  character:    jorah
+})
 jorah.journals.create!([
   {
     current_level: 1,
@@ -1627,14 +1629,15 @@ sandor = Character.create!({
   character_specialization: barbarian,
   user: player1
 })
-
-sandor.character_attributes.create!(attribute_modifier: str_16)
-sandor.character_attributes.create!(attribute_modifier: dex_11)
-sandor.character_attributes.create!(attribute_modifier: con_13)
-sandor.character_attributes.create!(attribute_modifier: int_11)
-sandor.character_attributes.create!(attribute_modifier: wis_10)
-sandor.character_attributes.create!(attribute_modifier: char_9)
-
+CharacterAttribute.create!({
+  strength:     16,
+  dexterity:    11,
+  constitution: 13,
+  intelligence: 11,
+  wisdom:       10,
+  charisma:     9,
+  character:    sandor
+})
 sandor.journals.create!([
   {
     current_level: 1,
@@ -1694,14 +1697,15 @@ tormund = Character.create!({
   character_race: humans,
   user: player4
 })
-
-tormund.character_attributes.create!(attribute_modifier: str_14)
-tormund.character_attributes.create!(attribute_modifier: dex_13)
-tormund.character_attributes.create!(attribute_modifier: con_11)
-tormund.character_attributes.create!(attribute_modifier: int_11)
-tormund.character_attributes.create!(attribute_modifier: wis_12)
-tormund.character_attributes.create!(attribute_modifier: char_10)
-
+CharacterAttribute.create!({
+  strength:     14,
+  dexterity:    13,
+  constitution: 11,
+  intelligence: 11,
+  wisdom:       12,
+  charisma:     10,
+  character:    tormund
+})
 tormund.journals.create!([
   {
     current_level: 1,
@@ -1748,14 +1752,15 @@ thoros = Character.create!({
   character_race: humans,
   user: player5
 })
-
-thoros.character_attributes.create!(attribute_modifier: str_12)
-thoros.character_attributes.create!(attribute_modifier: dex_10)
-thoros.character_attributes.create!(attribute_modifier: con_10)
-thoros.character_attributes.create!(attribute_modifier: int_13)
-thoros.character_attributes.create!(attribute_modifier: wis_14)
-thoros.character_attributes.create!(attribute_modifier: char_11)
-
+CharacterAttribute.create!({
+  strength:     12,
+  dexterity:    10,
+  constitution: 10,
+  intelligence: 13,
+  wisdom:       14,
+  charisma:     11,
+  character:    thoros
+})
 thoros.journals.create!([
   {
     current_level: 1,

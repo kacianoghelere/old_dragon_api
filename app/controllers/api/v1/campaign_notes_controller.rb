@@ -83,7 +83,7 @@ class API::V1::CampaignNotesController < ApplicationController
     end
 
     def set_campaign
-      @campaign = Campaign.find_by(uuid: params[:campaign_id])
+      @campaign = Campaign.find_by("id = :id OR uuid = :id", id: params[:campaign_id])
     end
 
     def set_note

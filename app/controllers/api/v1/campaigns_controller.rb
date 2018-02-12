@@ -62,7 +62,7 @@ class API::V1::CampaignsController  < ApplicationController
   private
 
     def set_campaign
-      @campaign = Campaign.find_by(uuid: params[:id])
+      @campaign = Campaign.find_by("id = :id OR uuid = :id", id: params[:id])
     end
 
     def create_campaign_params
