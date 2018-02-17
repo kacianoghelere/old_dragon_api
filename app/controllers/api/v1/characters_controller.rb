@@ -10,13 +10,23 @@ class API::V1::CharactersController  < ApplicationController
     else
       @characters = get_current_user.characters
     end
-    render json: @characters
+
+    render json: @characters, include: [
+      '*',
+      campaigns: {
+        include: [:dungeonMaster]
+      },
+      status: {
+        include: [:alignment]
+      },
+      character_attribute: []
+    ]
   end
 
   # GET /characters/1
   def show
     render json: @character, include: [
-      '**',
+      '*',
       campaigns: {
         include: [:dungeonMaster]
       },
@@ -65,7 +75,7 @@ class API::V1::CharactersController  < ApplicationController
     end
 
     def character_params
-      params.require(:character).permit(:name, :title, :weight, :height, :age, 
+      params.require(:character).permit(:name, :title, :weight, :height, :age,
         :description, :character_class_id, :character_race_id, :user_id)
     end
 end
