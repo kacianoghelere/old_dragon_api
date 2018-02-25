@@ -308,7 +308,9 @@ ActiveRecord::Schema.define(version: 20171002194635) do
     t.string   "flat_name",               limit: 45,    null: false
     t.string   "style",                   limit: 45,    null: false
     t.string   "picture",                 limit: 300
-    t.string   "example_picture",         limit: 300
+    t.string   "example_picture_1",       limit: 300
+    t.string   "example_picture_2",       limit: 300
+    t.string   "example_picture_3",       limit: 300
     t.text     "description",             limit: 65535
     t.integer  "dice_id",                 limit: 8,     null: false
     t.integer  "character_class_type_id", limit: 8,     null: false

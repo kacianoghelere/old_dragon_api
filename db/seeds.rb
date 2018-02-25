@@ -347,7 +347,9 @@ cleric = CharacterClass.create!({
   name: "Clérigo",
   style: "ra-ankh",
   picture: "https://orig00.deviantart.net/02d2/f/2013/321/4/b/divine_blessing_by_isdira-d6uneu0.jpg",
-  example_picture: "https://i.pinimg.com/564x/bc/31/b3/bc31b3df2bc2cdd71f78fe1a5afda33d.jpg",
+  example_picture_1: "https://orig00.deviantart.net/02d2/f/2013/321/4/b/divine_blessing_by_isdira-d6uneu0.jpg",
+  example_picture_2: "https://orig00.deviantart.net/02d2/f/2013/321/4/b/divine_blessing_by_isdira-d6uneu0.jpg",
+  example_picture_3: "https://orig00.deviantart.net/02d2/f/2013/321/4/b/divine_blessing_by_isdira-d6uneu0.jpg",
   description: "O clérigo é visto como o líder espiritual de um grupo de "\
     "aventureiros. Dedicado a servir a uma criatura sobrenatural, muitas "\
     "vezes considerada como um deus, o clérigo toma os dogmas desse deus "\
@@ -562,7 +564,9 @@ manOfArms = CharacterClass.create!({
   name: "Homem de Armas",
   style: "ra-battered-axe",
   picture: "http://wallpoper.com/images/00/41/88/66/knights-fight_00418866.jpg",
-  example_picture: "https://i.pinimg.com/564x/4c/da/35/4cda35a526dee024912c7e3da1e0f807.jpg",
+  example_picture_1: "https://i.pinimg.com/564x/4c/da/35/4cda35a526dee024912c7e3da1e0f807.jpg",
+  example_picture_2: "https://i.pinimg.com/564x/4c/da/35/4cda35a526dee024912c7e3da1e0f807.jpg",
+  example_picture_3: "https://i.pinimg.com/564x/4c/da/35/4cda35a526dee024912c7e3da1e0f807.jpg",
   description: "O homem de armas é o especialista em combate. Seu principal "\
     "atributo é a Força, que permite causar um considerável dano em seus "\
     "inimigos. Devido à sua capacidade de resistir aos ferimentos, "\
@@ -721,7 +725,9 @@ thief = CharacterClass.create!({
   style: "ra-hood",
   # picture: "http://sm.ign.com/ign_br/news/n/new-thief-/new-thief-sequel-rumours-quashed-by-developer_aq2f.jpg",
   picture: "https://img.fireden.net/tg/image/1457/18/1457187016507.jpg",
-  example_picture: "https://i.pinimg.com/564x/4d/2c/7e/4d2c7eded5325bab2b70af297d7d888d.jpg",
+  example_picture_1: "https://i.pinimg.com/564x/4d/2c/7e/4d2c7eded5325bab2b70af297d7d888d.jpg",
+  example_picture_2: "https://i.pinimg.com/564x/4d/2c/7e/4d2c7eded5325bab2b70af297d7d888d.jpg",
+  example_picture_3: "https://i.pinimg.com/564x/4d/2c/7e/4d2c7eded5325bab2b70af297d7d888d.jpg",
   description: "O ladrão é um personagem que se especializa em arrombar  "\
     "fechaduras, desarmar armadilhas e  outras atividades furtivas, além de "\
     "roubar, pungar e outras formas ilícitas de enriquecimento. Um bom "\
@@ -935,7 +941,9 @@ mage = CharacterClass.create!({
   style: "ra-burning-meteor",
   # picture: "http://ll-c.ooyala.com/e1/VweTk5YzE6uMVLB0BoRaGmMkCsUVotQN/promo326678796",
   picture: "https://78.media.tumblr.com/tumblr_mcmg4qj6381qjvigio1_1280.jpg",
-  example_picture: "https://i.pinimg.com/564x/45/f2/ae/45f2ae21ceb10c828a896a6a08eed4d1.jpg",
+  example_picture_1: "https://i.pinimg.com/564x/45/f2/ae/45f2ae21ceb10c828a896a6a08eed4d1.jpg",
+  example_picture_2: "https://i.pinimg.com/564x/45/f2/ae/45f2ae21ceb10c828a896a6a08eed4d1.jpg",
+  example_picture_3: "https://i.pinimg.com/564x/45/f2/ae/45f2ae21ceb10c828a896a6a08eed4d1.jpg",
   description: "O mago é um pesquisador de magias arcanas, que as escreve "\
     "em seus grimórios ou em pergaminhos, sendo que os mais experientes "\
     "conseguem criar itens mágicos extraordinários. Por dedicar seu tempo a "\
