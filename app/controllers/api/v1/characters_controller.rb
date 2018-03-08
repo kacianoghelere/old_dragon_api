@@ -67,6 +67,11 @@ class API::V1::CharactersController  < ApplicationController
     head :no_content
   end
 
+  def name
+
+    render json: { name: Faker::Ancient.hero, surname: Faker::GameOfThrones.city }
+  end
+
   private
 
     def set_character

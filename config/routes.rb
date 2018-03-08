@@ -26,7 +26,11 @@ Rails.application.routes.draw do
                                 except: [:new, :edit], as: :pages
       end
       resources :campaign_invitations, except: [:index, :show, :new, :edit]
-      resources :character_classes, except: [:new, :edit]
+      resources :character_classes, except: [:new, :edit] do
+        member do
+          get 'showcase' => 'character_classes#showcase'
+        end
+      end
       resources :character_races, except: [:new, :edit]
       resources :character_specializations, except: [:new, :edit]
       resources :characters, except: [:new, :edit]
@@ -65,8 +69,9 @@ Rails.application.routes.draw do
       resources :page_categories, except: [:new, :edit, :create, :update, :destroy]
       resources :wisdom_mods, except: [:new, :edit]
 
-      get 'character_classes/:id/showcase' => 'character_classes#showcase'
+      
       get 'invitable_users/:campaign_id' => 'users#find_invitable_users'
+      get 'generators/name' => 'generators#name'
       # get 'users/:user_id/invitations' => 'campaign_invitations#index'
       # get 'campaign_invitations/:campaign_id/invite/:user_id', to: 'campaign_invitations#invite'
     end
