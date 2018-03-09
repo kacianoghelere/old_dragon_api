@@ -19,7 +19,7 @@ gem 'rack-cors', :require => 'rack/cors'
 
 gem 'annotate'
 
-gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
+gem 'faker'
 
 gem 'seed_dump'
 
